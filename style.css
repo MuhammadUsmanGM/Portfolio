@@ -492,11 +492,11 @@ header ul a:hover{
 .my-project{
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 10%;
     align-items: center;
     position: relative;
     width: 80%;
-    min-height: auto;
+    height: 100vh;
 }
 
 /* Hide first project (Gaming Website) as requested */
@@ -506,10 +506,10 @@ header ul a:hover{
 
 .project-card {
     display: flex;
-    flex-wrap: wrap;
     width: 100%;
+    height: 40%;
     align-items: center;
-    gap: 30px;
+    gap: 10%;
     justify-content: center;
 }
 
@@ -517,12 +517,12 @@ header ul a:hover{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: min(560px, 100%);
+    width: 50%;
     mix-blend-mode:exclusion;
     position: relative;
     cursor: pointer;
     transition: 0.5s;
-    min-width: 260px;
+    min-width: 400px;
 }
 
 .project-vidbox video{
@@ -542,25 +542,26 @@ header ul a:hover{
     flex-direction: column;
     align-items: start;
     justify-content: center;
-    width: min(560px, 100%);
-    padding-left: 0;
-    padding-right: 0;
+    width: 50%;
+    padding-left: 10%;
 }
 
 .project-info h1{
-    width: 100%;
-    font-size: clamp(20px, 4vw, 28px);
-    font-weight: 800;
-    overflow-wrap: anywhere;
-    margin: 0 0 10px;
-    max-width: 100%;
+    width: 90%;
+    font-size: 25px;
+    font-weight: bold;
+    text-wrap: nowrap;
+    margin-top: 0;
+    margin-bottom: 10px;
+    max-width: 450px;
 }
 
 .project-info p{
-    width: 100%;
-    max-width: 600px;
-    margin: 0 0 20px;
-    font-size: clamp(12px, 2.5vw, 16px);
+    width: 90%;
+    max-width: 400px;
+    min-width: 300px;
+    margin-bottom: 50px;
+    margin-top: 0;
 }
 
 .project-info button{
@@ -643,8 +644,8 @@ header ul a:hover{
 
 .thumb{
     border-radius: 8px;
-    width: 480px;
-    height: auto;
+    width: 520px;
+    height: 200px;
 }
 
 /* Skills section */
@@ -659,16 +660,13 @@ header ul a:hover{
 
 .skills-box{
     width: 100%;
-    min-height: 60vh;
+    height: 90vh;
     position: relative;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     mix-blend-mode:lighten;
     opacity: 0.7;
-    gap: 20px;
-    padding: 20px;
 }
 
 .skills-image{
@@ -677,13 +675,13 @@ header ul a:hover{
 }
 
 .Designer{
-    position: relative;
+    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: start;
-    max-width: 400px;
-    flex: 1;
-    min-width: 280px;
+    top: 25%;
+    left: 5%;
+    max-width: 300px;
 }
 
 .Designer h1{
@@ -698,13 +696,13 @@ header ul a:hover{
 
 
 .coder{
-    position: relative;
+    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: start;
-    max-width: 400px;
-    flex: 1;
-    min-width: 280px;
+    top: 25%;
+    right: 5%;
+    max-width: 300px;
 }
 
 .coder h1{
