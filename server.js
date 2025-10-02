@@ -8,9 +8,14 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(cors({
+    origin: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:*', 'http://127.0.0.1:*'],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Serve static files from the root directory
 app.use(express.static(path.join(__dirname)));
@@ -136,6 +141,10 @@ app.use((err, req, res, next) => {
     });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`\n🚀 Server is running successfully!`);
+    console.log(`📍 Local:    http://localhost:${PORT}`);
+    console.log(`📍 Network:  http://127.0.0.1:${PORT}`);
+    console.log(`💌 Email configured: ${process.env.EMAIL_USER ? 'Yes' : 'No (simulation mode)'}`);
+    console.log(`\n📝 Contact form endpoint: http://localhost:${PORT}/api/contact`);
 });

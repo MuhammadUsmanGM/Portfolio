@@ -32,6 +32,22 @@ html, body{
     overflow-x: hidden;
 }
 
+/* Global responsive defaults */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Fluid typography */
+html {
+    font-size: clamp(14px, 2.5vw, 18px);
+}
+
 
 /* Focus styles */
 a:focus-visible, button:focus-visible, [role="button"]:focus-visible{
@@ -47,7 +63,7 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 100px;
+    gap: 50px; /* Reduced and consistent spacing between all sections */
     padding-top: 70px; /* keep content visible below header */
     background-color: #001f7c38;
 }
@@ -159,15 +175,19 @@ header ul a:hover{
     position: relative;
     display: flex;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     align-items: center;
     justify-content: space-between;
+    padding: 20px;
+    flex-wrap: wrap;
 }
 
 .hero-info{
-    position: absolute;
-    left: 5%;
+    position: relative;
+    max-width: 600px;
     z-index: 1;
+    flex: 1;
+    min-width: 300px;
 }
 
 .hero-info .hero-info-title{
@@ -228,13 +248,19 @@ header ul a:hover{
 
 
 .skills-video-box{
-    position: absolute;
-    right: 3%;
+    position: relative;
+    right: auto;
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
 }
 
 .skills-video{
-    height: 900px;
+    max-height: 600px;
+    width: 100%;
     mix-blend-mode:lighten;
+    object-fit: cover;
 }
 
 
@@ -294,7 +320,7 @@ header ul a:hover{
     align-items: center;
     flex-direction: column;
     width: 80%;
-    margin-top: 100px;
+    /* Removed margin-top to use container gap for consistent spacing */
 }
 
 .section-title{
@@ -305,7 +331,7 @@ header ul a:hover{
 /* About section */
 .about-section{
     width: 80%;
-    margin-top: 100px;
+    /* Removed margin-top to use container gap for consistent spacing */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -466,13 +492,11 @@ header ul a:hover{
 .my-project{
     display: flex;
     flex-direction: column;
-    gap: 10%;
+    gap: 40px;
     align-items: center;
     position: relative;
     width: 80%;
-    height: 100vh;
-    margin-top: 200px;
-    margin-bottom: 700px;
+    min-height: auto;
 }
 
 /* Hide first project (Gaming Website) as requested */
@@ -482,10 +506,10 @@ header ul a:hover{
 
 .project-card {
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
-    height: 40%;
     align-items: center;
-    gap: 10%;
+    gap: 30px;
     justify-content: center;
 }
 
@@ -493,13 +517,12 @@ header ul a:hover{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50%;
+    width: min(560px, 100%);
     mix-blend-mode:exclusion;
     position: relative;
     cursor: pointer;
     transition: 0.5s;
-    min-width: 400px;
-
+    min-width: 260px;
 }
 
 .project-vidbox video{
@@ -519,26 +542,25 @@ header ul a:hover{
     flex-direction: column;
     align-items: start;
     justify-content: center;
-    width: 50%;
-    padding-left: 10%;
+    width: min(560px, 100%);
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .project-info h1{
-    width: 90%;
-    font-size: 25px;
-    font-weight: bold;
-    text-wrap: nowrap;
-    margin-top: 0;
-    margin-bottom: 10px;
-    max-width: 450px;
+    width: 100%;
+    font-size: clamp(20px, 4vw, 28px);
+    font-weight: 800;
+    overflow-wrap: anywhere;
+    margin: 0 0 10px;
+    max-width: 100%;
 }
 
 .project-info p{
-    width: 90%;
-    max-width: 400px;
-    min-width: 300px;
-    margin-bottom: 50px;
-    margin-top: 0;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 0 20px;
+    font-size: clamp(12px, 2.5vw, 16px);
 }
 
 .project-info button{
@@ -619,7 +641,11 @@ header ul a:hover{
 }
 
 
-
+.thumb{
+    border-radius: 8px;
+    width: 480px;
+    height: auto;
+}
 
 /* Skills section */
 .skills-section{
@@ -627,17 +653,22 @@ header ul a:hover{
     flex-direction: column;
     align-items: center;
     position: relative;
+    width: 100%;
+    padding: 0 20px;
 }
 
 .skills-box{
     width: 100%;
-    height: 90vh;
+    min-height: 60vh;
     position: relative;
     display: flex;
-    align-items: start;
+    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
     mix-blend-mode:lighten;
     opacity: 0.7;
+    gap: 20px;
+    padding: 20px;
 }
 
 .skills-image{
@@ -646,13 +677,13 @@ header ul a:hover{
 }
 
 .Designer{
-    position: absolute;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: start;
-    top: 25%;
-    left: 5%;
-    max-width: 300px;
+    max-width: 400px;
+    flex: 1;
+    min-width: 280px;
 }
 
 .Designer h1{
@@ -667,13 +698,13 @@ header ul a:hover{
 
 
 .coder{
-    position: absolute;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: start;
-    top: 25%;
-    right: 5%;
-    max-width: 300px;
+    max-width: 400px;
+    flex: 1;
+    min-width: 280px;
 }
 
 .coder h1{
@@ -747,30 +778,35 @@ header ul a:hover{
 
   /* CONTACT SECTION */
 .contact-section{
-    width: 80%;
-    height: 100vh;
+    width: 100%;
+    max-width: 1200px;
+    min-height: auto;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 10%;
+    gap: 40px;
     align-items: center;
     position: relative;
+    padding: 40px 20px;
 }
 
 .contact-section h1{
-    position: absolute;
-    top: 5%;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-bottom: 60px;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
     z-index: 2;
     filter: none !important;
     opacity: 1 !important;
+    order: -1;
 }
 
 .social-box {
     display: flex;
     flex-direction: column;
     gap: 25px;
+    flex: 1;
+    min-width: 280px;
 }
 
 .social-box a{
@@ -797,15 +833,21 @@ header ul a:hover{
     margin-bottom: 5px;
 } 
 
+.contact-box {
+    flex: 1;
+    min-width: 320px;
+    max-width: 500px;
+}
+
 .contact-box input{
-    padding: 7.5px 30px;
+    padding: 12px 20px;
     background-color: lightgray;
-    width: 80%;
-    height: 25px;
+    width: 100%;
+    min-height: 40px;
     border: none;
-    outline : none;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    outline: none;
+    border-radius: 8px;
+    font-size: 16px;
 }
 
 .contact-box button{
@@ -861,7 +903,7 @@ header ul a:hover{
     align-items: center;
     justify-content: center;
     min-height: 80vh;
-    padding: 100px 0;
+    padding: 40px 0; /* Reduced padding for consistent spacing */
     position: relative;
     width: 100%;
     overflow: hidden;
@@ -1365,76 +1407,68 @@ header ul a:hover{
 }
 
 
-@media screen and (max-width: 1200px){
-    header ul {
-        width: 45%;
+/* Tablet - Large Mobile */
+@media screen and (max-width: 1024px) {
+    .container {
+        gap: 40px;
+        padding: 20px;
     }
     
-    .blackhole-box video{
-        margin-top: -20%;
+    header ul {
+        width: 50%;
     }
-
-    .hero-info h1{
-        font-size: 40px;
-        max-width: 400px;
-        line-height: 40px;
+    
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+        min-height: 80vh;
     }
-
-    .hero-info P{
-        max-width: 300px;
+    
+    .hero-info {
+        max-width: 90%;
     }
-
-    .skills-video-box{
-        right: 0%;
+    
+    .hero-info h1 {
+        font-size: clamp(32px, 6vw, 48px);
+        line-height: 1.2;
     }
-
-    .skills-video-box video{
-        height: 500px;
+    
+    .skills-video-box {
+        max-width: 90%;
     }
-
-    .info-cards{
-        grid-template-columns: auto;
+    
+    .info-cards {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
     }
-
-    .card:nth-child(3){
+    
+    .card:nth-child(3) {
         grid-column: span 2;
-        height: 70vh;
+        min-height: 300px;
     }
-
-    .info-cards .card h1{
-        font-size: 20px;
+    
+    .skills-box {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 30px;
     }
-
-    .info-cards .card:nth-child(3) h1{
-        bottom: 25%;
-    }
-
-    .card video{
-        height: 60%;
-
-        margin-top: 5%;
-    }
-
-    .my-project{
-        margin-bottom: 200px;
-        scale: 0.8;
-    }
-
-    .contact-section .section-title {
-        left: 30%;
+    
+    .Designer, .coder {
+        max-width: 100%;
+        text-align: center;
     }
 }
 
+/* Mobile */
 @media screen and (max-width: 700px){
     header {
         position: fixed;
         height: 50px;
     }
 
-    header ul{
-        display: none;
-    }
-
+    header ul,
     header .box-icons{
         display: none;
     }
@@ -1444,8 +1478,8 @@ header ul a:hover{
     }
 
     .blackhole-box video {
-        width: 100%;
-        margin-top: -15%;
+        width: 120%;
+        margin-top: -10%;
     }
 
     .autoBlur{
@@ -1454,115 +1488,72 @@ header ul a:hover{
     
     .hero{
         flex-direction: column;
-        top:0;
-        bottom: 0;
-        left: 0;
-        right:0;
-        
+        gap: 20px;
+        padding-top: 60px;
     }
     .hero-info{
-        bottom: 5%;
+        bottom: auto;
+        text-align: center;
+        max-width: 95%;
+        margin: 0 auto;
     }
 
-    .scroll-down{
-        bottom: 5%;
-    }
+    .scroll-down{ display: none; }
 
     .hero .skills-video-box{
-        height: 200px;
-        top: 5%;
+        height: auto;
+        top: auto;
     }
 
-
-
     .info-cards{
-        grid-template-columns: auto;
+        grid-template-columns: 1fr;
     }
 
     .card:nth-child(3){
-        grid-column: span 2;
-        height: 70vh;
+        grid-column: span 1;
+        min-height: 300px;
     }
 
-    .card video{
-        width: 100%;
-    }
-    
     .container{
-        height: 100%;
-    }
-
-    .project-vidbox video{
-        width: 250px;
-        margin-left: -100px;
-    }
-
-    .project-info{
-        overflow: hidden;
-        padding-left: 0;
-        margin-left: -50px;
-    }
-
-    .project-info h1{
-        font-size: 20px;
-        max-width: 200px;
-        text-wrap: wrap;
-    }
-
-    .project-info p{
-        font-size: 10px;
-        text-wrap: wrap;
-        max-width: 200px;
-        min-width: 0;
-    }
-
-    .project-info button{
-        padding: 5px 10px;
-    }
-
-    .my-project{
-        margin-bottom: 600px;
+        height: auto;
     }
 
     .project-card{
         flex-direction: column;
-        margin-left: 25%;
-        gap: 30px;
+        margin-left: 0;
+        gap: 20px;
     }
-    
+
     .project-vidbox{
         min-width: 200px;
     }
 
     .project-info{
-        width: 85%;
+        overflow: visible;
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
     }
 
     .project-info h1{
-        text-wrap: nowrap;
+        font-size: 20px;
     }
 
     .project-info p{
-        max-width: 300px;
+        font-size: 12px;
     }
 
-    .Designer{
-        top: 15%;
-        left: 18%;
+    .project-info button{
+        padding: 8px 14px;
     }
 
-    .Designer h1{
-        margin-bottom: 0;
-        margin-top: 70px;
-    }
-
+    .Designer,
     .coder{
-        top: 50%;
-        left: 18%;
-    }
-
-    .coder h1{
-        margin-bottom: 0;
+        top: auto;
+        left: auto;
+        text-align: center;
+        align-items: center;
+        margin: 0 auto;
     }
 
     .slider .list .item img{
@@ -1571,8 +1562,8 @@ header ul a:hover{
 
     .contact-section{
         flex-direction: column;
-        margin-top: 100px;
-        margin-bottom: 50px;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 
     .footer{
@@ -1580,16 +1571,21 @@ header ul a:hover{
     }
 
     .social-box{
-        margin-left: -90px;
+        margin-left: 0;
+        align-items: center;
     }
 }
 
 
+/* Small Mobile */
 @media screen and (max-width: 480px) {
+    .container {
+        gap: 30px;
+        padding: 10px;
+    }
 
     .hero .skills-video-box {
         display: none;
-        
     }
 
     .blackhole-box {
@@ -1597,99 +1593,80 @@ header ul a:hover{
     }
 
     .blackhole-box video {
-        width: 140%;
-        margin-top: -27%;
-
+        width: 130%;
+        margin-top: -15%;
     }
 
     .left {
-        scale: 0.9;
-        margin-left: -30px;
+        transform: scale(0.9);
+        margin-left: -20px;
     }
 
     .left h2 {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .hero {
-        scale: 0.9;
+        transform: scale(0.95);
     }
 
-    .hero-info{
-        bottom: 15%;
-    }
-
-    .hero-info h1{
-        font-size: 35px;
-    }
-
-    .scroll-down{
-        bottom: 15%;
-        left: 60%;
+    .hero-info h1 {
+        font-size: clamp(28px, 8vw, 36px);
     }
 
     .section-title {
-        font-size: 25px;
+        font-size: clamp(24px, 6vw, 32px);
     }
 
-    .info-cards{
+    .info-cards {
         display: flex;
         flex-direction: column;
     }
 
     .card {
-        min-height: 20rem;
+        min-height: 250px;
     }
 
-    .card h1{
+    .card h1 {
         bottom: 30%;
-        font-size: 16px;
+        font-size: clamp(14px, 4vw, 18px);
     }
 
-    .project-card {
-        height: 50%;
+    .project-info {
+        margin-left: 0;
     }
 
-    .project-info p{
-        margin-bottom: 15px;
+    .skills-box {
+        min-height: auto;
+        margin: 0;
+        padding: 20px 10px;
     }
 
-    .project-info{
-        margin-left: -80px;
-    }
-
-    .skills-box{
-        height: 120vh;
-        margin-right: 30px;
-    }
-
-    .slider{
+    .slider {
         bottom: 0%;
     }
 
-    .contact-section{
-        scale: 0.9;
-        height: 120vh;
+    .contact-section {
+        transform: scale(0.95);
+        min-height: auto;
+        padding: 20px 10px;
     }
 
-    .contact-section .section-title {
-        top: -30px;
-        left: 25%;
-    }
-
-    .footer{
-        padding: 15px;
-    }
-
-    .footer h1{
-        max-width: 150px;
-    }
-
-    .footer .box-icons{
+    .footer {
+        padding: 10px;
+        flex-direction: column;
         gap: 10px;
+        text-align: center;
     }
 
+    .footer h1 {
+        max-width: 200px;
+        font-size: 12px;
+    }
 
+    .footer .box-icons {
+        gap: 8px;
+    }
 }
 
 

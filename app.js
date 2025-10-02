@@ -243,6 +243,23 @@ function setupMenuKeyboardAccess(){
 }
 
 
+// Smooth scroll to contact section
+function setupContactButtons() {
+  const contactButtons = document.querySelectorAll('.contact-btn');
+  contactButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+}
+
 // Initialize enhancements
 window.addEventListener('load', () => { if (window.AOS) { AOS.init(); } });
 
@@ -251,5 +268,5 @@ document.addEventListener('DOMContentLoaded', () => {
   setupTechScrollObserver();
   setupDisabledProjectButtons();
   setupMenuKeyboardAccess();
-
+  setupContactButtons();
 });
