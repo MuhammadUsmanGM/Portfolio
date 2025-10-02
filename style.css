@@ -407,28 +407,31 @@ header ul a:hover{
 .card h1{
     position: absolute;
     margin: 0;
-    bottom: 40%;
+    bottom: 30%;
     left: 5%;
-    font-size: 25px;
-    z-index: 1;
+    font-size: 20px;
+    z-index: 2;
     color: lightgray;
+    max-width: 90%;
+    line-height: 1.1;
 }
 
 .card p{
     position: absolute;
     bottom: 3%;
     left: 5%;
-    z-index: 1;
-    max-width: 300px;
+    z-index: 2;
+    max-width: 85%;
     color: gray;
-    font-size: 13px;
-    line-height: 20px;
+    font-size: 12px;
+    line-height: 16px;
 }
 
 .card img{
-    width: 80%;
-    height: 50%;
+    width: 60%;
+    height: 35%;
     object-fit: cover;
+    margin-top: 5%;
 }
 
 .card video{
