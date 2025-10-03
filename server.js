@@ -141,6 +141,15 @@ app.use((err, req, res, next) => {
     });
 });
 
+// Social links endpoint
+app.get('/api/social', (req, res) => {
+    res.json({
+        github: 'https://github.com/MuhammadUsmanGM',
+        linkedin: 'https://linkedin.com/in/your-profile',
+        twitter: 'https://twitter.com/your-handle'
+        // Add your actual social links
+    });
+});
 
 module.exports = app;
 if (require.main === module) {
