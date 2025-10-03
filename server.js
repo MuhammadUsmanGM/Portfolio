@@ -144,10 +144,12 @@ app.use((err, req, res, next) => {
 // Social links endpoint
 app.get('/api/social', (req, res) => {
     res.json({
-        github: 'https://github.com/MuhammadUsmanGM',
-        linkedin: 'https://linkedin.com/in/your-profile',
-        twitter: 'https://twitter.com/your-handle'
-        // Add your actual social links
+        success: true,
+        links: {
+            github: 'https://github.com/MuhammadUsmanGM',
+            linkedin: 'https://www.linkedin.com/in/muhammad-usman-gm',
+            email: 'mailto:muhammadusman5965etc@gmail.com'
+        }
     });
 });
 
