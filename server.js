@@ -141,10 +141,14 @@ app.use((err, req, res, next) => {
     });
 });
 
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`\n🚀 Server is running successfully!`);
-    console.log(`📍 Local:    http://localhost:${PORT}`);
-    console.log(`📍 Network:  http://127.0.0.1:${PORT}`);
-    console.log(`💌 Email configured: ${process.env.EMAIL_USER ? 'Yes' : 'No (simulation mode)'}`);
-    console.log(`\n📝 Contact form endpoint: http://localhost:${PORT}/api/contact`);
-});
+
+module.exports = app;
+if (require.main === module) {
+    app.listen(PORT, '0.0.0.0', () => {
+        console.log(`\n🚀 Server is running successfully!`);
+        console.log(`📍 Local:    http://localhost:${PORT}`);
+        console.log(`📍 Network:  http://127.0.0.1:${PORT}`);
+        console.log(`💌 Email configured: ${process.env.EMAIL_USER ? 'Yes' : 'No (simulation mode)'}`);
+        console.log(`\n📝 Contact form endpoint: http://localhost:${PORT}/api/contact`);
+    });
+}
