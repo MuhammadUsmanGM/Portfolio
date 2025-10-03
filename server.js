@@ -141,6 +141,9 @@ app.use((err, req, res, next) => {
     });
 });
 
+// Serve static files from root directory
+app.use(express.static(__dirname));
+
 // Social links endpoint
 app.get('/api/social', (req, res) => {
     res.json({
@@ -151,6 +154,11 @@ app.get('/api/social', (req, res) => {
             email: 'mailto:muhammadusman5965etc@gmail.com'
         }
     });
+});
+
+// Serve index.html for root route
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
 });
 
 module.exports = app;
