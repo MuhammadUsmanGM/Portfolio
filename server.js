@@ -8,35 +8,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors({
-    origin: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:*', 'http://127.0.0.1:*'],
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Serve static files from the root directory
-app.use(express.static(path.join(__dirname)));
-
-// Route to serve the main HTML file
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
-
-// API endpoint for social links
-app.get('/api/social', (req, res) => {
-    res.json({
-        email: 'muhammadusman5965etc@gmail.com',
-        github: 'https://github.com/MuhammadUsmanGM',
-        // Placeholder social links
-        linkedin: '#',
-        twitter: '#',
-        instagram: '#',
-        facebook: '#'
-    });
-});
+app.use(express.static(__dirname));
 
 // Create transporter for sending emails
 let transporter;
@@ -49,21 +26,29 @@ if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
         }
     });
 } else {
-    console.log("Email configuration not found. Contact form will log to console only until configured.");
-    // Create a dummy transporter that logs to console
+    console.log("Email configuration not found. Contact form will log to console only.");
     transporter = {
         sendMail: (mailOptions) => {
-            return new Promise((resolve, reject) => {
-                console.log("Email would have been sent (simulation):");
-                console.log("To:", mailOptions.to);
-                console.log("Subject:", mailOptions.subject);
-                console.log("Text:", mailOptions.text);
-                console.log("Email sent to console successfully!");
+            return new Promise((resolve) => {
+                console.log("Email simulation:", mailOptions);
                 resolve({ messageId: 'simulated' });
             });
         }
     };
 }
+
+// API endpoint for social links
+app.get('/api/social', (req, res) => {
+    res.json({
+        success: true,
+        links: {
+            email: 'muhammadusman5965etc@gmail.com',
+            github: 'https://github.com/MuhammadUsmanGM',
+            linkedin: 'https://www.linkedin.com/in/muhammad-usman-gm',
+            phone: '+92 325 6550687'
+        }
+    });
+});
 
 // API endpoint to handle contact form submission
 app.post('/api/contact', async (req, res) => {
@@ -90,7 +75,7 @@ app.post('/api/contact', async (req, res) => {
         // Email options
         const mailOptions = {
             from: process.env.EMAIL_USER,
-            to: process.env.EMAIL_USER, // Send to your email
+            to: process.env.EMAIL_USER,
             subject: `Portfolio Contact: Message from ${name}`,
             text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
             html: `
@@ -103,13 +88,9 @@ app.post('/api/contact', async (req, res) => {
         };
         
         // Send email
-        const info = await transporter.sendMail(mailOptions);
+        await transporter.sendMail(mailOptions);
         
-        console.log('Email sent successfully!', info.messageId);
-        console.log('Contact form submission received:');
-        console.log(`Name: ${name}`);
-        console.log(`Email: ${email}`);
-        console.log(`Message: ${message}`);
+        console.log('Contact form submission received from:', name);
         
         res.status(200).json({ 
             success: true, 
@@ -124,6 +105,11 @@ app.post('/api/contact', async (req, res) => {
     }
 });
 
+// Route to serve the main HTML file
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 // Handle 404 for undefined routes
 app.use((req, res) => {
     res.status(404).json({ 
@@ -132,36 +118,10 @@ app.use((req, res) => {
     });
 });
 
-// Error handling middleware
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).json({ 
-        success: false, 
-        message: 'Something went wrong!' 
-    });
-});
-
-// Serve static files from root directory
-app.use(express.static(__dirname));
-
-// Social links endpoint
-app.get('/api/social', (req, res) => {
-    res.json({
-        success: true,
-        links: {
-            github: 'https://github.com/MuhammadUsmanGM',
-            linkedin: 'https://www.linkedin.com/in/muhammad-usman-gm',
-            email: 'mailto:muhammadusman5965etc@gmail.com'
-        }
-    });
-});
-
-// Serve index.html for root route
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-});
-
+// Export for Vercel
 module.exports = app;
+
+// Listen only in development
 if (require.main === module) {
     app.listen(PORT, '0.0.0.0', () => {
         console.log(`\n🚀 Server is running successfully!`);
