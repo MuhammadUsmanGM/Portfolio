@@ -71,10 +71,15 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible{
 
 .back-vid{
     position: fixed;
-    right: 0;
-    bottom: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure video covers entire area */
     z-index: -1;
     mix-blend-mode:overlay;
+    min-width: 100%;
+    min-height: 100%;
 }
 
 
@@ -499,7 +504,9 @@ header ul a:hover{
     align-items: center;
     position: relative;
     width: 80%;
-    height: 100vh;
+    height: auto; /* Changed from 100vh to auto to prevent overflow */
+    min-height: 100vh; /* Maintain minimum height but allow to grow */
+    overflow: visible; /* Ensure content is visible */
 }
 
 /* Hide first project (Gaming Website) as requested */
@@ -514,6 +521,9 @@ header ul a:hover{
     align-items: center;
     gap: 10%;
     justify-content: center;
+    position: relative; /* Add positioning context */
+    overflow: visible; /* Allow visibility of elements during animation */
+    min-height: 250px; /* Ensure minimum height to accommodate content */
 }
 
 .project-vidbox{
@@ -547,13 +557,15 @@ header ul a:hover{
     justify-content: center;
     width: 50%;
     padding-left: 10%;
+    position: relative; /* Add positioning context */
+    z-index: 1; /* Ensure it stays in proper stacking order */
 }
 
 .project-info h1{
     width: 90%;
     font-size: 25px;
     font-weight: bold;
-    text-wrap: nowrap;
+    text-wrap: wrap;
     margin-top: 0;
     margin-bottom: 10px;
     max-width: 450px;
@@ -727,6 +739,7 @@ header ul a:hover{
         height: auto;
         padding: 40px 0;
         gap: 30px;
+        margin-top: 0; /* Ensure no extra top margin */
     }
     
     .skills-image {
@@ -742,6 +755,7 @@ header ul a:hover{
         text-align: center;
         align-items: center;
         margin: 0 auto;
+        width: 100%; /* Ensure full width to prevent any positioning issues */
     }
     
     .Designer {
@@ -1484,15 +1498,19 @@ header ul a:hover{
 
 @media (max-aspect-ratio: 16/9){
     .back-vid{
-        width: auto;
-        height: 100%;
+        width: 100%;
+        height: auto;
+        min-height: 100%;
+        object-fit: cover;
     }
 }
 
 @media (min-aspect-ratio: 16/9){
     .back-vid{
-        width: 100%;
-        height: auto;
+        width: auto;
+        height: 100%;
+        min-width: 100%;
+        object-fit: cover;
     }
 }
 
@@ -1576,6 +1594,30 @@ header ul a:hover{
         animation: none;
     }
     
+    /* Ensure background video properly fills mobile screens */
+    .back-vid {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        min-width: 100%;
+        min-height: 100%;
+    }
+    
+    /* Ensure fadein-left elements have proper positioning on mobile */
+    .fadein-left {
+        transform: none !important;
+        opacity: 1 !important;
+    }
+    
+    /* Ensure section titles have proper spacing */
+    .section-title {
+        margin-top: 0;
+        padding-top: 10px; /* Add some top padding to section titles for clearer separation */
+    }
+    
     .hero{
         flex-direction: column;
         gap: 20px;
@@ -1606,35 +1648,65 @@ header ul a:hover{
 
     .container{
         height: auto;
+        gap: 40px; /* Consistent with tablet spacing */
+    }
+    
+    /* Add specific bottom margin to project section to ensure proper spacing on mobile */
+    .my-project {
+        margin-bottom: 60px; /* Further increased bottom margin to ensure clear separation */
+    }
+    
+    /* Add top margin to skills section on mobile for additional separation */
+    .skills-section {
+        margin-top: 20px; /* Add top margin to skills section on mobile */
     }
 
     .project-card{
         flex-direction: column;
         margin-left: 0;
-        gap: 20px;
+        gap: 15px; /* Reduced gap to save space */
+        align-items: center;
+        padding-bottom: 30px; /* Increase padding to ensure space at the bottom */
+        margin-bottom: 10px; /* Add bottom margin for additional spacing */
     }
 
     .project-vidbox{
         min-width: 200px;
+        width: 100%;
+        max-width: 500px;
     }
 
     .project-info{
         overflow: visible;
         margin-left: 0;
         width: 100%;
+        max-width: 500px;
         text-align: center;
+        align-items: center;
+        margin-bottom: 10px; /* Add bottom margin to create space */
     }
 
     .project-info h1{
         font-size: 20px;
+        width: 100%;
+        text-wrap: wrap;
+        max-width: 100%;
     }
 
     .project-info p{
-        font-size: 12px;
+        width: 100%;
+        font-size: 14px;
+        max-width: 100%;
+        min-width: auto;
+        margin-bottom: 20px; /* Reduced margin to save space */
     }
 
     .project-info button{
         padding: 8px 14px;
+        margin-bottom: 0; /* Remove any bottom margin on buttons */
+        align-self: flex-start; /* Align button to start instead of center */
+        max-width: 100%; /* Ensure button doesn't exceed container width */
+        word-break: break-word; /* Break long text if needed */
     }
 
     .Designer,
