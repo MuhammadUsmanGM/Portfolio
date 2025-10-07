@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills Section Test</title>
+    <style>
+        /* Include the relevant CSS */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text, lightgray);
+            background-color: var(--bg, #0b1020);
+        }
+
+        /* Theme variables */
+        :root {
+            --bg: #0b1020;
+            --surface: #0f172a;
+            --surface-2: #111a2e;
+            --primary: #72a1de;
+            --primary-rgb: 114, 161, 222;
+            --accent: #a855f7;
+            --accent-rgb: 168, 85, 247;
+            --text: #e5eaf5;
+            --muted: #a9b4c6;
+            color-scheme: dark;
+        }
+        
+        .skills-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .skills-box {
+            width: 100%;
+            min-height: 90vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 40px;
+            mix-blend-mode:lighten;
+            opacity: 0.7;
+            padding: 20px 0;
+        }
+
+        .skills-image {
+            width: 70%;
+            max-width: 600px;
+            mix-blend-mode:difference;
+        }
+
+        .Designer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .Designer h1 {
+            font-size: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 0 15px 0;
+        }
+
+        .Designer p {
+            line-height: 23px;
+            margin: 0;
+        }
+
+        .coder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .coder h1 {
+            font-size: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 0 15px 0;
+        }
+
+        .coder p {
+            line-height: 23px;
+            margin: 0;
+        }
+
+        /* Gradient for the section */
+        .gradient {
+            background: linear-gradient(to right,#00aaa7, #7e42a7, #6600c5, #6070fd,#2a46ff, #0099ff, #008ead);
+            background-size: 200%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: animate-gradient 2.5s linear infinite;
+        }
+        
+        @keyframes animate-gradient {
+            to {
+                background-position: 200%;
+            }
+        }
+
+        /* Mobile styles */
+        @media screen and (max-width: 700px) {
+            .skills-box {
+                gap: 30px;
+                min-height: auto;
+                padding: 40px 0;
+            }
+            
+            .skills-image {
+                width: 90%;
+                max-width: 300px;
+            }
+            
+            .Designer, .coder {
+                max-width: 100%;
+                padding: 0 15px;
+            }
+            
+            .Designer h1, .coder h1 {
+                font-size: 28px;
+            }
+            
+            .Designer p, .coder p {
+                font-size: 14px;
+            }
+        }
+
+        /* Tablet styles */
+        @media screen and (min-width: 701px) and (max-width: 1024px) {
+            .skills-box {
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            
+            .skills-image {
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .Designer, .coder {
+                max-width: calc(50% - 20px);
+                text-align: left;
+                align-items: flex-start;
+            }
+            
+            .Designer h1, .coder h1 {
+                justify-content: flex-start;
+            }
+            
+            .Designer p, .coder p {
+                text-align: left;
+            }
+        }
+
+        /* Desktop layout */
+        @media screen and (min-width: 1025px) {
+            .skills-box {
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 40px;
+            }
+            
+            .skills-image {
+                width: 70%;
+                max-width: 600px;
+            }
+            
+            .Designer, .coder {
+                min-width: 300px;
+                max-width: 300px;
+                text-align: left;
+                align-items: flex-start;
+            }
+            
+            .Designer h1, .coder h1 {
+                justify-content: flex-start;
+            }
+            
+            .Designer p, .coder p {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- SKILLS SECTION -->
+    <section class="skills-section" id="skills">
+        <h1 class="section-title">My Skills 💪</h1>
+        <div class="skills-box">
+            <img
+                class="skills-image"
+                src="data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3e%3crect fill='%23333' width='400' height='300'/%3e%3ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='%23fff'%3eSkills Image%3c/text%3e%3c/svg%3e"
+                alt="Digital brain illustration"
+            />
+            <div class="Designer">
+                <h1 class="gradient">Developer <i class="bx bx-laptop"></i></h1>
+                <p>
+                    I have expertise in HTML, CSS, and JavaScript, along with modern frameworks
+                    like React and Node.js. My strength lies in writing clean, efficient code and
+                    optimizing performance to deliver smooth, responsive user experiences.
+                </p>
+            </div>
+
+            <div class="coder">
+                <h1 class="gradient">Coder <i class="bx bx-code-block"></i></h1>
+                <p>
+                    I've been exploring AI integration with tools like OpenAI and LangChain.
+                    I focus on building scalable, intelligent web applications using modern
+                    development practices and full-stack technologies.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // This is just for testing purposes - in the real site, you'd have the full implementation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Test that the layout works correctly
+            console.log('Skills section layout test loaded');
+        });
+    </script>
+</body>
+</html>
