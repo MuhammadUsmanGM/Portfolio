@@ -201,6 +201,88 @@ async function updateSocialLinks() {
   }
 }
 
+// Set up custom animation for seamless tech stack scrolling
+function setupTechScrollAnimation() {
+  const track = document.getElementById('techScrollTrack');
+  if (!track) return;
+  
+  // Calculate the width of original items (first half) to determine the correct scroll distance
+  function getOriginalItemsWidth() {
+    const totalChildren = track.children.length;
+    const originalCount = Math.floor(totalChildren / 2);
+    let width = 0;
+    
+    for (let i = 0; i < originalCount; i++) {
+      const item = track.children[i];
+      width += item.offsetWidth;
+      // Add gap between items (except for the last original item)
+      if (i < originalCount - 1) {
+        const computedStyle = window.getComputedStyle(item);
+        width += parseFloat(computedStyle.marginRight) || 60; // Default to 60px gap
+      }
+    }
+    
+    return width;
+  }
+  
+  // Get total track width (including duplicated items)
+  function getTotalTrackWidth() {
+    return track.scrollWidth || track.offsetWidth;
+  }
+  
+  // Store the original animation state
+  let originalAnimation = window.getComputedStyle(track).animation;
+  let originalItemsWidth = getOriginalItemsWidth();
+  let totalTrackWidth = getTotalTrackWidth();
+  
+  // For better infinite loop, we should use a more precise animation
+  // Update the original animation to ensure it moves by the correct amount
+  const styleElement = document.createElement('style');
+  styleElement.id = 'tech-scroll-animation';
+  
+  // Calculate animation based on actual content width
+  // This creates a more reliable loop than using percentage-based transforms
+  styleElement.textContent = `
+    @keyframes scrollTech {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-${originalItemsWidth}px); }
+    }
+  `;
+  
+  // Replace any existing dynamic animation style
+  const existingStyle = document.getElementById('tech-scroll-animation');
+  if (existingStyle) {
+    existingStyle.remove();
+  }
+  document.head.appendChild(styleElement);
+  
+  // Recalculate when the window resizes
+  window.addEventListener('resize', () => {
+    originalItemsWidth = getOriginalItemsWidth();
+    totalTrackWidth = getTotalTrackWidth();
+    
+    // Update the animation with new calculated width
+    styleElement.textContent = `
+      @keyframes scrollTech {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-${originalItemsWidth}px); }
+      }
+    `;
+    
+    // Reset the animation to use the new values
+    const wasPaused = track.classList.contains('paused');
+    track.style.animation = 'none';
+    // Trigger reflow
+    track.offsetHeight;
+    // Reapply animation
+    track.style.animation = originalAnimation;
+    if (wasPaused) {
+      track.classList.add('paused');
+      track.style.animationPlayState = 'paused';
+    }
+  });
+}
+
 // Pause Tech Stack scroll animation when off-screen
 function setupTechScrollObserver(){
   const track = document.getElementById('techScrollTrack');
@@ -214,6 +296,104 @@ function setupTechScrollObserver(){
   }, { root: null, threshold: 0 });
 
   io.observe(container);
+}
+
+// Enable touch and mouse drag scrolling for tech stack
+function setupTechScrollDragging() {
+  const track = document.getElementById('techScrollTrack');
+  if (!track) return;
+  
+  let isDown = false;
+  let startX;
+  let startTranslateX;
+  let animationPaused = false;
+  
+  // Get current translateX from computed styles
+  function getTranslateX() {
+    const style = window.getComputedStyle(track);
+    const transform = style.transform || style.webkitTransform;
+    
+    if (transform && transform !== 'none' && transform.includes('matrix')) {
+      const matrix = new DOMMatrix(transform);
+      return matrix.m41 || 0; // X translation component
+    }
+    return 0;
+  }
+
+  // Mouse events
+  track.addEventListener('mousedown', (e) => {
+    isDown = true;
+    animationPaused = true;
+    // Pause animation when dragging starts
+    track.style.animationPlayState = 'paused';
+    
+    startX = e.pageX - track.offsetLeft;
+    startTranslateX = getTranslateX();
+  });
+  
+  track.addEventListener('mouseleave', () => {
+    if (isDown) {
+      isDown = false;
+      animationPaused = false;
+      // Resume animation when dragging stops
+      track.style.animationPlayState = 'running';
+    }
+  });
+  
+  track.addEventListener('mouseup', () => {
+    isDown = false;
+    animationPaused = false;
+    // Resume animation after dragging ends
+    setTimeout(() => {
+      if (!isDown) {
+        track.style.animationPlayState = 'running';
+      }
+    }, 100);
+  });
+  
+  track.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll-fast multiplier
+    const newTranslateX = startTranslateX + walk;
+    
+    // Apply the transform
+    track.style.transform = `translateX(${newTranslateX}px)`;
+  });
+
+  // Touch events for mobile
+  track.addEventListener('touchstart', (e) => {
+    isDown = true;
+    animationPaused = true;
+    // Pause animation when dragging starts
+    track.style.animationPlayState = 'paused';
+    
+    startX = e.touches[0].clientX - track.getBoundingClientRect().left;
+    startTranslateX = getTranslateX();
+  });
+  
+  track.addEventListener('touchend', () => {
+    isDown = false;
+    animationPaused = false;
+    // Resume animation after dragging ends
+    setTimeout(() => {
+      if (!isDown) {
+        track.style.animationPlayState = 'running';
+      }
+    }, 100);
+  });
+  
+  track.addEventListener('touchmove', (e) => {
+    if (!isDown) return;
+    e.preventDefault(); // Prevent page scrolling
+    const x = e.touches[0].clientX - track.getBoundingClientRect().left;
+    const walk = (x - startX) * 2; // Scroll-fast multiplier
+    const newTranslateX = startTranslateX + walk;
+    
+    // Apply the transform
+    track.style.transform = `translateX(${newTranslateX}px)`;
+  });
 }
 
 // Make "Coming Soon" buttons accessible
@@ -265,7 +445,9 @@ window.addEventListener('load', () => { if (window.AOS) { AOS.init(); } });
 
 document.addEventListener('DOMContentLoaded', () => {
   updateSocialLinks();
+  setupTechScrollAnimation(); // Set up proper animation for tech stack
   setupTechScrollObserver();
+  setupTechScrollDragging();  // Add touch scrolling functionality
   setupDisabledProjectButtons();
   setupMenuKeyboardAccess();
   setupContactButtons();
