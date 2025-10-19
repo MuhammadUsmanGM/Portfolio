@@ -6,7 +6,6 @@ const video3 = document.getElementById('projectVideo3');
 const sideBar = document.querySelector('.sidebar');
 const menu = document.querySelector('.menu-icon');
 const closeIcon = document.querySelector('.close-icon');
-const hoverSign = document.querySelector('.hover-sign');
 
 const videoList = [video1, video2, video3];
 
@@ -45,6 +44,9 @@ videoList.forEach(function (video) {
   
   // Add error handling
   handleVideoError(video);
+  
+  // Find the hover sign associated with this video
+  const hoverSign = video.parentElement.querySelector('.hover-sign');
   
   video.addEventListener("mouseover", function () {
     video.play().catch(function(error) {

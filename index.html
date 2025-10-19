@@ -333,26 +333,31 @@
 
         <div class="project-card">
           <div class="project-vidbox autoBlur">
-            <img src="images/mcp.png" alt="mcp" class="thumb">
+            <video
+              loop
+              id="projectVideo3"
+              preload="none"
+              src="videos/newsletter.mp4"
+              muted
+              playsinline
+              poster="./images/newletter_img.png"
+            ></video>
+            <div class="hover-sign"></div>
           </div>
           <div class="project-info fadein-left">
-            <h1>
-              MCP <span class="gradient">Server</span> (OpenAI Agent SDK +
-              MongoDB)
-            </h1>
+            <h1>AI <span class="gradient">Newsletter</span> Website</h1>
             <p>
-              An MCP server powered by OpenAI Agent SDK to perform secure CRUD
-              operations on MongoDB with schema validation and agentic
-              workflows.
+              An interactive and responsive site to get updated about the
+              ai updates.
             </p>
-            <button
-              class="project-btn"
-              data-project="mcp-server"
-              aria-disabled="true"
-              tabindex="0"
-            >
-              <i class="bx bx-link-external"></i> Coming Soon
-            </button>
+            <a href="https://news-letter-umber-five.vercel.app/" target="_blank" rel="noopener noreferrer">
+              <button
+                class="project-btn"
+                data-project="newsletter"
+              >
+                <i class="bx bx-link-external"></i> Join Newsletter
+              </button>
+            </a>
           </div>
         </div>
       </section>
