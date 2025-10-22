@@ -442,8 +442,85 @@ function setupContactButtons() {
   });
 }
 
+// Project Carousel Functionality
+function initProjectCarousel() {
+  const projectSlider = document.getElementById('projectSlider');
+  const prevBtn = document.getElementById('prevProject');
+  const nextBtn = document.getElementById('nextProject');
+  const projects = document.querySelectorAll('.project-card');
+  let currentProject = 0;
+  const totalProjects = projects.length;
+
+  // Initialize the carousel
+  function showProject(index) {
+    // Remove active class from all projects
+    projects.forEach(project => project.classList.remove('active'));
+    
+    // Add active class to current project
+    projects[index].classList.add('active');
+    
+    currentProject = index;
+  }
+
+  // Next button event listener
+  nextBtn.addEventListener('click', () => {
+    const nextIndex = (currentProject + 1) % totalProjects;
+    showProject(nextIndex);
+  });
+
+  // Previous button event listener
+  prevBtn.addEventListener('click', () => {
+    const prevIndex = (currentProject - 1 + totalProjects) % totalProjects;
+    showProject(prevIndex);
+  });
+
+  // Touch/swipe support for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  projectSlider.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  projectSlider.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+
+  function handleSwipe() {
+    const minSwipeDistance = 50;
+    const swipeDistance = touchStartX - touchEndX;
+
+    if (Math.abs(swipeDistance) < minSwipeDistance) return; // Not enough of a swipe
+
+    if (swipeDistance > 0) {
+      // Swiped left - next project
+      const nextIndex = (currentProject + 1) % totalProjects;
+      showProject(nextIndex);
+    } else {
+      // Swiped right - previous project
+      const prevIndex = (currentProject - 1 + totalProjects) % totalProjects;
+      showProject(prevIndex);
+    }
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') {
+      const nextIndex = (currentProject + 1) % totalProjects;
+      showProject(nextIndex);
+    } else if (e.key === 'ArrowLeft') {
+      const prevIndex = (currentProject - 1 + totalProjects) % totalProjects;
+      showProject(prevIndex);
+    }
+  });
+}
+
 // Initialize enhancements
-window.addEventListener('load', () => { if (window.AOS) { AOS.init(); } });
+window.addEventListener('load', () => { 
+  if (window.AOS) { AOS.init(); } 
+  initProjectCarousel(); // Initialize project carousel
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   updateSocialLinks();
