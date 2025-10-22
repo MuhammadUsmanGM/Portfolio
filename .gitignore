@@ -46,3 +46,8 @@ coverage/
 # Temporary folders
 tmp/
 temp/
+
+.specify
+.qwen
+QWEN.md
+AGENTS.md
