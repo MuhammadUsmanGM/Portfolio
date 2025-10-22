@@ -1,14 +1,13 @@
 const video1 = document.getElementById('projectVideo1');
 const video2 = document.getElementById('projectVideo2');
 const video3 = document.getElementById('projectVideo3');
-const video4 = document.getElementById('projectVideo4');
 
 // Sidebar elements
 const sideBar = document.querySelector('.sidebar');
 const menu = document.querySelector('.menu-icon');
 const closeIcon = document.querySelector('.close-icon');
 
-const videoList = [video1, video2, video3, video4];
+const videoList = [video1, video2, video3];
 
 // Add error handling for videos
 function handleVideoError(video) {

@@ -510,9 +510,7 @@ header ul a:hover{
 }
 
 /* Hide first project (Gaming Website) as requested */
-.my-project .project-card:first-of-type{
-    display: none;
-}
+
 
 .project-card {
     display: flex;
