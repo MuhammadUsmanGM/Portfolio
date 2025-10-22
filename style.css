@@ -63,7 +63,7 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 50px; /* Reduced and consistent spacing between all sections */
+    gap: 50px; /* Consistent spacing between all sections */
     padding-top: 70px; /* keep content visible below header */
     background-color: #001f7c38;
 }
@@ -500,13 +500,14 @@ header ul a:hover{
 .my-project{
     display: flex;
     flex-direction: column;
-    gap: 10%;
+    gap: 10%; /* Reverted gap to original value */
     align-items: center;
     position: relative;
     width: 80%;
     height: auto; /* Changed from 100vh to auto to prevent overflow */
     min-height: 100vh; /* Maintain minimum height but allow to grow */
     overflow: visible; /* Ensure content is visible */
+    margin-bottom: 20px; /* Added specific bottom margin to control spacing */
 }
 
 /* Hide first project (Gaming Website) as requested */
@@ -528,20 +529,24 @@ header ul a:hover{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50%;
+    width: 60%; /* Increased width to make video wider */
     mix-blend-mode:exclusion;
     position: relative;
     cursor: pointer;
     transition: 0.5s;
-    min-width: 400px;
+    min-width: 400px; /* Increased minimum width */
+    z-index: 1; /* Ensure video is above other elements */
 }
 
 .project-vidbox video{
-    object-fit: cover;
+    object-fit: cover; /* Changed back to cover */
     width: 100%;
+    max-width: 100%; /* Ensure video doesn't exceed container */
     box-shadow: 0 0 10px lightgray;
     border-radius: 20px;
     transition: 0.5s;
+    min-height: 250px; /* Decreased minimum height */
+    height: auto; /* Allow height to adjust based on video aspect ratio */
 }
 
 .project-card video:hover{
@@ -553,8 +558,8 @@ header ul a:hover{
     flex-direction: column;
     align-items: start;
     justify-content: center;
-    width: 50%;
-    padding-left: 10%;
+    width: 35%; /* Decreased width to make room for increased video width */
+    padding-left: 5%; /* Reduced padding to better balance the layout */
     position: relative; /* Add positioning context */
     z-index: 1; /* Ensure it stays in proper stacking order */
 }
@@ -1908,10 +1913,167 @@ header ul a:hover{
     }
 }
 
+/* PROJECT CAROUSEL STYLES */
+.projects-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible; /* Changed from hidden to fix video clipping */
+    margin: 20px 0 0 0; /* Reduced margin to decrease gap before skills section */
+}
 
+.project-slider {
+    position: relative;
+    width: 80%;
+    height: auto;
+    min-height: 400px;
+    overflow: visible; /* Changed from hidden to fix video clipping */
+    border-radius: 20px;
+}
 
+.projects-container .project-card {
+    display: none;
+    width: 100%;
+    min-height: 400px; /* Ensure minimum height */
+    align-items: center;
+    gap: 10%;
+    justify-content: center;
+    position: relative;
+    padding: 20px 0; /* Add some vertical padding */
+}
 
+.projects-container .project-card.active {
+    display: flex;
+    animation: fadeIn 0.5s ease-in-out;
+}
 
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(114, 161, 222, 0.2);
+    border: 1px solid rgba(114, 161, 222, 0.5);
+    color: var(--primary);
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Adjust position to not interfere with project content */
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.nav-btn:hover {
+    background: rgba(114, 161, 222, 0.4);
+    box-shadow: 0 0 15px rgba(114, 161, 222, 0.5);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+    left: -100px; /* Moved further to the left for visual balance */
+}
+
+.next-btn {
+    right: -100px; /* Moved further to the right to avoid overlapping description */
+}
+
+.project-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px; /* Increased to provide better spacing */
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--muted);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.indicator.active {
+    background: var(--primary);
+}
+
+.indicator:hover {
+    background: var(--primary);
+}
+
+/* Responsive adjustments for carousel */
+@media screen and (max-width: 1024px) {
+    .project-slider {
+        width: 90%;
+    }
+    
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+    
+    .prev-btn {
+        left: -50px;
+    }
+    
+    .next-btn {
+        right: -50px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .my-project {
+        padding: 0 10px;
+    }
+    
+    .project-slider {
+        width: 100%;
+    }
+    
+    .projects-container .project-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .project-vidbox, .project-info {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    .nav-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+    
+    .prev-btn, .next-btn {
+        top: auto;
+        bottom: 50px;
+        transform: translateX(0);
+        left: calc(50% - 40px);
+        right: auto;
+    }
+    
+    .next-btn {
+        left: calc(50% + 5px);
+        right: auto;
+    }
+}
 
 
 
