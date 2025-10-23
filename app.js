@@ -84,20 +84,71 @@ if (contactForm) {
   // Email validation regex
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   
-  function validateField(input, isValid) {
+  // Track whether fields have been touched by the user
+  const fieldTouched = {
+    name: false,
+    email: false,
+    message: false
+  };
+  
+  function validateField(input, isValid, customMessage = null) {
+    // Only show validation if field has been touched
+    if (!fieldTouched[input.name]) {
+      // Remove any error message if field hasn't been touched
+      const errorElement = input.parentNode.querySelector('.error-message');
+      if (errorElement) {
+        errorElement.remove();
+      }
+      // Reset styling but don't show errors
+      input.style.borderColor = '';
+      input.style.boxShadow = '';
+      return;
+    }
+    
     if (isValid) {
       input.style.borderColor = '#72a1de';
       input.style.boxShadow = '0 0 5px #72a1de';
+      // Remove any error message if field is valid
+      const errorElement = input.parentNode.querySelector('.error-message');
+      if (errorElement) {
+        errorElement.remove();
+      }
     } else {
       input.style.borderColor = '#ff4444';
       input.style.boxShadow = '0 0 5px #ff4444';
+      // Add specific error message
+      const errorElement = input.parentNode.querySelector('.error-message');
+      if (!errorElement) {
+        const errorMessage = document.createElement('div');
+        errorMessage.className = 'error-message';
+        errorMessage.style.cssText = `
+          color: #ff4444;
+          font-size: 12px;
+          margin-top: 5px;
+          margin-bottom: 10px;
+        `;
+        
+        if (input.name === 'name') {
+          errorMessage.textContent = customMessage || 'Please enter your full name (at least 2 characters)';
+        } else if (input.name === 'email') {
+          errorMessage.textContent = customMessage || 'Please enter a valid email address';
+        } else if (input.name === 'message') {
+          errorMessage.textContent = customMessage || 'Please enter your message (at least 10 characters)';
+        }
+        
+        input.parentNode.insertBefore(errorMessage, input.nextSibling);
+      }
     }
   }
   
   function validateForm() {
-    const isNameValid = nameInput.value.trim().length >= 2;
-    const isEmailValid = emailRegex.test(emailInput.value.trim());
-    const isMessageValid = messageInput.value.trim().length >= 10;
+    const nameValue = nameInput.value.trim();
+    const emailValue = emailInput.value.trim();
+    const messageValue = messageInput.value.trim();
+    
+    const isNameValid = nameValue.length >= 2;
+    const isEmailValid = emailRegex.test(emailValue);
+    const isMessageValid = messageValue.length >= 10;
     
     validateField(nameInput, isNameValid);
     validateField(emailInput, isEmailValid);
@@ -110,20 +161,69 @@ if (contactForm) {
     return isFormValid;
   }
   
+  // Add event listeners to track when fields are touched
+  nameInput.addEventListener('blur', () => {
+    fieldTouched.name = true;
+    validateForm();
+  });
+  
+  emailInput.addEventListener('blur', () => {
+    fieldTouched.email = true;
+    validateForm();
+  });
+  
+  messageInput.addEventListener('blur', () => {
+    fieldTouched.message = true;
+    validateForm();
+  });
+  
+  // Also validate on input (for real-time feedback after field is touched)
+  nameInput.addEventListener('input', () => {
+    if (fieldTouched.name) {
+      validateForm();
+    }
+  });
+  
+  emailInput.addEventListener('input', () => {
+    if (fieldTouched.email) {
+      validateForm();
+    }
+  });
+  
+  messageInput.addEventListener('input', () => {
+    if (fieldTouched.message) {
+      validateForm();
+    }
+  });
+  
   // Add event listeners for real-time validation
   nameInput.addEventListener('input', validateForm);
   emailInput.addEventListener('input', validateForm);
   messageInput.addEventListener('input', validateForm);
   
-  // Initial validation
-  validateForm();
+  // Initial validation (but don't show errors initially)
+  // We'll just set the initial button state based on field content
+  const isFormInitiallyValid = 
+    nameInput.value.trim().length >= 2 && 
+    emailRegex.test(emailInput.value.trim()) && 
+    messageInput.value.trim().length >= 10;
+    
+  submitBtn.disabled = !isFormInitiallyValid;
+  submitBtn.style.opacity = isFormInitiallyValid ? '1' : '0.5';
   
+  // Enhanced contact form error handling
   contactForm.addEventListener("submit", async function (e) {
     e.preventDefault();
     
+    // Mark all fields as touched when form is submitted
+    fieldTouched.name = true;
+    fieldTouched.email = true;
+    fieldTouched.message = true;
+    
+    // First, validate the form
     if (!validateForm()) {
       const status = document.getElementById("formStatus");
-      status.innerHTML = "Please fill in all fields correctly ❌";
+      status.innerHTML = "Please fill the required fields ❌";
       status.style.color = "red";
       return;
     }
@@ -141,6 +241,11 @@ if (contactForm) {
     status.style.color = "orange";
 
     try {
+      // Check for internet connectivity
+      if (!navigator.onLine) {
+        throw new Error('No internet connection');
+      }
+
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -148,6 +253,15 @@ if (contactForm) {
         },
         body: JSON.stringify(data)
       });
+
+      // Handle case where server is unreachable
+      if (!response.ok) {
+        if (response.status === 500) {
+          throw new Error('Server error. Please try again later.');
+        } else if (response.status >= 400 && response.status < 500) {
+          throw new Error('Client error. Please check your input and try again.');
+        }
+      }
 
       const result = await response.json();
 
@@ -161,12 +275,25 @@ if (contactForm) {
           input.style.boxShadow = '';
         });
       } else {
+        // Display specific error message from server
         status.innerHTML = result.message || "Failed to send message ❌";
         status.style.color = "red";
       }
     } catch (error) {
       console.error('Error:', error);
-      status.innerHTML = "Network error. Please check your connection and try again ❌";
+      
+      // Handle different types of errors
+      if (error.message === 'No internet connection') {
+        status.innerHTML = "No internet connection. Please check your connection and try again ❌";
+      } else if (error.message.includes('NetworkError') || error.message.includes('Failed to fetch')) {
+        status.innerHTML = "Network error. Server is unreachable. Please try again later ❌";
+      } else if (error.message.includes('Server error')) {
+        status.innerHTML = error.message;
+      } else if (error.message.includes('Client error')) {
+        status.innerHTML = error.message;
+      } else {
+        status.innerHTML = "An unexpected error occurred. Please try again ❌";
+      }
       status.style.color = "red";
     } finally {
       // Restore button
