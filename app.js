@@ -243,11 +243,6 @@ if (contactForm) {
     }
   });
   
-  // Add event listeners for real-time validation
-  nameInput.addEventListener('input', validateForm);
-  emailInput.addEventListener('input', validateForm);
-  messageInput.addEventListener('input', validateForm);
-  
   // Initial validation (but don't show errors initially)
   // We'll just set the initial button state based on field content
   const isFormInitiallyValid = 
@@ -316,11 +311,21 @@ if (contactForm) {
         status.innerHTML = result.message || "Message sent successfully! ✅ I'll get back to you soon.";
         status.style.color = "green";
         contactForm.reset();
-        // Reset field styles
+        // Reset field styles and touched status
         [nameInput, emailInput, messageInput].forEach(input => {
           input.style.borderColor = '';
           input.style.boxShadow = '';
         });
+        
+        // Reset form validation state after successful submission
+        fieldTouched.name = false;
+        fieldTouched.email = false;
+        fieldTouched.message = false;
+        
+        // Disable validation after successful submission until fields are touched again
+        setTimeout(() => {
+          validateForm(); // This will reset the form validation to initial state
+        }, 2000);
       } else {
         // Display specific error message from server
         status.innerHTML = result.message || "Failed to send message ❌";
@@ -347,7 +352,11 @@ if (contactForm) {
       submitBtn.innerHTML = originalBtnText;
       setTimeout(() => {
         submitBtn.disabled = false;
-        validateForm(); // Re-validate to set correct button state
+        // Only validate if the form is not in a reset state (not immediately after successful submission)
+        if (status.innerHTML !== "Message sent successfully! ✅ I'll get back to you soon." && 
+            !status.innerHTML.includes("I'll get back to you soon")) {
+          validateForm();
+        }
       }, 2000);
     }
   });
