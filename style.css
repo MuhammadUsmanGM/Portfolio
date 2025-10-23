@@ -55,6 +55,27 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible{
     outline-offset: 2px;
 }
 
+/* Hide native scrollbar completely */
+::-webkit-scrollbar {
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+/* Hide scrollbar in other browsers */
+body {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Add scroll-responsive effects */
+body.scrolling::-webkit-scrollbar-thumb {
+    animation: 
+        rainbowGlow 1.5s ease-in-out infinite, 
+        colorShift 3s linear infinite,
+        thumbPulse 1s ease-in-out infinite;
+}
+
 
 .container{
     position: relative;
@@ -2073,6 +2094,14 @@ header ul a:hover{
         left: calc(50% + 5px);
         right: auto;
     }
+}
+
+/* Add scroll-responsive effects */
+body.scrolling::-webkit-scrollbar-thumb {
+    animation: 
+        rainbowGlow 1.5s ease-in-out infinite, 
+        colorShift 3s linear infinite,
+        thumbPulse 1s ease-in-out infinite;
 }
 
 
