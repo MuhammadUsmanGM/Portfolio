@@ -516,10 +516,183 @@ function initProjectCarousel() {
   });
 }
 
+// Custom scrollbar implementation
+function createCustomScrollbar() {
+  // First, disable the default browser scrollbar
+  const style = document.createElement('style');
+  style.textContent = `
+    body::-webkit-scrollbar {
+      display: none;
+    }
+    body {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  `;
+  document.head.appendChild(style);
+
+  // Create the custom scrollbar elements
+  const scrollbarContainer = document.createElement('div');
+  scrollbarContainer.id = 'custom-scrollbar';
+  scrollbarContainer.style.cssText = `
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 16px;
+    height: 100vh;
+    background: transparent;
+    z-index: 9999;
+    pointer-events: none;
+  `;
+  
+  const scrollbarTrack = document.createElement('div');
+  scrollbarTrack.id = 'custom-scrollbar-track';
+  scrollbarTrack.style.cssText = `
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    pointer-events: none;
+  `;
+  
+  const scrollbarThumb = document.createElement('div');
+  scrollbarThumb.id = 'custom-scrollbar-thumb';
+  scrollbarThumb.style.cssText = `
+    position: absolute;
+    top: 0;
+    left: 2px;
+    width: 12px;
+    min-height: 20px;
+    border-radius: 6px;
+    background: linear-gradient(0deg, #00c9ff, #92fe9d, #00f0ff, #00d2ff, #0072ff);
+    background-size: 100% 300%;
+    background-position: 0% 0%;
+    pointer-events: auto;
+    cursor: pointer;
+    transition: width 0.1s, opacity 0.3s;
+    opacity: 0.4;
+    box-shadow: 0 0 8px rgba(0, 201, 255, 0.6);
+  `;
+  
+  // Add the elements to the DOM
+  scrollbarTrack.appendChild(scrollbarThumb);
+  scrollbarContainer.appendChild(scrollbarTrack);
+  document.body.appendChild(scrollbarContainer);
+  
+  // Calculate scrollbar height based on content
+  function updateScrollbarSize() {
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    const scrollbarHeight = (windowHeight / documentHeight) * windowHeight;
+    
+    scrollbarThumb.style.height = Math.max(20, scrollbarHeight) + 'px';
+  }
+  
+  // Update scrollbar position based on scroll
+  function updateScrollbarPosition() {
+    const scrollPercentage = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+    const maxScrollTop = window.innerHeight - scrollbarThumb.offsetHeight;
+    const newTop = scrollPercentage * maxScrollTop;
+    
+    scrollbarThumb.style.top = newTop + 'px';
+  }
+  
+  // Handle scrollbar dragging
+  let isDragging = false;
+  let dragOffset = 0;
+  
+  scrollbarThumb.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    const rect = scrollbarThumb.getBoundingClientRect();
+    dragOffset = e.clientY - rect.top;
+    document.body.style.userSelect = 'none';
+  });
+  
+  document.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    
+    e.preventDefault();
+    const scrollbarRect = scrollbarTrack.getBoundingClientRect();
+    const newTop = Math.max(0, Math.min(
+      e.clientY - scrollbarRect.top - dragOffset,
+      window.innerHeight - scrollbarThumb.offsetHeight
+    ));
+    
+    scrollbarThumb.style.top = newTop + 'px';
+    
+    // Calculate scroll position based on thumb position
+    const maxScrollTop = window.innerHeight - scrollbarThumb.offsetHeight;
+    const scrollPercentage = newTop / maxScrollTop;
+    const scrollAmount = scrollPercentage * (document.documentElement.scrollHeight - window.innerHeight);
+    
+    window.scrollTo(0, scrollAmount);
+  });
+  
+  document.addEventListener('mouseup', () => {
+    isDragging = false;
+    document.body.style.userSelect = '';
+  });
+  
+  // Handle mouse enter/leave for visibility
+  scrollbarContainer.addEventListener('mouseenter', () => {
+    scrollbarThumb.style.opacity = '0.8';
+    scrollbarThumb.style.width = '14px';
+    scrollbarThumb.style.left = '1px';
+  });
+  
+  scrollbarContainer.addEventListener('mouseleave', () => {
+    if (!isDragging) {
+      scrollbarThumb.style.opacity = '0.4';
+      scrollbarThumb.style.width = '12px';
+      scrollbarThumb.style.left = '2px';
+    }
+  });
+  
+  // Handle document scroll to move the scrollbar
+  let ticking = false;
+  function updateScroll() {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateScrollbarPosition();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+  
+  // Handle window resize
+  function handleResize() {
+    updateScrollbarSize();
+    updateScrollbarPosition();
+  }
+  
+  // Initialize
+  updateScrollbarSize();
+  updateScrollbarPosition();
+  
+  // Add event listeners
+  document.addEventListener('scroll', updateScroll);
+  window.addEventListener('resize', handleResize);
+  
+  // Add animation to the scrollbar thumb
+  scrollbarThumb.style.animation = 'colorShift 8s linear infinite';
+  
+  // Add CSS for the animation
+  const animationStyle = document.createElement('style');
+  animationStyle.textContent = `
+    @keyframes colorShift {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 0% 100%; }
+    }
+  `;
+  document.head.appendChild(animationStyle);
+}
+
 // Initialize enhancements
 window.addEventListener('load', () => { 
   if (window.AOS) { AOS.init(); } 
   initProjectCarousel(); // Initialize project carousel
+  createCustomScrollbar(); // Create stunning custom scrollbar
 });
 
 document.addEventListener('DOMContentLoaded', () => {
