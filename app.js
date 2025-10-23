@@ -1,3 +1,50 @@
+// Optimize video loading with lazy loading
+function optimizeVideoLoading() {
+  // Load the blackhole video immediately as it's part of the initial design
+  const blackholeVideo = document.querySelector('.blackhole-box video');
+  if (blackholeVideo && blackholeVideo.dataset.src) {
+    blackholeVideo.src = blackholeVideo.dataset.src;
+    blackholeVideo.load();
+  }
+  
+  // Set up other video elements to be loaded lazily
+  const videos = document.querySelectorAll('video[data-src]:not(.blackhole-box video)');
+  videos.forEach(video => {
+    // Only start loading when near viewport
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Load video source when in viewport
+            if (video.dataset.src) {
+              video.src = video.dataset.src;
+              video.load();
+            }
+            observer.unobserve(video);
+          }
+        });
+      }, {
+        root: null,
+        rootMargin: '100px', // Load videos 100px before they come into view
+        threshold: 0.1
+      });
+      observer.observe(video);
+    } else {
+      // Fallback for older browsers - load all videos
+      if (video.dataset.src) {
+        video.src = video.dataset.src;
+        video.load();
+      }
+    }
+  });
+}
+
+// Initialize video loading
+document.addEventListener('DOMContentLoaded', () => {
+  optimizeVideoLoading();
+});
+
+// Set up project videos with hover interactions
 const video1 = document.getElementById('projectVideo1');
 const video2 = document.getElementById('projectVideo2');
 const video3 = document.getElementById('projectVideo3');
@@ -817,7 +864,16 @@ function createCustomScrollbar() {
 
 // Initialize enhancements
 window.addEventListener('load', () => { 
-  if (window.AOS) { AOS.init(); } 
+  if (window.AOS) { 
+    AOS.init({
+      once: true, // Only animate once
+      duration: 600,
+      easing: 'ease-out-quad',
+      throttleDelay: 99,
+      mirror: false,
+      disable: false
+    }); 
+  } 
   initProjectCarousel(); // Initialize project carousel
   createCustomScrollbar(); // Create stunning custom scrollbar
 });
@@ -830,4 +886,12 @@ document.addEventListener('DOMContentLoaded', () => {
   setupDisabledProjectButtons();
   setupMenuKeyboardAccess();
   setupContactButtons();
+  
+  // Hide loading screen after DOM is ready
+  const loadingScreen = document.getElementById('loading-screen');
+  if (loadingScreen) {
+    setTimeout(() => {
+      loadingScreen.style.display = 'none';
+    }, 500); // Small delay to ensure content is loaded
+  }
 });
