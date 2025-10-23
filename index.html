@@ -45,25 +45,105 @@
     <link rel="preconnect" href="https://unpkg.com" />
     <link rel="dns-prefetch" href="https://unpkg.com" />
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Preload critical resources -->
+    <link rel="preload" as="image" href="images/grid1.png">
+    <link rel="prefetch" as="video" href="videos/galaxy.mp4">
+
+    <!-- Critical CSS -->
+    <style>
+      /* Critical above-the-fold styles only */
+      body, html { margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; }
+      .container { position: relative; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; gap: 50px; padding-top: 70px; background-color: rgba(0, 31, 124, 0.212); }
+      header { display: flex; position: absolute; top: 0; right: 0; left: 0; align-items: center; justify-content: space-between; padding: 0 30px; height: 70px; background-color: rgba(255, 255, 255, 0.121); backdrop-filter: blur(5px); box-shadow: 0 0 15px rgba(114, 161, 222, 0.64); z-index: 999; }
+      .left { display: flex; align-items: center; }
+      .left img { width: 40px; margin: 0 15px; }
+      .back-vid { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; mix-blend-mode: overlay; min-width: 100%; min-height: 100%; }
+    </style>
+
+    <!-- Asynchronous CSS loading -->
+    <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="style.css"></noscript>
+    
+    <!-- Preload other stylesheets -->
+    <link rel="preload" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://unpkg.com/aos@next/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"></noscript>
+    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"></noscript>
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="images/grid1.png">
   </head>
   <body>
+    <!-- Loading screen -->
+    <div id="loading-screen" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#0b1020;z-index:9999;display:flex;flex-direction:column;justify-content:center;align-items:center;">
+      <div class="loading-text">Loading Portfolio</div>
+      <div class="loading-dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    
+    <style>
+      .loading-text {
+        font-size: 60px;
+        font-weight: bold;
+        background: linear-gradient(to right,#00aaa7, #7e42a7, #6600c5, #6070fd,#2a46ff, #0099ff, #008ead);
+        background-size: 200%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: animate-gradient 3s linear infinite;
+        margin-bottom: 80px;
+      }
+      
+      .loading-dots {
+        display: flex;
+        gap: 15px;
+      }
+      
+      .loading-dots span {
+        width: 20px;
+        height: 20px;
+        background: #72a1de;
+        border-radius: 50%;
+        animation: bounce 1.5s infinite;
+      }
+      
+      .loading-dots span:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      
+      .loading-dots span:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+      
+      @keyframes animate-gradient {
+        to {
+          background-position: 200%;
+        }
+      }
+      
+      @keyframes bounce {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+    </style>
+
     <div class="container">
+      <!-- Video element will now be loaded lazily -->
       <video
         class="back-vid"
+        src="videos/galaxy.mp4"
         autoplay
         loop
         muted
         playsinline
-        preload="none"
-        src="videos/galaxy.mp4"
+        preload="auto"
       ></video>
 
       <header data-aos="fade-down" data-aos-duration="2000">
@@ -145,12 +225,12 @@
 
       <div class="blackhole-box" data-aos="fade-down" data-aos-duration="2000">
         <video
+          src="videos/blackhole.mp4"
           autoplay
           loop
           muted
           playsinline
-          preload="none"
-          src="videos/blackhole.mp4"
+          preload="auto"
         ></video>
       </div>
 
@@ -178,12 +258,12 @@
         <div class="skills-video-box">
           <video
             class="skills-video"
+            data-src="videos/hero-video.mp4"
             autoplay
             loop
             muted
             playsinline
             preload="none"
-            src="videos/hero-video.mp4"
           ></video>
         </div>
 
@@ -250,7 +330,7 @@
             <h1>I'm very flexible with time zone communications & locations</h1>
             <p>I'm based in Pakistan and open to remote work worldwide.</p>
             <video
-              src="videos/glob.mp4"
+              data-src="videos/glob.mp4"
               autoplay
               loop
               muted
@@ -291,8 +371,7 @@
                 <video
                   loop
                   id="projectVideo1"
-                  preload="none"
-                  src="videos/portfolio.mp4"
+                  data-src="videos/portfolio.mp4"
                   muted
                   playsinline
                   poster="./images/post.png"
@@ -320,8 +399,7 @@
                 <video
                   loop
                   id="projectVideo2"
-                  preload="none"
-                  src="videos/newsletter.mp4"
+                  data-src="videos/newsletter.mp4"
                   muted
                   playsinline
                   poster="./images/newletter_img.png"
@@ -351,8 +429,7 @@
                 <video
                   loop
                   id="projectVideo3"
-                  preload="none"
-                  src="videos/chatup.mp4"
+                  data-src="videos/chatup.mp4"
                   muted
                   playsinline
                   poster="images/Chatup_img.png"
