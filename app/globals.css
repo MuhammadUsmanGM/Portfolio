@@ -1091,11 +1091,13 @@ header ul a:hover::after {
 }
 
 .Designer {
-    align-self: center;
+    align-self: flex-start;
+    margin-left: 20px;
 }
 
 .coder {
-    align-self: center;
+    align-self: flex-end;
+    margin-right: 20px;
 }
 
 .Designer h1, .coder h1 {
@@ -1161,6 +1163,10 @@ header ul a:hover::after {
         align-items: center;
         margin: 0;
         padding: 25px;
+        grid-column: auto;
+        grid-row: auto;
+        align-self: center;
+        justify-self: center;
     }
     
     .Designer {
@@ -1221,11 +1227,13 @@ header ul a:hover::after {
     }
     
     .Designer {
-        order: 2;
+        align-self: flex-start;
+        margin-left: 20px;
     }
     
     .coder {
-        order: 3;
+        align-self: flex-end;
+        margin-right: 20px;
     }
     
     .Designer h1, .coder h1 {
