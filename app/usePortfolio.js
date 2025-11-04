@@ -309,16 +309,16 @@ export function usePortfolio() {
       });
     };
 
-    // Tech scroll observer
-    const setupTechScrollObserver = () => {
-      const track = document.getElementById('techScrollTrack');
-      const container = $('.tech-scroll-wrapper') || $('.tech-scroll-container');
-      if (!track || !('IntersectionObserver' in window) || !container) return;
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => track.classList.toggle('paused', !entry.isIntersecting));
-      }, { root: null, threshold: 0 });
-      io.observe(container);
-    };
+    // Tech scroll observer - COMMENTED OUT to allow continuous scrolling
+    // const setupTechScrollObserver = () => {
+    //   const track = document.getElementById('techScrollTrack');
+    //   const container = $('.tech-scroll-wrapper') || $('.tech-scroll-container');
+    //   if (!track || !('IntersectionObserver' in window) || !container) return;
+    //   const io = new IntersectionObserver((entries) => {
+    //     entries.forEach((entry) => track.classList.toggle('paused', !entry.isIntersecting));
+    //   }, { root: null, threshold: 0 });
+    //   io.observe(container);
+    // };
 
     // Tech scroll dragging
     const setupTechScrollDragging = () => {
@@ -532,7 +532,7 @@ export function usePortfolio() {
     optimizeVideoLoading();
     updateSocialLinks();
     setupTechScrollAnimation();
-    setupTechScrollObserver();
+    // setupTechScrollObserver(); // Commented out to allow continuous scrolling
     setupTechScrollDragging();
     setupDisabledProjectButtons();
     setupMenuKeyboardAccess();

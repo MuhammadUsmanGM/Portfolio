@@ -794,6 +794,22 @@ header ul a:hover::after {
     position: relative; /* Add positioning context */
     overflow: visible; /* Allow visibility of elements during animation */
     min-height: 250px; /* Ensure minimum height to accommodate content */
+    background: linear-gradient(135deg, 
+        rgba(15, 23, 42, 0.6) 0%, 
+        rgba(30, 46, 82, 0.4) 100%);
+    border: 1px solid rgba(114, 161, 222, 0.3);
+    border-radius: 25px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
+                inset 0 0 15px rgba(114, 161, 222, 0.1);
+    transition: all 0.4s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(114, 161, 222, 0.3),
+                inset 0 0 20px rgba(114, 161, 222, 0.2);
 }
 
 .project-vidbox{
@@ -801,27 +817,32 @@ header ul a:hover::after {
     align-items: center;
     justify-content: center;
     width: 60%; /* Increased width to make video wider */
-    mix-blend-mode:exclusion;
     position: relative;
     cursor: pointer;
     transition: 0.5s;
     min-width: 400px; /* Increased minimum width */
     z-index: 1; /* Ensure video is above other elements */
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    padding: 10px; /* Add padding to create space around the video */
 }
 
 .project-vidbox video{
     object-fit: cover; /* Changed back to cover */
     width: 100%;
     max-width: 100%; /* Ensure video doesn't exceed container */
-    box-shadow: 0 0 10px lightgray;
     border-radius: 20px;
     transition: 0.5s;
     min-height: 250px; /* Decreased minimum height */
     height: auto; /* Allow height to adjust based on video aspect ratio */
+    filter: brightness(0.9);
 }
 
 .project-card video:hover{
-    box-shadow: 0 0 25px rgb(255, 255, 255);
+    box-shadow: 0 0 30px rgba(114, 161, 222, 0.6);
+    filter: brightness(1);
+    transform: scale(1.02);
 }
 
 .project-info{
@@ -830,43 +851,90 @@ header ul a:hover::after {
     align-items: start;
     justify-content: center;
     width: 35%; /* Decreased width to make room for increased video width */
-    padding-left: 5%; /* Reduced padding to better balance the layout */
     position: relative; /* Add positioning context */
     z-index: 1; /* Ensure it stays in proper stacking order */
+    padding: 10px;
 }
 
 .project-info h1{
-    width: 90%;
-    font-size: 25px;
-    font-weight: bold;
+    width: 100%;
+    font-size: 28px;
+    font-weight: 700;
     text-wrap: wrap;
     margin-top: 0;
-    margin-bottom: 10px;
-    max-width: 450px;
+    margin-bottom: 15px;
+    max-width: 100%;
+    background: linear-gradient(45deg, #72a1de, #a855f7);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 4s linear infinite;
 }
 
 .project-info p{
-    width: 90%;
-    max-width: 400px;
+    width: 100%;
+    max-width: 100%;
     min-width: 300px;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
     margin-top: 0;
+    color: #e2e8f0;
+    line-height: 1.7;
+    font-size: 16px;
 }
 
 .project-info button{
     color: white;
-    padding: 15px 35px;
-    border-radius: 10px;
-    border: 1px solid rgba(var(--primary-rgb), 0.5);
-    background-color: #2200493d;
-    box-shadow: 0 0 5px rgba(var(--primary-rgb), 0.5);
+    padding: 14px 30px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(45deg, var(--primary), #6b9bd9);
+    box-shadow: 0 5px 15px rgba(114, 161, 222, 0.4);
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    width: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .project-info button:hover{
-    opacity: 0.8;
-    box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(114, 161, 222, 0.6);
+    background: linear-gradient(45deg, #6b9bd9, var(--primary));
+}
+
+.project-info button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.project-info button:hover::before {
+    left: 100%;
+}
+
+/* Project button disabled state */
+.project-btn[aria-disabled="true"]{
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: linear-gradient(45deg, #444, #666);
+}
+
+.project-btn[aria-disabled="true"]:hover {
+    transform: none;
+    box-shadow: 0 5px 15px rgba(114, 161, 222, 0.4);
+    background: linear-gradient(45deg, #444, #666);
 }
 
 /* Project button styles */
@@ -1445,6 +1513,9 @@ header ul a:hover::after {
     position: relative;
     width: 100%;
     overflow: hidden;
+    background: linear-gradient(135deg, 
+        rgba(15, 23, 42, 0.4) 0%, 
+        rgba(114, 161, 222, 0.1) 100%);
 }
 
 .tech-scroll-container {
@@ -1457,21 +1528,24 @@ header ul a:hover::after {
     width: 100%;
     overflow: hidden;
     position: relative;
-    padding: 20px 0;
+    padding: 30px 20px;
     background: linear-gradient(90deg, 
         transparent 0%, 
-        rgba(114, 161, 222, 0.05) 20%, 
-        rgba(114, 161, 222, 0.05) 80%, 
+        rgba(114, 161, 222, 0.1) 20%, 
+        rgba(114, 161, 222, 0.1) 80%, 
         transparent 100%);
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(114, 161, 222, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2),
+                inset 0 0 20px rgba(114, 161, 222, 0.1);
 }
 
 .tech-scroll-track {
     display: flex;
     align-items: center;
     animation: scrollTech 30s linear infinite;
-    gap: 60px;
+    gap: 50px;
     padding: 0 30px;
 }
 
@@ -1479,6 +1553,7 @@ header ul a:hover::after {
 @media screen and (max-width: 768px) {
     .tech-scroll-track {
         animation: scrollTech 15s linear infinite; /* Faster on mobile - 15 seconds instead of 30 */
+        gap: 40px;
     }
 }
 
@@ -1503,52 +1578,83 @@ header ul a:hover::after {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-width: 100px;
-    padding: 20px;
-    background: rgba(114, 161, 222, 0.1);
+    min-width: 120px;
+    padding: 25px 20px;
+    background: linear-gradient(135deg, 
+        rgba(15, 23, 42, 0.6) 0%, 
+        rgba(30, 46, 82, 0.4) 100%);
     backdrop-filter: blur(15px);
-    border: 2px solid rgba(var(--primary-rgb), 0.3);
+    border: 1px solid rgba(114, 161, 222, 0.4);
     border-radius: 20px;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     cursor: pointer;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2),
+                inset 0 0 15px rgba(114, 161, 222, 0.1);
     position: relative;
     overflow: hidden;
+    z-index: 1;
+}
+
+.tech-item::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #72a1de, #a855f7, #72a1de, #a855f7);
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0.6;
+    animation: borderAnimation 4s ease infinite;
+    background-size: 400% 400%;
+}
+
+@keyframes borderAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .tech-item:hover {
-    transform: translateY(-10px) scale(1.05);
-    background: rgba(114, 161, 222, 0.2);
-    border-color: var(--primary);
-    box-shadow: 0 15px 40px rgba(var(--primary-rgb), 0.3), 0 0 20px var(--primary);
+    transform: translateY(-8px) scale(1.08);
+    border-color: rgba(114, 161, 222, 0.8);
+    box-shadow: 0 15px 40px rgba(114, 161, 222, 0.4),
+                inset 0 0 20px rgba(114, 161, 222, 0.2);
+    z-index: 2;
 }
 
 .tech-item:hover .tech-name {
     color: #72a1de;
-    text-shadow: 0 0 10px rgba(114, 161, 222, 0.5);
+    text-shadow: 0 0 10px rgba(114, 161, 222, 0.7);
 }
 
 .tech-item img {
     width: 50px;
     height: 50px;
     object-fit: contain;
-    filter: brightness(1.1);
+    filter: brightness(1.1) drop-shadow(0 0 5px rgba(114, 161, 222, 0.3));
     transition: all 0.4s ease;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    z-index: 2;
 }
 
 .tech-item:hover img {
-    filter: brightness(1.3) drop-shadow(0 0 15px rgba(114, 161, 222, 0.6));
-    transform: scale(1.1);
+    filter: brightness(1.4) drop-shadow(0 0 20px rgba(114, 161, 222, 0.8));
+    transform: scale(1.15) rotate(5deg);
+    z-index: 2;
 }
 
 .tech-name {
-    font-size: 12px;
-    color: #ccc;
+    font-size: 14px;
+    color: #cfcfcf;
     font-weight: 600;
     text-align: center;
     transition: all 0.3s ease;
     white-space: nowrap;
+    z-index: 2;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 /* Tech Stack Scroll Animation */
@@ -1584,13 +1690,13 @@ header ul a:hover::after {
     margin-top: 50px;
     padding: 40px;
     background: linear-gradient(135deg, 
-        rgba(114, 161, 222, 0.1) 0%, 
-        rgba(114, 161, 222, 0.05) 50%, 
-        transparent 100%);
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(114, 161, 222, 0.2);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        rgba(15, 23, 42, 0.6) 0%, 
+        rgba(30, 46, 82, 0.4) 100%);
+    border-radius: 25px;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(114, 161, 222, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3),
+                inset 0 0 20px rgba(114, 161, 222, 0.1);
     filter: none !important;
     opacity: 1 !important;
 }
@@ -1598,27 +1704,26 @@ header ul a:hover::after {
 .tech-subtitle {
     font-size: 28px;
     font-weight: 700;
-    color: var(--primary);
     margin-bottom: 20px;
-    text-shadow: 0 0 20px rgba(var(--primary-rgb), 0.3);
-    background: linear-gradient(45deg, var(--primary), var(--accent));
+    background: linear-gradient(45deg, #72a1de, #a855f7, #72a1de);
+    background-size: 200% auto;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: shine 4s linear infinite;
 }
 
 .tech-description {
     font-size: 18px;
     line-height: 1.8;
-    color: #e2e2e2;
+    color: #e2e8f0;
     margin: 0;
     font-weight: 400;
 }
 
 .tech-description .highlight {
-    color: var(--primary);
+    color: #72a1de;
     font-weight: 600;
-    text-shadow: 0 0 10px rgba(var(--primary-rgb), 0.3);
     position: relative;
 }
 
@@ -1629,7 +1734,7 @@ header ul a:hover::after {
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #72a1de, transparent);
+    background: linear-gradient(90deg, transparent, #72a1de, #a855f7, transparent);
     opacity: 0.6;
 }
 
@@ -2684,15 +2789,18 @@ header ul a:hover::after {
     justify-content: center;
     overflow: visible; /* Changed from hidden to fix video clipping */
     margin: 20px 0 0 0; /* Reduced margin to decrease gap before skills section */
+    padding: 20px 0;
 }
 
 .project-slider {
     position: relative;
-    width: 80%;
+    width: 90%;
+    max-width: 1200px;
     height: auto;
-    min-height: 400px;
+    min-height: 450px;
     overflow: visible; /* Changed from hidden to fix video clipping */
     border-radius: 20px;
+    padding: 20px;
 }
 
 .projects-container .project-card {
@@ -2720,9 +2828,11 @@ header ul a:hover::after {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(114, 161, 222, 0.2);
-    border: 1px solid rgba(114, 161, 222, 0.5);
-    color: var(--primary);
+    background: linear-gradient(135deg, 
+        rgba(15, 23, 42, 0.6) 0%, 
+        rgba(30, 46, 82, 0.4) 100%);
+    border: 1px solid rgba(114, 161, 222, 0.4);
+    color: #e2e8f0;
     font-size: 24px;
     width: 50px;
     height: 50px;
@@ -2734,23 +2844,30 @@ header ul a:hover::after {
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2),
+                inset 0 0 10px rgba(114, 161, 222, 0.1);
     /* Adjust position to not interfere with project content */
     margin-left: 10px;
     margin-right: 10px;
 }
 
 .nav-btn:hover {
-    background: rgba(114, 161, 222, 0.4);
-    box-shadow: 0 0 15px rgba(114, 161, 222, 0.5);
-    transform: translateY(-50%) scale(1.1);
+    background: linear-gradient(135deg, 
+        rgba(114, 161, 222, 0.4) 0%, 
+        rgba(168, 85, 247, 0.3) 100%);
+    color: white;
+    box-shadow: 0 0 20px rgba(114, 161, 222, 0.4),
+                inset 0 0 15px rgba(255, 255, 255, 0.2);
+    transform: translateY(-50%) scale(1.15);
+    border-color: rgba(114, 161, 222, 0.8);
 }
 
 .prev-btn {
-    left: -100px; /* Moved further to the left for visual balance */
+    left: -70px; /* Moved closer for visual balance */
 }
 
 .next-btn {
-    right: -100px; /* Moved further to the right to avoid overlapping description */
+    right: -70px; /* Moved closer to avoid overlapping description */
 }
 
 .project-indicators {

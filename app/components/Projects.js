@@ -99,11 +99,11 @@ export default function Projects() {
             </div>
           </div>
       
-        <button className="nav-btn next-btn" id="nextProject">
-          <i className="bx bx-chevron-right"></i>
-        </button>
+          <button className="nav-btn next-btn" id="nextProject">
+            <i className="bx bx-chevron-right"></i>
+          </button>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
   );
 }

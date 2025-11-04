@@ -279,7 +279,7 @@ export default function Home() {
         <div className="tech-description-container">
           <h2 className="tech-subtitle">Technologies I Work With</h2>
           <p className="tech-description">
-            Passionate about working with
+            Passionate about working with{' '}
             <span className="highlight">cutting-edge technologies</span> to build
             scalable, efficient, and user-friendly applications. Always learning
             and adapting to the latest industry standards.
