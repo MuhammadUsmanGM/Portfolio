@@ -6,7 +6,7 @@ export default function Hero() {
       <div className="hero-info" data-aos="fade-right" data-aos-duration="1000">
         <div className="hero-info-title">
           <i className="bx bxl-sketch"></i>
-          &nbsp; Agentic AI Developer
+          <span className="text-gradient">&nbsp; Agentic AI Developer</span>
         </div>
 
         <h1 data-aos="fade-right" data-aos-duration="3000">

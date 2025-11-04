@@ -221,10 +221,15 @@ header{
     justify-content: space-between;
     padding: 0 30px;
     height: 70px;
-    background-color: rgba(255, 255, 255, 0.121);
-    backdrop-filter: blur(5px);
-    box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.64);
+    background: linear-gradient(90deg, 
+        rgba(15, 23, 42, 0.8) 0%, 
+        rgba(114, 161, 222, 0.2) 50%, 
+        rgba(15, 23, 42, 0.8) 100%);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2),
+                inset 0 0 15px rgba(114, 161, 222, 0.1);
     z-index: 999;
+    border-bottom: 1px solid rgba(114, 161, 222, 0.3);
 }
 
 .left{
@@ -233,8 +238,42 @@ header{
 }
 
 .left img{
-    width: 40px;
+    width: 50px;
+    height: 50px;
     margin: 0 15px;
+    border-radius: 50%;
+    border: 2px solid rgba(114, 161, 222, 0.5);
+    box-shadow: 0 0 10px rgba(114, 161, 222, 0.3);
+    transition: all 0.3s ease;
+}
+
+.left img:hover {
+    box-shadow: 0 0 15px rgba(114, 161, 222, 0.6);
+    transform: scale(1.05);
+}
+
+.left h2 {
+    font-size: 24px;
+    font-weight: 700;
+    background: linear-gradient(45deg, #72a1de, #a855f7, #72a1de);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 4s linear infinite;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0.5px;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.left h2 span {
+    font-weight: 800;
 }
 
 
@@ -242,11 +281,13 @@ header ul{
     display: flex;
     justify-content: space-between;
     width: 35%;
-    padding: 15px 15px;
+    padding: 10px 15px;
     border-radius: 50px;
-    background-color: rgba(0, 0, 69, 0.326);
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.6), rgba(30, 46, 82, 0.4));
     backdrop-filter: blur(10px);
-    box-shadow: 0 0 10px #72a1de63;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2),
+                inset 0 0 10px rgba(114, 161, 222, 0.1);
+    border: 1px solid rgba(114, 161, 222, 0.3);
 }
 
 header ul li{
@@ -255,38 +296,58 @@ header ul li{
 
 header ul a{
     text-decoration: none;
-    color: white;
-    font-weight: 700;
-    transition: 0.3s;
+    color: #e2e8f0;
+    font-weight: 600;
+    transition: all 0.3s ease;
     margin: 0 10px;
+    position: relative;
+    padding: 5px 0;
+}
+
+header ul a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #72a1de, #a855f7);
+    transition: width 0.3s ease;
 }
 
 header ul a:hover{
-    text-shadow: 0 0 15px black;
+    color: #72a1de;
+}
+
+header ul a:hover::after {
+    width: 100%;
 }
 
 .box-icons{
     display: flex;
-    gap: 40px;
+    gap: 25px;
 }
 
 .box-icons p{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
-    width: 30px;
-    height: 30px;
-    border: 2px solid var(--primary);
+    font-size: 22px;
+    width: 35px;
+    height: 35px;
+    border: 2px solid rgba(114, 161, 222, 0.5);
     border-radius: 50%;
     cursor: pointer;
-    transition: 0.5s;
+    transition: all 0.3s ease;
+    background: rgba(114, 161, 222, 0.1);
 }
 
 .box-icons p:hover{
-    background-color: var(--primary);
-    color: black;
-    box-shadow: 0 0 15px var(--primary);
+    background: #72a1de;
+    color: #000;
+    border-color: #72a1de;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(114, 161, 222, 0.4);
 }
 
 .blackhole-box{
@@ -324,13 +385,95 @@ header ul a:hover{
 }
 
 .hero-info .hero-info-title{
-    color: var(--primary);
-    padding: 8px 5px;
+    padding: 16px 28px;
+    background: rgba(255, 255, 255, 0.1);
+    width: auto;
+    max-width: 320px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+                0 0 20px rgba(114, 161, 222, 0.2);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.4s ease;
+    position: relative;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    border-radius: 50px; /* Rounded rectangle shape */
+    overflow: hidden;
+    z-index: 1;
+    text-align: center;
+    color: #e2e8f0; /* Default color as fallback */
+}
+
+/* Apply gradient text effect with a span inside */
+.hero-info .hero-info-title {
+    position: relative;
+}
+
+.hero-info .hero-info-title i,
+.hero-info .hero-info-title span.text-gradient {
+    background: linear-gradient(90deg, #72a1de, #a855f7, #72a1de);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 4s linear infinite;
+    display: inline-block;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+/* Enhanced glassy border effect */
+.hero-info .hero-info-title::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(114, 161, 222, 0.15) 0%, 
+        rgba(168, 85, 247, 0.1) 100%);
     border-radius: 50px;
-    border: 1px solid rgba(var(--primary-rgb), 0.58);
-    width: 240px;
-    background-color: #2200493d;
-    box-shadow: 0 0 5px rgba(var(--primary-rgb), 0.52);
+    z-index: -1;
+    border: 1px solid rgba(114, 161, 222, 0.3);
+}
+
+/* Inner glow effect for glassiness */
+.hero-info .hero-info-title::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: -1;
+    box-shadow: inset 0 0 15px rgba(114, 161, 222, 0.3),
+                0 0 10px rgba(114, 161, 222, 0.2);
+}
+
+.hero-info .hero-info-title:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2),
+                0 0 30px rgba(114, 161, 222, 0.4);
+}
+
+/* Ensure the text stays on a single line */
+.hero-info .hero-info-title i,
+.hero-info .hero-info-title {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
 }
 
 .hero-info h1{
@@ -2002,9 +2145,17 @@ header ul a:hover{
 /* Sidebar */
 
 .menu-icon{
-    font-size: 35px;
+    font-size: 32px;
     cursor: pointer;
     display: none;
+    color: #72a1de;
+    transition: all 0.3s ease;
+    padding: 5px;
+}
+
+.menu-icon:hover {
+    color: #a855f7;
+    transform: scale(1.1);
 }
 
 
@@ -2014,50 +2165,97 @@ header ul a:hover{
     top: 0;
     bottom: 70%;
     width: 0%;
-    background-color: #000000b8;
+    background: linear-gradient(135deg, 
+        rgba(15, 23, 42, 0.95) 0%, 
+        rgba(114, 161, 222, 0.2) 100%);
     z-index: 999;
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.479);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(114, 161, 222, 0.3);
+    backdrop-filter: blur(15px);
     opacity: 0;
     border-bottom-left-radius: 100%;
-    
+    border: 1px solid rgba(114, 161, 222, 0.3);
 }
 
 .close-icon{
-    font-size: 50px;
-    color: lightgray;
+    font-size: 40px;
+    color: #72a1de;
     padding-left: 10px;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-icon:hover {
+    color: #a855f7;
+    transform: scale(1.1);
 }
 
 .sidebar ul{
-    padding-left: 20px;
+    padding: 40px 20px 20px;
 }
 
 .sidebar ul li{
     list-style: none;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .sidebar ul li a{
     text-decoration: none;
-    color: lightgray;
-    font-size: 30px;
-    font-weight: 900;
-    text-shadow:0 0 15px #4c4c4c;
+    color: #e2e8f0;
+    font-size: 22px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 5px 0;
+}
+
+.sidebar ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, #72a1de, #a855f7);
+    transition: width 0.3s ease;
+}
+
+.sidebar ul li a:hover{
+    color: #72a1de;
+}
+
+.sidebar ul li a:hover::after {
+    width: 100%;
 }
 
 .social-sidebar{
-    padding-left: 20px;
-    margin-top: 60px;
+    padding: 0 20px 20px;
+    margin-top: 30px;
     text-wrap: nowrap;
+    display: flex;
+    gap: 20px;
+    border-top: 1px solid rgba(114, 161, 222, 0.3);
+    padding-top: 20px;
 }
 
 .social-sidebar a{
-    font-size: 35px;
-    padding: 5px 5px;
-    cursor: pointer;
-    transition: 0.5s;
+    font-size: 24px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #72a1de;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(114, 161, 222, 0.5);
+    text-decoration: none;
+}
+
+.social-sidebar a:hover{
+    background: #72a1de;
+    color: #000;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(114, 161, 222, 0.4);
 }
 
 /* Sidebar Open ANimation */
@@ -2128,6 +2326,7 @@ header ul a:hover{
     
     header ul {
         width: 50%;
+        padding: 8px 12px;
     }
     
     .hero {
@@ -2177,7 +2376,12 @@ header ul a:hover{
 @media screen and (max-width: 700px){
     header {
         position: fixed;
-        height: 50px;
+        height: 55px;
+        padding: 0 15px;
+        background: linear-gradient(90deg, 
+            rgba(15, 23, 42, 0.9) 0%, 
+            rgba(114, 161, 222, 0.3) 50%, 
+            rgba(15, 23, 42, 0.9) 100%);
     }
 
     header ul,
@@ -2186,7 +2390,8 @@ header ul a:hover{
     }
 
     .menu-icon{
-        display: inline;
+        display: block;
+        font-size: 28px;
     }
 
     .blackhole-box video {
