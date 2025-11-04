@@ -1809,6 +1809,121 @@ header ul a:hover{
     }
 }
 
+/* MODAL STYLES FOR LEGAL PAGES */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-container {
+    background: linear-gradient(145deg, #0f172a, #111a2e);
+    border-radius: 20px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(114, 161, 222, 0.3);
+    position: relative;
+    animation: modalAppear 0.3s ease-out;
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-content {
+    padding: 30px;
+    color: #e5eaf5;
+}
+
+.modal-content h2 {
+    color: #72a1de;
+    font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(114, 161, 222, 0.3);
+}
+
+.modal-content h3 {
+    color: #a855f7;
+    font-size: 20px;
+    margin-top: 25px;
+    margin-bottom: 12px;
+}
+
+.modal-content p {
+    line-height: 1.7;
+    margin-bottom: 15px;
+    color: #cfcfcf;
+}
+
+.modal-content strong {
+    color: #72a1de;
+}
+
+.modal-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.modal-btn {
+    padding: 12px 30px;
+    background: linear-gradient(45deg, #72a1de, #6b9bd9);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(114, 161, 222, 0.3);
+}
+
+.modal-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(114, 161, 222, 0.5);
+    background: linear-gradient(45deg, #6b9bd9, #72a1de);
+}
+
+/* Responsive design for modals */
+@media (max-width: 768px) {
+    .modal-container {
+        width: 95%;
+        margin: 20px;
+    }
+    
+    .modal-content {
+        padding: 20px;
+    }
+    
+    .modal-content h2 {
+        font-size: 24px;
+    }
+    
+    .modal-content h3 {
+        font-size: 18px;
+    }
+}
+
 
 /* BLUR EFFECT ANIMAION */
 

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePortfolio } from './usePortfolio';
@@ -12,7 +12,93 @@ import Skills from './components/Skills';
 import Sidebar from './components/Sidebar';
 
 export default function Home() {
+  const [activeModal, setActiveModal] = useState(null);
   usePortfolio();
+
+  const openModal = (modalType) => {
+    setActiveModal(modalType);
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  };
+
+  const closeModal = () => {
+    setActiveModal(null);
+    document.body.style.overflow = 'auto'; // Re-enable scrolling
+  };
+
+  // Privacy Policy Content
+  const PrivacyPolicyContent = () => (
+    <div className="modal-content">
+      <h2>Privacy Policy</h2>
+      <p><strong>Effective Date:</strong> {new Date().toLocaleDateString()}</p>
+      
+      <h3>Information We Collect</h3>
+      <p>We may collect information when you contact us through our contact form, including your name, email address, and any other information you choose to provide.</p>
+      
+      <h3>How We Use Your Information</h3>
+      <p>We use the information we collect to respond to your inquiries and provide the requested services.</p>
+      
+      <h3>Information Security</h3>
+      <p>We implement appropriate security measures to protect against unauthorized access to or unauthorized alteration, disclosure, or destruction of data.</p>
+      
+      <h3>Third-Party Disclosure</h3>
+      <p>We do not sell, trade, or otherwise transfer your personally identifiable information to third parties unless we provide users with advance notice.</p>
+      
+      <h3>Changes to Our Privacy Policy</h3>
+      <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+      
+      <div className="modal-actions">
+        <button onClick={closeModal} className="modal-btn">Close</button>
+      </div>
+    </div>
+  );
+
+  // Terms of Service Content
+  const TermsOfServiceContent = () => (
+    <div className="modal-content">
+      <h2>Terms of Service</h2>
+      <p><strong>Effective Date:</strong> {new Date().toLocaleDateString()}</p>
+      
+      <h3>Use License</h3>
+      <p>Permission is granted to temporarily download one copy of the materials on Muhammad Usman's website for personal, non-commercial transitory viewing only.</p>
+      
+      <h3>Disclaimer</h3>
+      <p>The materials on Muhammad Usman's website are provided on an 'as is' basis. Muhammad Usman makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+      
+      <h3>Limitations</h3>
+      <p>In no event shall Muhammad Usman or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on Muhammad Usman's website.</p>
+      
+      <h3>Accuracy of Materials</h3>
+      <p>The materials appearing on Muhammad Usman's website could include technical, typographical, or photographic errors. Muhammad Usman does not warrant that any of the materials on its website are accurate, complete or current.</p>
+      
+      <div className="modal-actions">
+        <button onClick={closeModal} className="modal-btn">Close</button>
+      </div>
+    </div>
+  );
+
+  // Cookies Policy Content
+  const CookiesPolicyContent = () => (
+    <div className="modal-content">
+      <h2>Cookies Policy</h2>
+      <p><strong>Effective Date:</strong> {new Date().toLocaleDateString()}</p>
+      
+      <h3>What Are Cookies</h3>
+      <p>As is common practice with almost all professional websites, this site uses cookies, which are tiny files that are downloaded to your computer, to improve your experience. This page describes what information they gather, how we use it, and why we sometimes need to store these cookies.</p>
+      
+      <h3>How We Use Cookies</h3>
+      <p>We use cookies for various purposes, including tracking site usage, remembering your preferences, and improving our services. We do not use cookies to store personal information.</p>
+      
+      <h3>Disabling Cookies</h3>
+      <p>You can prevent the setting of cookies by adjusting the settings on your browser. Be aware that disabling cookies will affect the functionality of this and many other websites.</p>
+      
+      <h3>Third-Party Cookies</h3>
+      <p>In some special cases, we may also use cookies provided by trusted third parties. These cookies may be used for analytics and other services.</p>
+      
+      <div className="modal-actions">
+        <button onClick={closeModal} className="modal-btn">Close</button>
+      </div>
+    </div>
+  );
 
   return (
     <div className="container">
@@ -289,9 +375,9 @@ export default function Home() {
             <div className="footer-column">
               <h4>Legal</h4>
               <ul>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms of Service</a></li>
-                <li><a href="#">Cookies</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); openModal('privacy'); }}>Privacy Policy</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); openModal('terms'); }}>Terms of Service</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); openModal('cookies'); }}>Cookies</a></li>
               </ul>
             </div>
           </div>
@@ -312,6 +398,31 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Modals for legal pages */}
+      {activeModal === 'privacy' && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-container" onClick={(e) => e.stopPropagation()}>
+            <PrivacyPolicyContent />
+          </div>
+        </div>
+      )}
+
+      {activeModal === 'terms' && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-container" onClick={(e) => e.stopPropagation()}>
+            <TermsOfServiceContent />
+          </div>
+        </div>
+      )}
+
+      {activeModal === 'cookies' && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-container" onClick={(e) => e.stopPropagation()}>
+            <CookiesPolicyContent />
+          </div>
+        </div>
+      )}
     </div>
   )
 }
