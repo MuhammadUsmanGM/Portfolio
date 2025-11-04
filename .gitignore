@@ -39,3 +39,20 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.qwen
+.specify
+QWEN.md
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+COPILOT.md
+CURSOR.md
+WINDSURF.md
+KILOCODE.md
+AUGGIE.md
+ROO.md
+CODEBUDDY.md
+AMP.md
+Q.md
+.env

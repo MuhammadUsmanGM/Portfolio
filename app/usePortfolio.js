@@ -102,15 +102,19 @@ export function usePortfolio() {
       const submitBtn = contactForm.querySelector('button[type="submit"]');
       const emailRegex = /^[^S@]+@[^S@]+\.[^S@]+$/;
       const fieldTouched = { name: false, email: false, message: false };
+      let formSubmitted = false; // Track if form has been submitted
 
       const validateField = (input, isValid, customMessage = null) => {
-        if (!fieldTouched[input.name]) {
+        // Only show error messages after form submission attempt
+        if (!formSubmitted && !fieldTouched[input.name]) {
           const errorElement = input.parentNode.querySelector('.error-message');
           if (errorElement) errorElement.remove();
+          // Reset border and shadow when not submitted yet
           input.style.borderColor = '';
           input.style.boxShadow = '';
           return;
         }
+        
         if (isValid) {
           input.style.borderColor = '#72a1de';
           input.style.boxShadow = '0 0 5px #72a1de';
@@ -145,19 +149,42 @@ export function usePortfolio() {
         return isFormValid;
       };
 
-      nameInput.addEventListener('blur', () => { fieldTouched.name = true; validateForm(); });
-      emailInput.addEventListener('blur', () => { fieldTouched.email = true; validateForm(); });
-      messageInput.addEventListener('blur', () => { fieldTouched.message = true; validateForm(); });
-      nameInput.addEventListener('input', () => { if (fieldTouched.name) validateForm(); });
-      emailInput.addEventListener('input', () => { if (fieldTouched.email) validateForm(); });
-      messageInput.addEventListener('input', () => { if (fieldTouched.message) validateForm(); });
+      nameInput.addEventListener('blur', () => { 
+        fieldTouched.name = true; 
+        // Only validate after form submission attempt
+        if (formSubmitted) validateForm(); 
+      });
+      emailInput.addEventListener('blur', () => { 
+        fieldTouched.email = true; 
+        // Only validate after form submission attempt
+        if (formSubmitted) validateForm(); 
+      });
+      messageInput.addEventListener('blur', () => { 
+        fieldTouched.message = true; 
+        // Only validate after form submission attempt
+        if (formSubmitted) validateForm(); 
+      });
+      nameInput.addEventListener('input', () => { 
+        // Only validate after form submission attempt
+        if (formSubmitted) validateForm(); 
+      });
+      emailInput.addEventListener('input', () => { 
+        // Only validate after form submission attempt
+        if (formSubmitted) validateForm(); 
+      });
+      messageInput.addEventListener('input', () => { 
+        // Only validate after form submission attempt
+        if (formSubmitted) validateForm(); 
+      });
 
-      const isFormInitiallyValid = nameInput.value.trim().length >= 2 && emailRegex.test(emailInput.value.trim()) && messageInput.value.trim().length >= 10;
-      submitBtn.disabled = !isFormInitiallyValid;
-      submitBtn.style.opacity = isFormInitiallyValid ? '1' : '0.5';
+      // Don't set initial button state based on validation
+      // Only disable if fields are initially empty
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = '1';
 
       contactForm.addEventListener("submit", async (e) => {
         e.preventDefault();
+        formSubmitted = true; // Mark that form has been submitted
         fieldTouched.name = true;
         fieldTouched.email = true;
         fieldTouched.message = true;
@@ -198,6 +225,7 @@ export function usePortfolio() {
             fieldTouched.name = false;
             fieldTouched.email = false;
             fieldTouched.message = false;
+            formSubmitted = false; // Reset form submission flag
             setTimeout(() => validateForm(), 2000);
           } else {
             status.innerHTML = result.message || "Failed to send message ❌";

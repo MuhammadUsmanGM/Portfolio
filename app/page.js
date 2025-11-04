@@ -204,6 +204,12 @@ export default function Home() {
       <section className="contact-section" id="contact">
         <h1 className="section-title"><span className="gradient">Let's Talk</span> 😊</h1>
 
+        <div className="contact-intro">
+          <p className="contact-intro-text">
+            Whether you're building a new web experience, enhancing your current platform, or exploring AI-powered projects, I'm here to help make it happen.
+          </p>
+        </div>
+
         <div className="social-box">
           <a href="tel:+923256550687"
             ><i className="bx bxs-phone"></i> +92 325 6550687</a
@@ -212,20 +218,14 @@ export default function Home() {
             ><i className="bx bxl-telegram"></i> Email Me</a
           >
           <a href="#"><i className="bx bxl-linkedin-square"></i> LinkedIn</a>
-          <div className="social-icons">
-            <a href="#"><i className="bx bxl-youtube"></i></a>
-            <a href="#"><i className="bx bxl-twitter"></i></a>
-            <a href="#"><i className="bx bxl-facebook-circle"></i></a>
-          </div>
+          <a href="https://github.com/MuhammadUsmanGM" target="_blank" rel="noopener noreferrer">
+            <i className="bx bxl-github"></i> GitHub
+          </a>
         </div>
 
         <div className="contact-box">
           <form id="contactForm">
-            <p>
-              Whether you're building a new web experience, enhancing your current platform, or exploring AI-powered projects, I'm here to help make it happen.
-            </p>
-
-            <p>Full Name</p>
+            <p className="input-label">Full Name</p>
             <input
               placeholder="Your Full Name"
               type="text"
@@ -233,7 +233,7 @@ export default function Home() {
               required
             />
 
-            <p>Email Address</p>
+            <p className="input-label">Email Address</p>
             <input
               placeholder="Your Email"
               type="email"
@@ -241,7 +241,7 @@ export default function Home() {
               required
             />
 
-            <p>Your Message</p>
+            <p className="input-label">Your Message</p>
             <input
               className="input-message"
               type="text"
@@ -258,27 +258,60 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="footer">
-        <h1>©️Muhammad Usman 2025, Made with ❤️ by Muhammad Usman</h1>
-        <div className="box-icons">
-          <p>
-            <a href="mailto:muhammadusman5965etc@gmail.com"
-              ><i className="bx bxl-telegram"></i
-            ></a>
-          </p>
-          <p>
-            <a
-              href="https://github.com/MuhammadUsmanGM"
-              target="_blank"
-              rel="noopener noreferrer"
-              ><i className="bx bxl-github"></i
-            ></a>
-          </p>
-          <p>
-            <a href="#"><i className="bx bxl-linkedin-square"></i></a>
-          </p>
+      <footer className="main-footer">
+        <div className="footer-content">
+          <div className="footer-info">
+            <h3 className="footer-logo">Muhammad Usman</h3>
+            <p className="footer-tagline">Agentic AI Developer & UI/UX Specialist</p>
+          </div>
+          
+          <div className="footer-links">
+            <div className="footer-column">
+              <h4>Navigation</h4>
+              <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+              </ul>
+            </div>
+            
+            <div className="footer-column">
+              <h4>Connect</h4>
+              <ul>
+                <li><a href="mailto:muhammadusman5965etc@gmail.com">Email</a></li>
+                <li><a href="https://github.com/MuhammadUsmanGM" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <li><a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a href="tel:+923256550687">Phone</a></li>
+              </ul>
+            </div>
+            
+            <div className="footer-column">
+              <h4>Legal</h4>
+              <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Cookies</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </section>
+        
+        <div className="footer-bottom">
+          <p>©️ {new Date().getFullYear()} Muhammad Usman. All rights reserved.</p>
+          <div className="social-links">
+            <a href="mailto:muhammadusman5965etc@gmail.com" aria-label="Email">
+              <i className="bx bxl-telegram"></i>
+            </a>
+            <a href="https://github.com/MuhammadUsmanGM" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <i className="bx bxl-github"></i>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <i className="bx bxl-linkedin-square"></i>
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }

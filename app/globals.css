@@ -1012,17 +1012,71 @@ header ul a:hover{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 40px;
+    gap: 30px;
     align-items: center;
     position: relative;
     padding: 40px 20px;
+    overflow: visible;
+}
+
+.contact-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(114, 161, 222, 0.1) 0%, transparent 70%);
+    border-radius: 30px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.contact-intro {
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.contact-intro-text {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #cfcfcf;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-weight: 400;
+    text-align: center;
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(114, 161, 222, 0.2);
+}
+
+.contact-intro-text::before,
+.contact-intro-text::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--primary), transparent);
+}
+
+.contact-intro-text::before {
+    left: calc(50% - 180px);
+}
+
+.contact-intro-text::after {
+    right: calc(50% - 180px);
 }
 
 .contact-section h1{
     position: relative;
     width: 100%;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     z-index: 2;
     filter: none !important;
     opacity: 1 !important;
@@ -1032,7 +1086,7 @@ header ul a:hover{
 .social-box {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 20px;
     flex: 1;
     min-width: 280px;
 }
@@ -1050,61 +1104,165 @@ header ul a:hover{
     margin-right: 10px;
 }
 
-.social-icons a i{
-    color: white;
-    margin-top: 40px;
+
+
+.contact-box > p {
+    max-width: 400px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #cfcfcf;
+    line-height: 1.6;
 }
 
-.contact-box p{
-    max-width: 400px;
-    margin-top: 30px;
-    margin-bottom: 5px;
+.contact-box > form > p:first-of-type {
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 16px;
+    color: #a9b4c6;
+}
+
+.contact-box form .input-label {
+    margin-top: 0 !important;
+    margin-bottom: 8px !important;
+    color: #72a1de !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    align-self: flex-start !important;
+    padding-left: 5px !important;
 } 
 
 .contact-box {
     flex: 1;
     min-width: 320px;
     max-width: 500px;
+    padding: 30px;
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.7), rgba(114, 161, 222, 0.05));
+    border-radius: 20px;
+    border: 1px solid rgba(114, 161, 222, 0.2);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2),
+                inset 0 0 15px rgba(114, 161, 222, 0.1);
 }
 
 .contact-box input{
-    padding: 12px 20px;
-    background-color: lightgray;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.1);
     width: 100%;
-    min-height: 40px;
-    border: none;
+    min-height: 50px;
+    border: 2px solid rgba(114, 161, 222, 0.3);
     outline: none;
-    border-radius: 8px;
+    border-radius: 12px;
     font-size: 16px;
+    color: var(--text);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+.contact-box input::placeholder {
+    color: rgba(226, 230, 245, 0.6);
+}
+
+.contact-box input:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(114, 161, 222, 0.5);
+}
+
+.contact-box input:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--primary);
+    box-shadow: 0 4px 20px rgba(114, 161, 222, 0.3);
+    transform: translateY(-2px);
 }
 
 .contact-box button{
-    margin-top: 30px;
+    margin-top: 20px;
     color: white;
-    padding: 15px 35px;
-    border-radius: 10px;
-    border: 1px solid rgba(var(--primary-rgb), 0.5);
-    background-color: #2200493d;
-    box-shadow: 0 0 5px rgba(var(--primary-rgb), 0.5);
+    padding: 15px 30px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(45deg, var(--primary), #6b9bd9);
+    box-shadow: 0 5px 15px rgba(114, 161, 222, 0.4);
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    font-weight: 800;
+    font-size: 20px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .contact-box button:hover{
-    opacity: 0.8;
-    box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(114, 161, 222, 0.6);
+    background: linear-gradient(45deg, #6b9bd9, var(--primary));
+}
+
+.contact-box button:active {
+    transform: translateY(-1px);
+}
+
+.contact-box button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.contact-box button:hover::before {
+    left: 100%;
 }
 
 /* Form validation styles */
-.contact-box input:focus {
-    outline: none;
-    border-color: #72a1de;
-    box-shadow: 0 0 5px #72a1de;
-}
-
 .contact-box input.error {
     border-color: #ff4444;
-    box-shadow: 0 0 5px #ff4444;
+    box-shadow: 0 0 5px rgba(255, 68, 68, 0.5);
+}
+
+.contact-box input.success {
+    border-color: #4ade80;
+    box-shadow: 0 0 5px rgba(74, 222, 128, 0.5);
+}
+
+/* Input label styling */
+.contact-box > form > p {
+    font-size: 14px;
+    font-weight: 600;
+    color: #72a1de;
+    margin: 22px 0 8px 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    align-self: flex-start;
+    padding-left: 5px;
+}
+
+/* Form status message styling */
+#formStatus {
+    margin-top: 15px;
+    font-weight: 500;
+    min-height: 20px;
+    text-align: center;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+/* Initially hide error messages until form is submitted */
+.contact-box .error-message:not(.show) {
+    display: none;
+}
+
+/* Show error messages after form submission attempt */
+.contact-form-submitted .error-message {
+    display: block;
 }
 
 /* Error message styles */
@@ -1458,47 +1616,197 @@ header ul a:hover{
     transform: scale(1.1);
 }
 
-.footer{
+/* STUNNING FOOTER STYLES */
+
+.main-footer {
+    width: 100%;
+    background: linear-gradient(135deg, 
+        rgba(15, 23, 42, 0.9) 0%, 
+        rgba(114, 161, 222, 0.1) 100%);
+    border-top: 1px solid rgba(114, 161, 222, 0.3);
+    padding: 40px 20px;
+    backdrop-filter: blur(10px);
+    margin-top: 60px;
+    z-index: 999;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(114, 161, 222, 0.5), transparent);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.footer-info {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: #72a1de;
+    margin: 0 0 10px;
+    background: linear-gradient(45deg, #72a1de, #6b9bd9, #a855f7);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.footer-tagline {
+    color: #a9b4c6;
+    font-size: 16px;
+    margin: 0;
+    font-weight: 300;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    flex: 2;
+    min-width: 300px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 150px;
+}
+
+.footer-column h4 {
+    color: #72a1de;
+    font-size: 18px;
+    margin: 0 0 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(114, 161, 222, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: #cfcfcf;
+    text-decoration: none;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.footer-column ul li a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, #72a1de, #a855f7);
+    transition: width 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #72a1de;
+}
+
+.footer-column ul li a:hover::before {
+    width: 100%;
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(114, 161, 222, 0.2);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
-    width: 100%;
-    min-height: 70px;
-    background: linear-gradient(90deg, 
-        rgba(255, 255, 255, 0.05) 0%, 
-        rgba(255, 255, 255, 0.121) 50%, 
-        rgba(255, 255, 255, 0.05) 100%);
-    z-index: 999;
-    padding: 1rem 3rem;
-    box-sizing: border-box;
-    margin-top: 40px; /* Add space from previous content */
-    backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-.footer h1 {
+.footer-bottom p {
     margin: 0;
-    font-size: 16px;
-    text-align: left;
+    color: #a9b4c6;
+    font-size: 14px;
 }
 
-.footer .box-icons {
+.social-links {
     display: flex;
-    gap: 25px;
-    margin: 0;
-    padding: 0;
+    gap: 20px;
+}
+
+.social-links a {
+    display: flex;
     align-items: center;
-}
-
-/* Add hover effects for footer icons */
-.footer .box-icons p {
-    transition: all 0.3s ease;
-}
-
-.footer .box-icons p:hover {
-    transform: translateY(-3px);
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(114, 161, 222, 0.1);
     color: #72a1de;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(114, 161, 222, 0.3);
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    background: #72a1de;
+    color: #000;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(114, 161, 222, 0.4);
+}
+
+/* Responsive design for footer */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
 }
 
 
