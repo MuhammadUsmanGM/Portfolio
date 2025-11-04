@@ -32,16 +32,19 @@ export default function Home() {
       <p><strong>Effective Date:</strong> {new Date().toLocaleDateString()}</p>
       
       <h3>Information We Collect</h3>
-      <p>We may collect information when you contact us through our contact form, including your name, email address, and any other information you choose to provide.</p>
+      <p>We may collect information when you contact us through our contact form, including your name, email address, message content, and timestamp of submission. This information is stored in our MongoDB database.</p>
       
       <h3>How We Use Your Information</h3>
-      <p>We use the information we collect to respond to your inquiries and provide the requested services.</p>
+      <p>We use the information we collect to respond to your inquiries, provide requested services, and improve our offerings. Contact form submissions are stored in our secure MongoDB database for record-keeping purposes.</p>
       
-      <h3>Information Security</h3>
-      <p>We implement appropriate security measures to protect against unauthorized access to or unauthorized alteration, disclosure, or destruction of data.</p>
+      <h3>Data Storage and Security</h3>
+      <p>All personal data collected through our contact form is stored in secure MongoDB databases with appropriate security measures. We implement appropriate security measures to protect against unauthorized access to or unauthorized alteration, disclosure, or destruction of data.</p>
       
       <h3>Third-Party Disclosure</h3>
-      <p>We do not sell, trade, or otherwise transfer your personally identifiable information to third parties unless we provide users with advance notice.</p>
+      <p>We do not sell, trade, or otherwise transfer your personally identifiable information to third parties unless we provide users with advance notice. This does not include trusted third parties who assist us in operating our website, conducting our business, or serving our users, so long as those parties agree to maintain the confidentiality of your information.</p>
+      
+      <h3>Data Retention</h3>
+      <p>We retain contact form submissions in our MongoDB database for as long as necessary to fulfill the purposes outlined in this privacy policy unless a longer retention period is required by law.</p>
       
       <h3>Changes to Our Privacy Policy</h3>
       <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
@@ -61,6 +64,9 @@ export default function Home() {
       <h3>Use License</h3>
       <p>Permission is granted to temporarily download one copy of the materials on Muhammad Usman's website for personal, non-commercial transitory viewing only.</p>
       
+      <h3>Data Collection and Storage</h3>
+      <p>By using our contact forms, you consent to the collection and storage of your personal information including name, email address, and message content in our MongoDB database. This information is handled in accordance with our Privacy Policy and is used solely to respond to your inquiries.</p>
+      
       <h3>Disclaimer</h3>
       <p>The materials on Muhammad Usman's website are provided on an 'as is' basis. Muhammad Usman makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
       
@@ -69,6 +75,9 @@ export default function Home() {
       
       <h3>Accuracy of Materials</h3>
       <p>The materials appearing on Muhammad Usman's website could include technical, typographical, or photographic errors. Muhammad Usman does not warrant that any of the materials on its website are accurate, complete or current.</p>
+      
+      <h3>User Responsibilities</h3>
+      <p>When using our contact forms, users agree not to submit any information that is knowingly false, inaccurate, or misleading. Users are responsible for ensuring that any personal information provided is accurate and up-to-date.</p>
       
       <div className="modal-actions">
         <button onClick={closeModal} className="modal-btn">Close</button>
@@ -88,11 +97,14 @@ export default function Home() {
       <h3>How We Use Cookies</h3>
       <p>We use cookies for various purposes, including tracking site usage, remembering your preferences, and improving our services. We do not use cookies to store personal information.</p>
       
+      <h3>Information Collected Through Forms</h3>
+      <p>While we do not use cookies to store personal information from contact forms, the information you submit through our contact forms (name, email, message) is collected and stored in our MongoDB database. This information is processed solely to respond to your inquiries.</p>
+      
       <h3>Disabling Cookies</h3>
       <p>You can prevent the setting of cookies by adjusting the settings on your browser. Be aware that disabling cookies will affect the functionality of this and many other websites.</p>
       
-      <h3>Third-Party Cookies</h3>
-      <p>In some special cases, we may also use cookies provided by trusted third parties. These cookies may be used for analytics and other services.</p>
+      <h3>Third-Party Data Collection</h3>
+      <p>In addition to cookies, we may collect personal information through our contact forms. This information is stored in our secure MongoDB database and is not shared with third parties without your explicit consent.</p>
       
       <div className="modal-actions">
         <button onClick={closeModal} className="modal-btn">Close</button>
