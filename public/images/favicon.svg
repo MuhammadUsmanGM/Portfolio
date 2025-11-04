@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0b1020"/>
+      <stop offset="100%" stop-color="#111a2e"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="48" fill="url(#bg)"/>
+  <!-- Simplified Python mark using brand colors -->
+  <g transform="translate(40,36)">
+    <path fill="#3776AB" d="M64 0h48c26.5 0 32 12.9 32 32v32c0 16-12 32-32 32H72c-22 0-40 18-40 40v8c0 19-5.5 32-32 32h-8V168c0-22 18-40 40-40h56c17.7 0 32-14.3 32-32V40c0-22-10-40-32-40H64z"/>
+    <circle cx="144" cy="24" r="10" fill="#fff"/>
+    <path fill="#FFD43B" d="M112 184H64c-26.5 0-32-12.9-32-32v-32c0-16 12-32 32-32h40c22 0 40-18 40-40v-8c0-19 5.5-32 32-32h8v8c0 22-18 40-40 40h-56c-17.7 0-32 14.3-32 32v56c0 22 10 40 32 40h56z"/>
+    <circle cx="72" cy="160" r="10" fill="#0b1020"/>
+  </g>
+</svg>
