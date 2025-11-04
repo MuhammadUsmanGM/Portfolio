@@ -194,6 +194,21 @@ export function usePortfolio() {
           status.style.color = "red";
           return;
         }
+        
+        // Add a simple time-based spam prevention check - form shouldn't be submitted within 3 seconds of page load
+        const currentTime = Date.now();
+        if (typeof window.formLoadTime === 'undefined') {
+          window.formLoadTime = currentTime;
+        }
+        
+        const timeSinceLoad = currentTime - window.formLoadTime;
+        if (timeSinceLoad < 3000) {
+          const status = document.getElementById("formStatus");
+          status.innerHTML = "Please wait before submitting the form. This helps prevent spam. ⏳";
+          status.style.color = "orange";
+          return;
+        }
+        
         const formData = new FormData(contactForm);
         const data = Object.fromEntries(formData);
         let status = document.getElementById("formStatus");
@@ -211,7 +226,11 @@ export function usePortfolio() {
           });
           if (!response.ok) {
             if (response.status === 500) throw new Error('Server error. Please try again later.');
-            else if (response.status >= 400 && response.status < 500) throw new Error('Client error. Please check your input and try again.');
+            else if (response.status === 429) {
+              status.innerHTML = "Too many requests. Please wait a moment before trying again. 🕐";
+              status.style.color = "orange";
+              return;
+            } else if (response.status >= 400 && response.status < 500) throw new Error('Client error. Please check your input and try again.');
           }
           const result = await response.json();
           if (result.success) {
