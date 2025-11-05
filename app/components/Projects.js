@@ -101,6 +101,13 @@ export default function Projects() {
           <button className="nav-btn next-btn" id="nextProject">
             <i className="bx bx-chevron-right"></i>
           </button>
+          
+          {/* Project Indicators */}
+          <div className="project-indicators">
+            <span className="indicator active" data-index="0"></span>
+            <span className="indicator" data-index="1"></span>
+            <span className="indicator" data-index="2"></span>
+          </div>
         </div>
       </div>
     </section>

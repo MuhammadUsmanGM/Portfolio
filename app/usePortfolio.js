@@ -456,15 +456,35 @@ export function usePortfolio() {
       const prevBtn = document.getElementById('prevProject');
       const nextBtn = document.getElementById('nextProject');
       const projects = document.querySelectorAll('.project-card');
+      const indicators = document.querySelectorAll('.indicator');
       let currentProject = 0;
       const totalProjects = projects.length;
+      
       const showProject = (index) => {
         projects.forEach(project => project.classList.remove('active'));
         projects[index].classList.add('active');
         currentProject = index;
+        
+        // Update indicators
+        indicators.forEach((indicator, i) => {
+          if (i === index) {
+            indicator.classList.add('active');
+          } else {
+            indicator.classList.remove('active');
+          }
+        });
       };
+      
       nextBtn.addEventListener('click', () => showProject((currentProject + 1) % totalProjects));
       prevBtn.addEventListener('click', () => showProject((currentProject - 1 + totalProjects) % totalProjects));
+      
+      // Add indicator click functionality
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+          showProject(index);
+        });
+      });
+      
       let touchStartX = 0;
       projectSlider.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX);
       projectSlider.addEventListener('touchend', e => {
@@ -478,6 +498,11 @@ export function usePortfolio() {
         if (e.key === 'ArrowRight') showProject((currentProject + 1) % totalProjects);
         else if (e.key === 'ArrowLeft') showProject((currentProject - 1 + totalProjects) % totalProjects);
       });
+      
+      // Initialize the first indicator as active
+      if (indicators.length > 0) {
+        indicators[0].classList.add('active');
+      }
     };
 
     // Custom scrollbar
