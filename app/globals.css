@@ -2939,8 +2939,8 @@ header ul a:hover::after {
 
 .project-wrapper {
     position: relative;
-    width: 90%;
-    max-width: 1200px;
+    width: 100%; /* Full width for mobile */
+    max-width: 1200px; /* Limit for desktop */
     height: auto;
     min-height: 450px;
     overflow: visible; /* Changed from hidden to fix video clipping */
@@ -3167,13 +3167,13 @@ header ul a:hover::after {
 /* Mobile-specific project section styles - Consolidated */
 @media screen and (max-width: 700px) {
     .my-project {
-        padding: 0 10px;
+        padding: 0; /* Remove side padding to maximize width */
         min-height: auto;
     }
     
     .project-wrapper {
         width: 100%;
-        padding: 0 5px 140px 5px; /* Add significant bottom padding for controls */
+        padding: 0 0 140px 0; /* Remove side padding to maximize width */
         position: relative; /* Ensure relative positioning for child elements */
     }
     
@@ -3369,7 +3369,7 @@ header ul a:hover::after {
     }
     
     .project-wrapper {
-        padding: 0 5px 140px 5px; /* Add significant bottom padding for controls */
+        padding: 0 0 140px 0; /* Remove side padding to maximize width */
     }
     
     .projects-container .project-card {
