@@ -107,23 +107,25 @@ export function usePortfolio() {
       const validateField = (input, isValid, customMessage = null) => {
         // Only show error messages after form submission attempt
         if (!formSubmitted && !fieldTouched[input.name]) {
-          const errorElement = input.parentNode.querySelector('.error-message');
+          const errorElement = input?.parentNode?.querySelector('.error-message');
           if (errorElement) errorElement.remove();
           // Reset border and shadow when not submitted yet
-          input.style.borderColor = '';
-          input.style.boxShadow = '';
+          if (input) {
+            input.style.borderColor = '';
+            input.style.boxShadow = '';
+          }
           return;
         }
         
         if (isValid) {
           input.style.borderColor = '#72a1de';
           input.style.boxShadow = '0 0 5px #72a1de';
-          const errorElement = input.parentNode.querySelector('.error-message');
+          const errorElement = input?.parentNode?.querySelector('.error-message');
           if (errorElement) errorElement.remove();
         } else {
           input.style.borderColor = '#ff4444';
           input.style.boxShadow = '0 0 5px #ff4444';
-          let errorElement = input.parentNode.querySelector('.error-message');
+          let errorElement = input?.parentNode?.querySelector('.error-message');
           if (!errorElement) {
             const errorMessage = document.createElement('div');
             errorMessage.className = 'error-message';
@@ -131,7 +133,7 @@ export function usePortfolio() {
             if (input.name === 'name') errorMessage.textContent = customMessage || 'Please enter your full name (at least 2 characters)';
             else if (input.name === 'email') errorMessage.textContent = customMessage || 'Please enter a valid email address';
             else if (input.name === 'message') errorMessage.textContent = customMessage || 'Please enter your message (at least 10 characters)';
-            input.parentNode.insertBefore(errorMessage, input.nextSibling);
+            input?.parentNode?.insertBefore(errorMessage, input?.nextSibling);
           }
         }
       };
@@ -149,30 +151,30 @@ export function usePortfolio() {
         return isFormValid;
       };
 
-      nameInput.addEventListener('blur', () => { 
+      nameInput?.addEventListener('blur', () => { 
         fieldTouched.name = true; 
         // Only validate after form submission attempt
         if (formSubmitted) validateForm(); 
       });
-      emailInput.addEventListener('blur', () => { 
+      emailInput?.addEventListener('blur', () => { 
         fieldTouched.email = true; 
         // Only validate after form submission attempt
         if (formSubmitted) validateForm(); 
       });
-      messageInput.addEventListener('blur', () => { 
+      messageInput?.addEventListener('blur', () => { 
         fieldTouched.message = true; 
         // Only validate after form submission attempt
         if (formSubmitted) validateForm(); 
       });
-      nameInput.addEventListener('input', () => { 
+      nameInput?.addEventListener('input', () => { 
         // Only validate after form submission attempt
         if (formSubmitted) validateForm(); 
       });
-      emailInput.addEventListener('input', () => { 
+      emailInput?.addEventListener('input', () => { 
         // Only validate after form submission attempt
         if (formSubmitted) validateForm(); 
       });
-      messageInput.addEventListener('input', () => { 
+      messageInput?.addEventListener('input', () => { 
         // Only validate after form submission attempt
         if (formSubmitted) validateForm(); 
       });
@@ -182,7 +184,7 @@ export function usePortfolio() {
       submitBtn.disabled = false;
       submitBtn.style.opacity = '1';
 
-      contactForm.addEventListener("submit", async (e) => {
+      contactForm?.addEventListener("submit", async (e) => {
         e.preventDefault();
         formSubmitted = true; // Mark that form has been submitted
         fieldTouched.name = true;
@@ -224,9 +226,11 @@ export function usePortfolio() {
         const formData = new FormData(contactForm);
         const data = Object.fromEntries(formData);
         let status = document.getElementById("formStatus");
-        const originalBtnText = submitBtn.innerHTML;
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Sending...';
+        const originalBtnText = submitBtn ? submitBtn.innerHTML : '';
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Sending...';
+        }
         status.innerHTML = "Sending your message...";
         status.style.color = "orange";
         try {
@@ -250,8 +254,10 @@ export function usePortfolio() {
             status.style.color = "green";
             contactForm.reset();
             [nameInput, emailInput, messageInput].forEach(input => {
-              input.style.borderColor = '';
-              input.style.boxShadow = '';
+              if (input) {
+                input.style.borderColor = '';
+                input.style.boxShadow = '';
+              }
             });
             fieldTouched.name = false;
             fieldTouched.email = false;
@@ -273,9 +279,13 @@ export function usePortfolio() {
           else status.innerHTML = "An unexpected error occurred. Please try again ❌";
           status.style.color = "red";
         } finally {
-          submitBtn.innerHTML = originalBtnText;
+          if (submitBtn) {
+            submitBtn.innerHTML = originalBtnText;
+          }
           setTimeout(() => {
-            submitBtn.disabled = false;
+            if (submitBtn) {
+              submitBtn.disabled = false;
+            }
             if (status.innerHTML !== "Message sent successfully! ✅ I'll get back to you soon." && !status.innerHTML.includes("I'll get back to you soon")) {
               validateForm();
             } else {
