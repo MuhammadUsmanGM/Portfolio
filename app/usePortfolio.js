@@ -320,6 +320,16 @@ export function usePortfolio() {
 
     // Tech scroll animation
     const setupTechScrollAnimation = () => {
+      // Check if we're on mobile/small screen and potentially use a different approach
+      if (window.innerWidth <= 480) {
+        // For very small screens, disable the animation and use a wrapping layout
+        const track = document.getElementById('techScrollTrack');
+        if (track) {
+          track.style.animation = 'none';
+        }
+        return;
+      }
+      
       const track = document.getElementById('techScrollTrack');
       if (!track) return;
       const getOriginalItemsWidth = () => {
@@ -345,6 +355,12 @@ export function usePortfolio() {
       if (existingStyle) existingStyle.remove();
       document.head.appendChild(styleElement);
       window.addEventListener('resize', () => {
+        // Skip re-initializing on mobile devices to preserve performance
+        if (window.innerWidth <= 480) {
+          track.style.animation = 'none';
+          return;
+        }
+        
         originalItemsWidth = getOriginalItemsWidth();
         styleElement.textContent = `@keyframes scrollTech { 0% { transform: translateX(0); } 100% { transform: translateX(-${originalItemsWidth}px); } }`;
         const wasPaused = track.classList.contains('paused');
@@ -369,8 +385,11 @@ export function usePortfolio() {
     //   io.observe(container);
     // };
 
-    // Tech scroll dragging
+    // Tech scroll dragging - disable on mobile for performance
     const setupTechScrollDragging = () => {
+      // Skip dragging setup on mobile devices to improve performance
+      if (window.innerWidth <= 768) return;
+      
       const track = document.getElementById('techScrollTrack');
       if (!track) return;
       let isDown = false;

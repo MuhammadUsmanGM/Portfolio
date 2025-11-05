@@ -1687,7 +1687,6 @@ header ul a:hover::after {
         rgba(114, 161, 222, 0.1) 80%, 
         transparent 100%);
     border-radius: 25px;
-    backdrop-filter: blur(12px);
     border: 1px solid rgba(114, 161, 222, 0.3);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2),
                 inset 0 0 20px rgba(114, 161, 222, 0.1);
@@ -1701,22 +1700,53 @@ header ul a:hover::after {
     padding: 0 30px;
 }
 
-/* Faster scroll speed on mobile devices */
-@media screen and (max-width: 768px) {
-    .tech-scroll-track {
-        animation: scrollTech 15s linear infinite; /* Faster on mobile - 15 seconds instead of 30 */
-        gap: 40px;
-    }
-}
-
-/* On mobile devices, ensure tech items wrap properly to show more content */
+/* Performance improvements for mobile devices */
 @media screen and (max-width: 768px) {
     .tech-scroll-wrapper {
-        overflow-x: hidden; /* Ensure content doesn't overflow */
+        /* Reduce visual effects for better performance on mobile */
+        background: rgba(114, 161, 222, 0.05); /* Simplified background */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Reduced shadow complexity */
     }
     
     .tech-scroll-track {
-        min-width: 200%; /* Ensure the track is wide enough for all items */
+        animation: scrollTech 20s linear infinite; /* Moderate speed for performance */
+        gap: 35px; /* Reduced gap for mobile */
+    }
+    
+    .tech-item {
+        /* Simplified styles for mobile */
+        padding: 20px 15px; /* Reduced padding */
+        min-width: 100px; /* Reduced width */
+    }
+    
+    .tech-item img {
+        width: 40px; /* Smaller images on mobile */
+        height: 40px;
+    }
+    
+    .tech-item::before {
+        /* Disable the animated border on mobile for performance */
+        content: none;
+    }
+    
+    .tech-name {
+        font-size: 12px; /* Smaller text on mobile */
+    }
+}
+
+/* On mobile devices, switch to a more performant layout */
+@media screen and (max-width: 480px) {
+    .tech-scroll-track {
+        /* Switch to a wrapping flex layout instead of scrolling */
+        flex-wrap: wrap;
+        justify-content: center;
+        animation: none; /* Disable animation on small screens */
+        gap: 20px; /* Adjusted gap for wrapping layout */
+        padding: 20px;
+    }
+    
+    .tech-scroll-wrapper {
+        overflow: visible; /* Allow wrapping */
     }
 }
 
@@ -1760,6 +1790,14 @@ header ul a:hover::after {
     opacity: 0.6;
     animation: borderAnimation 4s ease infinite;
     background-size: 400% 400%;
+}
+
+/* Disable complex animations on mobile for performance */
+@media screen and (max-width: 768px) {
+    .tech-item::before {
+        animation: none;
+        opacity: 0.4; /* Static border on mobile */
+    }
 }
 
 @keyframes borderAnimation {
