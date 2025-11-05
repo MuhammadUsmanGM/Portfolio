@@ -2567,6 +2567,25 @@ header ul a:hover::after {
         max-width: 100%;
         text-align: center;
     }
+    
+    .project-wrapper {
+        width: 100%;
+        padding: 0 5px;
+    }
+    
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+    
+    .prev-btn {
+        left: -50px;
+    }
+    
+    .next-btn {
+        right: -50px;
+    }
 }
 
 /* Mobile */
@@ -2884,7 +2903,7 @@ header ul a:hover::after {
     padding: 20px 0;
 }
 
-.project-slider {
+.project-wrapper {
     position: relative;
     width: 90%;
     max-width: 1200px;
@@ -2893,6 +2912,27 @@ header ul a:hover::after {
     overflow: visible; /* Changed from hidden to fix video clipping */
     border-radius: 20px;
     padding: 20px;
+}
+
+.project-slider {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 450px;
+    overflow: visible; /* Changed from hidden to fix video clipping */
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.projects-container-mobile {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    margin: 20px 0 0 0;
+    padding: 20px 0;
 }
 
 .projects-container .project-card {
@@ -2954,6 +2994,42 @@ header ul a:hover::after {
     border-color: rgba(114, 161, 222, 0.8);
 }
 
+/* Mobile-specific styles for nav buttons */
+@media screen and (max-width: 700px) {
+    .nav-btn {
+        position: absolute;
+        top: auto;
+        bottom: 20px;
+        transform: none;
+        margin: 0;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        background: linear-gradient(135deg, 
+            rgba(15, 23, 42, 0.85) 0%, 
+            rgba(30, 46, 82, 0.7) 100%);
+        border: 1px solid rgba(114, 161, 222, 0.7);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3),
+                    inset 0 0 10px rgba(114, 161, 222, 0.2);
+        z-index: 20;
+    }
+    
+    .nav-btn:hover {
+        transform: scale(1.15); /* Remove translateY from transform */
+        box-shadow: 0 0 25px rgba(114, 161, 222, 0.5),
+                    inset 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .nav-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+        bottom: 15px;
+    }
+}
+
 .prev-btn {
     left: -70px; /* Moved closer for visual balance */
 }
@@ -3013,6 +3089,12 @@ header ul a:hover::after {
     .my-project {
         padding: 0 10px;
         min-height: auto;
+    }
+    
+    .project-wrapper {
+        width: 100%;
+        padding: 0 5px;
+        position: relative; /* Ensure relative positioning for child elements */
     }
     
     .project-slider {
@@ -3088,19 +3170,27 @@ header ul a:hover::after {
         height: 40px;
         font-size: 20px;
         z-index: 20;
+        position: absolute; /* Use absolute positioning to keep buttons in place */
+        top: auto;
+        bottom: 20px; /* Position at the bottom of the slider */
+        transform: none;
+        margin: 0; /* Remove margin to ensure exact positioning */
+        background: linear-gradient(135deg, 
+            rgba(15, 23, 42, 0.85) 0%, 
+            rgba(30, 46, 82, 0.7) 100%);
+        border: 1px solid rgba(114, 161, 222, 0.7);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3),
+                    inset 0 0 10px rgba(114, 161, 222, 0.2);
     }
     
-    .prev-btn, .next-btn {
-        top: auto;
-        bottom: 20px; /* Position below the content so it doesn't overlap */
-        transform: translateX(0);
+    .prev-btn {
         left: 20px; /* Position prev button on the left */
         right: auto;
     }
     
     .next-btn {
-        left: auto; /* Reset left position */
         right: 20px; /* Position next button on the right */
+        left: auto;
     }
     
     .project-indicators {
@@ -3109,13 +3199,17 @@ header ul a:hover::after {
     
     /* Ensure proper spacing in mobile projects */
     .project-card {
-        margin-bottom: 30px;
-        padding-bottom: 80px; /* Extra space for navigation buttons */
+        margin-bottom: 60px; /* Extra space for navigation buttons */
+        padding-bottom: 20px; /* Reduced padding to compensate for buttons */
     }
 }
 
 /* Small mobile optimization */
 @media screen and (max-width: 480px) {
+    .project-wrapper {
+        padding: 0 5px;
+    }
+    
     .project-vidbox {
         min-width: 250px;
         padding: 0 5px;
@@ -3142,18 +3236,21 @@ header ul a:hover::after {
         font-size: 13px;
     }
     
-    .prev-btn, .next-btn {
+    .nav-btn {
         width: 35px;
         height: 35px;
         font-size: 16px;
         bottom: 15px;
+    }
+    
+    .prev-btn {
         left: 15px; /* Position prev button on the left */
         right: auto;
     }
     
     .next-btn {
-        left: auto; /* Reset left position */
         right: 15px; /* Position next button on the right */
+        left: auto;
     }
 }
 

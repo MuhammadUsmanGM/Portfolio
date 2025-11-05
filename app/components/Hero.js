@@ -25,7 +25,7 @@ export default function Hero() {
       <div className="skills-video-box">
         <video
           className="skills-video"
-          data-src="/videos/hero-video.mp4"
+          data-src="/videos/hero-video.webm"
           autoPlay
           loop
           muted

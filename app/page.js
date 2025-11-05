@@ -116,7 +116,7 @@ export default function Home() {
     <div className="container">
       <video
         className="back-vid"
-        src="/videos/galaxy.mp4"
+        src="/videos/galaxy.webm"
         autoPlay
         loop
         muted
@@ -129,7 +129,7 @@ export default function Home() {
 
       <div className="blackhole-box" data-aos="fade-down" data-aos-duration="2000">
         <video
-          src="/videos/blackhole.mp4"
+          src="/videos/blackhole.webm"
           autoPlay
           loop
           muted
@@ -165,6 +165,10 @@ export default function Home() {
               <div className="tech-item" data-tech="React">
                 <Image src="/images/react.svg" alt="React" loading="lazy" width={50} height={50}/>
                 <span className="tech-name">React</span>
+              </div>
+              <div className="tech-item" data-tech="Next.js">
+                <Image src="/images/next.svg" alt="Next.js" loading="lazy" width={60} height={60}/>
+                <span className="tech-name">Next.js</span>
               </div>
               <div className="tech-item" data-tech="Node.js">
                 <Image src="/images/node.svg" alt="Node.js" loading="lazy" width={50} height={50}/>
@@ -233,6 +237,10 @@ export default function Home() {
               <div className="tech-item" data-tech="React">
                 <Image src="/images/react.svg" alt="React" loading="lazy" width={50} height={50}/>
                 <span className="tech-name">React</span>
+              </div>
+              <div className="tech-item" data-tech="Next.js">
+                <Image src="/images/next.svg" alt="Next.js" loading="lazy" width={60} height={60}/>
+                <span className="tech-name">Next.js</span>
               </div>
               <div className="tech-item" data-tech="Node.js">
                 <Image src="/images/node.svg" alt="Node.js" loading="lazy" width={50} height={50}/>

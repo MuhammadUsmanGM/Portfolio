@@ -32,7 +32,7 @@ export default function Info() {
           <h1>I'm very flexible with time zone communications & locations</h1>
           <p>I'm based in Pakistan and open to remote work worldwide.</p>
           <video
-            data-src="/videos/glob.mp4"
+            data-src="/videos/glob.webm"
             autoPlay
             loop
             muted
