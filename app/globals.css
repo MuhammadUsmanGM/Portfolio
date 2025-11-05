@@ -3195,6 +3195,12 @@ header ul a:hover::after {
     .my-project {
         padding: 0; /* Remove side padding to maximize width */
         min-height: auto;
+        margin-bottom: 20px; /* Add consistent bottom margin */
+    }
+    
+    .section-title {
+        font-size: 32px; /* Adjusted for mobile readability */
+        margin-bottom: 25px; /* Increased margin for better spacing */
     }
     
     .project-wrapper {
@@ -3212,11 +3218,18 @@ header ul a:hover::after {
         flex-direction: column;
         text-align: center;
         min-height: auto;
-        padding: 15px 0;
-        gap: 20px; /* Increase gap to prevent overlap */
+        padding: 18px 0; /* Increased padding for better spacing */
+        gap: 22px; /* Increased gap to prevent overlap */
         width: 100%; /* Ensure full width */
         max-width: 100vw; /* Prevent any overflow issues */
         box-sizing: border-box; /* Include padding in width calculation */
+        border-radius: 20px; /* Added border radius to match design */
+        background: linear-gradient(135deg, 
+            rgba(15, 23, 42, 0.6) 0%, 
+            rgba(30, 46, 82, 0.4) 100%); /* Added consistent background */
+        border: 1px solid rgba(114, 161, 222, 0.3); /* Added border consistency */
+        backdrop-filter: blur(10px); /* Added backdrop filter for consistency */
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
     }
     
     .project-vidbox, .project-info {
@@ -3235,8 +3248,8 @@ header ul a:hover::after {
     .project-vidbox video {
         width: 100%;
         height: auto;
-        min-height: 200px; /* Ensure minimum height for visibility */
-        max-height: 250px; /* Set max height to prevent overflow */
+        min-height: 180px; /* Slightly reduced for smaller screens */
+        max-height: 220px; /* Reduced max height to better fit mobile screens */
         object-fit: contain; /* Maintain aspect ratio */
         border-radius: 15px; /* Slightly reduce border radius for mobile */
         display: block; /* Ensure video doesn't overflow */
@@ -3252,7 +3265,7 @@ header ul a:hover::after {
     }
     
     .project-info h1 {
-        font-size: 18px;
+        font-size: 19px; /* Slightly larger for better readability */
         width: 100%;
         text-align: center;
         margin: 10px 0;
@@ -3261,43 +3274,23 @@ header ul a:hover::after {
     }
     
     .project-info p {
-        font-size: 14px;
+        font-size: 15px; /* Slightly larger for better readability */
         width: 100%;
         text-align: center;
         margin-bottom: 20px; /* Adjusted margin to prevent overlap with button */
-        line-height: 1.5;
+        line-height: 1.6; /* Increased line height for better readability */
         max-width: 100%; /* Ensure text doesn't overflow */
         min-height: auto; /* Allow height to adjust to content */
     }
     
     .project-info button {
-        padding: 12px 24px; /* Slightly smaller but still touch-friendly */
-        font-size: 14px;
+        padding: 14px 26px; /* Increased padding for better touch accessibility */
+        font-size: 15px; /* Slightly larger for better readability */
         align-self: center;
         width: auto;
-        min-width: 150px; /* Ensure button is large enough for touch */
+        min-width: 160px; /* Increased minimum width for better touch accessibility */
         margin-top: 10px; /* Add space above button */
-    }
-    
-    .project-wrapper {
-        position: relative;
-        width: 100%;
-        max-width: 1200px;
-        height: auto;
-        min-height: 450px;
-        overflow: visible;
-        border-radius: 20px;
-        padding: 20px;
-    }
-    
-    .project-wrapper {
-        position: relative;
-        width: 100%;
-        max-width: 1200px;
-        min-height: 500px;
-        overflow: visible; /* Allow space for controls */
-        border-radius: 20px;
-        padding: 20px;
+        border-radius: 12px; /* Increased border radius for better touch accessibility */
     }
     
     .project-wrapper {
@@ -3311,13 +3304,13 @@ header ul a:hover::after {
     }
     
     .nav-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
+        width: 46px;  /* Increased size for better touch accessibility */
+        height: 46px; /* Increased size for better touch accessibility */
+        font-size: 22px; /* Slightly increased for better visibility */
         z-index: 20;
         position: absolute; /* Use absolute positioning to keep buttons in place */
         top: auto;
-        bottom: 80px; /* Positioned well below the content */
+        bottom: 85px; /* Positioned well below the content */
         transform: none;
         margin: 0;
         background: linear-gradient(135deg, 
@@ -3326,34 +3319,39 @@ header ul a:hover::after {
         border: 1px solid rgba(114, 161, 222, 0.7);
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3),
                     inset 0 0 10px rgba(114, 161, 222, 0.2);
+        border-radius: 50%; /* Make them more thumb-friendly */
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .prev-btn {
-        left: 20px;
+        left: 15px; /* Positioned closer to the edge for thumb access */
         right: auto;
     }
     
     .next-btn {
-        right: 20px;
+        right: 15px; /* Positioned closer to the edge for thumb access */
         left: auto;
     }
     
     .project-indicators {
         position: absolute;
-        bottom: 35px; /* Positioned above the buttons but clearly separated */
+        bottom: 40px; /* Positioned above the buttons but clearly separated */
         left: 50%;
         transform: translateX(-50%);
         z-index: 25;
         margin-top: 0;
-        gap: 12px;
+        gap: 14px; /* Increased gap for better touch accessibility */
         display: flex;
         align-items: center;
         justify-content: center;
     }
     
     .indicator {
-        width: 12px;
-        height: 12px;
+        width: 14px; /* Increased size for better touch accessibility */
+        height: 14px; /* Increased size for better touch accessibility */
+        cursor: pointer; /* Explicitly set cursor */
     }
     
     /* Ensure proper spacing in mobile projects */
@@ -3415,31 +3413,43 @@ header ul a:hover::after {
         box-sizing: border-box;
     }
     
+    .project-vidbox {
+        min-width: 240px; /* Slightly reduced for small mobile */
+        padding: 0 5px;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+    
     .project-vidbox video {
         width: 100%;
         height: auto;
-        min-height: 180px;
+        min-height: 160px; /* Reduced for small mobile */
+        max-height: 200px; /* Set max height for small mobile */
         object-fit: contain;
         box-sizing: border-box;
     }
     
     .project-info h1 {
-        font-size: 16px;
+        font-size: 17px; /* Slightly increased for better readability on small screens */
         padding: 0 10px;
         width: 100%;
     }
     
     .project-info p {
-        font-size: 13px;
+        font-size: 14px; /* Increased for better readability */
         padding: 0 10px;
         margin-bottom: 20px;
         width: 100%;
+        line-height: 1.6; /* Better line height for readability */
     }
     
     .project-info button {
-        padding: 10px 20px;
-        min-width: 130px;
-        font-size: 13px;
+        padding: 14px 24px; /* Increased padding for better touch targets */
+        min-width: 150px; /* Increased for better touch accessibility */
+        font-size: 14px; /* Increased for better readability */
+        border-radius: 12px; /* Better for touch accessibility */
     }
     
     .project-wrapper {
@@ -3452,36 +3462,53 @@ header ul a:hover::after {
         padding: 20px 20px 140px 20px; /* Add extra bottom padding for controls */
     }
     
+    .project-wrapper {
+        padding: 0 0 140px 0; /* Maintain bottom padding for controls */
+    }
+
+    .projects-container .project-card {
+        width: 100%;
+        max-width: 100vw;
+        box-sizing: border-box;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
     .nav-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 16px;
-        bottom: 80px; /* Positioned well below the content */
+        width: 44px;  /* Increased size for better touch accessibility */
+        height: 44px; /* Increased size for better touch accessibility */
+        font-size: 20px; /* Slightly increased for better visibility */
+        bottom: 85px; /* Positioned well below the content */
+        border-radius: 50%; /* Make them more thumb-friendly */
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .prev-btn {
-        left: 15px; /* Position prev button on the left */
+        left: 12px; /* Adjusted for small mobile */
         right: auto;
     }
     
     .next-btn {
-        right: 15px; /* Position next button on the right */
+        right: 12px; /* Adjusted for small mobile */
         left: auto;
     }
     
     .project-indicators {
         position: absolute;
-        bottom: 35px; /* Positioned above the buttons but clearly separated */
+        bottom: 40px; /* Positioned above the buttons but clearly separated */
         left: 50%;
         transform: translateX(-50%);
         z-index: 25;
         margin-top: 0;
-        gap: 10px;
+        gap: 12px; /* Increased gap for better touch accessibility */
     }
     
     .indicator {
-        width: 10px;
-        height: 10px;
+        width: 13px; /* Increased size for better touch accessibility */
+        height: 13px; /* Increased size for better touch accessibility */
+        cursor: pointer; /* Explicitly set cursor */
     }
 }
 
