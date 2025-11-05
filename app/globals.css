@@ -1709,19 +1709,26 @@ header ul a:hover::after {
     }
     
     .tech-scroll-track {
-        animation: scrollTech 20s linear infinite; /* Moderate speed for performance */
-        gap: 35px; /* Reduced gap for mobile */
+        animation: scrollTech 25s linear infinite; /* Slower speed for smoother animation */
+        gap: 30px; /* Reduced gap for mobile */
     }
     
     .tech-item {
         /* Simplified styles for mobile */
-        padding: 20px 15px; /* Reduced padding */
-        min-width: 100px; /* Reduced width */
+        padding: 18px 12px; /* Reduced padding */
+        min-width: 95px; /* Reduced width */
+        /* Reduce complexity */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Simplified shadow */
     }
     
     .tech-item img {
-        width: 40px; /* Smaller images on mobile */
-        height: 40px;
+        width: 38px; /* Smaller images on mobile */
+        height: 38px;
+        transition: none; /* Remove transitions for better performance */
+    }
+    
+    .tech-item:hover img {
+        transform: none; /* Remove transform on hover for performance */
     }
     
     .tech-item::before {
@@ -1730,23 +1737,38 @@ header ul a:hover::after {
     }
     
     .tech-name {
-        font-size: 12px; /* Smaller text on mobile */
+        font-size: 11px; /* Smaller text on mobile */
+        transition: none; /* Remove transitions */
+    }
+    
+    /* Show fewer items on medium screens to reduce complexity */
+    .tech-item:nth-child(n+11) {
+        display: none; /* Hide additional items on medium screens */
     }
 }
 
-/* On mobile devices, switch to a more performant layout */
+/* For small screens, show even fewer items */
 @media screen and (max-width: 480px) {
-    .tech-scroll-track {
-        /* Switch to a wrapping flex layout instead of scrolling */
-        flex-wrap: wrap;
-        justify-content: center;
-        animation: none; /* Disable animation on small screens */
-        gap: 20px; /* Adjusted gap for wrapping layout */
-        padding: 20px;
+    .tech-item:nth-child(n+9) {
+        display: none; /* Show even fewer items on small screens */
     }
     
-    .tech-scroll-wrapper {
-        overflow: visible; /* Allow wrapping */
+    /* Slightly faster animation for smaller set of items */
+    .tech-scroll-track {
+        animation: scrollTech 18s linear infinite;
+    }
+}
+
+/* On mobile devices, optimize the scroll effect for performance */
+@media screen and (max-width: 480px) {
+    .tech-scroll-track {
+        gap: 30px; /* Reduced gap for mobile */
+        padding: 0 20px; /* Reduced padding */
+    }
+    
+    /* Show fewer items on small screens to reduce complexity */
+    .tech-item:nth-child(n+9) {
+        display: none; /* Hide additional items on very small screens */
     }
 }
 

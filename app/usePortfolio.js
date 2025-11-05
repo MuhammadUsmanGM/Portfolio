@@ -320,28 +320,27 @@ export function usePortfolio() {
 
     // Tech scroll animation
     const setupTechScrollAnimation = () => {
-      // Check if we're on mobile/small screen and potentially use a different approach
-      if (window.innerWidth <= 480) {
-        // For very small screens, disable the animation and use a wrapping layout
-        const track = document.getElementById('techScrollTrack');
-        if (track) {
-          track.style.animation = 'none';
-        }
-        return;
-      }
-      
       const track = document.getElementById('techScrollTrack');
       if (!track) return;
       const getOriginalItemsWidth = () => {
-        const totalChildren = track.children.length;
-        const originalCount = Math.floor(totalChildren / 2);
+        // Count only visible items (not hidden by CSS)
+        const allItems = track.children;
+        let visibleItems = [];
+        
+        for (let i = 0; i < allItems.length; i++) {
+          const item = allItems[i];
+          const computedStyle = window.getComputedStyle(item);
+          if (computedStyle.display !== 'none') {
+            visibleItems.push(item);
+          }
+        }
+        
         let width = 0;
-        for (let i = 0; i < originalCount; i++) {
-          const item = track.children[i];
-          width += item.offsetWidth;
-          if (i < originalCount - 1) {
-            const computedStyle = window.getComputedStyle(item);
-            width += parseFloat(computedStyle.marginRight) || 60;
+        for (let i = 0; i < visibleItems.length; i++) {
+          width += visibleItems[i].offsetWidth;
+          if (i < visibleItems.length - 1) {
+            const computedStyle = window.getComputedStyle(visibleItems[i]);
+            width += parseFloat(computedStyle.marginRight) || 30; // Use smaller default margin for mobile
           }
         }
         return width;
@@ -355,12 +354,6 @@ export function usePortfolio() {
       if (existingStyle) existingStyle.remove();
       document.head.appendChild(styleElement);
       window.addEventListener('resize', () => {
-        // Skip re-initializing on mobile devices to preserve performance
-        if (window.innerWidth <= 480) {
-          track.style.animation = 'none';
-          return;
-        }
-        
         originalItemsWidth = getOriginalItemsWidth();
         styleElement.textContent = `@keyframes scrollTech { 0% { transform: translateX(0); } 100% { transform: translateX(-${originalItemsWidth}px); } }`;
         const wasPaused = track.classList.contains('paused');
