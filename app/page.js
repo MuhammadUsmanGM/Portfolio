@@ -323,7 +323,7 @@ export default function Home() {
           <a href="mailto:muhammadusman5965etc@gmail.com"
             ><i className="bx bxl-telegram"></i> Email Me</a
           >
-          <a href="#"><i className="bx bxl-linkedin-square"></i> LinkedIn</a>
+          <a href="https://www.linkedin.com/in/muhammad-usman-099704390?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer"><i className="bx bxl-linkedin-square"></i> LinkedIn</a>
           <a href="https://github.com/MuhammadUsmanGM" target="_blank" rel="noopener noreferrer">
             <i className="bx bxl-github"></i> GitHub
           </a>
@@ -387,7 +387,7 @@ export default function Home() {
               <ul>
                 <li><a href="mailto:muhammadusman5965etc@gmail.com">Email</a></li>
                 <li><a href="https://github.com/MuhammadUsmanGM" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                <li><a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a href="https://www.linkedin.com/in/muhammad-usman-099704390?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
                 <li><a href="tel:+923256550687">Phone</a></li>
               </ul>
             </div>
@@ -412,7 +412,7 @@ export default function Home() {
             <a href="https://github.com/MuhammadUsmanGM" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <i className="bx bxl-github"></i>
             </a>
-            <a href="#" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/muhammad-usman-099704390?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <i className="bx bxl-linkedin-square"></i>
             </a>
           </div>
