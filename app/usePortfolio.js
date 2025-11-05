@@ -204,9 +204,21 @@ export function usePortfolio() {
         const timeSinceLoad = currentTime - window.formLoadTime;
         if (timeSinceLoad < 3000) {
           const status = document.getElementById("formStatus");
-          status.innerHTML = "Please wait before submitting the form. This helps prevent spam. ⏳";
+          status.innerHTML = "Please wait at least 3 seconds before submitting to prevent spam. ⏳";
           status.style.color = "orange";
           return;
+        }
+        
+        // Also check if a submission was just made recently to prevent rapid submissions
+        if (typeof window.lastSubmissionTime !== 'undefined') {
+          const timeSinceLastSubmission = currentTime - window.lastSubmissionTime;
+          if (timeSinceLastSubmission < 5000) { // 5 seconds between submissions
+            const status = document.getElementById("formStatus");
+            const remainingTime = Math.ceil((5000 - timeSinceLastSubmission) / 1000); // Convert to seconds
+            status.innerHTML = `Please wait ${remainingTime} seconds before sending another message to prevent spam. ⏳`;
+            status.style.color = "orange";
+            return;
+          }
         }
         
         const formData = new FormData(contactForm);
@@ -245,6 +257,8 @@ export function usePortfolio() {
             fieldTouched.email = false;
             fieldTouched.message = false;
             formSubmitted = false; // Reset form submission flag
+            // Record the submission time to implement cooldown period
+            window.lastSubmissionTime = Date.now();
             setTimeout(() => validateForm(), 2000);
           } else {
             status.innerHTML = result.message || "Failed to send message ❌";
@@ -264,6 +278,12 @@ export function usePortfolio() {
             submitBtn.disabled = false;
             if (status.innerHTML !== "Message sent successfully! ✅ I'll get back to you soon." && !status.innerHTML.includes("I'll get back to you soon")) {
               validateForm();
+            } else {
+              // Only set the submission time if the message was sent successfully
+              if (status.innerHTML.includes("Message sent successfully!") || 
+                  status.innerHTML.includes("I'll get back to you soon")) {
+                window.lastSubmissionTime = Date.now();
+              }
             }
           }, 2000);
         }
