@@ -2945,7 +2945,7 @@ header ul a:hover::after {
     min-height: 450px;
     overflow: visible; /* Changed from hidden to fix video clipping */
     border-radius: 20px;
-    padding: 20px;
+    padding: 20px 20px 140px 20px; /* Add extra bottom padding to accommodate controls */
 }
 
 .project-slider {
@@ -3125,6 +3125,13 @@ header ul a:hover::after {
     box-shadow: 0 0 8px rgba(114, 161, 222, 0.5);
 }
 
+/* Ensure indicators are properly spaced on desktop */
+@media screen and (min-width: 1025px) {
+    .project-indicators {
+        margin-top: 30px;
+    }
+}
+
 /* Responsive adjustments for carousel */
 @media screen and (max-width: 1024px) {
     .project-slider {
@@ -3166,7 +3173,7 @@ header ul a:hover::after {
     
     .project-wrapper {
         width: 100%;
-        padding: 0 5px;
+        padding: 0 5px 140px 5px; /* Add significant bottom padding for controls */
         position: relative; /* Ensure relative positioning for child elements */
     }
     
@@ -3257,6 +3264,26 @@ header ul a:hover::after {
         padding: 20px;
     }
     
+    .project-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        min-height: 500px;
+        overflow: visible; /* Allow space for controls */
+        border-radius: 20px;
+        padding: 20px;
+    }
+    
+    .project-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        min-height: 500px;
+        overflow: visible; /* Allow space for controls */
+        border-radius: 20px;
+        padding: 20px 20px 140px 20px;
+    }
+    
     .nav-btn {
         width: 40px;
         height: 40px;
@@ -3264,9 +3291,9 @@ header ul a:hover::after {
         z-index: 20;
         position: absolute; /* Use absolute positioning to keep buttons in place */
         top: auto;
-        bottom: 60px; /* Position well below the content to avoid overlap */
+        bottom: 80px; /* Positioned well below the content */
         transform: none;
-        margin: 0; /* Remove margin to ensure exact positioning */
+        margin: 0;
         background: linear-gradient(135deg, 
             rgba(15, 23, 42, 0.85) 0%, 
             rgba(30, 46, 82, 0.7) 100%);
@@ -3276,18 +3303,18 @@ header ul a:hover::after {
     }
     
     .prev-btn {
-        left: 20px; /* Position prev button on the left */
+        left: 20px;
         right: auto;
     }
     
     .next-btn {
-        right: 20px; /* Position next button on the right */
+        right: 20px;
         left: auto;
     }
     
     .project-indicators {
         position: absolute;
-        bottom: 25px; /* Position indicators above the buttons */
+        bottom: 35px; /* Positioned above the buttons but clearly separated */
         left: 50%;
         transform: translateX(-50%);
         z-index: 25;
@@ -3305,10 +3332,10 @@ header ul a:hover::after {
     
     /* Ensure proper spacing in mobile projects */
     .project-card {
-        margin-bottom: 130px; /* Increased space to accommodate both buttons and indicators below */
-        padding-bottom: 20px; /* Reduced padding to compensate for buttons */
-        margin-left: 0; /* Remove any left margin */
-        margin-right: 0; /* Remove any right margin */
+        margin-bottom: 0; /* Remove extra margin since padding handles spacing */
+        padding: 15px 0;
+        margin-left: 0;
+        margin-right: 0;
     }
 }
 
@@ -3342,7 +3369,7 @@ header ul a:hover::after {
     }
     
     .project-wrapper {
-        padding: 0 5px;
+        padding: 0 5px 140px 5px; /* Add significant bottom padding for controls */
     }
     
     .projects-container .project-card {
@@ -3389,11 +3416,21 @@ header ul a:hover::after {
         font-size: 13px;
     }
     
+    .project-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        min-height: 500px;
+        overflow: visible;
+        border-radius: 20px;
+        padding: 20px 20px 140px 20px; /* Add extra bottom padding for controls */
+    }
+    
     .nav-btn {
         width: 35px;
         height: 35px;
         font-size: 16px;
-        bottom: 60px; /* Position well below the content to avoid overlap */
+        bottom: 80px; /* Positioned well below the content */
     }
     
     .prev-btn {
@@ -3408,7 +3445,7 @@ header ul a:hover::after {
     
     .project-indicators {
         position: absolute;
-        bottom: 25px; /* Position indicators above the buttons */
+        bottom: 35px; /* Positioned above the buttons but clearly separated */
         left: 50%;
         transform: translateX(-50%);
         z-index: 25;
