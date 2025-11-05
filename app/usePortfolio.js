@@ -98,7 +98,7 @@ export function usePortfolio() {
     if (contactForm) {
       const nameInput = contactForm.querySelector('input[name="name"]');
       const emailInput = contactForm.querySelector('input[name="email"]');
-      const messageInput = contactForm.querySelector('input[name="message"]');
+      const messageInput = contactForm.querySelector('textarea[name="message"]');
       const submitBtn = contactForm.querySelector('button[type="submit"]');
       const emailRegex = /^[^S@]+@[^S@]+\.[^S@]+$/;
       const fieldTouched = { name: false, email: false, message: false };
