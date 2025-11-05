@@ -348,13 +348,13 @@ export default function Home() {
             />
 
             <p className="input-label">Your Message</p>
-            <input
+            <textarea
               className="input-message"
-              type="text"
               name="message"
               placeholder="Share your thoughts..."
               required
-            />
+              rows="4"
+            ></textarea>
 
             <button type="submit">
               Send Message <i className="bx bx-mail-send"></i>

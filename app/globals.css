@@ -1515,6 +1515,32 @@ header ul a:hover::after {
     transform: translateY(-2px);
 }
 
+/* Special styling for message input to allow multi-line input */
+.contact-box .input-message {
+    min-height: 120px; /* Allow space for 3 lines of text */
+    resize: vertical; /* Allow vertical resizing only */
+    height: auto; /* Allow height to adjust based on content */
+    font-family: inherit; /* Use same font as rest of form */
+    line-height: 1.5; /* Improve readability */
+    width: 100%; /* Ensure full width */
+    padding: 15px 20px; /* Same padding as other inputs */
+    background: rgba(255, 255, 255, 0.1); /* Same background as other inputs */
+    border: 2px solid rgba(114, 161, 222, 0.3); /* Same border as other inputs */
+    outline: none; /* Same outline as other inputs */
+    border-radius: 12px; /* Same border-radius as other inputs */
+    font-size: 16px; /* Same font size as other inputs */
+    color: var(--text); /* Same text color as other inputs */
+    backdrop-filter: blur(10px); /* Same backdrop as other inputs */
+    box-sizing: border-box; /* Include padding in width calculation */
+    margin-bottom: 15px; /* Same margin as other inputs */
+}
+
+/* Override default textarea styles to match input styles */
+.contact-box textarea.input-message {
+    font-family: Arial, Helvetica, sans-serif; /* Consistent font */
+    resize: vertical; /* Only allow vertical resizing */
+}
+
 .contact-box button{
     margin-top: 20px;
     color: white;
