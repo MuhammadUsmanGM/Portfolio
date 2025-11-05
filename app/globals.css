@@ -799,12 +799,12 @@ header ul a:hover::after {
 .project-card {
     display: flex;
     width: 100%;
-    height: 40%;
+    min-height: 250px;
     align-items: center;
     gap: 10%;
     justify-content: center;
     position: relative; /* Add positioning context */
-    overflow: visible; /* Allow visibility of elements during animation */
+    overflow: hidden; /* Prevent overflow issues */
     min-height: 250px; /* Ensure minimum height to accommodate content */
     background: linear-gradient(135deg, 
         rgba(15, 23, 42, 0.6) 0%, 
@@ -824,34 +824,37 @@ header ul a:hover::after {
                 inset 0 0 20px rgba(114, 161, 222, 0.2);
 }
 
-.project-vidbox{
+.project-vidbox {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 60%; /* Increased width to make video wider */
+    width: 60%;
     position: relative;
     cursor: pointer;
     transition: 0.5s;
-    min-width: 400px; /* Increased minimum width */
-    z-index: 1; /* Ensure video is above other elements */
+    min-width: 400px;
+    z-index: 1;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    padding: 10px; /* Add padding to create space around the video */
+    padding: 10px;
+    flex: 1; /* Allow it to flex properly */
 }
 
-.project-vidbox video{
-    object-fit: cover; /* Changed back to cover */
+.project-vidbox video {
+    object-fit: contain; /* Changed to contain to prevent overflow */
     width: 100%;
-    max-width: 100%; /* Ensure video doesn't exceed container */
+    max-width: 100%;
     border-radius: 20px;
     transition: 0.5s;
-    min-height: 250px; /* Decreased minimum height */
-    height: auto; /* Allow height to adjust based on video aspect ratio */
+    min-height: 250px;
+    height: auto;
     filter: brightness(0.9);
+    display: block; /* Ensure proper block display */
+    max-height: 300px; /* Set max height to prevent overflow */
 }
 
-.project-card video:hover{
+.project-card video:hover {
     box-shadow: 0 0 30px rgba(114, 161, 222, 0.6);
     filter: brightness(1);
     transform: scale(1.02);
@@ -3200,10 +3203,12 @@ header ul a:hover::after {
         width: 100%;
         height: auto;
         min-height: 200px; /* Ensure minimum height for visibility */
+        max-height: 250px; /* Set max height to prevent overflow */
         object-fit: contain; /* Maintain aspect ratio */
         border-radius: 15px; /* Slightly reduce border radius for mobile */
         display: block; /* Ensure video doesn't overflow */
         box-sizing: border-box; /* Include any padding/border in size calculation */
+        align-self: center; /* Center the video in flex container */
     }
     
     .project-info {
@@ -3259,7 +3264,7 @@ header ul a:hover::after {
         z-index: 20;
         position: absolute; /* Use absolute positioning to keep buttons in place */
         top: auto;
-        bottom: 5px; /* Moved much further down toward bottom */
+        bottom: 60px; /* Position well below the content to avoid overlap */
         transform: none;
         margin: 0; /* Remove margin to ensure exact positioning */
         background: linear-gradient(135deg, 
@@ -3282,7 +3287,7 @@ header ul a:hover::after {
     
     .project-indicators {
         position: absolute;
-        bottom: 10px; /* Positioned at same level as buttons, down at bottom */
+        bottom: 25px; /* Position indicators above the buttons */
         left: 50%;
         transform: translateX(-50%);
         z-index: 25;
@@ -3300,7 +3305,7 @@ header ul a:hover::after {
     
     /* Ensure proper spacing in mobile projects */
     .project-card {
-        margin-bottom: 60px; /* Reduced space since elements are closer to bottom */
+        margin-bottom: 130px; /* Increased space to accommodate both buttons and indicators below */
         padding-bottom: 20px; /* Reduced padding to compensate for buttons */
         margin-left: 0; /* Remove any left margin */
         margin-right: 0; /* Remove any right margin */
@@ -3388,7 +3393,7 @@ header ul a:hover::after {
         width: 35px;
         height: 35px;
         font-size: 16px;
-        bottom: 5px; /* Moved much further down toward bottom */
+        bottom: 60px; /* Position well below the content to avoid overlap */
     }
     
     .prev-btn {
@@ -3403,7 +3408,7 @@ header ul a:hover::after {
     
     .project-indicators {
         position: absolute;
-        bottom: 10px; /* Positioned at same level as buttons, down at bottom */
+        bottom: 25px; /* Position indicators above the buttons */
         left: 50%;
         transform: translateX(-50%);
         z-index: 25;
