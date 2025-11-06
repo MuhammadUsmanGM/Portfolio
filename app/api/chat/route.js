@@ -33,8 +33,11 @@ export async function POST(req) {
 - Skills: Python, JavaScript, HTML, React, CSS, Next.js, MongoDB, Supabase, MCP servers, OpenAI Agent SDK, Git, Tailwind CSS
 - GitHub: https://github.com/MuhammadUsmanGM
 - LinkedIn: https://www.linkedin.com/in/muhammad-usman-099704390?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
+- Portfolio: https://portfolio-o4hs.vercel.app/
 - Email: muhammadusman5965etc@gmail.com
 - Phone: +923256550687
+- Date of Birth: September 30, 2005
+- Location: Lahore, Pakistan
 - Education: Learning AI from Panaversity Lahore at University of Management and Technology Lahore; Student of Software Engineering at Virtual University of Pakistan
 - Languages: English (Professional), Urdu
 - Hobbies: Developing creative projects, playing video games
