@@ -1716,7 +1716,7 @@ header ul a:hover::after {
 .tech-scroll-track {
     display: flex;
     align-items: center;
-    animation: scrollTech 30s linear infinite;
+    animation: scrollTech 60s linear infinite; /* Increased duration to slow down animation */
     gap: 50px;
     padding: 0 30px;
 }

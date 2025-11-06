@@ -367,16 +367,16 @@ export function usePortfolio() {
       });
     };
 
-    // Tech scroll observer - COMMENTED OUT to allow continuous scrolling
-    // const setupTechScrollObserver = () => {
-    //   const track = document.getElementById('techScrollTrack');
-    //   const container = $('.tech-scroll-wrapper') || $('.tech-scroll-container');
-    //   if (!track || !('IntersectionObserver' in window) || !container) return;
-    //   const io = new IntersectionObserver((entries) => {
-    //     entries.forEach((entry) => track.classList.toggle('paused', !entry.isIntersecting));
-    //   }, { root: null, threshold: 0 });
-    //   io.observe(container);
-    // };
+    // Tech scroll observer - Only animate when in view
+    const setupTechScrollObserver = () => {
+      const track = document.getElementById('techScrollTrack');
+      const container = $('.tech-scroll-wrapper') || $('.tech-scroll-container');
+      if (!track || !('IntersectionObserver' in window) || !container) return;
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => track.classList.toggle('paused', !entry.isIntersecting));
+      }, { root: null, threshold: 0.1 }); // Start animation when 10% of element is visible
+      io.observe(container);
+    };
 
     // Tech scroll dragging - disable on mobile for performance
     const setupTechScrollDragging = () => {
@@ -618,7 +618,7 @@ export function usePortfolio() {
     optimizeVideoLoading();
     updateSocialLinks();
     setupTechScrollAnimation();
-    // setupTechScrollObserver(); // Commented out to allow continuous scrolling
+    setupTechScrollObserver(); // Only animate when in view
     setupTechScrollDragging();
     setupDisabledProjectButtons();
     setupMenuKeyboardAccess();
