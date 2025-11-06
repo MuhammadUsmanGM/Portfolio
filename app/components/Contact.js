@@ -15,6 +15,7 @@ export default function Contact() {
   });
 
   const [status, setStatus] = useState('');
+  const [messageType, setMessageType] = useState('info'); // 'success', 'error', 'info'
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,6 +23,8 @@ export default function Contact() {
     if (value) {
       setErrors((prev) => ({ ...prev, [name]: false }));
     }
+    setMessageType('info'); // Reset message type on input change
+    setStatus(''); // Clear status message on input change
   };
 
   const handleSubmit = async (e) => {
@@ -37,11 +40,13 @@ export default function Contact() {
     setErrors(newErrors);
 
     if (Object.values(newErrors).some((error) => error)) {
-      setStatus('Please fill out all required fields.');
+      setStatus('Please ensure all fields are filled out correctly.');
+      setMessageType('error');
       return;
     }
 
     setStatus('Sending...');
+    setMessageType('info');
 
     try {
       const response = await fetch('/api/contact', {
@@ -51,14 +56,17 @@ export default function Contact() {
       });
 
       if (response.ok) {
-        setStatus('Message sent successfully!');
+        setStatus('Message sent! I will get back to you soon.');
+        setMessageType('success');
         setFormData({ name: '', email: '', message: '' });
       } else {
         const errorData = await response.json();
-        setStatus(errorData.message || 'Failed to send message.');
+        setStatus(errorData.message || 'Failed to send message. Please try again.');
+        setMessageType('error');
       }
     } catch (error) {
-      setStatus('An error occurred. Please try again.');
+      setStatus('An unexpected error occurred. Please try again later.');
+      setMessageType('error');
     }
   };
 
@@ -129,7 +137,7 @@ export default function Contact() {
           <button type="submit">
             Send Message <i className="bx bx-mail-send"></i>
           </button>
-          <p id="formStatus">{status}</p>
+          <p id="formStatus" className={messageType === 'success' ? 'success-message' : messageType === 'error' ? 'error-status-message' : ''}>{status}</p>
         </form>
       </div>
     </section>
