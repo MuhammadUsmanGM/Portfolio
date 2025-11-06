@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePortfolio } from './usePortfolio';
@@ -14,6 +14,22 @@ import Contact from './components/Contact';
 
 export default function Home() {
   const [activeModal, setActiveModal] = useState(null);
+  const [activeChat, setActiveChat] = useState(false);
+  const [chatInput, setChatInput] = useState('');
+  const [chatMessages, setChatMessages] = useState([
+    { id: 1, text: "Hey! I'm Chatty, Muhammad Usman's assistant. If you need any info about Usman just ask!", sender: 'bot' }
+  ]);
+  const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef(null);
+  
+  // Auto-scroll to bottom of chat when messages change
+  useEffect(() => {
+    scrollToBottom();
+  }, [chatMessages]);
+  
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
   usePortfolio();
 
   const openModal = (modalType) => {
@@ -24,6 +40,88 @@ export default function Home() {
   const closeModal = () => {
     setActiveModal(null);
     document.body.style.overflow = 'auto'; // Re-enable scrolling
+  };
+
+  const openChat = () => {
+    setActiveChat(true);
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  };
+
+  const closeChat = () => {
+    setActiveChat(false);
+    document.body.style.overflow = 'auto'; // Re-enable scrolling
+  };
+
+  const sendMessage = async () => {
+    if (chatInput.trim() === '') return;
+    
+    // Add user message to chat
+    const userMessage = chatInput;
+    const userMessageObj = {
+      id: Date.now(),
+      text: userMessage,
+      sender: 'user'
+    };
+    
+    // Update chat messages with user's message
+    setChatMessages(prev => [...prev, userMessageObj]);
+    setChatInput('');
+    
+    // Show loading indicator
+    setIsLoading(true);
+    
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: userMessage }),
+      });
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        // Add bot's response to chat
+        const botMessageObj = {
+          id: Date.now() + 1,
+          text: data.response,
+          sender: 'bot'
+        };
+        setChatMessages(prev => [...prev, botMessageObj]);
+      } else {
+        console.error('Error from API:', data.error);
+        let errorMessage = "Sorry, I'm having trouble responding right now. ";
+        
+        if (response.status === 429) {
+          errorMessage += "Please wait a moment before trying again.";
+        } else if (data.error && data.error.includes("Rate limit")) {
+          errorMessage += "The chat service is temporarily busy. Please try again in a few minutes.";
+        } else {
+          errorMessage += "The site owner may need to check their API configuration.";
+        }
+        
+        // Add error message to chat
+        const errorMessageObj = {
+          id: Date.now() + 1,
+          text: errorMessage,
+          sender: 'bot'
+        };
+        setChatMessages(prev => [...prev, errorMessageObj]);
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      // Add error message to chat
+      const errorMessageObj = {
+        id: Date.now() + 1,
+        text: "Sorry, I'm having trouble connecting to the chat service. The site owner may need to check their API configuration. Please try again later.",
+        sender: 'bot'
+      };
+      setChatMessages(prev => [...prev, errorMessageObj]);
+    } finally {
+      // Hide loading indicator
+      setIsLoading(false);
+    }
   };
 
   // Privacy Policy Content
@@ -461,6 +559,71 @@ export default function Home() {
           </div>
         </div>
       )}
+    {/* Chatbot Interface */}
+    {activeChat && (
+      <div className="chatbot-interface-overlay" onClick={closeChat}>
+        <div className="chatbot-interface" onClick={(e) => e.stopPropagation()}>
+          <div className="chatbot-header">
+            <div className="chatbot-header-icon">
+              <img src="/bot.png" alt="Chatty" width={40} height={40} />
+            </div>
+            <div className="chatbot-header-text">
+              <h3>Chatty</h3>
+              <p>Usman's Assistant</p>
+            </div>
+            <button className="chatbot-close-btn" onClick={closeChat}>
+              <i className="bx bx-x"></i>
+            </button>
+          </div>
+          
+          <div className="chatbot-messages">
+            {chatMessages.map((msg) => (
+              <div 
+                key={msg.id} 
+                className={`chatbot-message ${msg.sender === 'bot' ? 'bot-message' : 'user-message'}`}
+              >
+                <div className="chatbot-message-content">
+                  {msg.text}
+                </div>
+              </div>
+            ))}
+            {isLoading && (
+              <div className="loading-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            )}
+            <div ref={messagesEndRef} />
+          </div>
+          
+          <div className="chatbot-input-area">
+            <input 
+              type="text" 
+              className="chatbot-input" 
+              placeholder="Ask me something about Usman..."
+              value={chatInput}
+              onChange={(e) => setChatInput(e.target.value)}
+              onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+            />
+            <button className="chatbot-send-btn" onClick={sendMessage}>
+              <i className="bx bx-send"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
+
+    {/* Chatbot Icon - Fixed to bottom right */}
+    <div className="chatbot-container">
+      <div className="chatbot-thought-bubble">
+        <p>Hey! I'm Chatty, Usman's assistant</p>
+      </div>
+      <button className="chatbot-icon-btn" onClick={openChat}>
+        <img src="/bot.png" alt="Chat with Usman's assistant" width={80} height={80} />
+      </button>
+    </div>
+
     </div>
   )
 }
