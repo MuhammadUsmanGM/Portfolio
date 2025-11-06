@@ -19,6 +19,7 @@ export default function Home() {
   const [chatMessages, setChatMessages] = useState([
     { id: 1, text: "Hey! I'm Chatty, Muhammad Usman's assistant. If you need any info about Usman just ask!", sender: 'bot' }
   ]);
+  const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
   
   // Auto-scroll to bottom of chat when messages change
@@ -65,6 +66,9 @@ export default function Home() {
     // Update chat messages with user's message
     setChatMessages(prev => [...prev, userMessageObj]);
     setChatInput('');
+    
+    // Show loading indicator
+    setIsLoading(true);
     
     try {
       const response = await fetch('/api/chat', {
@@ -114,6 +118,9 @@ export default function Home() {
         sender: 'bot'
       };
       setChatMessages(prev => [...prev, errorMessageObj]);
+    } finally {
+      // Hide loading indicator
+      setIsLoading(false);
     }
   };
 
@@ -580,6 +587,13 @@ export default function Home() {
                 </div>
               </div>
             ))}
+            {isLoading && (
+              <div className="loading-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            )}
             <div ref={messagesEndRef} />
           </div>
           
