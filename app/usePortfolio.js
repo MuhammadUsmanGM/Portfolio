@@ -305,14 +305,16 @@ export function usePortfolio() {
       try {
         const response = await fetch('/api/social');
         const socialData = await response.json();
-        const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
-        emailLinks.forEach(link => link.href = `mailto:${socialData.email}`);
-        const githubLinks = document.querySelectorAll('a[href*="github.com"]');
-        githubLinks.forEach(link => {
-          link.href = socialData.github;
-          link.target = '_blank';
-          link.rel = 'noopener noreferrer';
-        });
+        if (socialData.success && socialData.links) {
+          const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+          emailLinks.forEach(link => link.href = `mailto:${socialData.links.email}`);
+          const githubLinks = document.querySelectorAll('a[href*="github.com"]');
+          githubLinks.forEach(link => {
+            link.href = socialData.links.github;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+          });
+        }
       } catch (error) {
         console.error('Error fetching social links:', error);
       }
