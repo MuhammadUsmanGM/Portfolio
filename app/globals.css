@@ -3861,6 +3861,9 @@ header ul a:hover::after {
     border-radius: 18px;
     position: relative;
     animation: fadeIn 0.3s ease;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 @keyframes fadeIn {
@@ -3892,6 +3895,10 @@ header ul a:hover::after {
     font-weight: 500; /* Slightly bolder text */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* More modern font stack */
     letter-spacing: 0.2px; /* Slightly more spaced out for better readability */
+    word-wrap: break-word; /* Ensure long words/content break properly */
+    overflow-wrap: break-word; /* Ensures long URLs wrap properly */
+    hyphens: auto; /* Adds hyphens when breaking long words */
+    max-width: 100%; /* Ensure content doesn't exceed container */
 }
 
 .chatbot-message-content strong {
@@ -3902,6 +3909,13 @@ header ul a:hover::after {
 .chatbot-message-content em {
     color: #a855f7; /* Use accent color for emphasis */
     font-style: italic;
+}
+
+/* Ensure links break properly */
+.chatbot-message-content a {
+    word-break: break-all; /* Break long URLs */
+    display: inline-block; /* Ensure links are properly contained */
+    max-width: 100%; /* Prevent links from overflowing */
 }
 
 .chatbot-input-area {
