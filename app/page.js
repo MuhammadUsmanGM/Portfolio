@@ -294,6 +294,78 @@ export default function Home() {
                 <span className="tech-name">Tailwind CSS</span>
               </div>
 
+              {/* Third set of items for seamless looping */}
+              <div className="tech-item" data-tech="HTML5">
+                <Image src="/images/html.svg" alt="HTML5" loading="lazy" width={50} height={50}/>
+                <span className="tech-name">HTML5</span>
+              </div>
+              <div className="tech-item" data-tech="CSS3">
+                <Image src="/images/css.svg" alt="CSS3" loading="lazy" width={50} height={50}/>
+                <span className="tech-name">CSS3</span>
+              </div>
+              <div className="tech-item" data-tech="JavaScript">
+                <Image src="/images/js.png" alt="JavaScript" loading="lazy" width={50} height={50}/>
+                <span className="tech-name">JavaScript</span>
+              </div>
+              <div className="tech-item" data-tech="React">
+                <Image src="/images/react.svg" alt="React" loading="lazy" width={50} height={50}/>
+                <span className="tech-name">React</span>
+              </div>
+              <div className="tech-item" data-tech="Next.js">
+                <Image src="/images/next.svg" alt="Next.js" loading="lazy" width={60} height={60}/>
+                <span className="tech-name">Next.js</span>
+              </div>
+              <div className="tech-item" data-tech="Node.js">
+                <Image src="/images/node.svg" alt="Node.js" loading="lazy" width={50} height={50}/>
+                <span className="tech-name">Node.js</span>
+              </div>
+              <div className="tech-item" data-tech="MongoDB">
+                <Image src="/images/mongodb.svg" alt="MongoDB" loading="lazy" width={50} height={50}/>
+                <span className="tech-name">MongoDB</span>
+              </div>
+              <div className="tech-item" data-tech="Supabase">
+                <Image src="/images/supaBase.png" alt="Supabase" loading="lazy" width={50} height={50}/>
+                <span className="tech-name">Supabase</span>
+              </div>
+              <div className="tech-item" data-tech="Git">
+                <Image
+                  src="/images/git-svgrepo-com.svg"
+                  alt="Git"
+                  loading="lazy"
+                  width={50}
+                  height={50}
+                />
+                <span className="tech-name">Git</span>
+              </div>
+              <div className="tech-item" data-tech="Python">
+                <Image src="/images/python.svg" alt="Python" loading="lazy" width={50} height={50}/>
+                <span className="tech-name">Python</span>
+              </div>
+              <div className="tech-item" data-tech="NPM">
+                <Image src="/images/npm.svg" alt="NPM" loading="lazy" width={50} height={50}/>
+                <span className="tech-name">NPM</span>
+              </div>
+              <div className="tech-item" data-tech="TypeScript">
+                <Image src="/images/openai.svg" alt="TypeScript" loading="lazy" width={50} height={50}/>
+                <span className="tech-name">OpenAI Agent SDK</span>
+              </div>
+              <div className="tech-item" data-tech="Linux">
+                <Image src="/images/linux.svg" alt="Linux" loading="lazy" width={50} height={50}/>
+                <span className="tech-name">Linux</span>
+              </div>
+              <div className="tech-item" data-tech="C++">
+                <Image src="/images/cpp.svg" alt="C++" loading="lazy" width={50} height={50}/>
+                <span className="tech-name">C++</span>
+              </div>
+              <div className="tech-item" data-tech="github">
+                <Image src="/images/github.png" alt="github" loading="lazy" width={50} height={50}/>
+                <span className="tech-name">Github</span>
+              </div>
+              <div className="tech-item" data-tech="tailwindcss">
+                <Image src="/images/tailwindcss.svg" alt="tailwindcss" loading="lazy" width={50} height={50}/>
+                <span className="tech-name">Tailwind CSS</span>
+              </div>
+
             </div>
           </div>
         </div>
