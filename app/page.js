@@ -20,16 +20,155 @@ export default function Home() {
     { id: 1, text: "Hey! I'm Chatty, Muhammad Usman's assistant. If you need any info about Usman just ask!", sender: 'bot' }
   ]);
   const [isLoading, setIsLoading] = useState(false);
+  const [chatbotVisible, setChatbotVisible] = useState(true);
+  const [showChatbotToggle, setShowChatbotToggle] = useState(false);
   const messagesEndRef = useRef(null);
+  const techTrackRef = useRef(null);
+  const [techStackIndex, setTechStackIndex] = useState(0);
+  const techItems = [
+    { tech: "HTML5", src: "/images/html.svg", name: "HTML5" },
+    { tech: "CSS3", src: "/images/css.svg", name: "CSS3" },
+    { tech: "JavaScript", src: "/images/js.png", name: "JavaScript" },
+    { tech: "React", src: "/images/react.svg", name: "React" },
+    { tech: "Next.js", src: "/images/next.svg", name: "Next.js" },
+    { tech: "Node.js", src: "/images/node.svg", name: "Node.js" },
+    { tech: "MongoDB", src: "/images/mongodb.svg", name: "MongoDB" },
+    { tech: "Supabase", src: "/images/supaBase.png", name: "Supabase" },
+    { tech: "Git", src: "/images/git-svgrepo-com.svg", name: "Git" },
+    { tech: "Python", src: "/images/python.svg", name: "Python" },
+    { tech: "NPM", src: "/images/npm.svg", name: "NPM" },
+    { tech: "TypeScript", src: "/images/openai.svg", name: "OpenAI SDK" },
+    { tech: "Linux", src: "/images/linux.svg", name: "Linux" },
+    { tech: "C++", src: "/images/cpp.svg", name: "C++" },
+    { tech: "github", src: "/images/github.png", name: "Github" },
+    { tech: "tailwindcss", src: "/images/tailwindcss.svg", name: "Tailwind CSS" }
+  ];
+  const itemsPerPage = 4; // Number of items to show per page on mobile
   
   // Auto-scroll to bottom of chat when messages change
   useEffect(() => {
     scrollToBottom();
   }, [chatMessages]);
   
+  // Auto-hide chatbot on mobile after 10 seconds
+  useEffect(() => {
+    const isMobile = window.innerWidth <= 768;
+    
+    if (isMobile) {
+      const timer = setTimeout(() => {
+        setChatbotVisible(false);
+        setShowChatbotToggle(true);
+      }, 10000); // 10 seconds
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
+  
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+  
+  // Calculate the scroll amount for exactly 3 items (width of 3 tech items + gaps)
+  const calculateScrollAmount = () => {
+    // Each item is 90px wide + 15px gap, so 3 items would be: 3*90 + 2*15 = 270 + 30 = 300px
+    return (90 * 3) + (15 * 2); // 3 items + 2 gaps between them
+  };
+
+  // Tech Stack Navigation Functions - Scroll by exactly 3 items
+  const nextTechPage = async () => {
+    if (techTrackRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = techTrackRef.current;
+      const scrollAmount = calculateScrollAmount();
+      const maxScroll = scrollWidth - clientWidth;
+      
+      if (scrollLeft >= maxScroll - 1) {
+        // If at the end, loop back to the beginning
+        techTrackRef.current.scrollTo({
+          left: 0,
+          behavior: 'smooth'
+        });
+      } else {
+        // Scroll by exactly 3 items to the right
+        techTrackRef.current.scrollBy({
+          left: scrollAmount,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };
+
+  const prevTechPage = async () => {
+    if (techTrackRef.current) {
+      const { scrollLeft } = techTrackRef.current;
+      const scrollAmount = calculateScrollAmount();
+      
+      if (scrollLeft <= 1) {
+        // If at the beginning, loop to the end
+        techTrackRef.current.scrollTo({
+          left: techTrackRef.current.scrollWidth - techTrackRef.current.clientWidth,
+          behavior: 'smooth'
+        });
+      } else {
+        // Scroll by exactly 3 items to the left
+        techTrackRef.current.scrollBy({
+          left: -scrollAmount,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };
+
+  // Function to show the chatbot again
+  const showChatbot = () => {
+    setChatbotVisible(true);
+    setShowChatbotToggle(false);
+  };
+
+  // Auto-hide chatbot logic with reset on user interaction
+  useEffect(() => {
+    const handleUserInteraction = () => {
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile) {
+        setChatbotVisible(true);
+        setShowChatbotToggle(false);
+        
+        // Reset the auto-hide timer
+        clearTimeout(autoHideTimer);
+        autoHideTimer = setTimeout(() => {
+          setChatbotVisible(false);
+          setShowChatbotToggle(true);
+        }, 10000); // 10 seconds
+      }
+    };
+
+    let autoHideTimer;
+
+    // Only set up auto-hide and interaction handlers on mobile
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+      // Initial auto-hide after 10 seconds
+      autoHideTimer = setTimeout(() => {
+        setChatbotVisible(false);
+        setShowChatbotToggle(true);
+      }, 10000);
+
+      // Add event listeners for user interactions
+      window.addEventListener('click', handleUserInteraction);
+      window.addEventListener('touchstart', handleUserInteraction);
+      window.addEventListener('scroll', handleUserInteraction);
+    }
+
+    // Clean up event listeners and timer
+    return () => {
+      if (isMobile) {
+        clearTimeout(autoHideTimer);
+        window.removeEventListener('click', handleUserInteraction);
+        window.removeEventListener('touchstart', handleUserInteraction);
+        window.removeEventListener('scroll', handleUserInteraction);
+      }
+    };
+  }, []);
+
   usePortfolio();
 
   const openModal = (modalType) => {
@@ -245,7 +384,8 @@ export default function Home() {
 
       <section className="tech-stack-section" id="tech-stack">
         <h1 className="section-title autoDisplay"><span className="gradient">Tech Stack</span> 🚀</h1>
-        <div className="tech-scroll-container">
+        {/* Desktop: Original horizontal scrolling tech stack */}
+        <div className="tech-scroll-container desktop-tech-stack">
           <div className="tech-scroll-wrapper">
             <div className="tech-scroll-track" id="techScrollTrack">
               {/* First set */}
@@ -467,6 +607,37 @@ export default function Home() {
             </div>
           </div>
         </div>
+        
+        {/* Mobile: Horizontal tech stack with side navigation buttons */}
+        <div className="tech-mobile-container">
+          <div className="tech-mobile-wrapper">
+            <button className="tech-nav-btn tech-prev-btn" onClick={prevTechPage}>
+              <i className="bx bx-chevron-left"></i>
+            </button>
+            
+            <div className="tech-mobile-track" ref={techTrackRef}>
+              {/* First set - Original items */}
+              {techItems.map((item, index) => (
+                <div key={`original-${item.tech}-${index}`} className="tech-mobile-item">
+                  <Image src={item.src} alt={item.tech} loading="lazy" width={40} height={40}/>
+                  <span className="tech-name">{item.name}</span>
+                </div>
+              ))}
+              {/* Duplicate set - For seamless looping */}
+              {techItems.map((item, index) => (
+                <div key={`duplicate-${item.tech}-${index}`} className="tech-mobile-item">
+                  <Image src={item.src} alt={item.tech} loading="lazy" width={40} height={40}/>
+                  <span className="tech-name">{item.name}</span>
+                </div>
+              ))}
+            </div>
+            
+            <button className="tech-nav-btn tech-next-btn" onClick={nextTechPage}>
+              <i className="bx bx-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+        
         <div className="tech-description-container">
           <h2 className="tech-subtitle">Technologies I Work With</h2>
           <p className="tech-description">
@@ -560,7 +731,7 @@ export default function Home() {
         </div>
       )}
     {/* Chatbot Interface */}
-    {activeChat && (
+    {activeChat && chatbotVisible && (
       <div className="chatbot-interface-overlay" onClick={closeChat}>
         <div className="chatbot-interface" onClick={(e) => e.stopPropagation()}>
           <div className="chatbot-header">
@@ -616,12 +787,20 @@ export default function Home() {
 
     {/* Chatbot Icon - Fixed to bottom right */}
     <div className="chatbot-container">
-      <div className="chatbot-thought-bubble">
-        <p>Hey! I'm Chatty, Usman's assistant</p>
-      </div>
-      <button className="chatbot-icon-btn" onClick={openChat}>
-        <img src="/bot.png" alt="Chat with Usman's assistant" width={80} height={80} />
-      </button>
+      {showChatbotToggle ? (
+        <button className="chatbot-toggle-btn" onClick={showChatbot}>
+          <img src="/bot.png" alt="Chat with Usman's assistant" width={80} height={80} />
+        </button>
+      ) : (
+        <>
+          <div className="chatbot-thought-bubble">
+            <p>Hey! I'm Chatty, Usman's assistant</p>
+          </div>
+          <button className="chatbot-icon-btn" onClick={openChat}>
+            <img src="/bot.png" alt="Chat with Usman's assistant" width={80} height={80} />
+          </button>
+        </>
+      )}
     </div>
 
     </div>
