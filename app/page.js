@@ -10,6 +10,7 @@ import Info from './components/Info';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Sidebar from './components/Sidebar';
+import Contact from './components/Contact';
 
 export default function Home() {
   const [activeModal, setActiveModal] = useState(null);
@@ -307,62 +308,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="contact-section" id="contact">
-        <h1 className="section-title"><span className="gradient">Let's Talk</span> 😊</h1>
-
-        <div className="contact-intro">
-          <p className="contact-intro-text">
-            Whether you're building a new web experience, enhancing your current platform, or exploring AI-powered projects, I'm here to help make it happen.
-          </p>
-        </div>
-
-        <div className="social-box">
-          <a href="tel:+923256550687"
-            ><i className="bx bxs-phone"></i> +92 325 6550687</a
-          >
-          <a href="mailto:muhammadusman5965etc@gmail.com"
-            ><i className="bx bxl-telegram"></i> Email Me</a
-          >
-          <a href="https://www.linkedin.com/in/muhammad-usman-099704390?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer"><i className="bx bxl-linkedin-square"></i> LinkedIn</a>
-          <a href="https://github.com/MuhammadUsmanGM" target="_blank" rel="noopener noreferrer">
-            <i className="bx bxl-github"></i> GitHub
-          </a>
-        </div>
-
-        <div className="contact-box">
-          <form id="contactForm">
-            <p className="input-label">Full Name</p>
-            <input
-              placeholder="Your Full Name"
-              type="text"
-              name="name"
-              required
-            />
-
-            <p className="input-label">Email Address</p>
-            <input
-              placeholder="Your Email"
-              type="email"
-              name="email"
-              required
-            />
-
-            <p className="input-label">Your Message</p>
-            <textarea
-              className="input-message"
-              name="message"
-              placeholder="Share your thoughts..."
-              required
-              rows="4"
-            ></textarea>
-
-            <button type="submit">
-              Send Message <i className="bx bx-mail-send"></i>
-            </button>
-            <p id="formStatus"></p>
-          </form>
-        </div>
-      </section>
+      <Contact />
 
       <footer className="main-footer">
         <div className="footer-content">

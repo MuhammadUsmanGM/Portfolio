@@ -1585,6 +1585,19 @@ header ul a:hover::after {
     left: 100%;
 }
 
+.input-container {
+  position: relative;
+}
+
+.error-message {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: red;
+  font-size: 12px;
+}
+
 /* Form validation styles */
 .contact-box input.error {
     border-color: #ff4444;
