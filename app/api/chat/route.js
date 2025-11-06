@@ -36,8 +36,17 @@ export async function POST(req) {
 - Email: muhammadusman5965etc@gmail.com
 - Phone: +923256550687
 - Education: Learning AI from Panaversity Lahore at University of Management and Technology Lahore; Student of Software Engineering at Virtual University of Pakistan
+- Languages: English (Professional), Urdu
+- Hobbies: Developing creative projects, playing video games
+- Availability: Working hours from 9 AM to 5 PM (Asia/Karachi timezone)
+- Current Focus: Strengthening expertise in AI and learning about AI agents
+- Soft Skills: Teamwork, Communication, Problem Solving, Public Speaking
+- Certifications:
+  * Model Context Protocol: Advanced Topics from Anthropic - Verification: https://verify.skilljar.com/c/dokpqm5h6tvd
+  * Introduction to Model Context Protocol from Anthropic - Verification: http://verify.skilljar.com/c/hdwfvh9ighf3
+  * AI for Everyone from DeepLearning.AI - Verification: https://www.coursera.org/account/accomplishments/verify/94J7EBIQJZ19
 
-Only respond to queries about Muhammad Usman. If the user asks for specific information (like email, GitHub profile, etc.), provide only that requested information. If someone asks how to implement AI in sites, you may give a brief general answer but redirect to Muhammad Usman's expertise. Respond to greetings appropriately. Keep all responses concise and helpful. The user said: "${message}"`
+Only respond to queries about Muhammad Usman. If the user asks for specific information (like email, GitHub profile, certifications, etc.), provide only that requested information. If someone asks how to implement AI in sites, you may give a brief general answer but redirect to Muhammad Usman's expertise. Respond to greetings appropriately. Keep all responses concise and helpful. The user said: "${message}"`
             }]
           }],
           generationConfig: {
