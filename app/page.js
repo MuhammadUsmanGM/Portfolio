@@ -461,6 +461,16 @@ export default function Home() {
           </div>
         </div>
       )}
+    {/* Chatbot Icon - Fixed to bottom left */}
+    <div className="chatbot-container">
+      <div className="chatbot-thought-bubble">
+        <p>Hey! I'm Chatty, Usman's assistant</p>
+      </div>
+      <button className="chatbot-icon-btn" onClick={() => console.log('Chat opened')}>
+        <img src="/bot.png" alt="Chat with Usman's assistant" width={60} height={60} />
+      </button>
+    </div>
+
     </div>
   )
 }
