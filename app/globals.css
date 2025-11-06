@@ -3704,6 +3704,196 @@ header ul a:hover::after {
     }
 }
 
+/* Chatbot Interface Styles */
+.chatbot-interface-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+
+.chatbot-interface {
+    width: 90%;
+    max-width: 500px;
+    height: 70vh;
+    max-height: 600px;
+    background: rgba(15, 23, 42, 0.95);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(114, 161, 222, 0.4);
+    border: 1px solid rgba(114, 161, 222, 0.4);
+    backdrop-filter: blur(10px);
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.chatbot-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(90deg, 
+        rgba(15, 23, 42, 0.9) 0%, 
+        rgba(30, 46, 82, 0.7) 100%);
+    border-bottom: 1px solid rgba(114, 161, 222, 0.3);
+}
+
+.chatbot-header-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+    border: 2px solid rgba(114, 161, 222, 0.5);
+}
+
+.chatbot-header-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.chatbot-header-text h3 {
+    margin: 0 0 3px 0;
+    color: #72a1de;
+    font-size: 18px;
+}
+
+.chatbot-header-text p {
+    margin: 0;
+    font-size: 12px;
+    color: #a9b4c6;
+}
+
+.chatbot-close-btn {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: #a9b4c6;
+    font-size: 24px;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.chatbot-close-btn:hover {
+    background: rgba(114, 161, 222, 0.2);
+    color: #72a1de;
+}
+
+.chatbot-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.chatbot-message {
+    max-width: 80%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.chatbot-message.bot-message {
+    align-self: flex-start;
+    background: rgba(114, 161, 222, 0.2);
+    border: 1px solid rgba(114, 161, 222, 0.3);
+    color: #e2e8f0;
+    border-bottom-left-radius: 5px;
+}
+
+.chatbot-message.user-message {
+    align-self: flex-end;
+    background: rgba(168, 85, 247, 0.2);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    color: #e2e8f0;
+    border-bottom-right-radius: 5px;
+}
+
+.chatbot-message-content {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.chatbot-input-area {
+    display: flex;
+    padding: 15px;
+    background: rgba(15, 23, 42, 0.9);
+    border-top: 1px solid rgba(114, 161, 222, 0.3);
+}
+
+.chatbot-input {
+    flex: 1;
+    padding: 12px 15px;
+    border-radius: 25px;
+    border: 1px solid rgba(114, 161, 222, 0.4);
+    background: rgba(30, 46, 82, 0.5);
+    color: #e2e8f0;
+    outline: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.chatbot-input:focus {
+    border-color: #72a1de;
+    box-shadow: 0 0 0 3px rgba(114, 161, 222, 0.3);
+}
+
+.chatbot-send-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #72a1de, #a855f7);
+    color: white;
+    margin-left: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.chatbot-send-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(114, 161, 222, 0.5);
+}
+
 /* Add scroll-responsive effects */
 body.scrolling::-webkit-scrollbar-thumb {
     animation: 
