@@ -841,22 +841,31 @@ export default function Home() {
               <p>Hey! I'm Chatty, Usman's assistant</p>
             </div>
           )}
-          <button 
-            className={`chatbot-icon-btn ${chatbotMode === 'corner' ? 'chatbot-corner-btn' : ''}`} 
-            onClick={openChat}
-            onMouseEnter={() => {
-              if (chatbotMode === 'corner') {
-                setChatbotMode('default');
-              }
-            }}
-            onTouchStart={() => {
-              if (chatbotMode === 'corner') {
-                setChatbotMode('default');
-              }
-            }}
-          >
-            <img src="/bot.png" alt="Chat with Usman's assistant" width={80} height={80} />
-          </button>
+          <div className="chatbot-sleep-container">
+            {chatbotMode === 'corner' && (
+              <>
+                <div className="sleeping-z-pattern z1">Z</div>
+                <div className="sleeping-z-pattern z2">Z</div>
+                <div className="sleeping-z-pattern z3">Z</div>
+              </>
+            )}
+            <button 
+              className={`chatbot-icon-btn ${chatbotMode === 'corner' ? 'chatbot-corner-btn' : ''}`} 
+              onClick={openChat}
+              onMouseEnter={() => {
+                if (chatbotMode === 'corner') {
+                  setChatbotMode('default');
+                }
+              }}
+              onTouchStart={() => {
+                if (chatbotMode === 'corner') {
+                  setChatbotMode('default');
+                }
+              }}
+            >
+              <img src="/bot.png" alt="Chat with Usman's assistant" width={80} height={80} />
+            </button>
+          </div>
         </>
       )}
     </div>

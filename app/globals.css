@@ -4248,3 +4248,70 @@ body.scrolling::-webkit-scrollbar-thumb {
         0 0 35px rgba(114, 161, 222, 0.5) inset;
     opacity: 1;
 }
+
+/* Chatbot sleep container to allow proper positioning of Z's */
+.chatbot-sleep-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* Sleeping Z pattern */
+.sleeping-z-pattern {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: #72a1de;
+    opacity: 0;
+    z-index: 1000;
+    pointer-events: none;
+    text-shadow: 
+        0 0 5px rgba(114, 161, 222, 0.7),
+        0 0 10px rgba(114, 161, 222, 0.5);
+    white-space: nowrap;
+}
+
+.sleeping-z-pattern.z1 {
+    animation: 
+        floatUp 3s infinite 0s,
+        fadeInOut 3s infinite 0s;
+}
+
+.sleeping-z-pattern.z2 {
+    animation: 
+        floatUp 3s infinite 1s,
+        fadeInOut 3s infinite 1s;
+}
+
+.sleeping-z-pattern.z3 {
+    animation: 
+        floatUp 3s infinite 2s,
+        fadeInOut 3s infinite 2s;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateX(-50%) translateY(0);
+    }
+    100% {
+        transform: translateX(-50%) translateY(-50px);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0;
+    }
+}
