@@ -22,6 +22,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [chatbotVisible, setChatbotVisible] = useState(true);
   const [showChatbotToggle, setShowChatbotToggle] = useState(false);
+  const [chatbotMode, setChatbotMode] = useState('default'); // 'default' or 'corner'
   const messagesEndRef = useRef(null);
   const techTrackRef = useRef(null);
   const [techStackIndex, setTechStackIndex] = useState(0);
@@ -62,6 +63,44 @@ export default function Home() {
 
       return () => clearTimeout(timer);
     }
+  }, []);
+
+  // Chatbot behavior: Show thought bubble for 20 seconds, then move to corner
+  useEffect(() => {
+    // Set initial timer to move chatbot to corner after 20 seconds
+    const timer = setTimeout(() => {
+      setChatbotMode('corner');
+    }, 20000);
+
+    // Reset timer when user interacts with chatbot
+    const resetTimer = () => {
+      clearTimeout(timer);
+      setChatbotMode('default');
+      // Set a new timer to move to corner after another 20 seconds
+      const newTimer = setTimeout(() => {
+        setChatbotMode('corner');
+      }, 20000);
+      // Store the new timer ID
+      window.chatbotTimer = newTimer;
+    };
+
+    const chatbotButton = document.querySelector('.chatbot-icon-btn');
+    if (chatbotButton) {
+      chatbotButton.addEventListener('mouseenter', resetTimer);
+      chatbotButton.addEventListener('click', resetTimer);
+    }
+
+    // Cleanup function
+    return () => {
+      clearTimeout(timer);
+      if (window.chatbotTimer) {
+        clearTimeout(window.chatbotTimer);
+      }
+      if (chatbotButton) {
+        chatbotButton.removeEventListener('mouseenter', resetTimer);
+        chatbotButton.removeEventListener('click', resetTimer);
+      }
+    };
   }, []);
   
   const scrollToBottom = () => {
@@ -182,6 +221,10 @@ export default function Home() {
   };
 
   const openChat = () => {
+    // If chatbot is in corner mode, restore it to default first
+    if (chatbotMode === 'corner') {
+      setChatbotMode('default');
+    }
     setActiveChat(true);
     document.body.style.overflow = 'hidden'; // Prevent background scrolling
   };
@@ -786,17 +829,32 @@ export default function Home() {
     )}
 
     {/* Chatbot Icon - Fixed to bottom right */}
-    <div className="chatbot-container">
+    <div className={`chatbot-container ${chatbotMode === 'corner' ? 'chatbot-corner' : ''}`}>
       {showChatbotToggle ? (
         <button className="chatbot-toggle-btn" onClick={showChatbot}>
           <img src="/bot.png" alt="Chat with Usman's assistant" width={80} height={80} />
         </button>
       ) : (
         <>
-          <div className="chatbot-thought-bubble">
-            <p>Hey! I'm Chatty, Usman's assistant</p>
-          </div>
-          <button className="chatbot-icon-btn" onClick={openChat}>
+          {chatbotMode === 'default' && (
+            <div className="chatbot-thought-bubble">
+              <p>Hey! I'm Chatty, Usman's assistant</p>
+            </div>
+          )}
+          <button 
+            className={`chatbot-icon-btn ${chatbotMode === 'corner' ? 'chatbot-corner-btn' : ''}`} 
+            onClick={openChat}
+            onMouseEnter={() => {
+              if (chatbotMode === 'corner') {
+                setChatbotMode('default');
+              }
+            }}
+            onTouchStart={() => {
+              if (chatbotMode === 'corner') {
+                setChatbotMode('default');
+              }
+            }}
+          >
             <img src="/bot.png" alt="Chat with Usman's assistant" width={80} height={80} />
           </button>
         </>

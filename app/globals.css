@@ -4209,3 +4209,42 @@ body.scrolling::-webkit-scrollbar-thumb {
         colorShift 3s linear infinite,
         thumbPulse 1s ease-in-out infinite;
 }
+
+/* Chatbot corner mode styles */
+.chatbot-container.chatbot-corner {
+    bottom: 10px !important;
+    right: 10px !important;
+    opacity: 0.7;
+    transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.chatbot-container.chatbot-corner:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.chatbot-icon-btn.chatbot-corner-btn {
+    width: 60px !important;
+    height: 60px !important;
+    opacity: 0.7;
+    transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: subtleVibration 3s ease-in-out infinite;
+}
+
+@keyframes subtleVibration {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.chatbot-icon-btn.chatbot-corner-btn:hover {
+    transform: scale(1.15) !important;
+    animation: none; /* Stop vibration on hover */
+    box-shadow:
+        0 0 25px rgba(114, 161, 222, 0.8),
+        0 0 35px rgba(114, 161, 222, 0.5) inset;
+    opacity: 1;
+}
