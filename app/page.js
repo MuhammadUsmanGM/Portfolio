@@ -783,7 +783,7 @@ export default function Home() {
             </div>
             <div className="chatbot-header-text">
               <h3>Chatty</h3>
-              <p>Usman's Assistant</p>
+              <p>Muhammad Usman's Assistant</p>
             </div>
             <button className="chatbot-close-btn" onClick={closeChat}>
               <i className="bx bx-x"></i>
