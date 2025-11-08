@@ -68,20 +68,21 @@ export default function Home() {
   // Chatbot behavior: Show thought bubble for 20 seconds, then move to corner
   useEffect(() => {
     // Set initial timer to move chatbot to corner after 20 seconds
-    const timer = setTimeout(() => {
+    // Store the timer ID in window to be accessible for clearing
+    window.chatbotTimer = setTimeout(() => {
       setChatbotMode('corner');
     }, 20000);
 
     // Reset timer when user interacts with chatbot
     const resetTimer = () => {
-      clearTimeout(timer);
+      if (window.chatbotTimer) {
+        clearTimeout(window.chatbotTimer);
+      }
       setChatbotMode('default');
       // Set a new timer to move to corner after another 20 seconds
-      const newTimer = setTimeout(() => {
+      window.chatbotTimer = setTimeout(() => {
         setChatbotMode('corner');
       }, 20000);
-      // Store the new timer ID
-      window.chatbotTimer = newTimer;
     };
 
     const chatbotButton = document.querySelector('.chatbot-icon-btn');
@@ -90,15 +91,40 @@ export default function Home() {
       chatbotButton.addEventListener('click', resetTimer);
     }
 
+    // For mobile, only reset timer on direct chatbot interaction, not on scrolling
+    const handleDirectInteraction = (e) => {
+      // Only reset timer if the click/touch is directly on the chatbot
+      if (e.target.closest('.chatbot-icon-btn, .chatbot-toggle-btn, .chatbot-thought-bubble')) {
+        resetTimer();
+      }
+    };
+
+    // Add event listeners for mobile-specific behavior
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+      // Only reset timer on direct chatbot interactions (not on scrolling)
+      window.addEventListener('touchstart', handleDirectInteraction, { passive: true });
+      window.addEventListener('click', handleDirectInteraction);
+    } else {
+      // For desktop, maintain the existing behavior
+      window.addEventListener('click', resetTimer);
+    }
+
     // Cleanup function
     return () => {
-      clearTimeout(timer);
       if (window.chatbotTimer) {
         clearTimeout(window.chatbotTimer);
       }
       if (chatbotButton) {
         chatbotButton.removeEventListener('mouseenter', resetTimer);
         chatbotButton.removeEventListener('click', resetTimer);
+      }
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile) {
+        window.removeEventListener('touchstart', handleDirectInteraction);
+        window.removeEventListener('click', handleDirectInteraction);
+      } else {
+        window.removeEventListener('click', resetTimer);
       }
     };
   }, []);
@@ -107,13 +133,13 @@ export default function Home() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
   
-  // Calculate the scroll amount for exactly 3 items (width of 3 tech items + gaps)
+  // Calculate the scroll amount for exactly 1 item (width of 1 tech item)
   const calculateScrollAmount = () => {
-    // Each item is 90px wide + 15px gap, so 3 items would be: 3*90 + 2*15 = 270 + 30 = 300px
-    return (90 * 3) + (15 * 2); // 3 items + 2 gaps between them
+    // Each item is 90px wide with 15px gap between items
+    return 90; // 1 item width (90px) - we'll scroll by one item at a time
   };
 
-  // Tech Stack Navigation Functions - Scroll by exactly 3 items
+  // Tech Stack Navigation Functions - Scroll by exactly 1 item
   const nextTechPage = async () => {
     if (techTrackRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = techTrackRef.current;
@@ -127,7 +153,7 @@ export default function Home() {
           behavior: 'smooth'
         });
       } else {
-        // Scroll by exactly 3 items to the right
+        // Scroll by exactly 1 item to the right
         techTrackRef.current.scrollBy({
           left: scrollAmount,
           behavior: 'smooth'
@@ -148,7 +174,7 @@ export default function Home() {
           behavior: 'smooth'
         });
       } else {
-        // Scroll by exactly 3 items to the left
+        // Scroll by exactly 1 item to the left
         techTrackRef.current.scrollBy({
           left: -scrollAmount,
           behavior: 'smooth'
