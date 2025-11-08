@@ -32,6 +32,16 @@ export default function Header() {
             <i className="bx bxl-github"></i>
           </a>
         </p>
+        <p>
+          <a
+            href="https://www.linkedin.com/in/muhammad-usman-099704390?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+            aria-label="LinkedIn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i className="bx bxl-linkedin-square"></i>
+          </a>
+        </p>
       </div>
 
       <div
