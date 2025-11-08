@@ -25,26 +25,12 @@ export default function Home() {
   const messagesEndRef = useRef(null);
   const techTrackRef = useRef(null);
   const [techStackIndex, setTechStackIndex] = useState(0);
-  const techItems = [
-    { tech: "HTML5", src: "/images/html.svg", name: "HTML5" },
-    { tech: "CSS3", src: "/images/css.svg", name: "CSS3" },
-    { tech: "JavaScript", src: "/images/js.png", name: "JavaScript" },
-    { tech: "React", src: "/images/react.svg", name: "React" },
-    { tech: "Next.js", src: "/images/next.svg", name: "Next.js" },
-    { tech: "Node.js", src: "/images/node.svg", name: "Node.js" },
-    { tech: "MongoDB", src: "/images/mongodb.svg", name: "MongoDB" },
-    { tech: "Supabase", src: "/images/supaBase.png", name: "Supabase" },
-    { tech: "Git", src: "/images/git-svgrepo-com.svg", name: "Git" },
-    { tech: "Python", src: "/images/python.svg", name: "Python" },
-    { tech: "NPM", src: "/images/npm.svg", name: "NPM" },
-    { tech: "TypeScript", src: "/images/openai.svg", name: "OpenAI SDK" },
-    { tech: "Linux", src: "/images/linux.svg", name: "Linux" },
-    { tech: "C++", src: "/images/cpp.svg", name: "C++" },
-    { tech: "github", src: "/images/github.png", name: "Github" },
-    { tech: "tailwindcss", src: "/images/tailwindcss.svg", name: "Tailwind CSS" }
-  ];
-  const itemsPerPage = 4; // Number of items to show per page on mobile
-  
+  const [isChattySleeping, setIsChattySleeping] = useState(false);
+  const [isChattyHovered, setIsChattyHovered] = useState(false); // New state for hover
+  const [zChars, setZChars] = useState([]);
+  const chattyContainerRef = useRef(null);
+  const inactivityTimerRef = useRef(null); // Ref to store the timer ID
+
   // Auto-scroll to bottom of chat when messages change
   useEffect(() => {
     scrollToBottom();
@@ -63,6 +49,56 @@ export default function Home() {
       return () => clearTimeout(timer);
     }
   }, []);
+
+  // Chatty sleep/awake logic
+  useEffect(() => {
+    const startInactivityTimer = () => {
+      clearTimeout(inactivityTimerRef.current);
+      inactivityTimerRef.current = setTimeout(() => {
+        if (!isChattyHovered && !activeChat) {
+          setIsChattySleeping(true);
+        }
+      }, 15000); // 15 seconds
+    };
+
+    if (isChattyHovered || activeChat) {
+      clearTimeout(inactivityTimerRef.current);
+      setIsChattySleeping(false);
+    } else {
+      startInactivityTimer();
+    }
+
+    return () => clearTimeout(inactivityTimerRef.current);
+  }, [isChattyHovered, activeChat]); // Dependencies: re-run when hover or chat state changes
+
+  // Effect for generating and animating 'z' characters
+  useEffect(() => {
+    let zInterval;
+    if (isChattySleeping) {
+      zInterval = setInterval(() => {
+        const newZ = {
+          id: Date.now(),
+          style: {
+            left: `${Math.random() * 30 + 35}%`, // Random horizontal position near Chatty
+            bottom: '20%', // Start from Chatty's position
+            opacity: 1,
+            transform: 'translateY(0) scale(1)',
+          },
+        };
+        setZChars(prevZ => [...prevZ, newZ]);
+
+        // Remove the 'z' character after its animation duration
+        setTimeout(() => {
+          setZChars(prevZ => prevZ.filter(z => z.id !== newZ.id));
+        }, 3000); // 3 seconds, matching CSS animation duration
+      }, 1000); // Generate a 'z' every 1 second
+    } else {
+      clearInterval(zInterval);
+      setZChars([]); // Clear 'z's when Chatty wakes up
+    }
+
+    return () => clearInterval(zInterval);
+  }, [isChattySleeping]); // Re-run when Chatty's sleep state changes
   
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -786,19 +822,35 @@ export default function Home() {
     )}
 
     {/* Chatbot Icon - Fixed to bottom right */}
-    <div className="chatbot-container">
+    <div
+      ref={chattyContainerRef}
+      className={`chatbot-container ${isChattySleeping ? 'sleeping' : ''}`}
+      onMouseEnter={() => setIsChattyHovered(true)}
+      onMouseLeave={() => setIsChattyHovered(false)}
+    >
       {showChatbotToggle ? (
         <button className="chatbot-toggle-btn" onClick={showChatbot}>
           <img src="/bot.png" alt="Chat with Usman's assistant" width={80} height={80} />
         </button>
       ) : (
         <>
-          <div className="chatbot-thought-bubble">
-            <p>Hey! I'm Chatty, Usman's assistant</p>
-          </div>
-          <button className="chatbot-icon-btn" onClick={openChat}>
+          {!isChattySleeping && ( // Conditionally render thought bubble
+            <div className="chatbot-thought-bubble">
+              <p>Hey! I'm Chatty, Usman's assistant</p>
+            </div>
+          )}
+          <button className={`chatbot-icon-btn ${isChattySleeping ? 'dimmed' : ''}`} onClick={openChat}>
             <img src="/bot.png" alt="Chat with Usman's assistant" width={80} height={80} />
           </button>
+          {isChattySleeping && zChars.map(z => (
+            <span
+              key={z.id}
+              className="z-char"
+              style={z.style}
+            >
+              z
+            </span>
+          ))}
         </>
       )}
     </div>

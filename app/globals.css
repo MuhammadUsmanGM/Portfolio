@@ -3593,6 +3593,50 @@ header ul a:hover::after {
     }
 }
 
+/* Chatty Sleep/Awake Styles */
+.chatbot-container {
+    transition: all 0.5s ease-in-out; /* Smooth transitions for movement and opacity */
+}
+
+.chatbot-container.sleeping {
+    /* Move to bottom-right corner, adjust for its own size (80px width/height for icon) */
+    transform: translate(calc(100vw - 100px), calc(100vh - 100px)); /* Adjust as needed for desired corner */
+    opacity: 0.7; /* Slightly dim the container */
+}
+
+.chatbot-icon-btn {
+    transition: opacity 0.5s ease-in-out; /* Smooth transition for dimming */
+}
+
+.chatbot-icon-btn.dimmed {
+    opacity: 0.5; /* Dims the icon button */
+}
+
+.chatbot-thought-bubble {
+    transition: opacity 0.3s ease-in-out; /* Smooth transition for fading */
+}
+
+.z-char {
+    position: absolute;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.8); /* Slightly dimmed white */
+    pointer-events: none; /* Do not interfere with mouse events */
+    animation: riseAndFade 3s forwards;
+    z-index: 998; /* Below Chatty's icon but above other content */
+}
+
+@keyframes riseAndFade {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-50px) scale(0.5);
+        opacity: 0;
+    }
+}
+
 /* Chatbot Widget Styles - Positioned at bottom right */
 .chatbot-container {
     position: fixed;
