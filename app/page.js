@@ -106,8 +106,8 @@ export default function Home() {
       window.addEventListener('touchstart', handleDirectInteraction, { passive: true });
       window.addEventListener('click', handleDirectInteraction);
     } else {
-      // For desktop, maintain the existing behavior
-      window.addEventListener('click', resetTimer);
+      // For desktop, only reset timer on direct chatbot interaction (not on general clicks)
+      window.addEventListener('click', handleDirectInteraction);
     }
 
     // Cleanup function
