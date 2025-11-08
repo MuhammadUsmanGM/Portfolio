@@ -1111,14 +1111,13 @@ header ul a:hover::after {
     max-width: 400px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
                 inset 0 0 15px rgba(114, 161, 222, 0.1);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transition: box-shadow 0.4s ease;
     min-width: 320px;
     width: 100%;
     text-align: center;
 }
 
 .Designer:hover, .coder:hover {
-    transform: translateY(-10px);
     box-shadow: 0 15px 40px rgba(114, 161, 222, 0.4),
                 inset 0 0 20px rgba(114, 161, 222, 0.2);
 }
