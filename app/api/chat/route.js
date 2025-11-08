@@ -1,5 +1,21 @@
 import { NextResponse } from 'next/server';
 
+// Function to calculate age based on birth date (September 30, 2005)
+function calculateAge() {
+  const birthDate = new Date('2005-09-30');  // September 30, 2005
+  const today = new Date();
+  
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  
+  // If the current month is before the birth month, or if it's the same month but the day is before the birth day
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  
+  return age;
+}
+
 export async function POST(req) {
   try {
     const { message } = await req.json();
@@ -36,7 +52,7 @@ export async function POST(req) {
 - Portfolio: https://portfolio-o4hs.vercel.app/
 - Email: muhammadusman5965etc@gmail.com
 - Phone: +923256550687
-- Date of Birth: September 30, 2005
+- Date of Birth: September 30, 2005 (Age: ${calculateAge()})
 - Location: Lahore, Pakistan
 - Education: Learning AI from Panaversity Lahore at University of Management and Technology Lahore; Student of Software Engineering at Virtual University of Pakistan
 - Languages: English (Professional), Urdu
