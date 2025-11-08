@@ -1550,6 +1550,36 @@ header ul a:hover::after {
                 inset 0 0 15px rgba(114, 161, 222, 0.1);
 }
 
+.contact-form-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 auto 25px; /* Centered margin */
+    background: linear-gradient(45deg, #72a1de, #a855f7, #72a1de);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: animate-gradient 3s linear infinite;
+    position: relative;
+    display: block; /* Changed to block to allow margin auto */
+    z-index: 2;
+    width: fit-content; /* Only take needed width */
+    padding: 0 15px; /* Add slight padding */
+}
+
+.contact-form-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #72a1de, #a855f7, transparent);
+    border-radius: 2px;
+}
+
 .contact-box input{
     padding: 15px 20px;
     background: rgba(255, 255, 255, 0.1);

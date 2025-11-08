@@ -100,6 +100,7 @@ export default function Contact() {
       </div>
 
       <div className="contact-box">
+        <h2 className="contact-form-title">Let's Connect</h2>
         <form id="contactForm" onSubmit={handleSubmit} noValidate>
           <div className="input-container">
             <p className="input-label">Full Name</p>
