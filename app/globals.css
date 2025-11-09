@@ -102,6 +102,192 @@ body {
     min-height: 250px;
 }
 
+/* Project Details Modal Styles */
+.project-details-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    backdrop-filter: blur(5px);
+}
+
+.project-details-modal {
+    background: linear-gradient(145deg, #0f172a, #111a2e);
+    border-radius: 20px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(114, 161, 222, 0.3);
+    position: relative;
+    animation: modalAppear 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.project-details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    border-bottom: 1px solid rgba(114, 161, 222, 0.3);
+    background: linear-gradient(90deg, 
+        rgba(15, 23, 42, 0.9) 0%, 
+        rgba(30, 46, 82, 0.7) 100%);
+    border-radius: 20px 20px 0 0;
+}
+
+.project-details-title {
+    margin: 0;
+    font-size: 24px;
+    color: #72a1de;
+    background: linear-gradient(45deg, #72a1de, #a855f7);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: shine 3s linear infinite;
+}
+
+.project-details-close-btn {
+    background: none;
+    border: none;
+    color: #a9b4c6;
+    font-size: 28px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.project-details-close-btn:hover {
+    background: rgba(114, 161, 222, 0.2);
+    color: #72a1de;
+    transform: scale(1.1);
+}
+
+.project-details-content {
+    padding: 30px;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.project-full-description {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #e2e8f0;
+    margin: 0 0 25px;
+    text-align: left;
+}
+
+.project-details-section {
+    margin-bottom: 25px;
+}
+
+.project-details-section h3 {
+    color: #a855f7;
+    font-size: 18px;
+    margin: 0 0 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(168, 85, 247, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.project-tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.tech-tag {
+    background: linear-gradient(135deg, 
+        rgba(114, 161, 222, 0.2) 0%, 
+        rgba(168, 85, 247, 0.2) 100%);
+    border: 1px solid rgba(114, 161, 222, 0.4);
+    border-radius: 20px;
+    padding: 6px 15px;
+    color: #cfcfcf;
+    font-size: 14px;
+    font-weight: 500;
+    backdrop-filter: blur(5px);
+}
+
+.project-features, .project-challenges {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.project-features li, .project-challenges li {
+    margin-bottom: 12px;
+    color: #e2e8f0;
+    line-height: 1.6;
+    position: relative;
+    padding-left: 20px;
+}
+
+.project-features li::before, .project-challenges li::before {
+    content: "•";
+    color: #72a1de;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.project-details-footer {
+    padding: 20px 30px;
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid rgba(114, 161, 222, 0.3);
+    background: linear-gradient(90deg, 
+        rgba(15, 23, 42, 0.9) 0%, 
+        rgba(30, 46, 82, 0.7) 100%);
+    border-radius: 0 0 20px 20px;
+}
+
+.project-details-close-btn-secondary {
+    padding: 12px 30px;
+    background: linear-gradient(45deg, #72a1de, #6b9bd9);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(114, 161, 222, 0.3);
+}
+
+.project-details-close-btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(114, 161, 222, 0.5);
+    background: linear-gradient(45deg, #6b9bd9, #72a1de);
+}
+
 /* Mobile-specific project card styles */
 @media screen and (max-width: 700px) {
     .project-card {
@@ -955,6 +1141,23 @@ header ul a:hover::after {
 
 .project-info button:hover::before {
     left: 100%;
+}
+
+/* Project buttons layout for multiple buttons */
+.project-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+/* Additional style for details button */
+.project-btn.project-details-btn {
+    background: linear-gradient(45deg, #a855f7, #7e42a7);
+}
+
+.project-btn.project-details-btn:hover {
+    background: linear-gradient(45deg, #7e42a7, #a855f7);
 }
 
 /* Project button disabled state */
