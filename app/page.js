@@ -12,6 +12,35 @@ import Skills from './components/Skills';
 import Sidebar from './components/Sidebar';
 import Contact from './components/Contact';
 
+// Function to convert URLs in text to clickable links
+const convertUrlsToLinks = (text) => {
+  // Regular expression to match URLs
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  
+  // Split text by URLs and wrap URLs with anchor tags
+  const parts = text.split(urlRegex);
+  
+  return parts.map((part, index) => {
+    // If it's a URL (odd indices after splitting)
+    if (index % 2 === 1) {
+      return (
+        <a 
+          key={index} 
+          href={part} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-blue-400 underline hover:text-blue-300"
+          onClick={(e) => e.stopPropagation()} // Prevent chat bubble click from closing
+        >
+          {part}
+        </a>
+      );
+    }
+    // If it's regular text (even indices), return as is
+    return part;
+  });
+};
+
 export default function Home() {
   const [activeModal, setActiveModal] = useState(null);
   const [activeChat, setActiveChat] = useState(false);
@@ -827,7 +856,7 @@ export default function Home() {
                 className={`chatbot-message ${msg.sender === 'bot' ? 'bot-message' : 'user-message'}`}
               >
                 <div className="chatbot-message-content">
-                  {msg.text}
+                  {convertUrlsToLinks(msg.text)}
                 </div>
               </div>
             ))}

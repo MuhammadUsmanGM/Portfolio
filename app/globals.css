@@ -4216,6 +4216,14 @@ header ul a:hover::after {
     word-break: break-all; /* Break long URLs */
     display: inline-block; /* Ensure links are properly contained */
     max-width: 100%; /* Prevent links from overflowing */
+    color: #60a5fa; /* Light blue color matching theme */
+    text-decoration: underline;
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.chatbot-message-content a:hover {
+    color: #3b82f6; /* Slightly darker blue on hover */
+    text-decoration: underline; /* Keep underline on hover */
 }
 
 .chatbot-input-area {
