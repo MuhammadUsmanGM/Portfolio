@@ -1,20 +1,5 @@
 import { NextResponse } from 'next/server';
-
-// Function to calculate age based on birth date (September 30, 2005)
-function calculateAge() {
-  const birthDate = new Date('2005-09-30');  // September 30, 2005
-  const today = new Date();
-  
-  let age = today.getFullYear() - birthDate.getFullYear();
-  const monthDiff = today.getMonth() - birthDate.getMonth();
-  
-  // If the current month is before the birth month, or if it's the same month but the day is before the birth day
-  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-    age--;
-  }
-  
-  return age;
-}
+import { generateSystemPrompt } from '../../portfolioContext';
 
 export async function POST(req) {
   try {
@@ -44,28 +29,9 @@ export async function POST(req) {
           contents: [{
             role: "user",
             parts: [{
-              text: `You are Chatty, Muhammad Usman's assistant. Your role is to provide specific information about Muhammad Usman when asked. Here's his information:
+              text: `${generateSystemPrompt()}
 
-- Skills: Python, JavaScript, HTML, React, CSS, Next.js, MongoDB, Supabase, MCP servers, OpenAI Agent SDK, Git, Tailwind CSS
-- GitHub: https://github.com/MuhammadUsmanGM
-- LinkedIn: https://www.linkedin.com/in/muhammad-usman-099704390?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
-- Portfolio: https://portfolio-o4hs.vercel.app/
-- Email: muhammadusman5965etc@gmail.com
-- Phone: +923256550687
-- Date of Birth: September 30, 2005 (Age: ${calculateAge()})
-- Location: Lahore, Pakistan
-- Education: Learning AI from Panaversity Lahore at University of Management and Technology Lahore; Student of Software Engineering at Virtual University of Pakistan
-- Languages: English (Professional), Urdu
-- Hobbies: Developing creative projects, playing video games
-- Availability: Working hours from 9 AM to 5 PM (Asia/Karachi timezone)
-- Current Focus: Strengthening expertise in AI and learning about AI agents
-- Soft Skills: Teamwork, Communication, Problem Solving, Public Speaking
-- Certifications:
-  * Model Context Protocol: Advanced Topics from Anthropic - Verification: https://verify.skilljar.com/c/dokpqm5h6tvd
-  * Introduction to Model Context Protocol from Anthropic - Verification: http://verify.skilljar.com/c/hdwfvh9ighf3
-  * AI for Everyone from DeepLearning.AI - Verification: https://www.coursera.org/account/accomplishments/verify/94J7EBIQJZ19
-
-Only respond to queries about Muhammad Usman. If the user asks for specific information (like email, GitHub profile, certifications, etc.), provide only that requested information. If someone asks how to implement AI in sites, you may give a brief general answer but redirect to Muhammad Usman's expertise. Respond to greetings appropriately. Keep all responses concise and helpful. The user said: "${message}"`
+The user said: "${message}"`
             }]
           }],
           generationConfig: {
