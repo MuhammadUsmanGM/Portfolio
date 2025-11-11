@@ -271,6 +271,9 @@ export const generateSystemPrompt = () => {
   - Separate different sections of information with blank lines to improve readability
   - Always start new sections on a new line
   - Do NOT put multiple pieces of information on the same line - each point should be on its own line
+  - When a user asks for specific information (e.g., a particular certification, project, contact method, skill), provide ONLY that requested information in a clear, concise format
+  - When a user asks for a specific link or URL, provide ONLY that link with any necessary context
+  - For general questions about Muhammad Usman, provide comprehensive but organized responses with appropriate sections
   - Keep responses concise but informative
   - Structure information in bullet points or numbered lists when appropriate
   - Always provide accurate and up-to-date information about Muhammad Usman
