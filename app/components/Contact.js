@@ -88,6 +88,9 @@ export default function Contact() {
         <a href="tel:+923256550687">
           <i className="bx bxs-phone"></i> +92 325 6550687
         </a>
+        <a href="https://wa.me/923256550687?text=Hi%20Muhammad%20Usman,%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect!" target="_blank" rel="noopener noreferrer">
+          <i className="bx bxl-whatsapp"></i> WhatsApp
+        </a>
         <a href="mailto:muhammadusman5965etc@gmail.com">
           <i className="bx bxl-telegram"></i> Email Me
         </a>
