@@ -122,7 +122,7 @@ const portfolioContext = {
         "Clean and responsive newsletter interface"
       ],
       liveUrl: "https://news-letter-umber-five.vercel.app/",
-      githubUrl: "https://github.com/MuhammadUsmanGM/NewsLetter-AI",
+      githubUrl: "https://github.com/MuhammadUsmanGM/NewsLetter",  // Updated link
       status: "Live"
     },
     {
@@ -136,13 +136,55 @@ const portfolioContext = {
         "Showcases projects and skills dynamically"
       ],
       liveUrl: "https://portfolio-o4hs.vercel.app/",
-      githubUrl: "https://github.com/MuhammadUsmanGM/portfolio",
+      githubUrl: "https://github.com/MuhammadUsmanGM/Portfolio",  // Updated link
       status: "Live"
     }
   ],
 
   // ============================================
-  // 5. HOBBIES
+  // 5. SOFT SKILLS
+  softSkills: [
+    "Teamwork", 
+    "Communication", 
+    "Problem Solving", 
+    "Public Speaking",
+    "Adaptability",
+    "Time Management",
+    "Leadership"
+  ],
+
+  // ============================================
+  // 6. METHODOLOGY
+  methodology: {
+    approach: "Agile and iterative development with focus on user experience",
+    developmentProcess: [
+      "Requirement analysis and planning",
+      "Prototyping and wireframing",
+      "Iterative development with continuous feedback",
+      "Testing and quality assurance",
+      "Deployment and maintenance"
+    ],
+    values: [
+      "Creating user-centered solutions",
+      "Writing clean and maintainable code",
+      "Continuous learning and improvement",
+      "Collaboration and communication"
+    ]
+  },
+
+  // ============================================
+  // 7. EDUCATION
+  education: {
+    current: [
+      "Learning AI from Panaversity Lahore at University of Management and Technology Lahore",
+      "Student of Software Engineering at Virtual University of Pakistan"
+    ],
+    focus: "Strengthening expertise in AI and learning about AI agents",
+    workingHours: "Working hours from 9 AM to 5 PM (Asia/Karachi timezone)"
+  },
+
+  // ============================================
+  // 8. HOBBIES
   hobbies: ["Developing something creative", "Playing video games"],
 
   // ============================================
@@ -197,7 +239,7 @@ function calculateAge() {
 }
 
 export const generateSystemPrompt = () => {
-  const { currentStatus, professional, skills, techStack, toolsPlatforms, aiAgentSkills, projects, hobbies, contact, certifications, personaBoundaries } = portfolioContext;
+  const { currentStatus, professional, skills, techStack, toolsPlatforms, aiAgentSkills, projects, softSkills, methodology, education, hobbies, contact, certifications, personaBoundaries } = portfolioContext;
 
   // Format certifications in a cleaner, more readable way
   const formattedCertifications = certifications.map(cert => 
@@ -233,6 +275,18 @@ export const generateSystemPrompt = () => {
   - AI & ML Focus: ${skills.aiAndML.focus}
   - Currently Learning: ${skills.currentlyLearning.join(", ")}
   
+  Soft Skills: ${softSkills.join(", ")}
+
+  Development Approach:
+  - Methodology: ${methodology.approach}
+  - Development Process: ${methodology.developmentProcess.join(", ")}
+  - Core Values: ${methodology.values.join(", ")}
+
+  Education:
+  - Current Studies: ${education.current.join(", ")}
+  - Current Focus: ${education.focus}
+  - Working Hours: ${education.workingHours}
+
   Tech Stack: ${techStack.join(", ")}
   Tools & Platforms: ${toolsPlatforms.join(", ")}
   AI Agent Skills: ${aiAgentSkills.join(", ")}
