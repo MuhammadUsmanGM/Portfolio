@@ -777,7 +777,23 @@ export default function Home() {
                 <li><a href="tel:+923256550687">Phone</a></li>
               </ul>
             </div>
-            
+
+            <div className="footer-column">
+              <h4>Resume</h4>
+              <ul>
+                <li>
+                  <a href="/usman-agentic-ai-developer-resume.pdf" download>
+                    <i className="bx bx-download"></i> Download CV
+                  </a>
+                </li>
+                <li>
+                  <a href="https://muhammadusmangmresume.my.canva.site/" target="_blank" rel="noopener noreferrer">
+                    <i className="bx bx-globe"></i> Visit CV Online
+                  </a>
+                </li>
+              </ul>
+            </div>
+
             <div className="footer-column">
               <h4>Legal</h4>
               <ul>
@@ -786,6 +802,7 @@ export default function Home() {
                 <li><a href="#" onClick={(e) => { e.preventDefault(); openModal('cookies'); }}>Cookies</a></li>
               </ul>
             </div>
+            
           </div>
         </div>
         

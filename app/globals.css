@@ -2573,7 +2573,8 @@ header .cv-download-btn span {
 .footer-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    justify-content: space-between;
+    gap: 20px;
     flex: 2;
     min-width: 300px;
 }
@@ -2581,6 +2582,38 @@ header .cv-download-btn span {
 .footer-column {
     flex: 1;
     min-width: 150px;
+    flex-basis: calc(25% - 15px); /* 4 columns with gap space */
+}
+
+/* Responsive adjustments for footer */
+@media screen and (max-width: 1024px) {
+    .footer-column {
+        flex-basis: calc(50% - 10px); /* 2 columns on medium screens */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .footer-links {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .footer-column {
+        min-width: unset;
+        flex-basis: auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .footer-links {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .footer-column {
+        min-width: unset;
+        flex-basis: auto;
+    }
 }
 
 .footer-column h4 {
@@ -2628,6 +2661,13 @@ header .cv-download-btn span {
 
 .footer-column ul li a:hover::before {
     width: 100%;
+}
+
+/* Footer links with icons */
+.footer-column ul li a i {
+    margin-right: 8px;
+    font-size: 16px;
+    vertical-align: middle;
 }
 
 .footer-bottom {
