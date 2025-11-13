@@ -94,7 +94,7 @@ export default function Contact() {
         <a href="mailto:muhammadusman5965etc@gmail.com">
           <i className="bx bxl-telegram"></i> Email Me
         </a>
-        <a href="https://www.linkedin.com/in/muhammad-usman-099704390?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.linkedin.com/in/muhammad-usman-099704390" target="_blank" rel="noopener noreferrer">
           <i className="bx bxl-linkedin-square"></i> LinkedIn
         </a>
         <a href="https://github.com/MuhammadUsmanGM" target="_blank" rel="noopener noreferrer">

@@ -19,7 +19,7 @@ export async function GET() {
 
             github: 'https://github.com/MuhammadUsmanGM',
 
-            linkedin: 'https://www.linkedin.com/in/muhammad-usman-099704390?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+            linkedin: 'https://www.linkedin.com/in/muhammad-usman-099704390',
 
             phone: '+92 325 6550687'
 

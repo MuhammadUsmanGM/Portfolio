@@ -772,7 +772,7 @@ export default function Home() {
               <ul>
                 <li><a href="mailto:muhammadusman5965etc@gmail.com">Email</a></li>
                 <li><a href="https://github.com/MuhammadUsmanGM" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                <li><a href="https://www.linkedin.com/in/muhammad-usman-099704390?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a href="https://www.linkedin.com/in/muhammad-usman-099704390" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
                 <li><a href="https://wa.me/923256550687?text=Hi%20Muhammad%20Usman,%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect!" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
                 <li><a href="tel:+923256550687">Phone</a></li>
               </ul>
@@ -815,7 +815,7 @@ export default function Home() {
             <a href="https://github.com/MuhammadUsmanGM" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <i className="bx bxl-github"></i>
             </a>
-            <a href="https://www.linkedin.com/in/muhammad-usman-099704390?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/muhammad-usman-099704390" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <i className="bx bxl-linkedin-square"></i>
             </a>
             <a href="https://wa.me/923256550687?text=Hi%20Muhammad%20Usman,%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect!" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
