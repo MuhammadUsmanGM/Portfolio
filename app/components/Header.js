@@ -16,33 +16,12 @@ export default function Header() {
         <li><Link href="#tech-stack">Tech Stack</Link></li>
       </ul>
 
-      <div className="box-icons">
-        <p>
-          <a href="mailto:muhammadusman5965etc@gmail.com" aria-label="Email">
-            <i className="bx bxl-telegram"></i>
-          </a>
-        </p>
-        <p>
-          <a
-            href="https://github.com/MuhammadUsmanGM"
-            aria-label="GitHub"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i className="bx bxl-github"></i>
-          </a>
-        </p>
-        <p>
-          <a
-            href="https://www.linkedin.com/in/muhammad-usman-099704390?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-            aria-label="LinkedIn"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i className="bx bxl-linkedin-square"></i>
-          </a>
-        </p>
-      </div>
+      <a href="/usman-agentic-ai-developer-resume.pdf" download className="cv-download-btn-link">
+        <button className="cv-download-btn">
+          <i className="bx bx-download"></i>
+          <span>Download CV</span>
+        </button>
+      </a>
 
       <div
         className="menu-icon"
