@@ -837,34 +837,16 @@ header .cv-download-btn span {
 /* Additional media query for specific device sizes like Tecno Camon 19 Neo */
 @media screen and (max-width: 576px) {
     .left {
-        min-width: 50%; /* Adjust for devices around this size */
+        min-width: 60%; /* Adjust for devices around this size, give more space to name */
     }
     
     header ul {
-        width: 25% !important; /* Reduce navigation width */
+        width: 40% !important; /* Reduce navigation width */
     }
     
+    /* Hide CV download button on mobile since it's in Hero section */
     .cv-download-btn-link {
-        min-width: 25%; /* Ensure CV button doesn't take too much space */
-    }
-    
-    header .cv-download-btn {
-        padding: 5px 6px;
-        font-size: 10px;
-        gap: 2px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis; /* Truncate text if really needed */
-    }
-    
-    /* If screen is very tight, hide the text and only show the icon */
-    header .cv-download-btn span {
         display: none;
-    }
-    
-    header .cv-download-btn i {
-        font-size: 14px;
-        margin: 0;
     }
 }
 
