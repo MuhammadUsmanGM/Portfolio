@@ -430,6 +430,14 @@ header{
     border-bottom: 1px solid rgba(114, 161, 222, 0.3);
 }
 
+/* Header responsive adjustments */
+@media screen and (max-width: 576px) {
+    header {
+        padding: 0 10px;
+        justify-content: space-around; /* Adjust alignment on smaller screens */
+    }
+}
+
 .left{
     display: flex;
     align-items: center;
@@ -778,37 +786,85 @@ header .cv-download-btn span {
         padding: 0 15px; /* Reduce overall header padding */
     }
     
-    header .cv-download-btn {
-        padding: 7px 9px; /* Compact but readable */
-        font-size: 12px; /* Slightly smaller but still clear */
-        gap: 4px;
+    .left {
+        min-width: 40%; /* Reduce the space taken by the name section */
     }
     
-    header .cv-download-btn i {
-        font-size: 14px;
-    }
-    
-    /* Adjust header layout on mobile to prevent overlap */
     header ul {
-        width: 45% !important; /* Reduce navigation links width to accommodate CV button */
+        width: 35% !important; /* Reduce navigation links width to accommodate CV button */
     }
-}
-
-@media screen and (max-width: 480px) {
+    
+    .cv-download-btn-link {
+        min-width: 25%; /* Set a specific width for the CV button */
+    }
+    
     header .cv-download-btn {
-        padding: 6px 8px;
-        font-size: 11px; /* Small but still readable text */
-        gap: 3px;
-        min-width: unset;
+        padding: 6px 8px; /* More compact */
+        font-size: 11px; /* Smaller font */
+        gap: 4px;
+        width: 100%; /* Ensure it fits within its container */
     }
     
     header .cv-download-btn i {
         font-size: 13px;
     }
+}
+
+@media screen and (max-width: 480px) {
+    .left {
+        min-width: 45%; /* On very small screens, adjust name section */
+    }
     
-    /* On very small screens, slightly reduce navigation width more */
     header ul {
-        width: 50% !important;
+        width: 30% !important; /* Reduce navigation width further */
+    }
+    
+    .cv-download-btn-link {
+        min-width: 25%; /* Keep CV button size manageable */
+    }
+    
+    header .cv-download-btn {
+        padding: 5px 7px;
+        font-size: 10px; /* Very small but readable text */
+        gap: 3px;
+    }
+    
+    header .cv-download-btn i {
+        font-size: 12px;
+    }
+}
+
+/* Additional media query for specific device sizes like Tecno Camon 19 Neo */
+@media screen and (max-width: 576px) {
+    .left {
+        min-width: 50%; /* Adjust for devices around this size */
+    }
+    
+    header ul {
+        width: 25% !important; /* Reduce navigation width */
+    }
+    
+    .cv-download-btn-link {
+        min-width: 25%; /* Ensure CV button doesn't take too much space */
+    }
+    
+    header .cv-download-btn {
+        padding: 5px 6px;
+        font-size: 10px;
+        gap: 2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; /* Truncate text if really needed */
+    }
+    
+    /* If screen is very tight, hide the text and only show the icon */
+    header .cv-download-btn span {
+        display: none;
+    }
+    
+    header .cv-download-btn i {
+        font-size: 14px;
+        margin: 0;
     }
 }
 

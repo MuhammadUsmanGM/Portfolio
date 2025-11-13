@@ -21,6 +21,9 @@ export default function Hero() {
 
         <div className="hero-buttons">
           <button className="contact-btn"><i className="bx bx-send"></i> Contact Me</button>
+          <a href="/Usman  Agentic AI Developer Resume.pdf" download>
+            <button className="cv-btn"><i className="bx bx-download"></i> Download CV</button>
+          </a>
           <a href="https://muhammadusmangmresume.my.canva.site/" target="_blank" rel="noopener noreferrer">
             <button className="cv-btn"><i className="bx bx-globe"></i> Visit CV Online</button>
           </a>

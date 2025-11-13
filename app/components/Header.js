@@ -16,7 +16,7 @@ export default function Header() {
         <li><Link href="#tech-stack">Tech Stack</Link></li>
       </ul>
 
-      <a href="/usman-agentic-ai-developer-resume.pdf" download className="cv-download-btn-link">
+      <a href="/Usman  Agentic AI Developer Resume.pdf" download className="cv-download-btn-link">
         <button className="cv-download-btn">
           <i className="bx bx-download"></i>
           <span>Download CV</span>

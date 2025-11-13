@@ -782,7 +782,7 @@ export default function Home() {
               <h4>Resume</h4>
               <ul>
                 <li>
-                  <a href="/usman-agentic-ai-developer-resume.pdf" download>
+                  <a href="/Usman  Agentic AI Developer Resume.pdf" download>
                     <i className="bx bx-download"></i> Download CV
                   </a>
                 </li>
