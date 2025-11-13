@@ -184,14 +184,14 @@ export default function Projects() {
                     Advanced chat application with AI integration, user authentication, and persistent chat history using MongoDB.
                   </p>
                   <div className="project-buttons">
-                    <button
-                      className="project-btn"
-                      data-project="chatup"
-                      aria-disabled="true"
-                      tabIndex="0"
-                    >
-                      <i className="bx bx-link-external"></i> Not Deployed Yet
-                    </button>
+                    <a href="https://chatup-production-ee1a.up.railway.app/" target="_blank" rel="noopener noreferrer">
+                      <button
+                        className="project-btn"
+                        data-project="chatup"
+                      >
+                        <i className="bx bx-link-external"></i> Live Demo
+                      </button>
+                    </a>
                     <button
                       className="project-btn project-details-btn"
                       onClick={(e) => {
