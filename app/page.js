@@ -12,20 +12,22 @@ import Skills from './components/Skills';
 import Sidebar from './components/Sidebar';
 import Contact from './components/Contact';
 
-// Function to convert URLs in text to clickable links
+// Function to convert URLs and emails in text to clickable links
 const convertUrlsToLinks = (text) => {
   // Regular expression to match URLs
   const urlRegex = /(https?:\/\/[^\s]+)/g;
+  // Regular expression to match email addresses
+  const emailRegex = /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g;
   
-  // Split text by URLs and wrap URLs with anchor tags
-  const parts = text.split(urlRegex);
+  // First split by URLs
+  let parts = text.split(urlRegex);
   
   return parts.map((part, index) => {
     // If it's a URL (odd indices after splitting)
     if (index % 2 === 1) {
       return (
         <a 
-          key={index} 
+          key={`url-${index}`} 
           href={part} 
           target="_blank" 
           rel="noopener noreferrer"
@@ -36,9 +38,32 @@ const convertUrlsToLinks = (text) => {
         </a>
       );
     }
-    // If it's regular text (even indices), return as is
-    return part;
+    // If it's regular text (even indices), check for emails inside
+    else {
+      // Split the text by email addresses
+      const emailParts = part.split(emailRegex);
+      return emailParts.map((emailPart, emailIndex) => {
+        // If it's an email address (odd indices after splitting by email)
+        if (emailIndex % 2 === 1) {
+          return (
+            <a
+              key={`email-${index}-${emailIndex}`}
+              href={`mailto:${emailPart}`}
+              className="text-blue-400 underline hover:text-blue-300"
+              onClick={(e) => e.stopPropagation()} // Prevent chat bubble click from closing
+            >
+              {emailPart}
+            </a>
+          );
+        }
+        // If it's regular text (even indices), return as is
+        return emailPart;
+      });
+    }
   });
+
+  // Flatten the nested arrays to a single array
+  return processedParts.flat();
 };
 
 export default function Home() {
