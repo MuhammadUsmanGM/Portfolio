@@ -15,7 +15,7 @@ export async function GET() {
 
         links: {
 
-            email: 'muhammadusman5965etc@gmail.com',
+            email: 'mu.ai.dev@gmail.com',
 
             github: 'https://github.com/MuhammadUsmanGM',
 

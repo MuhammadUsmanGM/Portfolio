@@ -190,7 +190,7 @@ const portfolioContext = {
   // ============================================
   // 6. CONTACT & LINKS
   contact: {
-    email: "muhammadusman5965etc@gmail.com",
+    email: "mu.ai.dev@gmail.com",
     phone: "+92 325 6550687",
     whatsapp: "https://wa.me/923256550687?text=Hi%20Muhammad%20Usman,%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect!",
     github: "https://github.com/MuhammadUsmanGM",

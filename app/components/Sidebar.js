@@ -22,7 +22,7 @@ export default function Sidebar() {
       </nav>
 
       <div className="social-sidebar">
-        <a href="mailto:muhammadusman5965etc@gmail.com" aria-label="Email">
+        <a href="mailto:mu.ai.dev@gmail.com" aria-label="Email">
           <i className="bx bxl-telegram"></i>
         </a>
         <a

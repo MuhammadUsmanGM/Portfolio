@@ -770,7 +770,7 @@ export default function Home() {
             <div className="footer-column">
               <h4>Connect</h4>
               <ul>
-                <li><a href="mailto:muhammadusman5965etc@gmail.com">Email</a></li>
+                <li><a href="mailto:mu.ai.dev@gmail.com">Email</a></li>
                 <li><a href="https://github.com/MuhammadUsmanGM" target="_blank" rel="noopener noreferrer">GitHub</a></li>
                 <li><a href="https://www.linkedin.com/in/muhammad-usman-099704390" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
                 <li><a href="https://wa.me/923256550687?text=Hi%20Muhammad%20Usman,%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect!" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
@@ -809,7 +809,7 @@ export default function Home() {
         <div className="footer-bottom">
           <p>©️ {new Date().getFullYear()} Muhammad Usman. All rights reserved.</p>
           <div className="social-links">
-            <a href="mailto:muhammadusman5965etc@gmail.com" aria-label="Email">
+            <a href="mailto:mu.ai.dev@gmail.com" aria-label="Email">
               <i className="bx bxl-telegram"></i>
             </a>
             <a href="https://github.com/MuhammadUsmanGM" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
