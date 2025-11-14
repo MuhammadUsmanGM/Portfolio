@@ -138,6 +138,21 @@ const portfolioContext = {
       liveUrl: "https://portfolio-o4hs.vercel.app/",
       githubUrl: "https://github.com/MuhammadUsmanGM/Portfolio",  // Updated link
       status: "Live"
+    },
+    {
+      name: "Advanced ChatUp Application",
+      description: "Modern chat application with real-time messaging and advanced features",
+      tech: ["React", "Node.js", "Socket.io", "MongoDB"],
+      role: "Creator & Developer",
+      highlights: [
+        "Real-time messaging with WebSocket technology",
+        "User authentication and profile management",
+        "Modern UI/UX with responsive design",
+        "Advanced chat features and security implementation"
+      ],
+      liveUrl: "https://chatup-production-ee1a.up.railway.app/",
+      githubUrl: "https://github.com/MuhammadUsmanGM/ChatUp",
+      status: "Live"
     }
   ],
 
