@@ -79,6 +79,7 @@ export default function Home() {
   const [chatbotMode, setChatbotMode] = useState('default'); // 'default' or 'corner'
   const messagesEndRef = useRef(null);
   const techTrackRef = useRef(null);
+  const chatInputRef = useRef(null);
   const [techStackIndex, setTechStackIndex] = useState(0);
   const techItems = [
     { tech: "HTML5", src: "/images/html.svg", name: "HTML5" },
@@ -289,6 +290,25 @@ export default function Home() {
   }, []);
 
   usePortfolio();
+
+  // Auto-resize textarea based on content
+  const resizeTextarea = () => {
+    if (chatInputRef.current) {
+      // Reset height to auto to properly calculate scrollHeight
+      chatInputRef.current.style.height = 'auto';
+      
+      // Calculate the appropriate height, but cap it at 3 lines max
+      const maxHeight = 46 * 3; // 3 lines max (46px per line approx)
+      const newHeight = Math.min(chatInputRef.current.scrollHeight, maxHeight);
+      
+      chatInputRef.current.style.height = newHeight + 'px';
+    }
+  };
+
+  // Update textarea height when content changes
+  useEffect(() => {
+    resizeTextarea();
+  }, [chatInput]);
 
   const openModal = (modalType) => {
     setActiveModal(modalType);
@@ -913,13 +933,19 @@ export default function Home() {
           </div>
           
           <div className="chatbot-input-area">
-            <input 
-              type="text" 
-              className="chatbot-input" 
+            <textarea
+              ref={chatInputRef}
+              className="chatbot-input"
               placeholder="Ask me something about Usman..."
               value={chatInput}
               onChange={(e) => setChatInput(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+              onKeyPress={(e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault();
+                  sendMessage();
+                }
+              }}
+              rows="1"
             />
             <button className="chatbot-send-btn" onClick={sendMessage}>
               <i className="bx bx-send"></i>
