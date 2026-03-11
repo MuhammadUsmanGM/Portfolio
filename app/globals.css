@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+:root {
+  --bg:          #F7F4EF;   /* warm parchment */
+  --bg-2:        #EDEAE3;   /* cards, nav surface */
+  --bg-3:        #E2DDD4;   /* hover states, borders */
+  --accent:      #C9960C;   /* deeper gold */
+  --accent-glow: #F5A623;   /* hover highlights */
+  --text:        #0A0A0A;   /* near black */
+  --text-sub:    #3D3A35;   /* subheadings */
+  --muted:       #8A8480;   /* captions */
+  --border:      #D6D1C8;   /* dividers */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:          #0A0A0A;
+    --bg-2:        #111111;
+    --bg-3:        #1A1A1A;
+    --accent:      #F5A623;   /* full amber */
+    --accent-glow: #FFB84D;   /* brighter glow */
+    --text:        #F0EDE6;
+    --text-sub:    #C8C4BC;
+    --muted:       #6B6866;
+    --border:      #1E1E1E;
+  }
+}
+
+/* Manual Overrides */
+[data-theme="light"] {
+  --bg: #F7F4EF; --bg-2: #EDEAE3; --bg-3: #E2DDD4;
+  --accent: #C9960C; --accent-glow: #F5A623;
+  --text: #0A0A0A; --text-sub: #3D3A35;
+  --muted: #8A8480; --border: #D6D1C8;
+}
+
+[data-theme="dark"] {
+  --bg: #0A0A0A; --bg-2: #111111; --bg-3: #1A1A1A;
+  --accent: #F5A623; --accent-glow: #FFB84D;
+  --text: #F0EDE6; --text-sub: #C8C4BC;
+  --muted: #6B6866; --border: #1E1E1E;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-bg-3: var(--bg-3);
+  --color-accent: var(--accent);
+  --color-accent-glow: var(--accent-glow);
+  --color-text: var(--text);
+  --color-text-sub: var(--text-sub);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  /* Smooth transition for theme switching */
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui;
+}
