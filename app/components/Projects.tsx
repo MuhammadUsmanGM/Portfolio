@@ -1,0 +1,237 @@
+"use client";
+
+import React from "react";
+import { motion } from "framer-motion";
+import { ArrowUpRight, Github, ExternalLink, Activity, Lock } from "lucide-react";
+import Image from "next/image";
+
+const Projects = () => {
+  const projects = [
+    {
+      title: "THE SIGNAL",
+      subtitle: "AI-Powered Intelligence Pipeline",
+      description: "Architected an automated newsletter system that aggregates global AI signals, processes them via LLM summarization, and delivers structured briefings globally.",
+      tech: ["React", "Node.js", "Supabase", "NewsAPI", "GitHub Actions"],
+      link: "https://news-letter-umber-five.vercel.app",
+      github: "https://github.com/MuhammadUsmanGM/THE-SIGNAL",
+      isPrivate: false,
+      image: "/signal-placeholder.png",
+      tags: ["Automation", "LLM", "Full-Stack"]
+    },
+    {
+      title: "ELYX",
+      subtitle: "Autonomous Multi-Agent Orchestration",
+      description: "Architected a local-first AI automation system enabling autonomous agents to plan, coordinate, and execute multi-step operational workflows with browser automation.",
+      tech: ["Python", "FastAPI", "Next.js", "SQLite", "LLM APIs"],
+      link: "#", // Proprietary, usually no live link or a demo video link
+      github: "#",
+      isPrivate: true,
+      image: "/elyx-placeholder.png",
+      tags: ["Agentic AI", "Multi-Agent Systems", "Local-First"]
+    },
+    {
+      title: "PHYSICAL AI",
+      subtitle: "Humanoid Robotics & Embodied AI",
+      description: "Engineered a spec-driven technical platform and AI-assisted content pipeline for humanoid robotics education. Features modular navigation and intelligent content organization.",
+      tech: ["React", "Docusaurus", "FastAPI", "Qdrant", "Google Gemini"],
+      link: "https://muhammadusmangm.github.io/physical-ai-hackathon",
+      github: "https://github.com/MuhammadUsmanGM/physical-ai-hackathon",
+      isPrivate: false,
+      image: "/robotics-placeholder.png",
+      tags: ["Robotics", "Knowledge Systems", "AI EdTech"]
+    }
+  ];
+
+  return (
+    <section id="work" className="py-32 px-6 md:px-12 bg-bg relative overflow-hidden">
+      {/* Section Header */}
+      <div className="max-w-7xl mx-auto mb-20">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="flex items-center gap-3 mb-4"
+        >
+          <div className="w-8 h-[2px] bg-accent" />
+          <span className="text-accent text-xs font-black uppercase tracking-[0.3em]">
+            Case Studies
+          </span>
+        </motion.div>
+        
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-text"
+        >
+          Selected <br />
+          <span className="text-accent italic">Work</span>.
+        </motion.h2>
+      </div>
+
+      <div className="max-w-7xl mx-auto">
+        {projects.map((project, index) => (
+          <motion.div
+            key={project.title}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-32 last:mb-0"
+          >
+            {/* Project Numbering - Editorial Feel */}
+            <div className="absolute -top-20 -left-10 text-[15rem] font-black text-border/20 pointer-events-none select-none z-0 tracking-tighter hidden lg:block">
+              0{index + 1}
+            </div>
+
+            {/* Project Info */}
+            <div className="lg:col-span-5 order-2 lg:order-1 relative z-10">
+              <div className="flex items-center gap-4 mb-6">
+                {project.tags.map((tag) => (
+                  <span key={tag} className="text-[10px] font-bold uppercase tracking-widest text-muted border border-border px-3 py-1 rounded-full">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <h3 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-text mb-4 group-hover:text-accent transition-colors">
+                {project.title}
+              </h3>
+              <p className="text-accent font-mono text-sm uppercase tracking-widest mb-6">
+                {project.subtitle}
+              </p>
+              
+              <div className="bg-bg-2 border border-border/50 p-8 rounded-3xl mb-8 relative overflow-hidden group-hover:border-accent/30 transition-colors shadow-sm">
+                <p className="text-text-sub text-lg leading-relaxed relative z-10">
+                  {project.description}
+                </p>
+                <div className="absolute top-0 right-0 p-4 opacity-10">
+                  <Activity className="w-20 h-20 text-accent" />
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-3 mb-10">
+                {project.tech.map((t) => (
+                  <span key={t} className="text-xs font-mono text-text bg-bg-3 px-3 py-1 rounded-md border border-border/40">
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-6">
+                <a 
+                  href={project.link}
+                  target="_blank"
+                  className={`flex items-center gap-2 font-black uppercase text-xs tracking-widest group/link transition-colors ${
+                    project.link === "#" ? "text-muted cursor-not-allowed" : "text-text hover:text-accent"
+                  }`}
+                >
+                  {project.link === "#" ? "Proprietary System" : "Live System"} 
+                  {project.link !== "#" && <ArrowUpRight className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />}
+                </a>
+
+                {project.isPrivate ? (
+                  <div 
+                    className="flex items-center gap-1.5 text-muted text-xs uppercase font-black tracking-widest cursor-help opacity-60"
+                    title="Proprietary code — Available for technical review during interviews"
+                  >
+                    <Lock className="w-3.5 h-3.5" /> Private Repo
+                  </div>
+                ) : (
+                  <a 
+                    href={project.github}
+                    target="_blank"
+                    className="flex items-center gap-2 text-muted font-black uppercase text-xs tracking-widest group/link transition-colors hover:text-text"
+                  >
+                    Source <Github className="w-4 h-4" />
+                  </a>
+                )}
+              </div>
+            </div>
+
+            {/* Project Visual */}
+            <div className="lg:col-span-7 order-1 lg:order-2 relative group-hover:scale-[1.02] transition-transform duration-700">
+              <div className="relative aspect-video rounded-[2rem] overflow-hidden border border-border/50 bg-bg-2 shadow-2xl">
+                
+                {/* Sophisticated Placeholder */}
+                <div className="absolute inset-0 bg-[#0c0c0c] flex items-center justify-center overflow-hidden">
+                  {/* Grid Pattern */}
+                  <div className="absolute inset-0 opacity-20 pointer-events-none" 
+                       style={{ backgroundImage: 'radial-gradient(var(--border) 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
+                  
+                  {/* Technical Accents */}
+                  <div className="absolute top-8 left-8 flex gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-border" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-border" />
+                  </div>
+                  
+                  <div className="absolute bottom-8 right-8 text-[10px] font-mono text-muted uppercase tracking-[0.2em] flex flex-col items-end gap-1">
+                    <span>SYS_CORE_V4</span>
+                    <span className="text-accent/50">READ_ONLY_ACCESS</span>
+                  </div>
+
+                  {/* Center Content */}
+                  <div className="relative z-10 flex flex-col items-center gap-6">
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-accent/20 blur-3xl rounded-full scale-150 animate-pulse" />
+                      <div className="relative w-24 h-24 rounded-3xl border-2 border-accent/30 flex items-center justify-center bg-bg-2/50 backdrop-blur-sm group-hover:border-accent group-hover:scale-110 transition-all duration-700">
+                        <Activity className="w-10 h-10 text-accent" />
+                      </div>
+                    </div>
+                    <div className="flex flex-col items-center gap-2">
+                      <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">Visual Interface</span>
+                      <div className="h-[1px] w-12 bg-accent/30" />
+                      <span className="text-[11px] font-mono text-accent uppercase tracking-widest">{project.title}</span>
+                    </div>
+                  </div>
+
+                  {/* Scanning Line Effect */}
+                  <motion.div 
+                    animate={{ top: ['-10%', '110%'] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                    className="absolute inset-x-0 h-[2px] bg-accent/20 blur-sm pointer-events-none z-20"
+                  />
+                </div>
+                
+                {/* The real image will be placed here eventually */}
+                {/* <Image src={project.image} alt={project.title} fill className="object-cover" /> */}
+
+                <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.5)] pointer-events-none" />
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* GitHub CTA Footer */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="max-w-7xl mx-auto mt-32 border-t border-border/50 pt-20 flex flex-col items-center text-center"
+      >
+        <p className="text-muted text-sm font-black uppercase tracking-[0.3em] mb-6">
+          Architecting more in the shadows?
+        </p>
+        <a 
+          href="https://github.com/MuhammadUsmanGM"
+          target="_blank"
+          className="group flex flex-col items-center gap-4"
+        >
+          <div className="flex items-center gap-4 text-3xl md:text-5xl font-black uppercase tracking-tighter text-text group-hover:text-accent transition-all duration-500">
+            Explore all projects <ArrowUpRight className="w-10 h-10 md:w-16 md:h-16 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-500" />
+          </div>
+          <div className="flex items-center gap-2 text-accent font-mono text-sm uppercase tracking-widest mt-2">
+            <Github className="w-4 h-4" /> github.com/MuhammadUsmanGM
+          </div>
+        </a>
+      </motion.div>
+    </section>
+  );
+};
+
+export default Projects;
