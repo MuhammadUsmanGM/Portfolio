@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { ArrowUpRight, FileText } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -56,15 +57,15 @@ const Hero = () => {
           >
             <a 
               href="#work" 
-              className="group flex items-center gap-3 px-10 py-4 bg-text text-bg rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-lg"
+              className="group flex items-center gap-3 px-10 py-4 bg-accent text-bg rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-[0_8px_32px_rgba(245,166,35,0.25)]"
             >
-              View Work <span className="group-hover:translate-x-1 transition-transform">→</span>
+              View Work <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
             <a 
               href="/resume.pdf" 
               className="group flex items-center gap-3 px-10 py-4 border-2 border-text text-text hover:bg-text hover:text-bg rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95"
             >
-              Resume <span className="group-hover:translate-y-1 transition-transform">↓</span>
+              Resume <FileText className="w-4 h-4 group-hover:scale-110 transition-transform" />
             </a>
           </motion.div>
         </div>

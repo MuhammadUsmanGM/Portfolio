@@ -3,9 +3,17 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 const Navbar = () => {
+  const { scrollY } = useScroll();
+  const [isScrolled, setIsScrolled] = React.useState(false);
+
+  useMotionValueEvent(scrollY, "change", (latest: number) => {
+    setIsScrolled(latest > 50);
+  });
+
   const navLinks = [
     { name: "Work", href: "#work" },
     { name: "About", href: "#about" },
@@ -20,7 +28,13 @@ const Navbar = () => {
       transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
       className="fixed top-6 left-0 right-0 z-50 mx-auto max-w-[95%] md:max-w-[1200px]"
     >
-      <div className="flex items-center justify-between px-6 py-3 rounded-full backdrop-blur-xl bg-bg/80 border border-border/50 shadow-[0_8px_32px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
+      <div 
+        className={`flex items-center justify-between px-6 py-3 rounded-full border transition-all duration-500 ${
+          isScrolled 
+            ? "backdrop-blur-2xl bg-bg/90 border-border shadow-[0_8px_32px_rgba(0,0,0,0.12)] py-2" 
+            : "backdrop-blur-md bg-bg/40 border-border/30 shadow-none"
+        }`}
+      >
         
         {/* Left: Branding */}
         <div className="flex items-center gap-3 cursor-pointer group">
@@ -33,13 +47,16 @@ const Navbar = () => {
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-[14px] font-black uppercase tracking-[0.1em] text-text leading-none transition-colors group-hover:text-accent">
+            <span className="hidden md:block text-[14px] font-black uppercase tracking-[0.1em] text-text leading-none transition-colors group-hover:text-accent">
               Muhammad Usman<span className="text-accent ml-0.5 inline-block animate-pulse">.</span>
+            </span>
+            <span className="md:hidden text-xl font-black text-text tracking-tighter leading-none">
+              MU<span className="text-accent ml-0.5 inline-block animate-pulse">.</span>
             </span>
           </div>
         </div>
 
-        {/* Middle: Navigation */}
+        {/* Middle: Navigation - Hidden on mobile, controlled by MobileNav */}
         <div className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
             <Link 
@@ -57,11 +74,11 @@ const Navbar = () => {
         <div>
           <Link 
             href="#contact" 
-            className="group relative inline-flex items-center gap-2 bg-accent hover:bg-accent-glow text-bg px-7 py-2.5 rounded-full font-black text-xs uppercase tracking-widest transition-all duration-300 overflow-hidden shadow-[0_4px_20px_rgba(245,166,35,0.25)]"
+            className="group relative inline-flex items-center gap-2 bg-accent hover:bg-accent-glow text-bg px-7 py-2.5 rounded-full font-black text-[11px] uppercase tracking-widest transition-all duration-300 overflow-hidden shadow-[0_4px_20px_rgba(245,166,35,0.25)]"
           >
             <span className="relative z-10 flex items-center gap-2">
               Hire Me 
-              <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">→</span>
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </span>
             <div className="absolute inset-0 bg-[#000] opacity-0 group-hover:opacity-10 transition-opacity" />
           </Link>
