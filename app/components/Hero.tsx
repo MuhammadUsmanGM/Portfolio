@@ -83,7 +83,7 @@ const Hero = () => {
             
             <div className="relative w-full h-full rounded-[2rem] overflow-hidden border border-border/50 bg-bg-2 shadow-2xl">
               <Image 
-                src="/main.png" 
+                src="/main.webp" 
                 alt="Muhammad Usman" 
                 fill 
                 className="object-contain object-bottom"

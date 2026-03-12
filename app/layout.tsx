@@ -42,8 +42,8 @@ export const metadata: Metadata = {
   authors: [{ name: "Muhammad Usman" }],
   creator: "Muhammad Usman",
   icons: {
-    icon: "/favicon.png",
-    apple: "/favicon.png",
+    icon: "/favicon.webp",
+    apple: "/favicon.webp",
   },
   openGraph: {
     type: "website",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     description: "Specializing in LLM-powered applications, autonomous agents, and RAG pipelines.",
     siteName: "Muhammad Usman Portfolio",
     images: [{
-      url: "/og_img.png",
+      url: "/og_img.jpg",
       width: 1200,
       height: 630,
       alt: "Muhammad Usman — Full-Stack AI Engineer"

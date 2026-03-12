@@ -104,7 +104,7 @@ const ChatWidget = () => {
           <div className={`absolute inset-0 bg-accent/20 transition-opacity ${isOpen ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`} />
           
           <Image 
-            src="/bot.png" 
+            src="/bot.webp" 
             alt="NOVA" 
             width={36} 
             height={36} 
@@ -128,7 +128,7 @@ const ChatWidget = () => {
             <div className="p-4 border-b border-accent/10 bg-accent/5 flex items-center justify-between">
               <div className="flex items-center gap-2.5">
                 <div className="relative w-9 h-9 rounded-xl bg-accent/20 flex items-center justify-center border border-accent/30 overflow-hidden">
-                  <Image src="/bot.png" alt="NOVA" fill className="object-contain p-1.5" />
+                  <Image src="/bot.webp" alt="NOVA" fill className="object-contain p-1.5" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bebas tracking-[0.2em] text-accent leading-none">NOVA</h3>

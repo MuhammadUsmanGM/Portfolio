@@ -40,7 +40,7 @@ const Navbar = () => {
         <div className="flex items-center gap-3 cursor-pointer group">
           <div className="relative w-12 h-12 overflow-hidden rounded-lg border border-border/50 bg-white/5 group-hover:border-accent transition-all duration-500">
             <Image 
-              src="/favicon.png" 
+              src="/favicon.webp" 
               alt="Muhammad Usman" 
               fill 
               className="object-contain p-1.5 transition-transform duration-500 group-hover:scale-110"
@@ -50,9 +50,15 @@ const Navbar = () => {
             <span className="hidden md:block text-[14px] font-black uppercase tracking-[0.1em] text-text leading-none transition-colors group-hover:text-accent">
               Muhammad Usman<span className="text-accent ml-0.5 inline-block animate-pulse">.</span>
             </span>
-            <span className="md:hidden text-xl font-black text-text tracking-tighter leading-none">
-              MU<span className="text-accent ml-0.5 inline-block animate-pulse">.</span>
-            </span>
+            {/* Mobile Branding: Stacked */}
+            <div className="md:hidden flex flex-col -space-y-0.5">
+              <span className="text-[10px] font-black uppercase tracking-[0.18em] text-text leading-none">
+                Muhammad
+              </span>
+              <span className="text-[10px] font-black uppercase tracking-[0.18em] text-accent leading-none">
+                Usman<span className="text-text ml-0.5 inline-block animate-pulse">.</span>
+              </span>
+            </div>
           </div>
         </div>
 

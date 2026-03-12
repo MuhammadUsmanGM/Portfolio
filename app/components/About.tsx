@@ -107,7 +107,7 @@ const About = () => {
               {/* Image Container */}
               <div className="relative w-[280px] h-[340px] rounded-2xl overflow-hidden border border-border/50 bg-bg-2 z-10">
                 <Image 
-                  src="/main1.png" 
+                  src="/main1.webp" 
                   alt="Muhammad Usman" 
                   fill 
                   className="object-cover object-top filter grayscale hover:grayscale-0 transition-all duration-700"
