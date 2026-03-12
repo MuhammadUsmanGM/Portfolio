@@ -106,7 +106,7 @@ const Footer = () => {
             <div className="flex items-center gap-2 text-[10px] font-mono text-muted uppercase tracking-widest">
               <span>Lahore, PK</span>
               <span className="w-1 h-1 rounded-full bg-border" />
-              <span>4.35 N | 74.35 E</span>
+              <span>31.55 N | 74.35 E</span>
             </div>
           </div>
 
