@@ -94,24 +94,24 @@ const ChatWidget = () => {
 
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
-          className="pointer-events-auto w-16 h-16 rounded-full bg-accent/10 backdrop-blur-xl border-2 border-accent/30 text-accent shadow-[0_15px_50px_rgba(201,150,12,0.25)] flex items-center justify-center hover:scale-110 active:scale-95 transition-all relative group overflow-hidden"
+          className={`pointer-events-auto w-16 h-16 rounded-full bg-accent/10 backdrop-blur-xl border-2 ${
+            isOpen ? "border-accent/60" : "border-accent/30"
+          } text-accent shadow-[0_15px_50px_rgba(201,150,12,0.25)] flex items-center justify-center hover:scale-110 active:scale-95 transition-all relative group overflow-hidden`}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
           {/* Internal Glow Effect */}
-          <div className="absolute inset-0 bg-accent/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+          <div className={`absolute inset-0 bg-accent/20 transition-opacity ${isOpen ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`} />
           
-          {isOpen ? (
-            <X size={26} />
-          ) : (
-            <Image 
-              src="/bot.png" 
-              alt="NOVA" 
-              width={36} 
-              height={36} 
-              className="object-contain drop-shadow-[0_0_10px_rgba(201,150,12,0.5)] transition-transform duration-500 group-hover:scale-110" 
-            />
-          )}
+          <Image 
+            src="/bot.png" 
+            alt="NOVA" 
+            width={36} 
+            height={36} 
+            className={`object-contain drop-shadow-[0_0_10px_rgba(201,150,12,0.5)] transition-all duration-500 ${
+              isOpen ? "scale-110 grayscale-0" : "group-hover:scale-110"
+            }`} 
+          />
         </motion.button>
       </div>
 
