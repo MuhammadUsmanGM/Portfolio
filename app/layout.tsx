@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     description: "Specializing in LLM-powered applications, autonomous agents, and RAG pipelines.",
     siteName: "Muhammad Usman Portfolio",
     images: [{
-      url: "/og-image.png",
+      url: "/og_img.png",
       width: 1200,
       height: 630,
       alt: "Muhammad Usman — Full-Stack AI Engineer"
