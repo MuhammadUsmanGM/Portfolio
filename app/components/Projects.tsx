@@ -1,9 +1,53 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Github, ExternalLink, Activity, Lock } from "lucide-react";
 import Image from "next/image";
+
+const VideoPreview = ({ src, thumbnail }: { src: string; thumbnail?: string | null }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleMouseEnter = () => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0; // Reset to start
+    }
+  };
+
+  return (
+    <div 
+      className="absolute inset-0 w-full h-full cursor-pointer"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <video 
+        ref={videoRef}
+        loop 
+        muted 
+        playsInline 
+        poster={thumbnail || ""}
+        className="w-full h-full object-cover transition-all duration-700 grayscale-[0.4] brightness-[0.85] contrast-[1.1] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105"
+      >
+        <source src={src} type="video/webm" />
+      </video>
+      <div className="absolute inset-0 bg-gradient-to-t from-bg/40 to-transparent pointer-events-none" />
+      
+      {/* Play Indicator Overlay */}
+      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
+        <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center bg-white/10">
+          <Activity className="w-5 h-5 text-white animate-pulse" />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Projects = () => {
   const projects = [
@@ -11,23 +55,25 @@ const Projects = () => {
       title: "THE SIGNAL",
       subtitle: "AI-Powered Intelligence Pipeline",
       description: "Architected an automated newsletter system that aggregates global AI signals, processes them via LLM summarization, and delivers structured briefings globally.",
-      tech: ["React", "Node.js", "Supabase", "NewsAPI", "GitHub Actions"],
+      tech: ["React", "Node.js", "LLM Summarization", "Supabase", "GitHub Actions"],
       link: "https://news-letter-umber-five.vercel.app",
       github: "https://github.com/MuhammadUsmanGM/THE-SIGNAL",
       isPrivate: false,
-      image: "/signal-placeholder.png",
-      tags: ["Automation", "LLM", "Full-Stack"]
+      video: "/videos/signal.webm",
+      thumbnail: "/images/Signal.jpg",
+      tags: ["Automation", "Intelligence Pipeline", "Full-Stack"]
     },
     {
       title: "ELYX",
       subtitle: "Autonomous Multi-Agent Orchestration",
       description: "Architected a local-first AI automation system enabling autonomous agents to plan, coordinate, and execute multi-step operational workflows with browser automation.",
-      tech: ["Python", "FastAPI", "Next.js", "SQLite", "LLM APIs"],
-      link: "#", // Proprietary, usually no live link or a demo video link
+      tech: ["Python", "FastAPI", "Multi-Agent Networks", "SQLite", "Agentic Frameworks"],
+      link: "#",
       github: "#",
       isPrivate: true,
-      image: "/elyx-placeholder.png",
-      tags: ["Agentic AI", "Multi-Agent Systems", "Local-First"]
+      video: null,
+      thumbnail: null,
+      tags: ["Agentic AI", "Autonomous Ops", "Local-First"]
     },
     {
       title: "PHYSICAL AI",
@@ -37,7 +83,8 @@ const Projects = () => {
       link: "https://muhammadusmangm.github.io/physical-ai-hackathon",
       github: "https://github.com/MuhammadUsmanGM/physical-ai-hackathon",
       isPrivate: false,
-      image: "/robotics-placeholder.png",
+      video: "/videos/physical-ai.webm",
+      thumbnail: "/images/physical-ai.jpg",
       tags: ["Robotics", "Knowledge Systems", "AI EdTech"]
     }
   ];
@@ -149,55 +196,53 @@ const Projects = () => {
                   </a>
                 )}
               </div>
-            </div>
-
-            {/* Project Visual */}
+            </div>            {/* Project Visual */}
             <div className="lg:col-span-7 order-1 lg:order-2 relative group-hover:scale-[1.02] transition-transform duration-700">
               <div className="relative aspect-video rounded-[2rem] overflow-hidden border border-border/50 bg-bg-2 shadow-2xl">
                 
-                {/* Sophisticated Placeholder */}
-                <div className="absolute inset-0 bg-[#0c0c0c] flex items-center justify-center overflow-hidden">
-                  {/* Grid Pattern */}
-                  <div className="absolute inset-0 opacity-20 pointer-events-none" 
-                       style={{ backgroundImage: 'radial-gradient(var(--border) 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
-                  
-                  {/* Technical Accents */}
-                  <div className="absolute top-8 left-8 flex gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                    <div className="w-1.5 h-1.5 rounded-full bg-border" />
-                    <div className="w-1.5 h-1.5 rounded-full bg-border" />
-                  </div>
-                  
-                  <div className="absolute bottom-8 right-8 text-[10px] font-mono text-muted uppercase tracking-[0.2em] flex flex-col items-end gap-1">
-                    <span>SYS_CORE_V4</span>
-                    <span className="text-accent/50">READ_ONLY_ACCESS</span>
-                  </div>
+                {project.video ? (
+                  <VideoPreview src={project.video} thumbnail={project.thumbnail} />
+                ) : (
+                  /* Sophisticated Placeholder for ELYX/Private Systems */
+                  <div className="absolute inset-0 bg-[#0c0c0c] flex items-center justify-center overflow-hidden">
+                    {/* Grid Pattern */}
+                    <div className="absolute inset-0 opacity-20 pointer-events-none" 
+                         style={{ backgroundImage: 'radial-gradient(var(--border) 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
+                    
+                    {/* Technical Accents */}
+                    <div className="absolute top-8 left-8 flex gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-border" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-border" />
+                    </div>
+                    
+                    <div className="absolute bottom-8 right-8 text-[10px] font-mono text-muted uppercase tracking-[0.2em] flex flex-col items-end gap-1">
+                      <span>SYS_CORE_V4</span>
+                      <span className="text-accent/50">PRIVATE_ACCESS</span>
+                    </div>
+                    
+                    <motion.div 
+                      animate={{ top: ['-10%', '110%'] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                      className="absolute inset-x-0 h-[2px] bg-accent/20 blur-sm pointer-events-none z-20"
+                    />
 
-                  {/* Center Content */}
-                  <div className="relative z-10 flex flex-col items-center gap-6">
-                    <div className="relative">
-                      <div className="absolute inset-0 bg-accent/20 blur-3xl rounded-full scale-150 animate-pulse" />
-                      <div className="relative w-24 h-24 rounded-3xl border-2 border-accent/30 flex items-center justify-center bg-bg-2/50 backdrop-blur-sm group-hover:border-accent group-hover:scale-110 transition-all duration-700">
-                        <Activity className="w-10 h-10 text-accent" />
+                    {/* Center Content */}
+                    <div className="relative z-10 flex flex-col items-center gap-6">
+                      <div className="relative">
+                        <div className="absolute inset-0 bg-accent/20 blur-3xl rounded-full scale-150 animate-pulse" />
+                        <div className="relative w-24 h-24 rounded-3xl border-2 border-accent/30 flex items-center justify-center bg-bg-2/50 backdrop-blur-sm group-hover:border-accent group-hover:scale-110 transition-all duration-700">
+                          <Lock className="w-10 h-10 text-accent" />
+                        </div>
+                      </div>
+                      <div className="flex flex-col items-center gap-2">
+                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">Secure Interface</span>
+                        <div className="h-[1px] w-12 bg-accent/30" />
+                        <span className="text-[11px] font-mono text-accent uppercase tracking-widest">{project.title}</span>
                       </div>
                     </div>
-                    <div className="flex flex-col items-center gap-2">
-                      <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">Visual Interface</span>
-                      <div className="h-[1px] w-12 bg-accent/30" />
-                      <span className="text-[11px] font-mono text-accent uppercase tracking-widest">{project.title}</span>
-                    </div>
                   </div>
-
-                  {/* Scanning Line Effect */}
-                  <motion.div 
-                    animate={{ top: ['-10%', '110%'] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                    className="absolute inset-x-0 h-[2px] bg-accent/20 blur-sm pointer-events-none z-20"
-                  />
-                </div>
-                
-                {/* The real image will be placed here eventually */}
-                {/* <Image src={project.image} alt={project.title} fill className="object-cover" /> */}
+                )}
 
                 <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.5)] pointer-events-none" />
               </div>
