@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Bebas_Neue, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import MobileNav from "./components/MobileNav";
+import ChatWidget from "./components/ChatWidget";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -72,6 +73,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <MobileNav />
+        <ChatWidget />
       </body>
     </html>
   );
