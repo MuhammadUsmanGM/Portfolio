@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import MobileNav from "./components/MobileNav";
 import ChatWidget from "./components/ChatWidget";
+import Loader from "./components/Loader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -70,6 +71,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} ${dmSans.variable} antialiased`}
       >
+        <Loader />
         <Navbar />
         {children}
         <MobileNav />
