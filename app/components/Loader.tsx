@@ -8,13 +8,33 @@ const Loader = () => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // Total sequence: 2s
+    // 1. Show-once logic
+    const seen = sessionStorage.getItem("loaded");
+    if (seen) {
+      setIsVisible(false);
+      return;
+    }
+
     const timer = setTimeout(() => {
       setIsVisible(false);
+      sessionStorage.setItem("loaded", "true");
     }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    // 2. Overflow lock
+    if (isVisible) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isVisible]);
 
   return (
     <AnimatePresence>
