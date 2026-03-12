@@ -156,11 +156,13 @@ const Skills = () => {
                       key={tech.name} 
                       className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl bg-bg border border-border/20 group/tech hover:border-accent/30 transition-all duration-300 min-w-0"
                     >
-                      <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center grayscale group-hover/tech:grayscale-0 transition-all duration-500 relative">
+                      <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-lg bg-text/5 dark:bg-white/5 grayscale group-hover/tech:grayscale-0 transition-all duration-500 relative overflow-hidden">
                         {tech.icon ? (
+                          /* Standard Devicons Logic */
                           <tech.icon size={20} />
                         ) : tech.iconPath ? (
-                          <div className="relative w-5 h-5 dark:invert dark:brightness-200 transition-all duration-500 group-hover/tech:dark:invert-0 group-hover/tech:dark:brightness-100">
+                          /* Custom SVG Logic with Improved Contrast Plate */
+                          <div className="relative w-5 h-5 dark:invert dark:brightness-100 transition-all duration-500 group-hover/tech:scale-110">
                             <Image 
                               src={tech.iconPath} 
                               alt={tech.name} 
