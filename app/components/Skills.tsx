@@ -1,0 +1,198 @@
+"use client";
+
+import React from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { Brain, Database, Server, Globe, Cpu, Layers, Settings } from "lucide-react";
+
+// Importing specific icons from devicons-react
+// Note: Names are usually tech name + Wordmark/Original
+import { 
+  PythonOriginal, 
+  FastapiOriginal, 
+  ReactOriginal, 
+  NextjsOriginal, 
+  TailwindcssOriginal, 
+  TypescriptOriginal,
+  NodejsOriginal,
+  PostgresqlOriginal,
+  DockerOriginal,
+  GitOriginal,
+  GithubOriginal,
+  FirebaseOriginal
+} from "devicons-react";
+
+const Skills = () => {
+  const categories = [
+    {
+      title: "AI & Intelligence",
+      icon: Brain,
+      description: "Building production RAG pipelines and multi-agent orchestration systems.",
+      techs: [
+        { name: "Python", icon: PythonOriginal },
+        { name: "FastAPI", icon: FastapiOriginal },
+        { name: "Claude AI", iconPath: "/icons/claude-ai-icon.svg" },
+        { name: "Gemini", iconPath: "/icons/gemini.svg" },
+        { name: "RAG Pipelines", iconPath: "/icons/RAG.svg" },
+        { name: "LangChain", iconPath: "/icons/langchain.svg" },
+        { name: "Vector DBs", iconPath: "/icons/vector-db.svg" }
+      ]
+    },
+    {
+      title: "Backend Engineering",
+      icon: Server,
+      description: "Scalable server-side logic and modular architecture with a focus on performance.",
+      techs: [
+        { name: "Node.js", icon: NodejsOriginal },
+        { name: "Express", iconPath: "/icons/express.svg" },
+        { name: "Python", icon: PythonOriginal },
+        { name: "REST APIs", iconPath: "/icons/rest-api.svg" },
+        { name: "Auth", iconPath: "/icons/authentication.svg" }
+      ]
+    },
+    {
+      title: "Frontend & DX",
+      icon: Globe,
+      description: "Modern, high-performance web applications with a focus on premium user experience.",
+      techs: [
+        { name: "React", icon: ReactOriginal },
+        { name: "Next.js", icon: NextjsOriginal },
+        { name: "TypeScript", icon: TypescriptOriginal },
+        { name: "Tailwind", icon: TailwindcssOriginal },
+        { name: "Framer", iconPath: "/icons/brand-framer-motion.svg" }
+      ]
+    },
+    {
+      title: "Databases",
+      icon: Database,
+      description: "Architecting efficient data structures for structured and unstructured data.",
+      techs: [
+        { name: "PostgreSQL", icon: PostgresqlOriginal },
+        { name: "Supabase", iconPath: "/icons/supabase.svg" },
+        { name: "SQLite", iconPath: "/icons/sql-lite.svg" },
+        { name: "Redis", iconPath: "/icons/redis-original.svg" },
+        { name: "Qdrant", iconPath: "/icons/qdrant.svg" }
+      ]
+    },
+    {
+      title: "Tools & DevOps",
+      icon: Settings,
+      description: "Version control, containerization, and automated deployment pipelines.",
+      techs: [
+        { name: "Docker", icon: DockerOriginal },
+        { name: "Git", icon: GitOriginal },
+        { name: "Actions", iconPath: "/icons/GitHub-Actions.svg" },
+        { name: "Vercel", iconPath: "/icons/vercel.svg" },
+        { name: "CI/CD", iconPath: "/icons/cicd.svg" }
+      ]
+    }
+  ];
+
+  const FallbackIcon = () => (
+    <div className="w-5 h-5 rounded-full bg-accent/20 border border-accent/40 flex items-center justify-center">
+      <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+    </div>
+  );
+
+  return (
+    <section id="skills" className="py-32 px-6 md:px-12 bg-bg relative overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        
+        {/* Section Header */}
+        <div className="mb-20">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="flex items-center gap-3 mb-4"
+          >
+            <div className="w-8 h-[2px] bg-accent" />
+            <span className="text-accent text-xs font-black uppercase tracking-[0.3em]">
+              Skills
+            </span>
+          </motion.div>
+          
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-text"
+          >
+            THE TECH <br />
+            <span className="text-accent italic">STACK</span>.
+          </motion.h2>
+        </div>
+
+        {/* Skills Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {categories.map((cat, index) => (
+            <motion.div
+              key={cat.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="group p-8 rounded-2xl bg-bg-2 border border-border/50 hover:border-accent/40 transition-all duration-700"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 rounded-xl bg-bg flex items-center justify-center border border-border/30 group-hover:border-accent/30 group-hover:bg-accent/5 transition-all duration-700">
+                  <cat.icon className="w-7 h-7 text-accent" />
+                </div>
+                <h3 className="text-2xl font-black uppercase tracking-tighter text-text">
+                  {cat.title}
+                </h3>
+              </div>
+
+              <p className="text-muted text-sm leading-relaxed mb-8 font-medium">
+                {cat.description}
+              </p>
+
+              <div className="grid grid-cols-2 gap-3">
+                {cat.techs.map((tech) => {
+                  return (
+                    <div 
+                      key={tech.name} 
+                      className="flex items-center gap-3 p-3 rounded-xl bg-bg border border-border/20 group/tech hover:border-accent/30 transition-all duration-300"
+                    >
+                      <div className="w-8 h-8 flex items-center justify-center grayscale group-hover/tech:grayscale-0 transition-all duration-500 relative">
+                        {tech.icon ? (
+                          <tech.icon size={20} />
+                        ) : tech.iconPath ? (
+                          <div className="relative w-5 h-5 dark:invert dark:brightness-200 transition-all duration-500 group-hover/tech:dark:invert-0 group-hover/tech:dark:brightness-100">
+                            <Image 
+                              src={tech.iconPath} 
+                              alt={tech.name} 
+                              fill 
+                              className="object-contain"
+                            />
+                          </div>
+                        ) : (
+                          <FallbackIcon />
+                        )}
+                      </div>
+                      <span className="text-[10px] font-black uppercase tracking-widest text-text-sub group-hover/tech:text-text">
+                        {tech.name}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Decorative Grid Line */}
+        <div className="mt-24 h-[1px] w-full bg-gradient-to-r from-transparent via-border/50 to-transparent relative">
+          <div className="absolute top-0 right-8 -translate-y-1/2 bg-bg px-4 text-[9px] font-mono text-muted uppercase tracking-[0.4em]">
+            System_Architecture: v2.4
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+export default Skills;
