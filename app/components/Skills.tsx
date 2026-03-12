@@ -134,7 +134,7 @@ const Skills = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group p-8 rounded-2xl bg-bg-2 border border-border/50 hover:border-accent/40 transition-all duration-700"
+              className="group p-6 sm:p-8 rounded-2xl bg-bg-2 border border-border/50 hover:border-accent/40 transition-all duration-700"
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-14 h-14 rounded-xl bg-bg flex items-center justify-center border border-border/30 group-hover:border-accent/30 group-hover:bg-accent/5 transition-all duration-700">
@@ -149,14 +149,14 @@ const Skills = () => {
                 {cat.description}
               </p>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-2 sm:gap-3">
                 {cat.techs.map((tech) => {
                   return (
                     <div 
                       key={tech.name} 
-                      className="flex items-center gap-3 p-3 rounded-xl bg-bg border border-border/20 group/tech hover:border-accent/30 transition-all duration-300"
+                      className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl bg-bg border border-border/20 group/tech hover:border-accent/30 transition-all duration-300 min-w-0"
                     >
-                      <div className="w-8 h-8 flex items-center justify-center grayscale group-hover/tech:grayscale-0 transition-all duration-500 relative">
+                      <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center grayscale group-hover/tech:grayscale-0 transition-all duration-500 relative">
                         {tech.icon ? (
                           <tech.icon size={20} />
                         ) : tech.iconPath ? (
@@ -172,7 +172,7 @@ const Skills = () => {
                           <FallbackIcon />
                         )}
                       </div>
-                      <span className="text-[10px] font-black uppercase tracking-widest text-text-sub group-hover/tech:text-text">
+                      <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-tight sm:tracking-widest text-text-sub group-hover/tech:text-text truncate sm:overflow-visible">
                         {tech.name}
                       </span>
                     </div>
