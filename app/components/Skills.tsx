@@ -44,6 +44,8 @@ const Skills = () => {
         { name: "Node.js", icon: NodejsOriginal },
         { name: "Python", icon: PythonOriginal },
         { name: "API Security", iconPath: "/icons/authentication.svg" },
+        { name: "Rust", iconPath: "/icons/rust.svg" },
+        { name: "Go", iconPath: "/icons/go.svg" },
         { name: "Sys Design", iconPath: "/icons/rest-api.svg" },
         { name: "Microservices", iconPath: "/icons/express.svg" }
       ]
