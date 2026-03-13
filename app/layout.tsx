@@ -28,16 +28,16 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Muhammad Usman — Full-Stack AI Engineer | LLM Systems & Autonomous Agents",
-  description: "Full-Stack AI Engineer based in Lahore, Pakistan. Specializing in LLM-powered applications, autonomous agents, and RAG pipelines. Available for opportunities.",
+  title: "Muhammad Usman — Full-Stack AI Engineer | Systems That Drive ROI",
+  description: "Full-Stack AI Engineer architecting systems that automate high-value operations and reduce overhead for scaling businesses. Based in Lahore, Pakistan.",
   keywords: [
     "AI Engineer",
-    "Full Stack Developer",
-    "LLM Engineer",
+    "Automation Specialist",
+    "LLM Systems",
     "Autonomous Agents",
     "RAG Pipelines",
-    "Next.js Developer",
-    "Python Developer",
+    "Business Process Automation",
+    "AI Architecture",
     "Lahore Pakistan"
   ],
   authors: [{ name: "Muhammad Usman" }],
@@ -49,8 +49,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://buildwithusman.me",
-    title: "Muhammad Usman — Full-Stack AI Engineer",
-    description: "Specializing in LLM-powered applications, autonomous agents, and RAG pipelines.",
+    title: "Muhammad Usman — Full-Stack AI Engineer | ROI-Driven AI",
+    description: "Architecting autonomous AI operations that automate high-value workflows and reduce business overhead.",
     siteName: "Muhammad Usman Portfolio",
     images: [{
       url: "/og_img.jpg",

@@ -35,7 +35,7 @@ const Hero = () => {
           >
             I Build AI <br />
             Systems That <br />
-            <span className="text-accent italic">Think & Scale</span>.
+            <span className="text-accent italic">Drive ROI</span>.
           </motion.h1>
 
           <motion.p 
@@ -44,9 +44,9 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 2.3 }}
             className="text-lg md:text-xl text-text-sub max-w-xl mb-12 leading-relaxed"
           >
-            Specializing in <span className="text-text font-bold">LLM pipelines</span>, 
-            <span className="text-text font-bold"> autonomous agents</span> & 
-            production-ready <span className="text-text font-bold">AI applications</span>.
+            Architecting <span className="text-text font-bold">LLM pipelines</span> & 
+            <span className="text-text font-bold"> autonomous agents</span> that automate 
+            high-value operations and <span className="text-text font-bold">reduce overhead</span> for scaling businesses.
           </motion.p>
 
           <motion.div 

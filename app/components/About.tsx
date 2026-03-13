@@ -9,18 +9,18 @@ const About = () => {
   const pillars = [
     {
       icon: Brain,
-      title: "Agentic Reasoning",
-      text: "Architecting multi-agent systems that don't just process data, but plan and execute complex operational workflows."
+      title: "Actionable Intelligence",
+      text: "Architecting AI agents that automate complex routing and decision-making, slashing operational overhead."
     },
     {
       icon: Code,
-      title: "Full-Stack AI",
-      text: "Building the complete vertical—from resilient FastAPI backends and RAG pipelines to high-performance React interfaces."
+      title: "Full-Stack Efficiency",
+      text: "Building end-to-end AI products that integrate LLMs directly into business logic to drive immediate, measurable results."
     },
     {
       icon: Zap,
-      title: "Autonomous Scale",
-      text: "Optimizing AI systems for production, ensuring they are local-first, privacy-aware, and built to scale with demand."
+      title: "Engineered for Scale",
+      text: "Deploying resilient, production-ready systems that handle high-volume workflows while maintaining data integrity and performance."
     }
   ];
 
@@ -53,7 +53,7 @@ const About = () => {
             >
               I architect <br />
               systems that <br />
-              <span className="text-accent italic">think</span>.
+              <span className="text-accent italic">deliver</span>.
             </motion.h2>
 
             <motion.div
@@ -64,13 +64,12 @@ const About = () => {
               className="space-y-6 text-xl text-text-sub leading-relaxed max-w-2xl"
             >
               <p>
-                I am a <span className="text-text font-bold uppercase italic tracking-tighter">Full-Stack AI Engineer</span> building systems that don&apos;t just respond — they <span className="text-accent">plan</span>, <span className="text-accent">decide</span>, and <span className="text-accent">act</span>. 
-                Based in Lahore, I architect autonomous operations that enable software to execute multi-step workflows with human-like reasoning.
+                I am a <span className="text-text font-bold uppercase italic tracking-tighter">Full-Stack AI Engineer</span> building systems that don&apos;t just respond — they <span className="text-accent">execute</span>, <span className="text-accent">optimize</span>, and <span className="text-accent">scale</span>. 
+                Based in Lahore, I build autonomous AI operations that eliminate manual bottlenecks and scale without increasing headcount.
               </p>
               <p>
-                With a background spanning <span className="text-text font-bold underline decoration-accent/30 underline-offset-4">RAG pipelines</span>, 
-                <span className="text-text font-bold underline decoration-accent/30 underline-offset-4"> multi-agent orchestration</span>, and 
-                <span className="text-text font-bold underline decoration-accent/30 underline-offset-4"> physical AI</span>, I build production-ready systems that prioritize local-first execution and tactical automation.
+                With a background in <span className="text-text font-bold underline decoration-accent/30 underline-offset-4">RAG pipelines</span> and 
+                <span className="text-text font-bold underline decoration-accent/30 underline-offset-4"> agentic orchestration</span>, I deliver production systems that turn unstructured data into automated business outcomes.
               </p>
             </motion.div>
 

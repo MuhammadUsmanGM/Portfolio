@@ -59,8 +59,8 @@ const Contact = () => {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-[clamp(3.5rem,7vw,6rem)] font-bebas uppercase tracking-tighter leading-[0.92] text-text"
           >
-            LET&apos;S BUILD <br />
-            <span className="text-accent">SOMETHING.</span>
+            SCALE YOUR <br />
+            <span className="text-accent">OPERATIONS.</span>
           </motion.h2>
         </div>
 

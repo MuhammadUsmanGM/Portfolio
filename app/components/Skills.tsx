@@ -25,65 +25,61 @@ import {
 const Skills = () => {
   const categories = [
     {
-      title: "AI & Intelligence",
+      title: "Intelligence Infrastructure",
       icon: Brain,
-      description: "Building production RAG pipelines and multi-agent orchestration systems.",
+      description: "Architecting the backbone for enterprise AI, focusing on decision-making latency and large-scale data ingestion.",
       techs: [
         { name: "Python", icon: PythonOriginal },
         { name: "FastAPI", icon: FastapiOriginal },
-        { name: "Claude AI", iconPath: "/icons/claude-ai-icon.svg" },
-        { name: "Gemini", iconPath: "/icons/gemini.svg" },
-        { name: "RAG Pipelines", iconPath: "/icons/RAG.svg" },
-        { name: "LangChain", iconPath: "/icons/langchain.svg" },
-        { name: "Vector DBs", iconPath: "/icons/vector-db.svg" }
+        { name: "RAG Systems", iconPath: "/icons/RAG.svg" },
+        { name: "Agentic Ops", iconPath: "/icons/langchain.svg" },
+        { name: "Vector Search", iconPath: "/icons/vector-db.svg" }
       ]
     },
     {
-      title: "Backend Engineering",
+      title: "Resilient Systems",
       icon: Server,
-      description: "Scalable server-side logic and modular architecture with a focus on performance.",
+      description: "Developing robust backend architectures designed for zero-downtime and high-throughput mission-critical tasks.",
       techs: [
         { name: "Node.js", icon: NodejsOriginal },
-        { name: "Express", iconPath: "/icons/express.svg" },
         { name: "Python", icon: PythonOriginal },
-        { name: "REST APIs", iconPath: "/icons/rest-api.svg" },
-        { name: "Auth", iconPath: "/icons/authentication.svg" }
+        { name: "API Security", iconPath: "/icons/authentication.svg" },
+        { name: "Sys Design", iconPath: "/icons/rest-api.svg" },
+        { name: "Microservices", iconPath: "/icons/express.svg" }
       ]
     },
     {
-      title: "Frontend & DX",
+      title: "High-Performance UX",
       icon: Globe,
-      description: "Modern, high-performance web applications with a focus on premium user experience.",
+      description: "Engineering seamless, high-conversion interfaces that prioritize speed, accessibility, and measurable user engagement.",
       techs: [
         { name: "React", icon: ReactOriginal },
         { name: "Next.js", icon: NextjsOriginal },
         { name: "TypeScript", icon: TypescriptOriginal },
         { name: "Tailwind", icon: TailwindcssOriginal },
-        { name: "Framer", iconPath: "/icons/brand-framer-motion.svg" }
+        { name: "Framer Motion", iconPath: "/icons/brand-framer-motion.svg" }
       ]
     },
     {
-      title: "Databases",
+      title: "Data Strategy",
       icon: Database,
-      description: "Architecting efficient data structures for structured and unstructured data.",
+      description: "Optimizing the storage, retrieval, and integrity of complex datasets for both structured and unstructured environments.",
       techs: [
         { name: "PostgreSQL", icon: PostgresqlOriginal },
         { name: "Supabase", iconPath: "/icons/supabase.svg" },
-        { name: "SQLite", iconPath: "/icons/sql-lite.svg" },
         { name: "Redis", iconPath: "/icons/redis-original.svg" },
-        { name: "Qdrant", iconPath: "/icons/qdrant.svg" }
+        { name: "Vector DBs", iconPath: "/icons/qdrant.svg" }
       ]
     },
     {
-      title: "Tools & DevOps",
+      title: "Production Ops",
       icon: Settings,
-      description: "Version control, containerization, and automated deployment pipelines.",
+      description: "Streamlining delivery through CI/CD automation, container orchestration, and multi-tenant security protocols.",
       techs: [
         { name: "Docker", icon: DockerOriginal },
-        { name: "Git", icon: GitOriginal },
-        { name: "Actions", iconPath: "/icons/GitHub-Actions.svg" },
+        { name: "GitHub Actions", iconPath: "/icons/GitHub-Actions.svg" },
         { name: "Vercel", iconPath: "/icons/vercel.svg" },
-        { name: "CI/CD", iconPath: "/icons/cicd.svg" }
+        { name: "Security First", iconPath: "/icons/cicd.svg" }
       ]
     }
   ];
