@@ -93,7 +93,7 @@ const Skills = () => {
   );
 
   return (
-    <section id="skills" className="py-32 px-6 md:px-12 bg-bg relative overflow-hidden">
+    <section id="skills" className="pt-16 pb-16 px-6 md:px-12 bg-bg relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header */}

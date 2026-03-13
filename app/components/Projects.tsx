@@ -90,14 +90,14 @@ const Projects = () => {
   ];
 
   return (
-    <section id="work" className="py-32 px-6 md:px-12 bg-bg relative overflow-hidden">
+    <section id="work" className="pt-32 pb-16 px-6 md:px-12 bg-bg relative overflow-hidden">
       {/* Section Header */}
       <div className="max-w-7xl mx-auto mb-20">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 2.0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
           className="flex items-center gap-3 mb-4"
         >
           <div className="w-8 h-[2px] bg-accent" />
@@ -110,7 +110,7 @@ const Projects = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 2.1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
           className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-text"
         >
           Selected <br />
@@ -125,7 +125,7 @@ const Projects = () => {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: index === 0 ? 2.2 : 0 }}
+            transition={{ duration: 0.8, delay: index === 0 ? 0.4 : 0.1 }}
             className="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-32 last:mb-0"
           >
             {/* Project Numbering - Editorial Feel */}
@@ -257,7 +257,7 @@ const Projects = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="max-w-7xl mx-auto mt-32 border-t border-border/50 pt-20 flex flex-col items-center text-center"
+        className="max-w-7xl mx-auto mt-16 border-t border-border/50 pt-20 flex flex-col items-center text-center"
       >
         <p className="text-muted text-sm font-black uppercase tracking-[0.3em] mb-6">
           Architecting more in the shadows?
