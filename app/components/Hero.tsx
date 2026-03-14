@@ -35,7 +35,7 @@ const Hero = () => {
           >
             I Build AI <br />
             Systems That <br />
-            <span className="text-accent italic">Drive ROI</span>.
+            <span className="text-accent italic">Think & Scale</span>.
           </motion.h1>
 
           <motion.p 
