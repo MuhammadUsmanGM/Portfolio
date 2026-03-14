@@ -28,7 +28,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Muhammad Usman — Full-Stack AI Engineer | Systems That Drive ROI",
+  title: "Muhammad Usman - Full-Stack AI Engineer | Systems That Think & Scale",
   description: "Full-Stack AI Engineer architecting systems that automate high-value operations and reduce overhead for scaling businesses. Based in Lahore, Pakistan.",
   keywords: [
     "AI Engineer",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://buildwithusman.me",
-    title: "Muhammad Usman — Full-Stack AI Engineer | ROI-Driven AI",
+    title: "Muhammad Usman — Full-Stack AI Engineer | Systems That Think & Scale",
     description: "Architecting autonomous AI operations that automate high-value workflows and reduce business overhead.",
     siteName: "Muhammad Usman Portfolio",
     images: [{
