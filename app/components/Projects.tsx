@@ -64,16 +64,16 @@ const Projects = () => {
       tags: ["Automation", "Intelligence Pipeline", "Full-Stack"]
     },
     {
-      title: "ELYX",
-      subtitle: "Autonomous Multi-Agent Orchestration",
-      description: "Architected a local-first AI automation system enabling autonomous agents to plan, coordinate, and execute multi-step operational workflows with browser automation.",
-      tech: ["Python", "FastAPI", "Multi-Agent Networks", "SQLite", "Agentic Frameworks"],
-      link: "#",
-      github: "#",
-      isPrivate: true,
-      video: null,
-      thumbnail: null,
-      tags: ["Agentic AI", "Autonomous Ops", "Local-First"]
+      title: "FERRUM DB",
+      subtitle: "Embedded Document Storage Engine",
+      description: "Engineered a high-performance, async embedded database in Rust. Features O(1) indexing, AES-256-GCM encryption at rest, and atomic transactions. Built Ferrum Studio — a live web dashboard for real-time metrics and data inspection.",
+      tech: ["Rust", "Tokio", "AES-256-GCM", "Axum", "PyO3"],
+      link: "https://pypi.org/project/ferrumdb/",
+      github: "https://github.com/MuhammadUsmanGM/ferrumdb",
+      isPrivate: false,
+      video: "/videos/ferrumdb.webm",
+      thumbnail: "/images/ferrum.jpg",
+      tags: ["Systems Engineering", "Rust", "O(1) Performance"]
     },
     {
       title: "PHYSICAL AI",
