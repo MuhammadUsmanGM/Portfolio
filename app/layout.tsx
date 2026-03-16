@@ -28,6 +28,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://buildwithusman.me'),
   title: "Muhammad Usman - Full-Stack AI Engineer | Systems That Think & Scale",
   description: "Full-Stack AI Engineer architecting systems that automate high-value operations and reduce overhead for scaling businesses. Based in Lahore, Pakistan.",
   keywords: [
@@ -46,6 +47,20 @@ export const metadata: Metadata = {
     icon: "/favicon.webp",
     apple: "/favicon.webp",
   },
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
     type: "website",
     url: "https://buildwithusman.me",
@@ -59,6 +74,13 @@ export const metadata: Metadata = {
       alt: "Muhammad Usman — Full-Stack AI Engineer"
     }]
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Muhammad Usman — Full-Stack AI Engineer',
+    description: 'Architecting autonomous AI operations that automate high-value workflows and reduce business overhead.',
+    creator: '@your_twitter_handle', // User can update this
+    images: ['/og_img.jpg'],
+  },
 };
 
 export default function RootLayout({
@@ -71,6 +93,27 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} ${dmSans.variable} antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Muhammad Usman",
+              "url": "https://buildwithusman.me",
+              "jobTitle": "Full-Stack AI Engineer",
+              "alumniOf": {
+                "@type": "Organization",
+                "name": "University Name" // Placeholder or leave out
+              },
+              "knowsAbout": ["AI Engineering", "LLM Systems", "RAG Pipelines", "Automation", "Full-stack Development"],
+              "sameAs": [
+                "https://github.com/MuhammadUsmanGM",
+                "https://linkedin.com/in/your_linkedin" // Placeholder
+              ]
+            })
+          }}
+        />
         <Loader />
         <Navbar />
         {children}
