@@ -19,7 +19,7 @@ const ChatWidget = () => {
 
   const welcomeMessage: Message = {
     role: "bot",
-    content: "Hi! I'm NOVA, Muhammad Usman's AI Assistant. How can I help you explore his work today?",
+    content: "Ask me anything about Usman's work, stack, or availability.",
   };
 
   useEffect(() => {
