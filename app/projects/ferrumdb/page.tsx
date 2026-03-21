@@ -75,7 +75,7 @@ const FerrumCaseStudy = () => {
               <span className="bg-accent/10 text-accent text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter border border-accent/20">
                 Core Systems Engineering
               </span>
-              <span className="text-muted text-[10px] font-black uppercase tracking-widest">• RUST 1.75+</span>
+              <span className="text-muted text-[11px] font-black uppercase tracking-[0.2em] font-mono">5 MIN READ • JAN 2026</span>
             </div>
             <h1 className="text-[clamp(3.5rem,8vw,6.5rem)] font-bebas leading-[0.9] uppercase tracking-tighter mb-8">
               FERRUM <span className="text-accent italic">DB.</span>

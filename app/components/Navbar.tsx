@@ -15,17 +15,17 @@ const Navbar = () => {
   });
 
   const navLinks = [
-    { name: "Work", href: "#work" },
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Contact", href: "#contact" },
+    { name: "Work", href: "/#work" },
+    { name: "About", href: "/#about" },
+    { name: "Skills", href: "/#skills" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   return (
     <motion.nav 
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 1, delay: 2, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
       className="fixed top-6 left-0 right-0 z-50 mx-auto max-w-[95%] md:max-w-[1200px]"
     >
       <div 
@@ -79,7 +79,7 @@ const Navbar = () => {
         {/* Right: CTA */}
         <div>
           <Link 
-            href="#contact" 
+            href="/#contact" 
             className="group relative inline-flex items-center gap-2 bg-accent hover:bg-accent-glow text-bg px-7 py-2.5 rounded-full font-black text-[11px] uppercase tracking-widest transition-all duration-300 overflow-hidden shadow-[0_4px_20px_rgba(245,166,35,0.25)]"
           >
             <span className="relative z-10 flex items-center gap-2">

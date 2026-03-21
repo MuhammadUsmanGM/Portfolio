@@ -50,7 +50,7 @@ const ElyxCaseStudy = () => {
   ];
 
   return (
-    <main className="min-h-screen bg-bg text-text pt-24 pb-24 px-6 md:px-12 selection:bg-accent selection:text-bg">
+    <main className="min-h-screen bg-bg text-text pt-32 pb-24 px-6 md:px-12 selection:bg-accent selection:text-bg">
       {/* Dynamic Grid Background */}
       <div className="fixed inset-0 opacity-[0.1] pointer-events-none" 
            style={{ backgroundImage: 'radial-gradient(rgba(201,150,12,0.4) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
@@ -78,11 +78,11 @@ const ElyxCaseStudy = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="flex items-center gap-3 mb-8">
+            <div className="flex items-center gap-3 mb-6">
               <span className="bg-accent/15 text-accent text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-tighter border border-accent/30 flex items-center gap-2">
                 <Bot size={12} /> Autonomous Digital FTE
               </span>
-              <span className="text-muted text-[10px] font-black uppercase tracking-[0.2em] font-mono">sys.elyx_v2p1</span>
+              <span className="text-muted text-[11px] font-black uppercase tracking-[0.2em] font-mono">8 MIN READ • JAN 2026</span>
             </div>
             
             <h1 className="text-[clamp(3.5rem,9vw,7.5rem)] font-bebas leading-[0.88] uppercase tracking-tighter mb-10">
@@ -121,7 +121,7 @@ const ElyxCaseStudy = () => {
               </div>
               <div className="p-10 rounded-[2.5rem] bg-bg-2 border border-border/50 relative overflow-hidden group">
                  <div className="relative z-10 text-xl text-text-sub leading-relaxed max-w-4xl">
-                    Traditional SaaS automation (IFTTT, Zapier) depends on linear, predefined triggers. In complex ERP and multi-channel communication (Gmail + WhatsApp), intent is often ambiguous. I engineered ELYX to solve for **Reasoning over Reaction**, allowing the system to understand the context of an Odoo inventory request before replying across external channels.
+                    Traditional SaaS automation (IFTTT, Zapier) depends on linear, predefined triggers. In complex ERP and multi-channel communication (Gmail + WhatsApp), intent is often ambiguous. I engineered ELYX to solve for <strong>Reasoning over Reaction</strong>, allowing the system to understand the context of an Odoo inventory request before replying across external channels.
                  </div>
                  <Layers className="absolute right-[-50px] bottom-[-50px] w-64 h-64 text-accent/5 -rotate-12 pointer-events-none" />
               </div>
@@ -214,7 +214,7 @@ const ElyxCaseStudy = () => {
              </motion.div>
            </Link>
            <p className="mt-8 text-muted text-[10px] font-black uppercase tracking-[0.4em]">
-              Security Clearance: PROPRIETARY_CODE_REVIEW_ONLY
+              Security Status: PUBLIC_ARCHITECTURE_REVIEW
            </p>
         </footer>
       </div>
