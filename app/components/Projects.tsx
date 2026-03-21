@@ -12,8 +12,11 @@ const VideoPreview = ({ src, thumbnail }: { src: string; thumbnail?: string | nu
 
   return (
     <div ref={ref} className="absolute inset-0 w-full h-full cursor-pointer">
-      {isInView && (
-        <video 
+      {isInView ? (
+        <motion.video 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
           autoPlay
           loop 
           muted 
@@ -23,7 +26,17 @@ const VideoPreview = ({ src, thumbnail }: { src: string; thumbnail?: string | nu
           className="w-full h-full object-cover transition-all duration-700 grayscale-[0.4] brightness-[0.85] contrast-[1.1] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105"
         >
           <source src={src} type="video/webm" />
-        </video>
+        </motion.video>
+      ) : (
+        thumbnail && (
+          <Image 
+            src={thumbnail}
+            alt="Project Preview"
+            fill
+            className="object-cover grayscale-[0.4] brightness-[0.85] contrast-[1.1]"
+            loading="lazy"
+          />
+        )
       )}
       <div className="absolute inset-0 bg-gradient-to-t from-bg/40 to-transparent pointer-events-none" />
       
