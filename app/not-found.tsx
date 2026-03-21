@@ -29,8 +29,8 @@ export default function NotFound() {
         <div className="absolute inset-0 bg-bg/20 backdrop-blur-[2px]" />
         
         {/* Glow blobs */}
-        <div className="absolute top-1/4 left-1/4 w-[30rem] h-[30rem] bg-accent/10 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-[25rem] h-[25rem] bg-accent-glow/10 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/4 left-1/4 w-[30rem] h-[30rem] bg-accent/10 rounded-full blur-[120px] animate-pulse hidden md:block" />
+        <div className="absolute bottom-1/4 right-1/4 w-[25rem] h-[25rem] bg-accent-glow/10 rounded-full blur-[100px] animate-pulse hidden md:block" style={{ animationDelay: '2s' }} />
       </div>
 
       <motion.div 

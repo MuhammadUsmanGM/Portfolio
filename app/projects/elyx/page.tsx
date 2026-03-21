@@ -56,7 +56,7 @@ const ElyxCaseStudy = () => {
            style={{ backgroundImage: 'radial-gradient(rgba(201,150,12,0.4) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
       
       {/* Background Decor */}
-      <div className="fixed top-[-20%] left-[-10%] w-[600px] h-[600px] bg-accent/10 blur-[150px] rounded-full pointer-events-none" />
+      <div className="fixed top-[-20%] left-[-10%] w-[600px] h-[600px] bg-accent/10 blur-[150px] rounded-full pointer-events-none hidden md:block" />
 
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Navigation */}

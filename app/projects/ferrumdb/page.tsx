@@ -47,8 +47,8 @@ const FerrumCaseStudy = () => {
     <main className="min-h-screen bg-bg text-text pt-32 pb-24 px-6 md:px-12 selection:bg-accent selection:text-bg">
       {/* Background Glows */}
       <div className="fixed top-0 left-0 w-full h-full pointer-events-none opacity-20">
-        <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-accent/20 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-accent/10 blur-[100px] rounded-full" />
+        <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-accent/20 blur-[120px] rounded-full hidden md:block" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-accent/10 blur-[100px] rounded-full hidden md:block" />
       </div>
 
       <div className="max-w-5xl mx-auto relative z-10">
