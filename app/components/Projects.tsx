@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Github, ExternalLink, Activity, Lock } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const VideoPreview = ({ src, thumbnail }: { src: string; thumbnail?: string | null }) => {
   return (
@@ -55,7 +56,8 @@ const Projects = () => {
       isPrivate: false,
       video: "/videos/ferrumdb.webm",
       thumbnail: "/images/ferrum.jpg",
-      tags: ["Systems Engineering", "Rust", "O(1) Performance"]
+      tags: ["Systems Engineering", "Rust", "O(1) Performance"],
+      caseStudy: "/projects/ferrumdb"
     },
     {
       title: "ELYX — DIGITAL FTE",
@@ -150,16 +152,25 @@ const Projects = () => {
               </div>
 
               <div className="flex items-center gap-6">
-                <a 
-                  href={project.link}
-                  target="_blank"
-                  className={`flex items-center gap-2 font-black uppercase text-xs tracking-widest group/link transition-colors ${
-                    project.link === "#" ? "text-muted cursor-not-allowed" : "text-text hover:text-accent"
-                  }`}
-                >
-                  {project.link === "#" ? "Proprietary System" : "Live System"} 
-                  {project.link !== "#" && <ArrowUpRight className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />}
-                </a>
+                {project.caseStudy ? (
+                  <Link 
+                    href={project.caseStudy}
+                    className="flex items-center gap-4 bg-accent text-bg px-8 py-3 rounded-full font-black text-[10px] uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-[0_8px_32px_rgba(245,166,35,0.25)]"
+                  >
+                    Read Case Study <Activity className="w-4 h-4" />
+                  </Link>
+                ) : (
+                  <a 
+                    href={project.link}
+                    target="_blank"
+                    className={`flex items-center gap-2 font-black uppercase text-xs tracking-widest group/link transition-colors ${
+                      project.link === "#" ? "text-muted cursor-not-allowed" : "text-text hover:text-accent"
+                    }`}
+                  >
+                    {project.link === "#" ? "Proprietary System" : "Live System"} 
+                    {project.link !== "#" && <ArrowUpRight className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />}
+                  </a>
+                )}
 
                 {project.isPrivate ? (
                   <div 
