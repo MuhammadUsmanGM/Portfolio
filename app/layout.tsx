@@ -4,9 +4,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import MobileNav from "./components/MobileNav";
 import Loader from "./components/Loader";
-import dynamic from "next/dynamic";
-
-const ChatWidget = dynamic(() => import("./components/ChatWidget"), { ssr: false });
+import ChatWidget from "./components/ChatWidget";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

@@ -11,11 +11,16 @@ interface Message {
 }
 
 const ChatWidget = () => {
+  const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [isTyping, setIsTyping] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const welcomeMessage: Message = {
     role: "bot",
@@ -27,6 +32,8 @@ const ChatWidget = () => {
       setMessages([welcomeMessage]);
     }
   }, [isOpen]);
+
+  if (!mounted) return null;
 
   useEffect(() => {
     if (scrollRef.current) {
