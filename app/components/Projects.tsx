@@ -36,20 +36,20 @@ const Projects = () => {
     {
       title: "THE SIGNAL",
       subtitle: "AI-Powered Intelligence Pipeline",
-      description: "Architected an automated newsletter system that aggregates global AI signals, processes them via LLM summarization, and delivers structured briefings globally.",
-      tech: ["React", "Node.js", "LLM Summarization", "Supabase", "GitHub Actions"],
+      description: "Engineered a fully autonomous AI newsletter pipeline ingesting global AI news via LLM summarization. Delivered weekly briefings to 300+ subscribers with serverless scheduling for timezone-aware 9AM local-time distribution via GitHub Actions.",
+      tech: ["React", "Node.js", "Supabase", "Cloudflare Turnstile", "GitHub Actions"],
       link: "https://news-letter-umber-five.vercel.app",
       github: "https://github.com/MuhammadUsmanGM/THE-SIGNAL",
       isPrivate: false,
       video: "/videos/signal.webm",
       thumbnail: "/images/Signal.jpg",
-      tags: ["Automation", "Intelligence Pipeline", "Full-Stack"]
+      tags: ["300+ Subscribers", "Autonomous Pipeline", "Full-Stack"]
     },
     {
       title: "FERRUM DB",
       subtitle: "Embedded Document Storage Engine",
-      description: "Engineered a high-performance, async embedded database in Rust. Features O(1) indexing, AES-256-GCM encryption at rest, and atomic transactions. Built Ferrum Studio — a live web dashboard for real-time metrics and data inspection.",
-      tech: ["Rust", "Tokio", "AES-256-GCM", "Axum", "PyO3"],
+      description: "Engineered a custom embedded database engine in Rust (~1,000 lines) featuring O(1) indexing and AES-256-GCM encryption. Shipped to PyPI and crates.io with 136+ downloads, benchmarked sub-1µs GETs via Criterion.",
+      tech: ["Rust", "PyO3", "Tokio", "AES-256-GCM", "Axum"],
       link: "https://pypi.org/project/ferrumdb/",
       github: "https://github.com/MuhammadUsmanGM/ferrumdb",
       isPrivate: false,
@@ -58,16 +58,16 @@ const Projects = () => {
       tags: ["Systems Engineering", "Rust", "O(1) Performance"]
     },
     {
-      title: "PHYSICAL AI",
-      subtitle: "Humanoid Robotics & Embodied AI",
-      description: "Engineered a spec-driven technical platform and AI-assisted content pipeline for humanoid robotics education. Features modular navigation and intelligent content organization.",
-      tech: ["React", "Docusaurus", "FastAPI", "Qdrant", "Google Gemini"],
-      link: "https://muhammadusmangm.github.io/physical-ai-hackathon",
-      github: "https://github.com/MuhammadUsmanGM/physical-ai-hackathon",
-      isPrivate: false,
-      video: "/videos/physical-ai.webm",
-      thumbnail: "/images/physical-ai.jpg",
-      tags: ["Robotics", "Knowledge Systems", "AI EdTech"]
+      title: "ELYX — DIGITAL FTE",
+      subtitle: "Autonomous Operations Framework",
+      description: "Architected a 4-layer event-driven AI agent framework autonomously monitoring Gmail, WhatsApp, and Odoo ERP. Engineered model-agnostic routing across 4 major LLM providers with cryptographically signed audit trails.",
+      tech: ["Python", "FastAPI", "Next.js", "SQLite", "LLM APIs"],
+      link: "#",
+      github: "https://github.com/MuhammadUsmanGM/ELYX-Digital-FTE",
+      isPrivate: true,
+      video: null,
+      thumbnail: "/images/elyx.jpg",
+      tags: ["Digital FTE", "Autonomous Agents", "4-Layer Framework"]
     }
   ];
 
