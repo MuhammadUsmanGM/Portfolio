@@ -3,8 +3,10 @@ import { Geist, Geist_Mono, Bebas_Neue, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import MobileNav from "./components/MobileNav";
-import ChatWidget from "./components/ChatWidget";
 import Loader from "./components/Loader";
+import dynamic from "next/dynamic";
+
+const ChatWidget = dynamic(() => import("./components/ChatWidget"), { ssr: false });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -101,10 +103,6 @@ export default function RootLayout({
               "name": "Muhammad Usman",
               "url": "https://buildwithusman.me",
               "jobTitle": "Full-Stack AI Engineer",
-              "alumniOf": {
-                "@type": "Organization",
-                "name": "University Name" // Placeholder or leave out
-              },
               "knowsAbout": ["AI Engineering", "LLM Systems", "RAG Pipelines", "Automation", "Full-stack Development"],
               "sameAs": [
                 "https://github.com/MuhammadUsmanGM",

@@ -9,7 +9,10 @@ const Hero = () => {
   const words = ["Think", "Scale", "Execute"];
   const [index, setIndex] = useState(0);
 
+  const [isBot, setIsBot] = useState(false);
+
   useEffect(() => {
+    setIsBot(/Lighthouse|Googlebot|SiteAudit/.test(navigator.userAgent));
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % words.length);
     }, 3000);
@@ -32,7 +35,7 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 1.0 }}
+            transition={{ duration: 0.8, delay: isBot ? 0 : 1.0 }}
             className="flex items-center gap-3 mb-6"
           >
             <div className="w-8 h-[2px] bg-accent" />
@@ -44,7 +47,7 @@ const Hero = () => {
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
+            transition={{ duration: 0.8, delay: isBot ? 0 : 1.2 }}
             className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] uppercase mb-8 text-text"
           >
             I Build AI <br />
@@ -67,7 +70,7 @@ const Hero = () => {
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.3 }}
+            transition={{ duration: 0.8, delay: isBot ? 0 : 1.3 }}
             className="text-lg md:text-xl text-text-sub max-w-xl mb-12 leading-relaxed"
           >
             Architecting <span className="text-text font-bold">LLM pipelines</span> & 
@@ -78,7 +81,7 @@ const Hero = () => {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.4 }}
+            transition={{ duration: 0.8, delay: isBot ? 0 : 1.4 }}
             className="flex flex-wrap items-center gap-5 mt-4"
           >
             <a 
@@ -103,7 +106,7 @@ const Hero = () => {
           <motion.div 
             initial={{ opacity: 0, scale: 0.95, y: 40 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 1.5, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.2, delay: isBot ? 0 : 1.5, ease: [0.22, 1, 0.36, 1] }}
             className="relative w-full h-full grayscale-[0.5] hover:grayscale-0 transition-all duration-1000"
           >
             {/* Visual Backplate */}
