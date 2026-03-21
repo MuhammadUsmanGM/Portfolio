@@ -1,37 +1,19 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Github, ExternalLink, Activity, Lock } from "lucide-react";
 import Image from "next/image";
 
 const VideoPreview = ({ src, thumbnail }: { src: string; thumbnail?: string | null }) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  const handleMouseEnter = () => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {});
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0; // Reset to start
-    }
-  };
-
   return (
-    <div 
-      className="absolute inset-0 w-full h-full cursor-pointer"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
+    <div className="absolute inset-0 w-full h-full cursor-pointer">
       <video 
-        ref={videoRef}
+        autoPlay
         loop 
         muted 
         playsInline 
+        preload="auto"
         poster={thumbnail || ""}
         className="w-full h-full object-cover transition-all duration-700 grayscale-[0.4] brightness-[0.85] contrast-[1.1] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105"
       >
