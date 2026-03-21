@@ -33,7 +33,6 @@ const ChatWidget = () => {
     }
   }, [isOpen]);
 
-  if (!mounted) return null;
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -71,6 +70,8 @@ const ChatWidget = () => {
       setIsTyping(false);
     }
   };
+
+  if (!mounted) return null;
 
   return (
     <>
