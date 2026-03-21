@@ -1,13 +1,27 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, FileText } from "lucide-react";
 
 const Hero = () => {
+  const words = ["Think", "Scale", "Execute"];
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % words.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [words.length]);
+
   return (
     <section className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-32 pb-20 overflow-hidden bg-bg">
+      {/* Subtle Grid Background */}
+      <div className="absolute inset-0 opacity-[0.15] pointer-events-none" 
+           style={{ backgroundImage: 'radial-gradient(rgba(201,150,12,0.3) 1px, transparent 1px)', backgroundSize: '50px 50px' }} />
+      
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-[50%] h-full bg-accent/5 blur-[120px] pointer-events-none" />
       
@@ -35,7 +49,19 @@ const Hero = () => {
           >
             I Build AI <br />
             Systems That <br />
-            <span className="text-accent italic">Think & Scale</span>.
+            <span className="text-accent italic inline-flex flex-col h-[1.1em] overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={words[index]}
+                  initial={{ y: "100%", opacity: 0 }}
+                  animate={{ y: "0%", opacity: 1 }}
+                  exit={{ y: "-100%", opacity: 0 }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  {words[index]}.
+                </motion.span>
+              </AnimatePresence>
+            </span>
           </motion.h1>
 
           <motion.p 
