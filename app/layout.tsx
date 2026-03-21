@@ -78,7 +78,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Muhammad Usman — Full-Stack AI Engineer',
     description: 'Architecting autonomous AI operations that automate high-value workflows and reduce business overhead.',
-    creator: '@your_twitter_handle', // User can update this
     images: ['/og_img.jpg'],
   },
 };
@@ -109,7 +108,7 @@ export default function RootLayout({
               "knowsAbout": ["AI Engineering", "LLM Systems", "RAG Pipelines", "Automation", "Full-stack Development"],
               "sameAs": [
                 "https://github.com/MuhammadUsmanGM",
-                "https://linkedin.com/in/your_linkedin" // Placeholder
+                "https://www.linkedin.com/in/muhammad-usman-ai-dev"
               ]
             })
           }}

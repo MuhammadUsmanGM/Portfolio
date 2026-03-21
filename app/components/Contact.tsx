@@ -189,7 +189,7 @@ const Contact = () => {
                 <Github size={16} className="group-hover:text-accent" />
                 GitHub
               </a>
-              <a href="https://linkedin.com/in/muhammad-usman-ai-dev" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-6 py-3 bg-bg-2 border border-border rounded-xl font-bold uppercase tracking-widest text-[10px] hover:border-accent transition-all group">
+              <a href="https://www.linkedin.com/in/muhammad-usman-ai-dev" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-6 py-3 bg-bg-2 border border-border rounded-xl font-bold uppercase tracking-widest text-[10px] hover:border-accent transition-all group">
                 <Linkedin size={16} className="group-hover:text-accent" />
                 LinkedIn
               </a>
