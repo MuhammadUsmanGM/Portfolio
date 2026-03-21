@@ -10,6 +10,15 @@ const Contact = () => {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
+  React.useEffect(() => {
+    if (status === "success" || status === "error") {
+      const timer = setTimeout(() => {
+        if (status === "success") setStatus("idle");
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
+
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsSubmitting(true);
@@ -114,21 +123,32 @@ const Contact = () => {
 
               <div className="flex items-center gap-6">
                 <button
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || status === "success"}
                   type="submit"
-                  className="group flex items-center gap-3 px-10 py-4 bg-accent text-bg rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 disabled:opacity-50 disabled:hover:scale-100"
+                  className={`group relative flex items-center gap-3 px-10 py-4 rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all duration-300 disabled:hover:scale-100 ${
+                    status === "success" 
+                      ? "bg-green-500 text-white" 
+                      : "bg-accent text-bg hover:scale-105 active:scale-95 shadow-[0_8px_32px_rgba(245,166,35,0.25)]"
+                  } ${isSubmitting ? "opacity-70 cursor-wait" : ""}`}
                 >
-                  {isSubmitting ? "Sending..." : "Let's Talk"}
-                  <Send size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  {isSubmitting ? (
+                    <span className="flex items-center gap-2">
+                      Sending <motion.span animate={{ opacity: [0, 1, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>...</motion.span>
+                    </span>
+                  ) : status === "success" ? (
+                    <motion.span initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="flex items-center gap-2">
+                      Message Sent <CheckCircle2 size={14} className="animate-in zoom-in duration-300" />
+                    </motion.span>
+                  ) : (
+                    <>
+                      Let's Talk 
+                      <Send size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    </>
+                  )}
                 </button>
 
-                {status === "success" && (
-                  <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} className="flex items-center gap-2 text-green-600 dark:text-green-400 font-bold text-xs">
-                    <CheckCircle2 size={16} /> Sent successfully!
-                  </motion.div>
-                )}
                 {status === "error" && (
-                  <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} className="flex items-center gap-2 text-red-600 dark:text-red-400 font-bold text-xs">
+                  <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} className="flex items-center gap-2 text-red-600 dark:text-red-400 font-bold text-xs font-dm">
                     <AlertCircle size={16} /> {errorMessage}
                   </motion.div>
                 )}
