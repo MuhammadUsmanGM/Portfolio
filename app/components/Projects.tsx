@@ -66,10 +66,11 @@ const Projects = () => {
       tech: ["Python", "FastAPI", "Next.js", "SQLite", "LLM APIs"],
       link: "#",
       github: "https://github.com/MuhammadUsmanGM/ELYX-Digital-FTE",
-      isPrivate: true,
+      isPrivate: false,
       video: null,
       thumbnail: "/images/elyx.jpg",
-      tags: ["Digital FTE", "70% Workload Reduction", "30k+ Events/Month"]
+      tags: ["Digital FTE", "70% Workload Reduction", "30k+ Events/Month"],
+      caseStudy: "/projects/elyx"
     }
   ];
 
