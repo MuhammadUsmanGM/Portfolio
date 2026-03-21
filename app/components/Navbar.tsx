@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { m, useScroll, useMotionValueEvent } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 const Navbar = () => {
@@ -22,7 +22,7 @@ const Navbar = () => {
   ];
 
   return (
-    <motion.nav 
+    <m.nav 
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
@@ -91,7 +91,7 @@ const Navbar = () => {
           </Link>
         </div>
       </div>
-    </motion.nav>
+    </m.nav>
   );
 };
 

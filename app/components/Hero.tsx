@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, FileText } from "lucide-react";
 
 const Hero = () => {
@@ -32,7 +32,7 @@ const Hero = () => {
         
         {/* Left Column: Content */}
         <div className="lg:col-span-7 flex flex-col items-start text-left">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: isBot ? 0 : 1.0 }}
@@ -42,9 +42,9 @@ const Hero = () => {
             <span className="text-accent text-xs font-black uppercase tracking-[0.3em]">
               Full-Stack AI Engineer
             </span>
-          </motion.div>
+          </m.div>
 
-          <motion.h1 
+          <m.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: isBot ? 0 : 1.2 }}
@@ -52,9 +52,9 @@ const Hero = () => {
           >
             I Build AI <br />
             Systems That <br />
-            <span className="text-accent italic inline-flex flex-col h-[1.1em] overflow-hidden">
+            <span className="text-accent italic inline-flex flex-col h-[1.1em] overflow-hidden min-w-[3.5ch] md:min-w-[5ch]">
               <AnimatePresence mode="wait">
-                <motion.span
+                <m.span
                   key={words[index]}
                   initial={{ y: "100%", opacity: 0 }}
                   animate={{ y: "0%", opacity: 1 }}
@@ -62,12 +62,12 @@ const Hero = () => {
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 >
                   {words[index]}.
-                </motion.span>
+                </m.span>
               </AnimatePresence>
             </span>
-          </motion.h1>
+          </m.h1>
 
-          <motion.p 
+          <m.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: isBot ? 0 : 1.3 }}
@@ -76,9 +76,9 @@ const Hero = () => {
             Architecting <span className="text-text font-bold">LLM pipelines</span> & 
             <span className="text-text font-bold"> autonomous agents</span> that automate 
             high-value operations and <span className="text-text font-bold">reduce overhead</span> for scaling businesses.
-          </motion.p>
+          </m.p>
 
-          <motion.div 
+          <m.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: isBot ? 0 : 1.4 }}
@@ -98,12 +98,12 @@ const Hero = () => {
             >
               Resume <FileText className="w-4 h-4 group-hover:scale-110 transition-transform" />
             </a>
-          </motion.div>
+          </m.div>
         </div>
 
         {/* Right Column: Photo (Bottom Aligned) */}
         <div className="lg:col-span-5 relative h-[500px] md:h-[600px] lg:h-[750px] flex items-end">
-          <motion.div 
+          <m.div 
             initial={{ opacity: 0, scale: 0.95, y: 40 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1.2, delay: isBot ? 0 : 1.5, ease: [0.22, 1, 0.36, 1] }}
@@ -124,7 +124,7 @@ const Hero = () => {
               {/* Bottom Fade Integration */}
               <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-bg via-bg/40 to-transparent z-10" />
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

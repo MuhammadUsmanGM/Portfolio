@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import MobileNav from "./components/MobileNav";
 import Loader from "./components/Loader";
 import ChatWidget from "./components/ChatWidget";
+import { LazyMotion, domAnimation } from "framer-motion";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -109,11 +110,13 @@ export default function RootLayout({
             })
           }}
         />
-        <Loader />
-        <Navbar />
-        {children}
-        <MobileNav />
-        <ChatWidget />
+        <LazyMotion features={domAnimation}>
+          <Loader />
+          <Navbar />
+          {children}
+          <MobileNav />
+          <ChatWidget />
+        </LazyMotion>
       </body>
     </html>
   );

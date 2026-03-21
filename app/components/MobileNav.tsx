@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Briefcase, User, Cpu, Mail } from "lucide-react";
 
 const MobileNav = () => {
@@ -14,7 +14,7 @@ const MobileNav = () => {
   ];
 
   return (
-    <motion.div 
+    <m.div 
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -39,7 +39,7 @@ const MobileNav = () => {
           );
         })}
       </div>
-    </motion.div>
+    </m.div>
   );
 };
 
