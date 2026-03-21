@@ -106,22 +106,21 @@ const Hero = () => {
             transition={{ duration: 1.2, delay: 2.5, ease: [0.22, 1, 0.36, 1] }}
             className="relative w-full h-full grayscale-[0.5] hover:grayscale-0 transition-all duration-1000"
           >
-            {/* Visual Backplate - More subtle and integrated */}
+            {/* Visual Backplate */}
             <div className="absolute inset-0 bg-accent/5 rounded-[2rem] -rotate-2 scale-[1.01] pointer-events-none border border-accent/10" />
             
             <div className="relative w-full h-full rounded-[2rem] overflow-hidden border border-border/50 bg-bg-2 shadow-2xl">
               <Image 
                 src="/main.webp" 
                 alt="Muhammad Usman" 
-                fill 
+                fill
+                sizes="(max-width: 1024px) 100vw, 42vw"
                 className="object-contain object-bottom"
                 priority
               />
-              {/* Bottom Fade Integration - Softer */}
+              {/* Bottom Fade Integration */}
               <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-bg via-bg/40 to-transparent z-10" />
             </div>
-
-
           </motion.div>
         </div>
       </div>

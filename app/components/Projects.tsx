@@ -2,13 +2,13 @@
 
 import React from "react";
 import { motion, useInView } from "framer-motion";
-import { ArrowUpRight, Github, ExternalLink, Activity, Lock } from "lucide-react";
+import { ArrowUpRight, Github, Activity, Lock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 const VideoPreview = ({ src, thumbnail }: { src: string; thumbnail?: string | null }) => {
   const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "200px" });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <div ref={ref} className="absolute inset-0 w-full h-full cursor-pointer">
@@ -33,6 +33,7 @@ const VideoPreview = ({ src, thumbnail }: { src: string; thumbnail?: string | nu
             src={thumbnail}
             alt="Project Preview"
             fill
+            sizes="(max-width: 768px) 100vw, 58vw"
             className="object-cover grayscale-[0.4] brightness-[0.85] contrast-[1.1]"
             loading="lazy"
           />
@@ -209,20 +210,19 @@ const Projects = () => {
                   </a>
                 )}
               </div>
-            </div>            {/* Project Visual */}
+            </div>
+
+            {/* Project Visual */}
             <div className="lg:col-span-7 order-1 lg:order-2 relative group-hover:scale-[1.02] transition-transform duration-700">
               <div className="relative aspect-video rounded-[2rem] overflow-hidden border border-border/50 bg-bg-2 shadow-2xl">
                 
                 {project.video ? (
                   <VideoPreview src={project.video} thumbnail={project.thumbnail} />
                 ) : (
-                  /* Sophisticated Placeholder for ELYX/Private Systems */
                   <div className="absolute inset-0 bg-[#0c0c0c] flex items-center justify-center overflow-hidden">
-                    {/* Grid Pattern */}
                     <div className="absolute inset-0 opacity-20 pointer-events-none" 
                          style={{ backgroundImage: 'radial-gradient(var(--border) 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
                     
-                    {/* Technical Accents */}
                     <div className="absolute top-8 left-8 flex gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
                       <div className="w-1.5 h-1.5 rounded-full bg-border" />
@@ -240,7 +240,6 @@ const Projects = () => {
                       className="absolute inset-x-0 h-[2px] bg-accent/20 blur-sm pointer-events-none z-20"
                     />
 
-                    {/* Center Content */}
                     <div className="relative z-10 flex flex-col items-center gap-6">
                       <div className="relative">
                         <div className="absolute inset-0 bg-accent/20 blur-3xl rounded-full scale-150 animate-pulse" />
