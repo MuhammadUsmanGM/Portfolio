@@ -73,21 +73,24 @@ const About = () => {
               </p>
             </motion.div>
 
-            <motion.div
+            <motion.a
+              href="https://github.com/MuhammadUsmanGM/ELYX-Digital-FTE"
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="mt-12 p-6 rounded-2xl bg-bg-2 border border-border/50 inline-flex items-center gap-4 group"
+              className="mt-12 p-6 rounded-2xl bg-bg-2 border border-border/50 inline-flex items-center gap-4 group hover:border-accent/50 transition-all cursor-pointer shadow-sm hover:shadow-accent/5"
             >
-              <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                <Terminal className="w-6 h-6 text-accent" />
+              <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent group-hover:text-bg transition-all duration-500">
+                <Terminal className="w-6 h-6 text-accent group-hover:text-inherit" />
               </div>
               <div>
-                <span className="block text-[10px] font-black uppercase tracking-widest text-muted">Currently Exploring</span>
-                <span className="block text-sm font-bold text-text uppercase tracking-tight italic">Advanced Agentic Architectures & Humanoid Integration</span>
+                <span className="block text-[10px] font-black uppercase tracking-widest text-muted group-hover:text-accent transition-colors">Currently Exploring</span>
+                <span className="block text-sm font-bold text-text uppercase tracking-tight italic">Advanced Agentic Architectures • ELYX_V2</span>
               </div>
-            </motion.div>
+            </motion.a>
           </div>
 
           {/* Right: Technical Pillars & Portrait */}
