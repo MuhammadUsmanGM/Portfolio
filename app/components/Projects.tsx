@@ -1,25 +1,30 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { ArrowUpRight, Github, ExternalLink, Activity, Lock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 const VideoPreview = ({ src, thumbnail }: { src: string; thumbnail?: string | null }) => {
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "200px" });
+
   return (
-    <div className="absolute inset-0 w-full h-full cursor-pointer">
-      <video 
-        autoPlay
-        loop 
-        muted 
-        playsInline 
-        preload="auto"
-        poster={thumbnail || ""}
-        className="w-full h-full object-cover transition-all duration-700 grayscale-[0.4] brightness-[0.85] contrast-[1.1] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105"
-      >
-        <source src={src} type="video/webm" />
-      </video>
+    <div ref={ref} className="absolute inset-0 w-full h-full cursor-pointer">
+      {isInView && (
+        <video 
+          autoPlay
+          loop 
+          muted 
+          playsInline 
+          preload="none"
+          poster={thumbnail || ""}
+          className="w-full h-full object-cover transition-all duration-700 grayscale-[0.4] brightness-[0.85] contrast-[1.1] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105"
+        >
+          <source src={src} type="video/webm" />
+        </video>
+      )}
       <div className="absolute inset-0 bg-gradient-to-t from-bg/40 to-transparent pointer-events-none" />
       
       {/* Play Indicator Overlay */}
