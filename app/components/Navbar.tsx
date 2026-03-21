@@ -44,6 +44,7 @@ const Navbar = () => {
               alt="Muhammad Usman" 
               fill 
               className="object-contain p-1.5 transition-transform duration-500 group-hover:scale-110"
+              priority
             />
           </div>
           <div className="flex flex-col">
