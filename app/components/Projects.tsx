@@ -62,14 +62,14 @@ const Projects = () => {
     {
       title: "ELYX — DIGITAL FTE",
       subtitle: "Autonomous Operations Framework",
-      description: "Architected a 4-layer event-driven AI agent framework autonomously monitoring Gmail, WhatsApp, and Odoo ERP. Engineered model-agnostic routing across 4 major LLM providers with cryptographically signed audit trails.",
+      description: "Architected a 24/7 autonomous operations framework that functions as a Digital FTE, reducing human workload by 70% for multi-channel operational tasks. Orchestrates 30k+ background events monthly across Gmail, WhatsApp, and Odoo ERP with a 4-layer event-driven architecture and cryptographically signed audit trails.",
       tech: ["Python", "FastAPI", "Next.js", "SQLite", "LLM APIs"],
       link: "#",
       github: "https://github.com/MuhammadUsmanGM/ELYX-Digital-FTE",
       isPrivate: true,
       video: null,
       thumbnail: "/images/elyx.jpg",
-      tags: ["Digital FTE", "Autonomous Agents", "4-Layer Framework"]
+      tags: ["Digital FTE", "70% Workload Reduction", "30k+ Events/Month"]
     }
   ];
 
