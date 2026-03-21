@@ -18,7 +18,7 @@ const Loader = () => {
     const timer = setTimeout(() => {
       setIsVisible(false);
       sessionStorage.setItem("loaded", "true");
-    }, 2000);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -89,8 +89,8 @@ const Loader = () => {
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ 
-                  delay: 0.4, 
-                  duration: 1.0, 
+                  delay: 0.2, 
+                  duration: 0.6, 
                   ease: [0.65, 0, 0.35, 1] 
                 }}
                 className="absolute inset-0 bg-accent origin-left"
