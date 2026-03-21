@@ -44,7 +44,8 @@ const Projects = () => {
       isPrivate: false,
       video: "/videos/signal.webm",
       thumbnail: "/images/Signal.jpg",
-      tags: ["300+ Subscribers", "Autonomous Pipeline", "Full-Stack"]
+      tags: ["300+ Subscribers", "Autonomous Pipeline", "Full-Stack"],
+      caseStudy: "/projects/signal"
     },
     {
       title: "FERRUM DB",
