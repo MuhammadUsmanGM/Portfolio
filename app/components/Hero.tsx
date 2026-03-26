@@ -91,7 +91,7 @@ const Hero = () => {
               View Work <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
             <a 
-              href="/resume.pdf" 
+              href="/Muhammad_Usman_Resume.pdf" 
               target="_blank"
               rel="noreferrer"
               className="group flex items-center gap-3 px-10 py-4 border-2 border-text text-text hover:bg-text hover:text-bg rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95"
