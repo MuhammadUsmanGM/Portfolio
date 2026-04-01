@@ -75,7 +75,7 @@ const Projects = () => {
       github: "https://github.com/MuhammadUsmanGM/ferrumdb",
       isPrivate: false,
       video: "/videos/ferrumdb.webm",
-      thumbnail: "/images/ferrum.jpg",
+      thumbnail: "/images/ferrumdb.webp",
       tags: ["Systems Engineering", "Rust", "O(1) Performance"],
       caseStudy: "/projects/ferrumdb"
     },
@@ -88,7 +88,7 @@ const Projects = () => {
       github: "https://github.com/MuhammadUsmanGM/ELYX-Digital-FTE",
       isPrivate: false,
       video: null,
-      thumbnail: "/images/elyx.jpg",
+      thumbnail: "/images/ELYX.webp",
       tags: ["Digital FTE", "70% Workload Reduction", "30k+ Events/Month"],
       caseStudy: "/projects/elyx"
     }
@@ -218,6 +218,16 @@ const Projects = () => {
                 
                 {project.video ? (
                   <VideoPreview src={project.video} thumbnail={project.thumbnail} />
+                ) : project.thumbnail ? (
+                  <div className="absolute inset-0 w-full h-full">
+                    <Image 
+                      src={project.thumbnail}
+                      alt={project.title}
+                      fill
+                      className="object-cover grayscale-[0.4] brightness-[0.85] contrast-[1.1] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-bg/40 to-transparent pointer-events-none" />
+                  </div>
                 ) : (
                   <div className="absolute inset-0 bg-[#0c0c0c] flex items-center justify-center overflow-hidden">
                     <div className="absolute inset-0 opacity-20 pointer-events-none" 
