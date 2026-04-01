@@ -15,10 +15,10 @@ const Navbar = () => {
   });
 
   const navLinks = [
-    { name: "Work", href: "/#work" },
-    { name: "About", href: "/#about" },
-    { name: "Skills", href: "/#skills" },
-    { name: "Contact", href: "/#contact" },
+    { name: "Work", href: "#work" },
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Contact", href: "#contact" },
   ];
 
   return (
@@ -66,21 +66,21 @@ const Navbar = () => {
         {/* Middle: Navigation - Hidden on mobile, controlled by MobileNav */}
         <div className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
-            <Link 
+            <a 
               key={link.name} 
               href={link.href}
               className="text-[13px] font-bold uppercase tracking-widest text-text-sub hover:text-accent transition-all duration-300 relative group"
             >
               {link.name}
               <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full" />
-            </Link>
+            </a>
           ))}
         </div>
 
         {/* Right: CTA */}
         <div>
-          <Link 
-            href="/#contact" 
+          <a 
+            href="#contact" 
             className="group relative inline-flex items-center gap-2 bg-accent hover:bg-accent-glow text-bg px-7 py-2.5 rounded-full font-black text-[11px] uppercase tracking-widest transition-all duration-300 overflow-hidden shadow-[0_4px_20px_rgba(245,166,35,0.25)]"
           >
             <span className="relative z-10 flex items-center gap-2">
@@ -88,7 +88,7 @@ const Navbar = () => {
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </span>
             <div className="absolute inset-0 bg-[#000] opacity-0 group-hover:opacity-10 transition-opacity" />
-          </Link>
+          </a>
         </div>
       </div>
     </m.nav>

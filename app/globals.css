@@ -93,6 +93,12 @@
   scrollbar-color: var(--border) var(--bg);
 }
 
+html {
+  scroll-behavior: smooth;
+  /* Support for section anchor offsets when using sticky headers */
+  scroll-padding-top: 100px; 
+}
+
 body {
   background-color: var(--bg);
   color: var(--text);
