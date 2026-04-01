@@ -8,6 +8,7 @@ const Background = () => {
   const certifications = [
     { name: "Claude Code in Action", issuer: "Anthropic" },
     { name: "Model Context Protocol: Adv. Topics", issuer: "Anthropic" },
+    { name: "Introduction to Agent Skills", issuer: "Anthropic" },
     { name: "Agent Factory: Building Digital FTEs", issuer: "PIAIC" },
     { name: "Agentic AI Level 1 Developer", issuer: "PIAIC" },
     { name: "Agentic AI Professional Level 2 Developer", issuer: "PIAIC" },
