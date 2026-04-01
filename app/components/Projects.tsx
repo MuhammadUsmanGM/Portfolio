@@ -7,23 +7,51 @@ import Image from "next/image";
 import Link from "next/link";
 
 const VideoPreview = ({ src, thumbnail }: { src: string; thumbnail?: string | null }) => {
-  const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  const [isPlaying, setIsPlaying] = React.useState(false);
+
+  const handlePlay = () => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(err => console.log("Playback blocked:", err));
+      setIsPlaying(true);
+    }
+  };
+
+  const handlePause = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const togglePlay = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (isPlaying) handlePause();
+    else handlePlay();
+  };
 
   return (
-    <div ref={ref} className="absolute inset-0 w-full h-full cursor-pointer">
+    <div 
+      ref={containerRef} 
+      className="absolute inset-0 w-full h-full cursor-pointer group/video"
+      onMouseEnter={handlePlay}
+      onMouseLeave={handlePause}
+      onClick={togglePlay}
+    >
       {isInView ? (
         <motion.video 
+          ref={videoRef}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          autoPlay
           loop 
           muted 
           playsInline 
-          preload="none"
+          preload="auto"
           poster={thumbnail || ""}
-          className="w-full h-full object-cover transition-all duration-700 grayscale-[0.4] brightness-[0.85] contrast-[1.1] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105"
+          className="w-full h-full object-cover transition-all duration-700 grayscale-[0.4] brightness-[0.85] contrast-[1.1] group-hover/video:grayscale-0 group-hover/video:brightness-100 group-hover/video:scale-105"
         >
           <source src={src} type="video/webm" />
         </motion.video>
@@ -42,8 +70,8 @@ const VideoPreview = ({ src, thumbnail }: { src: string; thumbnail?: string | nu
       <div className="absolute inset-0 bg-gradient-to-t from-bg/40 to-transparent pointer-events-none" />
       
       {/* Play Indicator Overlay */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
-        <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center bg-white/10">
+      <div className={`absolute inset-0 flex items-center justify-center transition-opacity bg-black/20 ${isPlaying ? 'opacity-0' : 'group-hover/video:opacity-100 opacity-0'}`}>
+        <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center bg-white/10 backdrop-blur-sm">
           <Activity className="w-5 h-5 text-white animate-pulse" />
         </div>
       </div>
