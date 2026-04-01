@@ -12,7 +12,8 @@ import {
   Share2, 
   Lock, 
   Activity,
-  Code2
+  Code2,
+  Package
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -30,9 +31,9 @@ const FerrumCaseStudy = () => {
       content: "Implemented AES-256-GCM authenticated encryption at the storage layer. Unlike simple encryption, GCM provides both confidentiality and data integrity (AEAD), ensuring that encrypted data hasn't been tampered with at rest. Every block is cryptographically signed and verified on read."
     },
     {
-      title: "Atomic Transactions",
-      icon: Zap,
-      content: "To prevent corruption during system failures, I engineered an atomic commit protocol using hint-files and fsync calls. This ensures that a write is either fully committed or never visible, eliminating partial write vulnerabilities common in lightweight embedded engines."
+      title: "Ferrum Studio",
+      icon: Activity,
+      content: "Built an embedded web dashboard (Axum) for real-time observability. Ferrum Studio provides a visual REPL, key-space visualization, and live metrics (OPS/sec, throughput, memory usage) directly within the binary, requiring no external processes."
     }
   ];
 
@@ -97,6 +98,9 @@ const FerrumCaseStudy = () => {
             <a href="https://pypi.org/project/ferrumdb/" target="_blank" className="flex items-center gap-3 border border-border px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-white/5 transition-all">
               PyPI <Share2 size={18} />
             </a>
+            <a href="https://www.npmjs.com/package/ferrumdb" target="_blank" className="flex items-center gap-3 border border-border px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-white/5 transition-all">
+              NPM <Package size={18} />
+            </a>
           </motion.div>
         </header>
 
@@ -133,7 +137,7 @@ const FerrumCaseStudy = () => {
                       <Zap size={16} />
                       <span className="text-[10px] font-black uppercase tracking-widest">Write Layer</span>
                    </div>
-                   <p className="text-[11px] text-text-sub leading-relaxed">Incoming SET command processed by Rust/PyO3 bindings.</p>
+                   <p className="text-[11px] text-text-sub leading-relaxed">Incoming SET/GET processed via NAPI-RS (Node) or PyO3 (Python) bindings.</p>
                 </div>
                 <div className="p-6 border border-accent/20 rounded-xl bg-bg/50 backdrop-blur-sm space-y-4">
                    <div className="flex items-center gap-2 text-accent">
