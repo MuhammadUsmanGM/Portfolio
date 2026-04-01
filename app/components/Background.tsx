@@ -92,20 +92,45 @@ const Background = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="p-8 rounded-2xl bg-bg-2 border border-border/50 hover:border-accent/30 transition-all duration-500"
             >
-              <div className="flex items-center gap-3 mb-6 text-accent">
+              <div className="flex items-center gap-3 mb-8 text-accent">
                 <GraduationCap size={20} />
-                <span className="text-xs font-black uppercase tracking-widest">Education</span>
+                <span className="text-xs font-black uppercase tracking-widest">Education & Active Training</span>
               </div>
               
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-bg flex items-center justify-center border border-border/30">
-                  <span className="text-xl font-black text-accent">VU</span>
+              <div className="space-y-8">
+                {/* VU Entry */}
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-bg flex items-center justify-center border border-border/30 shrink-0">
+                    <span className="text-xl font-black text-accent">VU</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-black uppercase tracking-tight text-text mb-1 leading-none">BS Software Engineering</h3>
+                    <p className="text-text-sub text-sm font-bold mb-2">Virtual University of Pakistan</p>
+                    <div className="flex items-center gap-4 text-muted text-[10px] font-mono uppercase">
+                      <span className="flex items-center gap-1"><Calendar size={12} /> Exp. 2028</span>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-xl font-black uppercase tracking-tight text-text mb-1">BS Software Engineering</h3>
-                  <p className="text-text-sub text-sm font-bold mb-2">Virtual University of Pakistan</p>
-                  <div className="flex items-center gap-4 text-muted text-[10px] font-mono uppercase">
-                    <span className="flex items-center gap-1"><Calendar size={12} /> Exp. 2028</span>
+
+                {/* PIAIC Entry */}
+                <div className="pt-6 border-t border-border/40">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-bg flex items-center justify-center border border-border/30 shrink-0">
+                      <span className="text-xs font-black text-accent">PIAIC</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-black uppercase tracking-tight text-text mb-1 leading-none">Certified Agentic AI Engineer</h3>
+                      <p className="text-text-sub text-sm font-bold mb-3">Presidential Initiative for AI & Computing</p>
+                      
+                      <div className="flex items-center gap-4">
+                        <div className="flex gap-1.5">
+                          <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                          <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse delay-75" />
+                          <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse delay-150" />
+                        </div>
+                        <span className="text-[10px] font-mono text-muted uppercase tracking-widest italic">Current Enrollment (In Progress)</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -143,23 +168,7 @@ const Background = () => {
               ))}
             </div>
 
-            <div className="mt-auto pt-8 border-t border-border/50">
-              <div className="bg-bg p-6 rounded-xl border border-accent/20">
-                <span className="block text-[10px] font-black uppercase tracking-[0.2em] text-accent mb-2">Currently:</span>
-                <p className="text-lg font-black uppercase tracking-tighter text-text leading-tight">
-                  Certified Agentic <br />
-                  AI Engineer (PIAIC)
-                </p>
-                <div className="mt-4 flex items-center gap-3">
-                  <div className="flex gap-1">
-                    <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                    <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse delay-75" />
-                    <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse delay-150" />
-                  </div>
-                  <span className="text-[10px] font-mono text-muted uppercase tracking-widest italic">In Progress...</span>
-                </div>
-              </div>
-            </div>
+
           </motion.div>
 
         </div>
