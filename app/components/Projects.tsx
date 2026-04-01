@@ -63,13 +63,12 @@ const Projects = () => {
       isPrivate: false,
       video: "/videos/signal.webm",
       thumbnail: "/images/Signal.jpg",
-      tags: ["300+ Subscribers", "Autonomous Pipeline", "Full-Stack"],
-      caseStudy: "/projects/signal"
+      tags: ["300+ Subscribers", "Autonomous Pipeline", "Full-Stack"]
     },
     {
       title: "FERRUM DB",
       subtitle: "Embedded Document Storage Engine",
-      description: "Engineered a custom embedded database engine in Rust (~1,000 lines) featuring O(1) indexing and AES-256-GCM encryption. Shipped to PyPI and crates.io with 136+ downloads, benchmarked sub-1µs GETs via Criterion.",
+      description: "Engineered a custom embedded database engine in Rust (~1,000 lines) featuring O(1) indexing and AES-256-GCM encryption. Shipped to PyPI and crates.io with 750+ downloads, benchmarked sub-1µs GETs via Criterion.",
       tech: ["Rust", "PyO3", "Tokio", "AES-256-GCM", "Axum"],
       link: "https://pypi.org/project/ferrumdb/",
       github: "https://github.com/MuhammadUsmanGM/ferrumdb",
