@@ -8,16 +8,40 @@ import { ArrowUpRight, FileText } from "lucide-react";
 const Hero = () => {
   const words = ["Think", "Scale", "Execute"];
   const [index, setIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [typingSpeed, setTypingSpeed] = useState(150);
 
   const [isBot, setIsBot] = useState(false);
 
   useEffect(() => {
     setIsBot(/Lighthouse|Googlebot|SiteAudit/.test(navigator.userAgent));
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % words.length);
-    }, 3000);
-    return () => clearInterval(timer);
-  }, [words.length]);
+  }, []);
+
+  useEffect(() => {
+    const handleTyping = () => {
+      const currentWord = words[index];
+      const shouldDelete = isDeleting;
+      
+      setDisplayText(prev => 
+        shouldDelete 
+          ? currentWord.substring(0, prev.length - 1) 
+          : currentWord.substring(0, prev.length + 1)
+      );
+
+      setTypingSpeed(shouldDelete ? 75 : 150);
+
+      if (!shouldDelete && displayText === currentWord) {
+        setTimeout(() => setIsDeleting(true), 2000);
+      } else if (shouldDelete && displayText === "") {
+        setIsDeleting(false);
+        setIndex((prev) => (prev + 1) % words.length);
+      }
+    };
+
+    const timer = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, index, words, typingSpeed]);
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-32 pb-20 overflow-hidden bg-bg">
@@ -52,18 +76,13 @@ const Hero = () => {
           >
             I Build AI <br />
             Systems That <br />
-            <span className="text-accent italic inline-flex flex-col h-[1.1em] overflow-hidden min-w-[3.5ch] md:min-w-[5ch]">
-              <AnimatePresence mode="wait">
-                <m.span
-                  key={words[index]}
-                  initial={{ y: "100%", opacity: 0 }}
-                  animate={{ y: "0%", opacity: 1 }}
-                  exit={{ y: "-100%", opacity: 0 }}
-                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  {words[index]}.
-                </m.span>
-              </AnimatePresence>
+            <span className="text-accent italic inline-flex items-center min-w-[7ch]">
+              {displayText}
+              <m.span 
+                animate={{ opacity: [0, 1, 0] }}
+                transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+                className="inline-block w-[4px] h-[0.8em] bg-accent ml-1"
+              />
             </span>
           </m.h1>
 
