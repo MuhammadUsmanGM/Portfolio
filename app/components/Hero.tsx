@@ -121,7 +121,7 @@ const Hero = () => {
         </div>
 
         {/* Right Column: Photo (Bottom Aligned) */}
-        <div className="lg:col-span-5 relative h-[500px] md:h-[600px] lg:h-[750px] flex items-end">
+      <div className="lg:col-span-5 relative h-[420px] md:h-[520px] lg:h-[650px] flex items-end">
           <m.div 
             initial={{ opacity: 0, scale: 0.95, y: 40 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
