@@ -24,13 +24,12 @@ const ChatWidget = () => {
 
   useEffect(() => {
     if (isOpen && messages.length === 0) {
-      const welcomeMessage: Message = {
+      setMessages([{
         role: "bot",
         content: "Ask me anything about Usman's work, stack, or availability.",
-      };
-      setMessages([welcomeMessage]);
+      }]);
     }
-  }, [isOpen, messages.length]);
+  }, [isOpen]);
 
 
   useEffect(() => {
