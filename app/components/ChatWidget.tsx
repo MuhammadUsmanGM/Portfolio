@@ -22,16 +22,15 @@ const ChatWidget = () => {
     setMounted(true);
   }, []);
 
-  const welcomeMessage: Message = {
-    role: "bot",
-    content: "Ask me anything about Usman's work, stack, or availability.",
-  };
-
   useEffect(() => {
     if (isOpen && messages.length === 0) {
+      const welcomeMessage: Message = {
+        role: "bot",
+        content: "Ask me anything about Usman's work, stack, or availability.",
+      };
       setMessages([welcomeMessage]);
     }
-  }, [isOpen]);
+  }, [isOpen, messages.length]);
 
 
   useEffect(() => {

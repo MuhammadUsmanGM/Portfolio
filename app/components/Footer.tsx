@@ -12,7 +12,7 @@ const Footer = () => {
   };
 
   const navLinks = [
-    { name: "Projects", href: "#projects" },
+    { name: "Projects", href: "#work" },
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
     { name: "Background", href: "#background" },
