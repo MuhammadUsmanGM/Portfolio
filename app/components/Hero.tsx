@@ -8,10 +8,6 @@ import { ArrowUpRight, FileText } from "lucide-react";
 const Hero = () => {
   const words = ["Automate", "Scale", "Ship"];
   const [index, setIndex] = useState(0);
-  const [displayText, setDisplayText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [typingSpeed, setTypingSpeed] = useState(150);
-
   const [isBot, setIsBot] = useState(false);
 
   useEffect(() => {
@@ -19,29 +15,11 @@ const Hero = () => {
   }, []);
 
   useEffect(() => {
-    const handleTyping = () => {
-      const currentWord = words[index];
-      const shouldDelete = isDeleting;
-      
-      setDisplayText(prev => 
-        shouldDelete 
-          ? currentWord.substring(0, prev.length - 1) 
-          : currentWord.substring(0, prev.length + 1)
-      );
-
-      setTypingSpeed(shouldDelete ? 75 : 150);
-
-      if (!shouldDelete && displayText === currentWord) {
-        setTimeout(() => setIsDeleting(true), 2000);
-      } else if (shouldDelete && displayText === "") {
-        setIsDeleting(false);
-        setIndex((prev) => (prev + 1) % words.length);
-      }
-    };
-
-    const timer = setTimeout(handleTyping, typingSpeed);
-    return () => clearTimeout(timer);
-  }, [displayText, isDeleting, index, words, typingSpeed]);
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % words.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [words.length]);
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-32 pb-20 overflow-hidden bg-bg">
@@ -76,13 +54,28 @@ const Hero = () => {
           >
             I Build AI <br />
             Systems That <br />
-            <span className="text-accent italic inline-flex items-center min-w-[7ch]">
-              {displayText}
-              <m.span 
-                animate={{ opacity: [0, 1, 0] }}
-                transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
-                className="inline-block w-[4px] h-[0.8em] bg-accent ml-1"
-              />
+            <span className="text-accent italic inline-flex items-center min-w-[8ch]">
+              <span className="relative inline-block">
+                <AnimatePresence mode="wait">
+                  <m.span
+                    key={words[index]}
+                    initial={{ opacity: 0, filter: "blur(8px)" }}
+                    animate={{ opacity: 1, filter: "blur(0px)" }}
+                    exit={{ opacity: 0, filter: "blur(8px)" }}
+                    transition={{ duration: 0.5 }}
+                    className="inline-block"
+                  >
+                    {words[index]}
+                  </m.span>
+                </AnimatePresence>
+                <m.span 
+                  key={words[index]}
+                  className="absolute -bottom-1 left-0 h-[3px] bg-accent rounded-full"
+                  initial={{ width: 0 }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                />
+              </span>
             </span>
           </m.h1>
 
