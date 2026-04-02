@@ -6,7 +6,7 @@ import { m, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, FileText } from "lucide-react";
 
 const Hero = () => {
-  const words = ["Think", "Scale", "Execute"];
+  const words = ["Automate", "Scale", "Ship"];
   const [index, setIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);

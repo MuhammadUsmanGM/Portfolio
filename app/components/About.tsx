@@ -88,7 +88,7 @@ const About = () => {
               </div>
               <div>
                 <span className="block text-[10px] font-black uppercase tracking-widest text-muted group-hover:text-accent transition-colors">Currently Exploring</span>
-                <span className="block text-sm font-bold text-text uppercase tracking-tight italic">Advanced Agentic Architectures • ELYX_V2</span>
+                <span className="block text-sm font-bold text-text uppercase tracking-tight italic">Advanced Agentic Architectures</span>
               </div>
             </motion.a>
           </div>
