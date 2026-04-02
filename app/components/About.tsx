@@ -74,7 +74,7 @@ const About = () => {
             </motion.div>
 
             <motion.a
-              href="https://github.com/MuhammadUsmanGM/ELYX-Digital-FTE"
+              href="https://github.com/MuhammadUsmanGM"
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
@@ -94,14 +94,21 @@ const About = () => {
           </div>
 
           {/* Right: Technical Pillars & Portrait */}
-          <div className="lg:col-span-5 flex flex-col items-center lg:items-start">
+          <div className="lg:col-span-5 flex flex-col items-center lg:items-start relative">
+            
+            {/* Background Cinematic Watermark */}
+            <div className="absolute top-1/3 -right-24 transform opacity-[0.03] pointer-events-none select-none hidden lg:block z-0">
+              <span className="text-[12rem] font-black uppercase tracking-tighter leading-none block text-text">Architect</span>
+              <span className="text-[12rem] font-black uppercase tracking-tighter leading-none block text-accent italic -mt-8">Engineer</span>
+            </div>
+
             {/* Portrait with Offset Box */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative mb-16 group"
+              className="relative mb-16 group z-10"
             >
               {/* Amber Offset Box */}
               <div className="absolute top-4 left-4 w-[280px] h-[340px] border-2 border-accent rounded-2xl z-0 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2" />
@@ -117,7 +124,7 @@ const About = () => {
               </div>
             </motion.div>
 
-            <div className="space-y-8 w-full">
+            <div className="space-y-8 w-full relative z-10">
               {pillars.map((pillar, index) => {
                 const Icon = pillar.icon;
                 return (
@@ -145,12 +152,6 @@ const About = () => {
                   </motion.div>
                 );
               })}
-            </div>
-
-            {/* Background Texture Detail */}
-            <div className="mt-12 opacity-5 pointer-events-none select-none hidden lg:block">
-              <span className="text-[8rem] font-black uppercase tracking-tighter leading-none block">Architect</span>
-              <span className="text-[8rem] font-black uppercase tracking-tighter leading-none block text-accent italic">Engineer</span>
             </div>
           </div>
 
