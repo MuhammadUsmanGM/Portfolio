@@ -173,7 +173,7 @@ const Contact = () => {
               <div className="space-y-4">
                 <a 
                   href="mailto:mu.ai.dev@gmail.com" 
-                  className="block text-[clamp(1.5rem,6vw,2.5rem)] font-bebas tracking-tighter text-text hover:text-accent transition-colors break-all leading-none"
+                  className="block text-[clamp(1.5rem,6vw,2.5rem)] font-mono tracking-tight text-text hover:text-accent transition-colors break-all leading-none lowercase"
                 >
                   mu.ai.dev@gmail.com
                 </a>
