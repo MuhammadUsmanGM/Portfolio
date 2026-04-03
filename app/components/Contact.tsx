@@ -27,6 +27,15 @@ const Contact = () => {
     setStatus("idle");
 
     const formData = new FormData(event.currentTarget);
+    const honeypot = formData.get("website") as string;
+    
+    // Bot check
+    if (honeypot) {
+      setIsSubmitting(false);
+      setStatus("success"); // Fake success for bots
+      return;
+    }
+
     const name = (formData.get("name") as string).trim();
     const email = (formData.get("email") as string).trim();
     const message = (formData.get("message") as string).trim();
@@ -111,6 +120,10 @@ const Contact = () => {
             className="lg:col-span-7"
           >
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-8">
+              {/* Honeypot Field */}
+              <div className="hidden">
+                <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-[10px] font-black uppercase tracking-widest text-muted ml-1">Name</label>
