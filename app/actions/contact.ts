@@ -1,16 +1,31 @@
 "use server";
 
 import { Resend } from "resend";
+import { rateLimit } from "../api/nova/rate-limit";
+import { headers } from "next/headers";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function sendEmail(formData: FormData) {
-  const name = formData.get("name") as string;
-  const email = formData.get("email") as string;
-  const message = formData.get("message") as string;
+  const headerList = await headers();
+  const ip = headerList.get("x-forwarded-for") || "anonymous";
+  
+  // Strict rate limit for contact form: 2 requests per minute
+  const { success } = rateLimit(`contact_${ip}`, 2);
+  if (!success) {
+    return { success: false, error: "Too many attempts. Please wait a minute." };
+  }
+
+  const name = (formData.get("name") as string || "").trim();
+  const email = (formData.get("email") as string || "").trim();
+  const message = (formData.get("message") as string || "").trim();
 
   if (!name || !email || !message) {
     return { success: false, error: "Missing required fields." };
+  }
+
+  if (name.length > 100 || email.length > 254 || message.length > 3000 || message.length < 10) {
+    return { success: false, error: "Invalid input length." };
   }
 
   try {

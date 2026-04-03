@@ -1,12 +1,28 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextResponse } from "next/server";
+import { rateLimit } from "./rate-limit";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
 export async function POST(req: Request) {
   try {
+    const ip = req.headers.get("x-forwarded-for") || "anonymous";
+    const { success } = rateLimit(ip, 5); // 5 requests per minute
+
+    if (!success) {
+      return NextResponse.json({ error: "Too many requests. Please try again later." }, { status: 429 });
+    }
+
     const { messages } = await req.json();
-    const lastMessage = messages[messages.length - 1].content;
+
+    if (!Array.isArray(messages) || messages.length > 20) {
+      return NextResponse.json({ error: "Invalid conversation length." }, { status: 400 });
+    }
+
+    const lastMessage = messages[messages.length - 1];
+    if (!lastMessage || !lastMessage.content || lastMessage.content.length > 1000) {
+      return NextResponse.json({ error: "Message too long or invalid." }, { status: 400 });
+    }
 
     // Fetch GitHub Activity (optional but helpful for context)
     let githubContext = "No recent GitHub activity available.";
