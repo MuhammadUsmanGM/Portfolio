@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 const Loader = () => {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState<boolean | null>(null);
 
   useEffect(() => {
     // 0. Bot-skip for Lighthouse / PSI
@@ -21,6 +21,8 @@ const Loader = () => {
       setIsVisible(false);
       return;
     }
+
+    setIsVisible(true);
 
     const timer = setTimeout(() => {
       setIsVisible(false);
@@ -42,6 +44,8 @@ const Loader = () => {
       document.body.style.overflow = "auto";
     };
   }, [isVisible]);
+
+  if (isVisible === null) return null;
 
   return (
     <AnimatePresence>

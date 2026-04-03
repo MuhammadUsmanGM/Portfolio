@@ -32,11 +32,33 @@ const ChatWidget = () => {
   }, [isOpen]);
 
 
-  useEffect(() => {
+  const scrollToBottom = () => {
     if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      scrollRef.current.scrollTo({
+        top: scrollRef.current.scrollHeight,
+        behavior: "smooth",
+      });
     }
+  };
+
+  useEffect(() => {
+    scrollToBottom();
   }, [messages, isTyping]);
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      scrollToBottom();
+    });
+
+    if (scrollRef.current) {
+      observer.observe(scrollRef.current, {
+        childList: true,
+        subtree: true,
+      });
+    }
+
+    return () => observer.disconnect();
+  }, [isOpen]);
 
   const handleSend = async () => {
     if (!input.trim() || isTyping) return;
@@ -201,6 +223,7 @@ const ChatWidget = () => {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask NOVA anything..."
+                  aria-label="Ask NOVA"
                   className="flex-1 bg-bg-2 border border-border/50 rounded-xl px-4 py-3 text-xs font-medium focus:outline-none focus:border-accent transition-colors"
                 />
                 <button
