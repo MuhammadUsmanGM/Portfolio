@@ -16,6 +16,12 @@ export async function sendEmail(formData: FormData) {
     return { success: false, error: "Too many attempts. Please wait a minute." };
   }
 
+  const honeypot = formData.get("website") as string;
+  if (honeypot) {
+    // Return fake success for bots
+    return { success: true };
+  }
+
   const name = (formData.get("name") as string || "").trim();
   const email = (formData.get("email") as string || "").trim();
   const message = (formData.get("message") as string || "").trim();
