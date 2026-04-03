@@ -4,6 +4,7 @@ import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Mail, MapPin, Github, Linkedin, Send, CheckCircle2, AlertCircle } from "lucide-react";
 import { sendEmail } from "@/app/actions/contact";
+import { toast } from "sonner";
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -42,14 +43,18 @@ const Contact = () => {
 
     if (!name || !email || !message) {
       setStatus("error");
-      setErrorMessage("Please fill in all fields.");
+      const err = "Please fill in all fields.";
+      setErrorMessage(err);
+      toast.error(err);
       setIsSubmitting(false);
       return;
     }
 
     if (message.length < 10) {
       setStatus("error");
-      setErrorMessage("Message must be at least 10 characters.");
+      const err = "Message must be at least 10 characters.";
+      setErrorMessage(err);
+      toast.error(err);
       setIsSubmitting(false);
       return;
     }
@@ -64,15 +69,23 @@ const Contact = () => {
       const result = await sendEmail(trimmedData);
       if (result.success) {
         setStatus("success");
+        toast.success("Message Sent Successfully!", {
+          description: "Thank you! I will get back to you soon.",
+          duration: 5000,
+        });
         formRef.current?.reset();
         setMsgLen(0);
       } else {
         setStatus("error");
-        setErrorMessage(result.error || "Failed to send message.");
+        const err = result.error || "Failed to send message.";
+        setErrorMessage(err);
+        toast.error(err);
       }
     } catch (err) {
       setStatus("error");
-      setErrorMessage("Something went wrong. Please try again.");
+      const errorMsg = "Something went wrong. Please try again.";
+      setErrorMessage(errorMsg);
+      toast.error(errorMsg);
     } finally {
       setIsSubmitting(false);
     }

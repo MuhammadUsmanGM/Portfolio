@@ -83,6 +83,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { Toaster } from "sonner";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -110,6 +112,7 @@ export default function RootLayout({
             })
           }}
         />
+        <Toaster position="bottom-right" richColors theme="system" />
         <LazyMotion features={domAnimation}>
           <Loader />
           <Navbar />
