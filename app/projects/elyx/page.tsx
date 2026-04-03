@@ -205,7 +205,7 @@ const ElyxCaseStudy = () => {
 
         {/* Closing CTA */}
         <footer className="text-center pt-20 border-t border-border/50">
-           <Link href="https://github.com/MuhammadUsmanGM/ELYX-Digital-FTE" target="_blank">
+           <Link href="https://github.com/MuhammadUsmanGM/ELYX-Digital-FTE" target="_blank" rel="noopener noreferrer">
              <motion.div 
                whileHover={{ scale: 1.05 }}
                className="inline-flex items-center gap-4 bg-accent text-bg px-12 py-5 rounded-full font-black text-xs uppercase tracking-widest shadow-[0_15px_40px_rgba(245,166,35,0.25)]"

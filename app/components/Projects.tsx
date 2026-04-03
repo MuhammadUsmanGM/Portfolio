@@ -208,9 +208,10 @@ const Projects = () => {
                       Read Case Study <Activity className="w-4 h-4" />
                     </Link>
                   ) : (
-                    <a 
+                    <a
                       href={project.link}
                       target="_blank"
+                      rel="noopener noreferrer"
                       className={`flex items-center gap-2 font-black uppercase text-xs tracking-widest group/link transition-colors ${
                         project.link === "#" ? "text-muted cursor-not-allowed" : "text-text hover:text-accent"
                       }`}
@@ -228,9 +229,10 @@ const Projects = () => {
                       <Lock className="w-3.5 h-3.5" /> Private Repo
                     </div>
                   ) : (
-                    <a 
+                    <a
                       href={project.github}
                       target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center gap-2 text-muted font-black uppercase text-xs tracking-widest group/link transition-colors hover:text-text"
                     >
                       Source <Github className="w-4 h-4" />
@@ -351,9 +353,10 @@ const Projects = () => {
         <p className="text-muted text-sm font-black uppercase tracking-[0.3em] mb-6">
           Architecting more in the shadows?
         </p>
-        <a 
+        <a
           href="https://github.com/MuhammadUsmanGM"
           target="_blank"
+          rel="noopener noreferrer"
           className="group flex flex-col items-center gap-4"
         >
           <div className="flex items-center gap-4 text-3xl md:text-5xl font-black uppercase tracking-tighter text-text group-hover:text-accent transition-all duration-500">

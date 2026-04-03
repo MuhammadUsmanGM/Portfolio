@@ -1,12 +1,12 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextResponse } from "next/server";
-import { rateLimit } from "./rate-limit";
+import { rateLimit, getClientIp } from "./rate-limit";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
 export async function POST(req: Request) {
   try {
-    const ip = req.headers.get("x-forwarded-for") || "anonymous";
+    const ip = getClientIp((name) => req.headers.get(name));
     const { success } = rateLimit(ip, 5); // 5 requests per minute
 
     if (!success) {
@@ -15,13 +15,31 @@ export async function POST(req: Request) {
 
     const { messages } = await req.json();
 
-    if (!Array.isArray(messages) || messages.length > 20) {
+    if (!Array.isArray(messages) || messages.length === 0 || messages.length > 20) {
       return NextResponse.json({ error: "Invalid conversation length." }, { status: 400 });
     }
 
-    const lastMessage = messages[messages.length - 1];
-    if (!lastMessage || !lastMessage.content || lastMessage.content.length > 1000) {
-      return NextResponse.json({ error: "Message too long or invalid." }, { status: 400 });
+    // Validate every message in the conversation history
+    const VALID_ROLES = new Set(["user", "bot"]);
+    const MAX_MSG_LENGTH = 1000;
+    const MAX_TOTAL_LENGTH = 15000;
+    let totalLength = 0;
+
+    for (const m of messages) {
+      if (
+        typeof m.role !== "string" ||
+        !VALID_ROLES.has(m.role) ||
+        typeof m.content !== "string" ||
+        m.content.length === 0 ||
+        m.content.length > MAX_MSG_LENGTH
+      ) {
+        return NextResponse.json({ error: "Invalid message format." }, { status: 400 });
+      }
+      totalLength += m.content.length;
+    }
+
+    if (totalLength > MAX_TOTAL_LENGTH) {
+      return NextResponse.json({ error: "Conversation too large." }, { status: 400 });
     }
 
     // Fetch GitHub Activity (optional but helpful for context)
@@ -76,7 +94,7 @@ export async function POST(req: Request) {
 
     const result = await model.generateContent([
       { text: systemPrompt },
-      ...messages.map((m: any) => ({
+      ...messages.map((m: { role: string; content: string }) => ({
         text: `${m.role === 'user' ? 'User' : 'NOVA'}: ${m.content}`
       }))
     ]);

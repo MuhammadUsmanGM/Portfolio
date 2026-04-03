@@ -92,13 +92,13 @@ const FerrumCaseStudy = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-wrap gap-6 mt-12"
           >
-            <a href="https://github.com/MuhammadUsmanGM/ferrumdb" target="_blank" className="flex items-center gap-3 bg-accent text-bg px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-[0_10px_30px_rgba(245,166,35,0.2)]">
+            <a href="https://github.com/MuhammadUsmanGM/ferrumdb" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 bg-accent text-bg px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-[0_10px_30px_rgba(245,166,35,0.2)]">
               Source Code <Github size={18} />
             </a>
-            <a href="https://pypi.org/project/ferrumdb/" target="_blank" className="flex items-center gap-3 border border-border px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-white/5 transition-all">
+            <a href="https://pypi.org/project/ferrumdb/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 border border-border px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-white/5 transition-all">
               PyPI <Share2 size={18} />
             </a>
-            <a href="https://www.npmjs.com/package/ferrumdb" target="_blank" className="flex items-center gap-3 border border-border px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-white/5 transition-all">
+            <a href="https://www.npmjs.com/package/ferrumdb" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 border border-border px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-white/5 transition-all">
               NPM <Package size={18} />
             </a>
           </motion.div>
@@ -207,7 +207,7 @@ const FerrumCaseStudy = () => {
 
       {/* Final CTA */}
       <footer className="mt-40 text-center">
-        <Link href="https://github.com/MuhammadUsmanGM/ferrumdb" target="_blank">
+        <Link href="https://github.com/MuhammadUsmanGM/ferrumdb" target="_blank" rel="noopener noreferrer">
           <motion.div 
             whileHover={{ scale: 1.02 }}
             className="inline-flex flex-col items-center gap-6 group"
