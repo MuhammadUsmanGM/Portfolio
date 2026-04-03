@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Mail, MapPin, Github, Linkedin, Send, CheckCircle2, AlertCircle } from "lucide-react";
 import { sendEmail } from "@/app/actions/contact";
@@ -9,6 +9,8 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [msgLen, setMsgLen] = useState(0);
+  const formRef = useRef<HTMLFormElement>(null);
 
   React.useEffect(() => {
     if (status === "success" || status === "error") {
@@ -25,11 +27,36 @@ const Contact = () => {
     setStatus("idle");
 
     const formData = new FormData(event.currentTarget);
+    const name = (formData.get("name") as string).trim();
+    const email = (formData.get("email") as string).trim();
+    const message = (formData.get("message") as string).trim();
+
+    if (!name || !email || !message) {
+      setStatus("error");
+      setErrorMessage("Please fill in all fields.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (message.length < 10) {
+      setStatus("error");
+      setErrorMessage("Message must be at least 10 characters.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Re-create entry with trimmed values for the action
+    const trimmedData = new FormData();
+    trimmedData.append("name", name);
+    trimmedData.append("email", email);
+    trimmedData.append("message", message);
     
     try {
-      const result = await sendEmail(formData);
+      const result = await sendEmail(trimmedData);
       if (result.success) {
         setStatus("success");
+        formRef.current?.reset();
+        setMsgLen(0);
       } else {
         setStatus("error");
         setErrorMessage(result.error || "Failed to send message.");
@@ -83,7 +110,7 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-7"
           >
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-[10px] font-black uppercase tracking-widest text-muted ml-1">Name</label>
@@ -92,6 +119,8 @@ const Contact = () => {
                     type="text"
                     id="name"
                     name="name"
+                    autoComplete="name"
+                    maxLength={100}
                     placeholder="Your Name"
                     className="w-full bg-bg-2 border-b-2 border-border focus:border-accent outline-none py-4 px-1 text-text font-bold transition-all"
                   />
@@ -103,6 +132,8 @@ const Contact = () => {
                     type="email"
                     id="email"
                     name="email"
+                    autoComplete="email"
+                    maxLength={254}
                     placeholder="Email Address"
                     className="w-full bg-bg-2 border-b-2 border-border focus:border-accent outline-none py-4 px-1 text-text font-bold transition-all"
                   />
@@ -116,9 +147,13 @@ const Contact = () => {
                   id="message"
                   name="message"
                   rows={4}
+                  minLength={10}
+                  maxLength={3000}
+                  onChange={(e) => setMsgLen(e.target.value.length)}
                   placeholder="What are we building together?"
                   className="w-full bg-bg-2 border-b-2 border-border focus:border-accent outline-none py-4 px-1 text-text font-bold transition-all resize-none"
                 />
+                <p className="text-[10px] text-muted text-right mt-1 font-mono">{msgLen} / 3000</p>
               </div>
 
               <div className="flex items-center gap-6">
