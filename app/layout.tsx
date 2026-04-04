@@ -112,7 +112,7 @@ export default function RootLayout({
             })
           }}
         />
-        <Toaster position="bottom-right" richColors theme="system" />
+        <Toaster position="top-right" richColors theme="system" />
         <LazyMotion features={domAnimation}>
           <Loader />
           <Navbar />
