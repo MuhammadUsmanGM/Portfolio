@@ -1,16 +1,23 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Mail, MapPin, Github, Linkedin, Send, CheckCircle2, AlertCircle } from "lucide-react";
 import { sendEmail } from "@/app/actions/contact";
 import { toast } from "sonner";
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  message?: string;
+}
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [msgLen, setMsgLen] = useState(0);
+  const [errors, setErrors] = useState<FormErrors>({});
   const formRef = useRef<HTMLFormElement>(null);
 
   React.useEffect(() => {
@@ -22,42 +29,52 @@ const Contact = () => {
     }
   }, [status]);
 
+  const validateEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setIsSubmitting(true);
+    setErrors({});
     setStatus("idle");
 
     const formData = new FormData(event.currentTarget);
+    const name = (formData.get("name") as string).trim();
+    const email = (formData.get("email") as string).trim();
+    const message = (formData.get("message") as string).trim();
     const honeypot = formData.get("website") as string;
     
     // Bot check
     if (honeypot) {
-      setIsSubmitting(false);
-      setStatus("success"); // Fake success for bots
+      setIsSubmitting(true);
+      setTimeout(() => {
+        setIsSubmitting(false);
+        setStatus("success");
+        formRef.current?.reset();
+      }, 1000);
       return;
     }
 
-    const name = (formData.get("name") as string).trim();
-    const email = (formData.get("email") as string).trim();
-    const message = (formData.get("message") as string).trim();
+    const newErrors: FormErrors = {};
+    if (!name) newErrors.name = "Name is required";
+    if (!email) {
+      newErrors.email = "Email is required";
+    } else if (!validateEmail(email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+    if (!message) {
+      newErrors.message = "Message is required";
+    } else if (message.length < 10) {
+      newErrors.message = "Message must be at least 10 characters";
+    }
 
-    if (!name || !email || !message) {
-      setStatus("error");
-      const err = "Please fill in all fields.";
-      setErrorMessage(err);
-      toast.error(err);
-      setIsSubmitting(false);
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      toast.error("Please fix the errors in the form.");
       return;
     }
 
-    if (message.length < 10) {
-      setStatus("error");
-      const err = "Message must be at least 10 characters.";
-      setErrorMessage(err);
-      toast.error(err);
-      setIsSubmitting(false);
-      return;
-    }
+    setIsSubmitting(true);
 
     // Re-create entry with trimmed values for the action
     const trimmedData = new FormData();
@@ -132,7 +149,7 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-7"
           >
-            <form ref={formRef} onSubmit={handleSubmit} className="space-y-8">
+            <form ref={formRef} onSubmit={handleSubmit} noValidate className="space-y-8">
               {/* Honeypot Field */}
               <div className="hidden">
                 <input type="text" name="website" tabIndex={-1} autoComplete="off" />
@@ -141,45 +158,90 @@ const Contact = () => {
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-[10px] font-black uppercase tracking-widest text-muted ml-1">Name</label>
                   <input
-                    required
                     type="text"
                     id="name"
                     name="name"
                     autoComplete="name"
                     maxLength={100}
                     placeholder="Your Name"
-                    className="w-full bg-bg-2 border-b-2 border-border focus:border-accent outline-none py-4 px-1 text-text font-bold transition-all"
+                    className={`w-full bg-bg-2 border-b-2 outline-none py-4 px-1 text-text font-bold transition-all ${
+                      errors.name ? "border-red-500/50 focus:border-red-500" : "border-border focus:border-accent"
+                    }`}
                   />
+                  <AnimatePresence>
+                    {errors.name && (
+                      <motion.p
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className="text-[10px] text-red-500 font-bold uppercase tracking-wider mt-1 ml-1"
+                      >
+                        {errors.name}
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-[10px] font-black uppercase tracking-widest text-muted ml-1">Email</label>
                   <input
-                    required
                     type="email"
                     id="email"
                     name="email"
                     autoComplete="email"
                     maxLength={254}
                     placeholder="Email Address"
-                    className="w-full bg-bg-2 border-b-2 border-border focus:border-accent outline-none py-4 px-1 text-text font-bold transition-all"
+                    className={`w-full bg-bg-2 border-b-2 outline-none py-4 px-1 text-text font-bold transition-all ${
+                      errors.email ? "border-red-500/50 focus:border-red-500" : "border-border focus:border-accent"
+                    }`}
                   />
+                  <AnimatePresence>
+                    {errors.email && (
+                      <motion.p
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className="text-[10px] text-red-500 font-bold uppercase tracking-wider mt-1 ml-1"
+                      >
+                        {errors.email}
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
                 </div>
               </div>
               
               <div className="space-y-2">
                 <label htmlFor="message" className="text-[10px] font-black uppercase tracking-widest text-muted ml-1">Message</label>
                 <textarea
-                  required
                   id="message"
                   name="message"
                   rows={4}
-                  minLength={10}
                   maxLength={3000}
-                  onChange={(e) => setMsgLen(e.target.value.length)}
+                  onChange={(e) => {
+                    setMsgLen(e.target.value.length);
+                    if (errors.message) setErrors(prev => ({ ...prev, message: undefined }));
+                  }}
                   placeholder="What are we building together?"
-                  className="w-full bg-bg-2 border-b-2 border-border focus:border-accent outline-none py-4 px-1 text-text font-bold transition-all resize-none"
+                  className={`w-full bg-bg-2 border-b-2 outline-none py-4 px-1 text-text font-bold transition-all resize-none ${
+                    errors.message ? "border-red-500/50 focus:border-red-500" : "border-border focus:border-accent"
+                  }`}
                 />
-                <p className="text-[10px] text-muted text-right mt-1 font-mono">{msgLen} / 3000</p>
+                <div className="flex justify-between items-center mt-1">
+                  <AnimatePresence>
+                    {errors.message ? (
+                      <motion.p
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className="text-[10px] text-red-500 font-bold uppercase tracking-wider ml-1"
+                      >
+                        {errors.message}
+                      </motion.p>
+                    ) : (
+                      <div />
+                    )}
+                  </AnimatePresence>
+                  <p className="text-[10px] text-muted font-mono">{msgLen} / 3000</p>
+                </div>
               </div>
 
               <div className="flex items-center gap-6">
@@ -188,7 +250,7 @@ const Contact = () => {
                   type="submit"
                   className={`group relative flex items-center gap-3 px-10 py-4 rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all duration-300 disabled:hover:scale-100 ${
                     status === "success" 
-                      ? "bg-green-500 text-white" 
+                      ? "bg-green-500 text-white shadow-[0_8px_32px_rgba(34,197,94,0.25)]" 
                       : "bg-accent text-bg hover:scale-105 active:scale-95 shadow-[0_8px_32px_rgba(245,166,35,0.25)]"
                   } ${isSubmitting ? "opacity-70 cursor-wait" : ""}`}
                 >
