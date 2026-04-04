@@ -108,6 +108,19 @@ const Projects = () => {
       caseStudy: "/projects/ferrumdb"
     },
     {
+      title: "CODELENS",
+      subtitle: "Neural Codebase Intelligence",
+      description: "Engineered a high-performance RAG pipeline for repository-scale architectural discovery. Synthesizes a neural index of entire codebases using Gemini Flash and Qdrant Vector DB. Distributed via NPM (`npm i @muhammadusmangm/codelens`) to 200+ active users for semantic discovery across complex module boundaries.",
+      tech: ["Next.js", "Gemini AI", "Qdrant", "LangChain", "Xenova", "Tailwind"],
+      link: "https://www.npmjs.com/package/@muhammadusmangm/codelens",
+      github: "https://github.com/MuhammadUsmanGM/CodeLens",
+      isPrivate: false,
+      video: null,
+      thumbnail: "/images/codelens.jpg",
+      tags: ["RAG Architecture", "200+ Active Users", "NPM Package"],
+      caseStudy: "/projects/codelens"
+    },
+    {
       title: "THE SIGNAL",
       subtitle: "AI-Powered Intelligence Pipeline",
       description: "Engineered a fully autonomous AI newsletter pipeline ingesting global AI news via LLM summarization. Delivered weekly briefings to 300+ subscribers with serverless scheduling for timezone-aware 9AM local-time distribution via GitHub Actions.",
@@ -301,7 +314,7 @@ const Projects = () => {
             </motion.div>
 
             {/* ── THE SIGNAL Live Subscribe CTA ── */}
-            {index === 2 && (
+            {index === 3 && (
               <motion.div
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
