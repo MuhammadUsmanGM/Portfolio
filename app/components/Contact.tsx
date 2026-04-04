@@ -2,7 +2,17 @@
 
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, MapPin, Github, Linkedin, Send, CheckCircle2, AlertCircle } from "lucide-react";
+import { 
+  User, 
+  Mail, 
+  MapPin, 
+  Github, 
+  Linkedin, 
+  Send, 
+  CheckCircle2, 
+  AlertCircle,
+  MessageSquare
+} from "lucide-react";
 import { sendEmail } from "@/app/actions/contact";
 import { toast } from "sonner";
 
@@ -11,6 +21,89 @@ interface FormErrors {
   email?: string;
   message?: string;
 }
+
+const FloatingInput = ({ 
+  label, 
+  id, 
+  name, 
+  type = "text", 
+  icon: Icon, 
+  error, 
+  ...props 
+}: { 
+  label: string; 
+  id: string; 
+  name: string; 
+  type?: string; 
+  icon: any; 
+  error?: string;
+  [key: string]: any;
+}) => {
+  const [isFocused, setIsFocused] = useState(false);
+  const [value, setValue] = useState("");
+
+  return (
+    <div className="group relative space-y-2">
+      <div className={`relative flex items-center transition-all duration-300 ${
+        isFocused ? "bg-accent/5" : "bg-bg-2"
+      }`}>
+        <div className={`pl-4 transition-colors duration-300 ${
+          isFocused ? "text-accent" : "text-muted"
+        }`}>
+          <Icon size={18} strokeWidth={2.5} />
+        </div>
+        
+        <div className="relative flex-1">
+          <input
+            {...props}
+            id={id}
+            name={name}
+            type={type}
+            onFocus={() => setIsFocused(true)}
+            onBlur={(e) => {
+              setIsFocused(false);
+              setValue(e.target.value);
+            }}
+            onChange={(e) => setValue(e.target.value)}
+            className="w-full bg-transparent border-none outline-none py-6 px-4 text-text font-bold text-[15px] placeholder-transparent peer transition-all"
+            placeholder={label}
+          />
+          <label
+            htmlFor={id}
+            className={`absolute left-4 transition-all duration-300 pointer-events-none font-black uppercase tracking-widest text-[10px] ${
+              isFocused || value 
+                ? "-top-1 text-accent scale-90" 
+                : "top-1/2 -translate-y-1/2 text-muted/60"
+            }`}
+          >
+            {label}
+          </label>
+        </div>
+
+        {/* Dynamic Border */}
+        <div className="absolute bottom-0 left-0 w-full h-[2px] bg-border/30" />
+        <motion.div 
+          initial={false}
+          animate={{ scaleX: isFocused ? 1 : 0 }}
+          className="absolute bottom-0 left-0 w-full h-[2px] bg-accent origin-center shadow-[0_0_8px_rgba(245,166,35,0.4)]"
+        />
+      </div>
+
+      <AnimatePresence>
+        {error && (
+          <motion.p
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="text-[10px] text-red-500 font-bold uppercase tracking-wider ml-4"
+          >
+            {error}
+          </motion.p>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -149,109 +242,123 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-7"
           >
-            <form ref={formRef} onSubmit={handleSubmit} noValidate className="space-y-8">
+            <form ref={formRef} onSubmit={handleSubmit} noValidate className="space-y-10">
               {/* Honeypot Field */}
               <div className="hidden">
                 <input type="text" name="website" tabIndex={-1} autoComplete="off" />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-[10px] font-black uppercase tracking-widest text-muted ml-1">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    autoComplete="name"
-                    maxLength={100}
-                    placeholder="Your Name"
-                    className={`w-full bg-bg-2 border-b-2 outline-none py-4 px-1 text-text font-bold transition-all ${
-                      errors.name ? "border-red-500/50 focus:border-red-500" : "border-border focus:border-accent"
-                    }`}
-                  />
-                  <AnimatePresence>
-                    {errors.name && (
-                      <motion.p
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        className="text-[10px] text-red-500 font-bold uppercase tracking-wider mt-1 ml-1"
-                      >
-                        {errors.name}
-                      </motion.p>
-                    )}
-                  </AnimatePresence>
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-[10px] font-black uppercase tracking-widest text-muted ml-1">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    autoComplete="email"
-                    maxLength={254}
-                    placeholder="Email Address"
-                    className={`w-full bg-bg-2 border-b-2 outline-none py-4 px-1 text-text font-bold transition-all ${
-                      errors.email ? "border-red-500/50 focus:border-red-500" : "border-border focus:border-accent"
-                    }`}
-                  />
-                  <AnimatePresence>
-                    {errors.email && (
-                      <motion.p
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        className="text-[10px] text-red-500 font-bold uppercase tracking-wider mt-1 ml-1"
-                      >
-                        {errors.email}
-                      </motion.p>
-                    )}
-                  </AnimatePresence>
-                </div>
+                <FloatingInput
+                  id="name"
+                  name="name"
+                  label="Full Name"
+                  icon={User}
+                  error={errors.name}
+                  autoComplete="name"
+                />
+                <FloatingInput
+                  id="email"
+                  name="email"
+                  type="email"
+                  label="Email Address"
+                  icon={Mail}
+                  error={errors.email}
+                  autoComplete="email"
+                />
               </div>
               
-              <div className="space-y-2">
-                <label htmlFor="message" className="text-[10px] font-black uppercase tracking-widest text-muted ml-1">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  maxLength={3000}
-                  onChange={(e) => {
-                    setMsgLen(e.target.value.length);
-                    if (errors.message) setErrors(prev => ({ ...prev, message: undefined }));
-                  }}
-                  placeholder="What are we building together?"
-                  className={`w-full bg-bg-2 border-b-2 outline-none py-4 px-1 text-text font-bold transition-all resize-none ${
-                    errors.message ? "border-red-500/50 focus:border-red-500" : "border-border focus:border-accent"
-                  }`}
-                />
-                <div className="flex justify-between items-center mt-1">
-                  <AnimatePresence>
-                    {errors.message ? (
-                      <motion.p
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        className="text-[10px] text-red-500 font-bold uppercase tracking-wider ml-1"
-                      >
-                        {errors.message}
-                      </motion.p>
-                    ) : (
-                      <div />
-                    )}
-                  </AnimatePresence>
-                  <p className="text-[10px] text-muted font-mono">{msgLen} / 3000</p>
+              <div className="group relative space-y-2">
+                <div className={`relative flex transition-all duration-300 ${
+                  errors.message ? "bg-red-500/5" : "bg-bg-2"
+                }`}>
+                  <div className="pl-4 pt-6 text-muted group-focus-within:text-accent transition-colors">
+                    <MessageSquare size={18} strokeWidth={2.5} />
+                  </div>
+                  
+                  <div className="relative flex-1">
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={5}
+                      maxLength={3000}
+                      onChange={(e) => {
+                        setMsgLen(e.target.value.length);
+                        if (errors.message) setErrors(prev => ({ ...prev, message: undefined }));
+                      }}
+                      placeholder="What we are building"
+                      className="w-full bg-transparent border-none outline-none py-6 px-4 text-text font-bold text-[15px] placeholder-transparent peer transition-all resize-none"
+                    />
+                    <label
+                      htmlFor="message"
+                      className={`absolute left-4 transition-all duration-300 pointer-events-none font-black uppercase tracking-widest text-[10px] ${
+                        msgLen > 0 
+                          ? "-top-1 text-accent scale-90" 
+                          : "top-6 text-muted/60"
+                      } peer-focus:-top-1 peer-focus:text-accent peer-focus:scale-90`}
+                    >
+                      What we are building
+                    </label>
+                  </div>
+
+                  {/* Circular Character Count */}
+                  <div className="absolute right-6 bottom-6 flex items-center justify-center">
+                    <div className="relative w-8 h-8">
+                      <svg className="w-full h-full transform -rotate-90">
+                        <circle
+                          cx="16"
+                          cy="16"
+                          r="14"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          fill="transparent"
+                          className="text-border/20"
+                        />
+                        <motion.circle
+                          cx="16"
+                          cy="16"
+                          r="14"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          fill="transparent"
+                          strokeDasharray={88}
+                          initial={{ strokeDashoffset: 88 }}
+                          animate={{ strokeDashoffset: 88 - (88 * Math.min(msgLen, 3000)) / 3000 }}
+                          className="text-accent"
+                        />
+                      </svg>
+                      <span className="absolute inset-0 flex items-center justify-center text-[8px] font-bold text-muted">
+                        {Math.round((msgLen / 3000) * 100)}%
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Dynamic Border */}
+                  <div className="absolute bottom-0 left-0 w-full h-[2px] bg-border/20" />
+                  <div className="absolute bottom-0 left-0 w-full h-[2px] bg-accent transition-transform duration-500 scale-x-0 group-focus-within:scale-x-100 origin-center shadow-[0_4px_12px_rgba(245,166,35,0.3)]" />
                 </div>
+
+                <AnimatePresence>
+                  {errors.message && (
+                    <motion.p
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="text-[10px] text-red-500 font-bold uppercase tracking-wider ml-4"
+                    >
+                      {errors.message}
+                    </motion.p>
+                  )}
+                </AnimatePresence>
               </div>
 
-              <div className="flex items-center gap-6">
+              <div className="flex items-center gap-6 pt-4">
                 <button
                   disabled={isSubmitting || status === "success"}
                   type="submit"
-                  className={`group relative flex items-center gap-3 px-10 py-4 rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all duration-300 disabled:hover:scale-100 ${
+                  className={`group relative flex items-center gap-3 px-12 py-5 rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all duration-300 disabled:hover:scale-100 ${
                     status === "success" 
                       ? "bg-green-500 text-white shadow-[0_8px_32px_rgba(34,197,94,0.25)]" 
-                      : "bg-accent text-bg hover:scale-105 active:scale-95 shadow-[0_8px_32px_rgba(245,166,35,0.25)]"
+                      : "bg-accent text-bg hover:scale-105 active:scale-95 shadow-[0_8px_32px_rgba(245,166,35,0.35)]"
                   } ${isSubmitting ? "opacity-70 cursor-wait" : ""}`}
                 >
                   {isSubmitting ? (
@@ -264,7 +371,7 @@ const Contact = () => {
                     </motion.span>
                   ) : (
                     <>
-                      Let's Talk 
+                      Send Message
                       <Send size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                     </>
                   )}
