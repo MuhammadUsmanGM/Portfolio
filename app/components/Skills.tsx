@@ -147,7 +147,7 @@ const Skills = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-5xl md:text-8xl font-black uppercase tracking-tighter text-text leading-[0.9]"
+            className="text-4xl sm:text-5xl md:text-8xl font-black uppercase tracking-tighter text-text leading-[0.9]"
           >
             THE TECH <br />
             <span className="text-accent italic">ARCHITECTURE</span>.
