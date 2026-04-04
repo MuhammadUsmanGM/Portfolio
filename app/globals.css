@@ -107,37 +107,69 @@ body {
   font-family: var(--font-geist-sans), ui-sans-serif, system-ui;
 }
 
-/* --- Custom Sonner Toast Styles --- */
+/* --- Premium Glassy Sonner Toast Styles --- */
 [data-sonner-toast] {
   font-family: var(--font-dm-sans), sans-serif !important;
-  border-radius: 0.5rem !important;
-  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.3) !important;
-  padding: 1.25rem !important;
+  border-radius: 1rem !important;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 10px 30px -5px rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+  padding: 1rem 1.25rem !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   border: 1px solid var(--border) !important;
-  background-color: var(--bg-2) !important;
-  color: var(--text) !important;
+  transition: all 0.3s ease !important;
 }
 
-/* Ensure the title is bold and on-brand */
+/* Light mode glassy background */
+:root [data-sonner-toast] {
+  background-color: rgba(237, 234, 227, 0.7) !important; /* bg-2 with opacity */
+  border: 1px solid rgba(214, 209, 200, 0.5) !important;
+}
+
+/* Dark mode glassy background */
+@media (prefers-color-scheme: dark) {
+  :root [data-sonner-toast] {
+    background-color: rgba(17, 17, 17, 0.7) !important; /* bg-2 with opacity */
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 0, 0, 0.2),
+      0 20px 50px -10px rgba(0, 0, 0, 0.5),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+  }
+}
+
+/* Manual theme overrides */
+[data-theme="light"] [data-sonner-toast] {
+  background-color: rgba(237, 234, 227, 0.7) !important;
+  border: 1px solid rgba(214, 209, 200, 0.5) !important;
+}
+
+[data-theme="dark"] [data-sonner-toast] {
+  background-color: rgba(17, 17, 17, 0.7) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Typography refinements */
 [data-sonner-toast] [data-title] {
   font-family: var(--font-dm-sans), sans-serif !important;
-  font-weight: 800 !important;
-  font-size: 0.9rem !important;
-  letter-spacing: 0.05em !important;
-  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  letter-spacing: -0.01em !important;
+  color: var(--text) !important;
 }
 
 [data-sonner-toast] [data-description] {
   font-family: var(--font-dm-sans), sans-serif !important;
   font-size: 0.85rem !important;
-  color: var(--text-sub) !important;
-  opacity: 0.9 !important;
+  color: var(--muted) !important;
+  margin-top: 2px !important;
 }
 
-/* Success: Dark Amber Theme */
+/* On-brand Success: Amber Highlight */
 [data-sonner-toast][data-type='success'] {
-  border: 1px solid var(--accent) !important;
-  border-left: 6px solid var(--accent) !important;
+  border: 1px solid rgba(245, 166, 35, 0.3) !important;
 }
 
 [data-sonner-toast][data-type='success'] [data-icon] {
@@ -148,10 +180,9 @@ body {
   color: var(--accent) !important;
 }
 
-/* Error: Red Accent */
+/* Refined Error: Subtle Red */
 [data-sonner-toast][data-type='error'] {
-  border: 1px solid #ef4444 !important;
-  border-left: 6px solid #ef4444 !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
 }
 
 [data-sonner-toast][data-type='error'] [data-icon] {
@@ -162,11 +193,7 @@ body {
   color: #ef4444 !important;
 }
 
-/* Remove default richColors backgrounds to let our theme shine through */
-[data-sonner-toast][data-rich-colors="true"][data-type="success"] {
-  background: var(--bg-2) !important;
-}
-
-[data-sonner-toast][data-rich-colors="true"][data-type="error"] {
-  background: var(--bg-2) !important;
+/* Clean up Sonner defaults */
+[data-sonner-toast][data-rich-colors="true"] {
+  background: transparent !important;
 }
