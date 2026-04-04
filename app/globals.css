@@ -124,15 +124,15 @@ body {
 
 /* Light mode glassy background */
 :root [data-sonner-toast] {
-  background-color: rgba(237, 234, 227, 0.7) !important; /* bg-2 with opacity */
-  border: 1px solid rgba(214, 209, 200, 0.5) !important;
+  background-color: rgba(237, 234, 227, 0.95) !important; /* more opaque bg-2 */
+  border: 1px solid rgba(214, 209, 200, 0.8) !important;
 }
 
 /* Dark mode glassy background */
 @media (prefers-color-scheme: dark) {
   :root [data-sonner-toast] {
-    background-color: rgba(17, 17, 17, 0.7) !important; /* bg-2 with opacity */
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    background-color: rgba(17, 17, 17, 0.95) !important; /* more opaque bg-2 */
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
     box-shadow: 
       0 4px 6px -1px rgba(0, 0, 0, 0.2),
       0 20px 50px -10px rgba(0, 0, 0, 0.5),
@@ -142,13 +142,13 @@ body {
 
 /* Manual theme overrides */
 [data-theme="light"] [data-sonner-toast] {
-  background-color: rgba(237, 234, 227, 0.7) !important;
-  border: 1px solid rgba(214, 209, 200, 0.5) !important;
+  background-color: rgba(237, 234, 227, 0.95) !important;
+  border: 1px solid rgba(214, 209, 200, 0.8) !important;
 }
 
 [data-theme="dark"] [data-sonner-toast] {
-  background-color: rgba(17, 17, 17, 0.7) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background-color: rgba(17, 17, 17, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
 }
 
 /* Typography refinements */
@@ -169,7 +169,7 @@ body {
 
 /* On-brand Success: Amber Highlight */
 [data-sonner-toast][data-type='success'] {
-  border: 1px solid rgba(245, 166, 35, 0.3) !important;
+  border: 1px solid var(--accent) !important;
 }
 
 [data-sonner-toast][data-type='success'] [data-icon] {
@@ -182,7 +182,7 @@ body {
 
 /* Refined Error: Subtle Red */
 [data-sonner-toast][data-type='error'] {
-  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+  border: 1px solid #ef4444 !important;
 }
 
 [data-sonner-toast][data-type='error'] [data-icon] {
@@ -191,9 +191,4 @@ body {
 
 [data-sonner-toast][data-type='error'] [data-title] {
   color: #ef4444 !important;
-}
-
-/* Clean up Sonner defaults */
-[data-sonner-toast][data-rich-colors="true"] {
-  background: transparent !important;
 }

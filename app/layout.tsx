@@ -112,7 +112,20 @@ export default function RootLayout({
             })
           }}
         />
-        <Toaster position="top-right" richColors theme="system" />
+        <Toaster 
+          position="top-right" 
+          richColors 
+          theme="system" 
+          toastOptions={{
+            style: { 
+              background: 'var(--bg-2)', 
+              color: 'var(--text)',
+              border: '1px solid var(--border)',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+            },
+          }}
+        />
         <LazyMotion features={domAnimation}>
           <Loader />
           <Navbar />
