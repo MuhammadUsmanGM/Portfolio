@@ -97,7 +97,7 @@ const Projects = () => {
     {
       title: "FERRUM DB",
       subtitle: "Embedded Document Storage Engine",
-      description: "Engineered a custom embedded database engine in Rust (~1,000 lines) featuring O(1) indexing and AES-256-GCM encryption. Shipped to PyPI, NPM, and crates.io with 750+ PyPI downloads and custom bindings for Node.js and Python.",
+      description: "Engineered a custom embedded database engine in Rust (~1,000 lines) featuring O(1) indexing and AES-256-GCM encryption. Shipped to PyPI, NPM, and crates.io with 2400+ PyPI downloads and custom bindings for Node.js and Python.",
       tech: ["Rust", "NAPI-RS", "PyO3", "Tokio", "AES-256-GCM", "Axum"],
       link: "https://pypi.org/project/ferrumdb/",
       github: "https://github.com/MuhammadUsmanGM/ferrumdb",
