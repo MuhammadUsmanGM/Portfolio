@@ -1,83 +1,14 @@
 "use client";
 
 import React from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowUpRight, Github, Activity, Lock } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
+import ProjectBanner from "./ProjectBanner";
 
-const VideoPreview = ({ src, thumbnail }: { src: string; thumbnail?: string | null }) => {
-  const containerRef = React.useRef<HTMLDivElement>(null);
-  const videoRef = React.useRef<HTMLVideoElement>(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
-  const [isPlaying, setIsPlaying] = React.useState(false);
+type BannerVariant = "neural" | "crystal" | "matrix" | "wave";
 
-  const handlePlay = () => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(err => console.log("Playback blocked:", err));
-      setIsPlaying(true);
-    }
-  };
 
-  const handlePause = () => {
-    if (videoRef.current) {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    }
-  };
-
-  const togglePlay = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (isPlaying) handlePause();
-    else handlePlay();
-  };
-
-  return (
-    <div 
-      ref={containerRef} 
-      className="absolute inset-0 w-full h-full cursor-pointer group/video"
-      onMouseEnter={handlePlay}
-      onMouseLeave={handlePause}
-      onClick={togglePlay}
-    >
-      {isInView ? (
-        <motion.video 
-          ref={videoRef}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          loop 
-          muted 
-          playsInline 
-          preload="auto"
-          poster={thumbnail || ""}
-          className="w-full h-full object-cover transition-all duration-700 grayscale-[0.4] brightness-[0.85] contrast-[1.1] group-hover/video:grayscale-0 group-hover/video:brightness-100 group-hover/video:scale-105"
-        >
-          <source src={src} type="video/webm" />
-        </motion.video>
-      ) : (
-        thumbnail && (
-          <Image 
-            src={thumbnail}
-            alt="Project Preview"
-            fill
-            sizes="(max-width: 768px) 100vw, 58vw"
-            className="object-cover grayscale-[0.4] brightness-[0.85] contrast-[1.1]"
-            loading="lazy"
-          />
-        )
-      )}
-      <div className="absolute inset-0 bg-gradient-to-t from-bg/40 to-transparent pointer-events-none" />
-      
-      {/* Play Indicator Overlay */}
-      <div className={`absolute inset-0 flex items-center justify-center transition-opacity bg-black/20 ${isPlaying ? 'opacity-0' : 'group-hover/video:opacity-100 opacity-0'}`}>
-        <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center bg-white/10 backdrop-blur-sm">
-          <Activity className="w-5 h-5 text-white animate-pulse" />
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const Projects = () => {
   const projects = [
@@ -89,10 +20,9 @@ const Projects = () => {
       link: "#",
       github: "https://github.com/MuhammadUsmanGM/ELYX-Digital-FTE",
       isPrivate: false,
-      video: null,
-      thumbnail: "/images/ELYX.webp",
       tags: ["Digital FTE", "70% Workload Reduction", "30k+ Events/Month"],
-      caseStudy: "/projects/elyx"
+      caseStudy: "/projects/elyx",
+      banner: { variant: "neural" as BannerVariant, version: "v4.2", status: "AUTONOMOUS" }
     },
     {
       title: "FERRUM DB",
@@ -102,10 +32,9 @@ const Projects = () => {
       link: "https://pypi.org/project/ferrumdb/",
       github: "https://github.com/MuhammadUsmanGM/ferrumdb",
       isPrivate: false,
-      video: "/videos/ferrumdb.webm",
-      thumbnail: "/images/ferrumdb.webp",
       tags: ["Systems Engineering", "Cross-Language Bindings", "O(1) Performance"],
-      caseStudy: "/projects/ferrumdb"
+      caseStudy: "/projects/ferrumdb",
+      banner: { variant: "crystal" as BannerVariant, version: "v1.3", status: "SHIPPED" }
     },
     {
       title: "CODELENS",
@@ -115,10 +44,9 @@ const Projects = () => {
       link: "https://www.npmjs.com/package/@muhammadusmangm/codelens",
       github: "https://github.com/MuhammadUsmanGM/CodeLens",
       isPrivate: false,
-      video: null,
-      thumbnail: "/images/codelens.jpg",
       tags: ["RAG Architecture", "200+ Active Users", "NPM Package"],
-      caseStudy: "/projects/codelens"
+      caseStudy: "/projects/codelens",
+      banner: { variant: "matrix" as BannerVariant, version: "v2.1", status: "DISTRIBUTED" }
     },
     {
       title: "THE SIGNAL",
@@ -128,9 +56,8 @@ const Projects = () => {
       link: "https://news-letter-umber-five.vercel.app",
       github: "https://github.com/MuhammadUsmanGM/THE-SIGNAL",
       isPrivate: false,
-      video: "/videos/signal.webm",
-      thumbnail: "/images/Signal.jpg",
-      tags: ["300+ Subscribers", "Autonomous Pipeline", "Full-Stack"]
+      tags: ["300+ Subscribers", "Autonomous Pipeline", "Full-Stack"],
+      banner: { variant: "wave" as BannerVariant, version: "v3.0", status: "LIVE" }
     }
   ];
 
@@ -254,60 +181,16 @@ const Projects = () => {
                 </div>
               </div>
 
-              {/* Project Visual */}
+              {/* Project Visual — Premium Code Banner */}
               <div className="lg:col-span-7 order-1 lg:order-2 relative group-hover:scale-[1.02] transition-transform duration-700">
                 <div className="relative aspect-video rounded-[2rem] overflow-hidden border border-border/50 bg-bg-2 shadow-2xl">
-                  
-                  {project.video ? (
-                    <VideoPreview src={project.video} thumbnail={project.thumbnail} />
-                  ) : project.thumbnail ? (
-                    <div className="absolute inset-0 w-full h-full">
-                      <Image 
-                        src={project.thumbnail}
-                        alt={project.title}
-                        fill
-                        className="object-cover grayscale-[0.4] brightness-[0.85] contrast-[1.1] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-700"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-bg/40 to-transparent pointer-events-none" />
-                    </div>
-                  ) : (
-                    <div className="absolute inset-0 bg-[#0c0c0c] flex items-center justify-center overflow-hidden">
-                      <div className="absolute inset-0 opacity-20 pointer-events-none" 
-                           style={{ backgroundImage: 'radial-gradient(var(--border) 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
-                      
-                      <div className="absolute top-8 left-8 flex gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                        <div className="w-1.5 h-1.5 rounded-full bg-border" />
-                        <div className="w-1.5 h-1.5 rounded-full bg-border" />
-                      </div>
-                      
-                      <div className="absolute bottom-8 right-8 text-[10px] font-mono text-muted uppercase tracking-[0.2em] flex flex-col items-end gap-1">
-                        <span>SYS_CORE_V4</span>
-                        <span className="text-accent/50">PRIVATE_ACCESS</span>
-                      </div>
-                      
-                      <motion.div 
-                        animate={{ top: ['-10%', '110%'] }}
-                        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                        className="absolute inset-x-0 h-[2px] bg-accent/20 blur-sm pointer-events-none z-20"
-                      />
-
-                      <div className="relative z-10 flex flex-col items-center gap-6">
-                        <div className="relative">
-                          <div className="absolute inset-0 bg-accent/20 blur-3xl rounded-full scale-150 animate-pulse" />
-                          <div className="relative w-24 h-24 rounded-3xl border-2 border-accent/30 flex items-center justify-center bg-bg-2/50 backdrop-blur-sm group-hover:border-accent group-hover:scale-110 transition-all duration-700">
-                            <Lock className="w-10 h-10 text-accent" />
-                          </div>
-                        </div>
-                        <div className="flex flex-col items-center gap-2">
-                          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">Secure Interface</span>
-                          <div className="h-[1px] w-12 bg-accent/30" />
-                          <span className="text-[11px] font-mono text-accent uppercase tracking-widest">{project.title}</span>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
+                  <ProjectBanner
+                    title={project.title}
+                    subtitle={project.subtitle}
+                    variant={project.banner.variant}
+                    version={project.banner.version}
+                    status={project.banner.status}
+                  />
                   <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.5)] pointer-events-none" />
                 </div>
               </div>
