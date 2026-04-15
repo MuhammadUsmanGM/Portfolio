@@ -202,7 +202,10 @@ const Skills = () => {
                             <FallbackIcon />
                           )}
                         </div>
-                        <span className="text-[10px] font-black uppercase tracking-widest text-muted group-hover/tech:text-text truncate sm:overflow-visible">
+                        <span
+                          title={tech.name}
+                          className="text-[10px] font-black uppercase tracking-widest text-muted group-hover/tech:text-text truncate"
+                        >
                           {tech.name}
                         </span>
                       </div>
