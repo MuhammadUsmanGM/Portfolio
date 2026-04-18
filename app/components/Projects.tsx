@@ -25,16 +25,16 @@ const Projects = () => {
       banner: { variant: "neural" as BannerVariant, version: "v1.0", status: "AUTONOMOUS" }
     },
     {
-      title: "FERRUM DB",
-      subtitle: "Embedded Document Storage Engine",
-      description: "Engineered a custom embedded database engine in Rust (~1,000 lines) featuring O(1) indexing and AES-256-GCM encryption. Shipped to PyPI, NPM, and crates.io with 2400+ PyPI downloads and custom bindings for Node.js and Python.",
-      tech: ["Rust", "NAPI-RS", "PyO3", "Tokio", "AES-256-GCM", "Axum"],
-      link: "https://pypi.org/project/ferrumdb/",
-      github: "https://github.com/MuhammadUsmanGM/ferrumdb",
+      title: "PROMPTLY",
+      subtitle: "Smart Context-Aware Prompt Engineering",
+      description: "Architected an MCP server that bridges the gap between AI intent and codebase reality through automated analysis. Injects project structure, naming conventions, and dependency maps directly into the prompt to reduce AI hallucinations by 40% in large-scale refactors.",
+      tech: ["TypeScript", "MCP SDK", "Node.js", "Zod", "tsup"],
+      link: "https://www.npmjs.com/package/@promptly-ai/cli",
+      github: "https://github.com/MuhammadUsmanGM/promptly",
       isPrivate: false,
-      tags: ["Systems Engineering", "Cross-Language Bindings", "O(1) Performance"],
-      caseStudy: "/projects/ferrumdb",
-      banner: { variant: "crystal" as BannerVariant, version: "v1.3", status: "SHIPPED" }
+      tags: ["AI Developer Tooling", "MCP Protocol", "Zero-Friction"],
+      caseStudy: "/projects/promptly",
+      banner: { variant: "matrix" as BannerVariant, version: "v1.0", status: "PRODUCTION" }
     },
     {
       title: "CODELENS",
@@ -49,16 +49,16 @@ const Projects = () => {
       banner: { variant: "matrix" as BannerVariant, version: "v2.1", status: "DISTRIBUTED" }
     },
     {
-      title: "PROMPTLY",
-      subtitle: "Smart Context-Aware Prompt Engineering",
-      description: "Architected an MCP server that bridges the gap between AI intent and codebase reality through automated analysis. Injects project structure, naming conventions, and dependency maps directly into the prompt to reduce AI hallucinations by 40% in large-scale refactors.",
-      tech: ["TypeScript", "MCP SDK", "Node.js", "Zod", "tsup"],
-      link: "https://www.npmjs.com/package/@promptly-ai/cli",
-      github: "https://github.com/MuhammadUsmanGM/promptly",
+      title: "FERRUM DB",
+      subtitle: "Embedded Document Storage Engine",
+      description: "Engineered a custom embedded database engine in Rust (~1,000 lines) featuring O(1) indexing and AES-256-GCM encryption. Shipped to PyPI, NPM, and crates.io with 2400+ PyPI downloads and custom bindings for Node.js and Python.",
+      tech: ["Rust", "NAPI-RS", "PyO3", "Tokio", "AES-256-GCM", "Axum"],
+      link: "https://pypi.org/project/ferrumdb/",
+      github: "https://github.com/MuhammadUsmanGM/ferrumdb",
       isPrivate: false,
-      tags: ["AI Developer Tooling", "MCP Protocol", "Zero-Friction"],
-      caseStudy: "/projects/promptly",
-      banner: { variant: "matrix" as BannerVariant, version: "v1.0", status: "PRODUCTION" }
+      tags: ["Systems Engineering", "Cross-Language Bindings", "O(1) Performance"],
+      caseStudy: "/projects/ferrumdb",
+      banner: { variant: "crystal" as BannerVariant, version: "v1.3", status: "SHIPPED" }
     }
   ];
 
