@@ -13,16 +13,16 @@ type BannerVariant = "neural" | "crystal" | "matrix" | "wave";
 const Projects = () => {
   const projects = [
     {
-      title: "ELYX — DIGITAL FTE",
-      subtitle: "Autonomous Operations Framework",
-      description: "Architected a 24/7 autonomous operations framework that functions as a Digital FTE, reducing human workload by 70% for multi-channel operational tasks. Orchestrates 30k+ background events monthly across Gmail, WhatsApp, and Odoo ERP with a 4-layer event-driven architecture and cryptographically signed audit trails.",
-      tech: ["Python", "FastAPI", "Next.js", "SQLite", "LLM APIs"],
-      link: "#",
-      github: "https://github.com/MuhammadUsmanGM/ELYX-Digital-FTE",
+      title: "AUTONOMA — DIGITAL FTE",
+      subtitle: "Open-Source AI Agent Platform",
+      description: "Engineered a modular AI agent platform functioning as a digital employee, cutting manual workload by 85%. Features multi-channel deployment (WhatsApp, Discord, Gmail), a premium React+TypeScript HUD for execution telemetry, and structured long-term memory via SQLite FTS5/BM25 retrieval.",
+      tech: ["Python 3.11+", "React 19", "SQLite FTS5", "WebSockets", "LLM APIs"],
+      link: "https://www.npmjs.com/package/autonoma-ai",
+      github: "https://github.com/MuhammadUsmanGM/autonoma",
       isPrivate: false,
-      tags: ["Digital FTE", "70% Workload Reduction", "30k+ Events/Month"],
-      caseStudy: "/projects/elyx",
-      banner: { variant: "neural" as BannerVariant, version: "v4.2", status: "AUTONOMOUS" }
+      tags: ["AI Agent Platform", "85% Workload Reduction", "BM25 Memory"],
+      caseStudy: "/projects/autonoma",
+      banner: { variant: "neural" as BannerVariant, version: "v1.0", status: "AUTONOMOUS" }
     },
     {
       title: "FERRUM DB",

@@ -14,39 +14,40 @@ import {
   Activity,
   Workflow,
   MessageSquare,
-  Globe
+  Globe,
+  Database
 } from "lucide-react";
 import Link from "next/link";
 
-const ElyxCaseStudy = () => {
+const AutonomaCaseStudy = () => {
   const architecturalLayers = [
     {
-      title: "Layer 1: Perception & Ingestion",
+      title: "Layer 1: Omni-Channel Gateway",
       icon: MessageSquare,
-      content: "ELYX continuously monitors three primary channels: Gmail, WhatsApp, and Odoo ERP. Using an event-driven listener pattern, it ingests multi-format data, strips noise, and prepares content for the reasoning core."
+      content: "Natively supports Telegram, Discord, WhatsApp, and Gmail via a robust event-driven router. Enables a multi-session paradigm where a single agent maintains contextual continuity across all endpoints."
     },
     {
-      title: "Layer 2: Intent Routing & LLM Selection",
-      icon: Cpu,
-      content: "Every task is dynamically routed. Simple classification goes to local/smaller models (Llama 3), while complex logic is routed to Claude 3.5 Sonnet or Gemini 1.5 Pro, optimizing for both latency and cost."
+      title: "Layer 2: Cortex & Memory Engine",
+      icon: Database,
+      content: "Built on SQLite with FTS5. Implements BM25 ranked retrieval to fetch context dynamically. Memories decay in importance over time, keeping the agent's context window optimized and highly relevant."
     },
     {
-      title: "Layer 3: Tool Execution & RAG",
+      title: "Layer 3: The Tool Execution Sandbox",
       icon: Workflow,
-      content: "The agent interacts with the Odoo API and file systems. It utilizes a custom RAG pipeline for company-specific context (pricing, inventory, history) to ensure all actions are grounded in current internal data."
+      content: "Agents don't just chat—they act. The execution layer exposes a sandboxed environment for web search, file orchestration, and isolated shell commands, all driven by LLM intent mapping."
     },
     {
-      title: "Layer 4: Verification & Audit",
-      icon: ShieldCheck,
-      content: "A final observer layer verifies the agent's output. Every decision is hashed and logged into a cryptographically signed audit trail, ensuring full accountability for every automated action."
+      title: "Layer 4: Telemetry & HUD Triage",
+      icon: Activity,
+      content: "A premium React 19 + Vite frontend provides a live dashboard for real-time monitoring. Traces execution latency via Gantt charts and allows direct interventions via a high-fidelity Neural Registry."
     }
   ];
 
   const highlights = [
-    { label: "Throughput", value: "30k+", detail: "Events Orchestrated Monthly" },
-    { label: "Efficiency", value: "70%", detail: "Manual Workload Reduction" },
-    { label: "Reliability", value: "99.4%", detail: "Successful Action Execution" },
-    { label: "Connectivity", value: "4-Point", detail: "Deep ERP & API Integration" }
+    { label: "Efficiency", value: "85%", detail: "Manual Workload Reduction achieved" },
+    { label: "Memory", value: "BM25", detail: "Ranked Retrieval & Scalable Deduplication" },
+    { label: "Deployment", value: "CLI", detail: "Single Python Process + Node.js Sidecar" },
+    { label: "Extensibility", value: "100+", detail: "Models via OpenRouter & Anthropic" }
   ];
 
   return (
@@ -80,17 +81,17 @@ const ElyxCaseStudy = () => {
           >
             <div className="flex items-center gap-3 mb-6">
               <span className="bg-accent/15 text-accent text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-tighter border border-accent/30 flex items-center gap-2">
-                <Bot size={12} /> Autonomous Digital FTE
+                <Bot size={12} /> Open-Source Framework
               </span>
-              <span className="text-muted text-[11px] font-black uppercase tracking-[0.2em] font-mono">8 MIN READ • JAN 2026</span>
+              <span className="text-muted text-[11px] font-black uppercase tracking-[0.2em] font-mono">10 MIN READ • MIT LICENSE</span>
             </div>
             
-            <h1 className="text-[clamp(3.5rem,9vw,7.5rem)] font-bebas leading-[0.88] uppercase tracking-tighter mb-10">
-              ELYX <span className="text-accent italic">— OPS AGENT.</span>
+            <h1 className="text-[clamp(3.5rem,9vw,6.5rem)] font-bebas leading-[0.88] uppercase tracking-tighter mb-10">
+              AUTONOMA <span className="text-accent italic">— DIGITAL FTE.</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-text-sub max-w-3xl leading-relaxed font-medium">
-              Architecting a resilient, 24/7 autonomous operations framework that intercepts multi-channel communications to perform role-scoped tasks with high-precision tool calling.
+              An open-source AI agent platform designed to build, deploy, and run digital employees. Bridging the gap between reactive chatbots and proactive, memory-augmented digital operators.
             </p>
           </motion.div>
         </header>
@@ -116,12 +117,12 @@ const ElyxCaseStudy = () => {
         <section className="mb-32 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
            <div className="lg:col-span-12">
               <div className="flex items-center gap-4 mb-10">
-                 <h2 className="text-4xl font-bebas uppercase tracking-tight">The Bottleneck Challenge</h2>
+                 <h2 className="text-4xl font-bebas uppercase tracking-tight">The Observability Gap</h2>
                  <div className="flex-1 h-[1px] bg-border/40" />
               </div>
               <div className="p-10 rounded-[2.5rem] bg-bg-2 border border-border/50 relative overflow-hidden group">
                  <div className="relative z-10 text-xl text-text-sub leading-relaxed max-w-4xl">
-                    Traditional SaaS automation (IFTTT, Zapier) depends on linear, predefined triggers. In complex ERP and multi-channel communication (Gmail + WhatsApp), intent is often ambiguous. I engineered ELYX to solve for <strong>Reasoning over Reaction</strong>, allowing the system to understand the context of an Odoo inventory request before replying across external channels.
+                    Most AI agent frameworks are black boxes. You throw a prompt in and hope the right tools execute. I built Autonoma to solve the <strong>observability capability gap</strong>. It introduces a high-fidelity React dashboard acting as a HUD—allowing operators to monitor execution latency via Gantt charts, edit the agent's memory registry dynamically, and enforce strict execution boundaries using an isolated sandbox.
                  </div>
                  <Layers className="absolute right-[-50px] bottom-[-50px] w-64 h-64 text-accent/5 -rotate-12 pointer-events-none" />
               </div>
@@ -131,7 +132,7 @@ const ElyxCaseStudy = () => {
         {/* 4-Layer Architecture Roadmap */}
         <section className="mb-32">
           <div className="flex items-center gap-4 mb-16">
-            <h2 className="text-4xl font-bebas uppercase tracking-tight">The 4-Layer Framework</h2>
+            <h2 className="text-4xl font-bebas uppercase tracking-tight">System Architecture</h2>
             <div className="flex-1 h-[1px] bg-border/40" />
             <Workflow size={24} className="text-accent" />
           </div>
@@ -177,24 +178,24 @@ const ElyxCaseStudy = () => {
                     <div className="flex items-start gap-4">
                        <div className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
                        <p className="text-sm text-text-sub leading-relaxed">
-                          <strong className="text-text block mb-1">Model-Agnostic Routing</strong>
-                          Used a dynamic router to switch between Claude (logic) and Gemini (retrieval), reducing operational costs by 45% without sacrificing accuracy.
+                          <strong className="text-text block mb-1">SQLite FTS5 + BM25</strong>
+                          Opted against heavy vector databases. Using SQLite FTS5 with BM25 indexing guarantees an ultra-lightweight deployment while matching semantic search relevance for operational queries.
                        </p>
                     </div>
                     <div className="flex items-start gap-4">
                        <div className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
                        <p className="text-sm text-text-sub leading-relaxed">
-                          <strong className="text-text block mb-1">Cryptographic Audit Trails</strong>
-                          Implemented SHA-256 hashing for every decision. In high-stakes ERP environments (Odoo), accountability is the only way to trust autonomous systems.
+                          <strong className="text-text block mb-1">Decoupled UI Layer</strong>
+                          The execution loop (Python) streams events to the dashboard (React 19) via WebSockets. It prevents the UI from blocking the LLM generation loop and scales effortlessly.
                        </p>
                     </div>
                  </div>
               </div>
 
               <div className="space-y-8">
-                 <h2 className="text-4xl font-bebas uppercase tracking-tight">Lessons Learned</h2>
+                 <h2 className="text-4xl font-bebas uppercase tracking-tight">The Reality Check</h2>
                  <p className="text-lg text-text-sub leading-relaxed italic border-l-2 border-accent/20 pl-8">
-                    "Agents are easy to build, but hard to trust. The pivot from 'Automated Scripter' to 'Autonomous Observer' was critical. Trust isn't built on the quality of the LLM, but on the robustness of the verification layer and the 'Human-in-the-loop' approval gates for critical state changes."
+                    "Agents degrade over time without strong state management. Most open-source toys fail because their context window fills with garbage. Building Autonoma proved that a robust memory architecture with algorithmic decay and Jaccard deduplication is 10x more important than the choice of foundation model."
                  </p>
               </div>
            </div>
@@ -205,16 +206,16 @@ const ElyxCaseStudy = () => {
 
         {/* Closing CTA */}
         <footer className="text-center pt-20 border-t border-border/50">
-           <Link href="https://github.com/MuhammadUsmanGM/ELYX-Digital-FTE" target="_blank" rel="noopener noreferrer">
+           <Link href="https://github.com/MuhammadUsmanGM/autonoma" target="_blank" rel="noopener noreferrer">
              <motion.div 
                whileHover={{ scale: 1.05 }}
                className="inline-flex items-center gap-4 bg-accent text-bg px-12 py-5 rounded-full font-black text-xs uppercase tracking-widest shadow-[0_15px_40px_rgba(245,166,35,0.25)]"
              >
-               Explore Internal Architecture <Github size={18} />
+               Explore open-source repo <Github size={18} />
              </motion.div>
            </Link>
            <p className="mt-8 text-muted text-[10px] font-black uppercase tracking-[0.4em]">
-              Security Status: PUBLIC_ARCHITECTURE_REVIEW
+              STATUS: PUBLISHED INTERNATIONALLY (NPM/PIP)
            </p>
         </footer>
       </div>
@@ -222,4 +223,4 @@ const ElyxCaseStudy = () => {
   );
 };
 
-export default ElyxCaseStudy;
+export default AutonomaCaseStudy;
