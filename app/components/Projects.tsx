@@ -204,7 +204,7 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="-mt-16 mb-32"
+              className="-mt-16 mb-12"
             >
               <div className="relative border border-accent/20 bg-bg-2 rounded-2xl px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-6 overflow-hidden">
                 {/* Subtle background glow */}
@@ -239,31 +239,93 @@ const Projects = () => {
       ))}
     </div>
 
-      {/* GitHub CTA Footer */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="max-w-7xl mx-auto mt-32 border-t border-border/50 pt-20 flex flex-col items-center text-center"
-      >
-        <p className="text-muted text-sm font-black uppercase tracking-[0.3em] mb-6">
-          Architecting more in the shadows?
-        </p>
-        <a
-          href="https://github.com/MuhammadUsmanGM"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group flex flex-col items-center gap-4"
+      {/* Final Chapter: Depth & Verification */}
+      <div className="max-w-7xl mx-auto mt-12 border-t border-border/20 pt-20 px-4 shadow-2xl">
+        <motion.div
+           initial={{ opacity: 0, y: 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           transition={{ duration: 0.8 }}
+           className="text-center mb-16"
         >
-          <div className="flex items-center gap-4 text-3xl md:text-5xl font-black uppercase tracking-tighter text-text group-hover:text-accent transition-all duration-500">
-            Explore all projects <ArrowUpRight className="w-10 h-10 md:w-16 md:h-16 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-500" />
-          </div>
-          <div className="flex items-center gap-2 text-accent font-mono text-sm uppercase tracking-widest mt-2">
-            <Github className="w-4 h-4" /> github.com/MuhammadUsmanGM
-          </div>
-        </a>
-      </motion.div>
+          <p className="text-muted text-sm font-black uppercase tracking-[0.3em] mb-4">
+            Architecting more in the shadows?
+          </p>
+          <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-text">
+            The <span className="text-accent italic">Hidden</span> Infrastructure.
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-32">
+          {/* Split Card 1: GitHub / Source */}
+          <motion.a
+             href="https://github.com/MuhammadUsmanGM"
+             target="_blank"
+             rel="noopener noreferrer"
+             initial={{ opacity: 0, x: -20 }}
+             whileInView={{ opacity: 1, x: 0 }}
+             viewport={{ once: true }}
+             transition={{ duration: 0.8 }}
+             className="group relative overflow-hidden bg-bg-2 border border-border/40 rounded-2xl p-6 flex flex-col justify-between min-h-[200px] transition-all duration-500 hover:border-accent/40"
+          >
+            <div className="absolute top-0 right-0 p-4 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity">
+              <Github className="w-24 h-24 text-text" />
+            </div>
+
+            <div className="relative z-10">
+              <div className="flex items-center gap-2 mb-4">
+                 <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                 <span className="text-accent text-[8px] font-black uppercase tracking-[0.4em]">CORE REPOSITORY</span>
+              </div>
+              <h3 className="text-xl font-black uppercase tracking-tighter text-text mb-2">
+                Source Code <span className="text-accent italic">Hub</span>.
+              </h3>
+              <p className="text-text-sub text-[11px] leading-relaxed max-w-[240px]">
+                Underlying logic, distributed systems, and open-source contributions.
+              </p>
+            </div>
+
+            <div className="relative z-10 flex items-center justify-between mt-6 pt-6 border-t border-border/10">
+              <span className="text-[9px] font-mono text-muted uppercase tracking-widest">github.com/MuhammadUsmanGM</span>
+              <ArrowUpRight className="w-4 h-4 text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            </div>
+          </motion.a>
+
+          {/* Split Card 2: Archive / Vault */}
+          <motion.a
+             href="https://usman-works.vercel.app/"
+             target="_blank"
+             rel="noopener noreferrer"
+             initial={{ opacity: 0, x: 20 }}
+             whileInView={{ opacity: 1, x: 0 }}
+             viewport={{ once: true }}
+             transition={{ duration: 0.8 }}
+             className="group relative overflow-hidden bg-bg-2 border border-border/40 rounded-2xl p-6 flex flex-col justify-between min-h-[200px] transition-all duration-500 hover:border-accent/40"
+          >
+            <div className="absolute top-0 right-0 p-4 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity">
+              <Activity className="w-24 h-24 text-accent" />
+            </div>
+
+            <div className="relative z-10">
+              <div className="flex items-center gap-2 mb-4">
+                 <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                 <span className="text-accent text-[8px] font-black uppercase tracking-[0.4em]">TECHNICAL LOGS</span>
+              </div>
+              <h3 className="text-xl font-black uppercase tracking-tighter text-text mb-2">
+                Engineering <span className="text-accent italic">Archive</span>.
+              </h3>
+              <p className="text-text-sub text-[11px] leading-relaxed max-w-[240px]">
+                A curated vault of 20+ artifacts and historical prototypes.
+              </p>
+            </div>
+
+            <div className="relative z-10 flex items-center justify-between mt-6 pt-6 border-t border-border/10">
+              <span className="text-[9px] font-mono text-muted uppercase tracking-widest">usman-works.vercel.app</span>
+              <ArrowUpRight className="w-4 h-4 text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            </div>
+          </motion.a>
+        </div>
+      </div>
     </section>
   );
 };
