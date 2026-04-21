@@ -217,12 +217,6 @@ const Skills = () => {
           ))}
         </div>
 
-        {/* Decorative Grid Line */}
-        <div className="mt-32 h-[1px] w-full bg-gradient-to-r from-transparent via-accent/20 to-transparent relative">
-          <div className="absolute top-0 right-12 -translate-y-1/2 bg-bg px-6 text-[10px] font-mono text-accent/60 uppercase tracking-[0.5em] font-bold">
-            System_Manifest: v3.0.4 — PROD_READY
-          </div>
-        </div>
 
       </div>
     </section>

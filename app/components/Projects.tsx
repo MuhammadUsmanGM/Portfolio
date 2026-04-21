@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { ArrowUpRight, Github, Activity, Lock } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -24,7 +24,57 @@ interface Project {
   codeSnippet?: string;
 }
 
+const smooth = { stiffness: 80, damping: 30, restDelta: 0.001 };
+
+// Parallax wrapper for the giant project numbers
+const ParallaxNumber = ({ children }: { children: React.ReactNode }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y = useSpring(useTransform(scrollYProgress, [0, 1], [80, -80]), smooth);
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{ y }}
+      className="absolute -top-20 -left-10 text-[15rem] font-black text-border/20 pointer-events-none select-none z-0 tracking-tighter hidden lg:block"
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+// Parallax wrapper for project visuals
+const ParallaxVisual = ({ children }: { children: React.ReactNode }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y = useSpring(useTransform(scrollYProgress, [0, 1], [40, -40]), smooth);
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{ y }}
+      className="lg:col-span-7 order-1 lg:order-2 relative group-hover:scale-[1.02] transition-transform duration-700"
+    >
+      {children}
+    </motion.div>
+  );
+};
+
 const Projects = () => {
+  // Section-level scroll for header parallax
+  const headerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: headerProgress } = useScroll({
+    target: headerRef,
+    offset: ["start end", "end start"],
+  });
+  const headerX = useSpring(useTransform(headerProgress, [0, 1], [60, -20]), smooth);
+
   const projects: Project[] = [
     {
       title: "AUTONOMA — DIGITAL FTE",
@@ -102,8 +152,8 @@ crypto.decrypt(buf)`
 
   return (
     <section id="work" className="pt-32 pb-16 px-6 md:px-12 bg-bg relative overflow-hidden">
-      {/* Section Header */}
-      <div className="max-w-7xl mx-auto mb-20">
+      {/* Section Header — horizontal parallax on title */}
+      <div ref={headerRef} className="max-w-7xl mx-auto mb-20">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -122,6 +172,7 @@ crypto.decrypt(buf)`
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
+          style={{ x: headerX }}
           className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-text"
         >
           Selected <br />
@@ -133,16 +184,16 @@ crypto.decrypt(buf)`
         {projects.map((project, index) => (
           <React.Fragment key={project.title}>
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: 0.1 }}
+              transition={{ duration: 1, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
               className="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-32 last:mb-0"
             >
-            {/* Project Numbering - Editorial Feel */}
-            <div className="absolute -top-20 -left-10 text-[15rem] font-black text-border/20 pointer-events-none select-none z-0 tracking-tighter hidden lg:block">
+            {/* Project Numbering — parallax drift */}
+            <ParallaxNumber>
               0{index + 1}
-            </div>
+            </ParallaxNumber>
 
             {/* Project Info */}
             <div className="lg:col-span-5 order-2 lg:order-1 relative z-10">
@@ -220,8 +271,8 @@ crypto.decrypt(buf)`
               </div>
             </div>
 
-            {/* Project Visual — Premium Code Banner */}
-            <div className="lg:col-span-7 order-1 lg:order-2 relative group-hover:scale-[1.02] transition-transform duration-700">
+            {/* Project Visual — parallax visual container */}
+            <ParallaxVisual>
               <div className="relative aspect-video rounded-[2rem] overflow-hidden border border-border/50 bg-bg-2 shadow-2xl">
                 {project.customVisual ? (
                   <div className="relative w-full h-full bg-[#08080a]">
@@ -263,7 +314,7 @@ crypto.decrypt(buf)`
                 
                 <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.5)] pointer-events-none" />
               </div>
-            </div>
+            </ParallaxVisual>
           </motion.div>
 
           {/* ── THE SIGNAL Live Subscribe CTA ── */}
@@ -325,7 +376,7 @@ crypto.decrypt(buf)`
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-12">
           {/* Split Card 1: GitHub / Source */}
           <motion.a
              href="https://github.com/MuhammadUsmanGM"

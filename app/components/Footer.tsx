@@ -1,11 +1,19 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Github, Linkedin, ArrowUp } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+
+  // Scroll-driven parallax for decorative text
+  const footerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: footerRef,
+    offset: ["start end", "end end"],
+  });
+  const decorY = useSpring(useTransform(scrollYProgress, [0, 1], ["40%", "0%"]), { stiffness: 80, damping: 30, restDelta: 0.001 });
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -25,11 +33,11 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-bg relative border-t border-border/50 pt-24 pb-12 px-6 md:px-12 overflow-hidden">
+    <footer ref={footerRef} className="bg-bg relative border-t border-border/50 pt-24 pb-12 px-6 md:px-12 overflow-hidden">
       {/* Decorative Background Text */}
-      <div className="absolute bottom-0 right-0 translate-y-1/3 translate-x-1/4 select-none pointer-events-none opacity-[0.02] dark:opacity-[0.05] whitespace-nowrap">
+      <motion.div style={{ y: decorY }} className="absolute bottom-0 right-0 translate-y-1/3 translate-x-1/4 select-none pointer-events-none opacity-[0.02] dark:opacity-[0.05] whitespace-nowrap">
         <span className="text-[20rem] font-bebas leading-none uppercase">USMAN</span>
-      </div>
+      </motion.div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 lg:gap-8 mb-24">

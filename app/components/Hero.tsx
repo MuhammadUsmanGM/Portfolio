@@ -1,14 +1,36 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { m, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
 import { ArrowUpRight, FileText } from "lucide-react";
 
 const Hero = () => {
   const words = ["Automate", "Scale", "Ship"];
   const [index, setIndex] = useState(0);
   const [isBot, setIsBot] = useState(false);
+
+  // Scroll-driven parallax
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  const smooth = { stiffness: 80, damping: 30, restDelta: 0.001 };
+
+  // Hero text fades and drifts upward as user scrolls past
+  const contentY = useSpring(useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]), smooth);
+  const contentOpacity = useSpring(useTransform(scrollYProgress, [0, 0.7], [1, 0]), smooth);
+
+  // Image moves slower than scroll (classic parallax lag)
+  const imageY = useSpring(useTransform(scrollYProgress, [0, 1], ["0%", "-8%"]), smooth);
+
+  // Background grid drifts in opposite direction for depth
+  const gridY = useSpring(useTransform(scrollYProgress, [0, 1], ["0%", "25%"]), smooth);
+
+  // Background glow drifts independently
+  const glowX = useSpring(useTransform(scrollYProgress, [0, 1], ["0%", "15%"]), smooth);
 
   useEffect(() => {
     setIsBot(/Lighthouse|Googlebot|SiteAudit/.test(navigator.userAgent));
@@ -22,18 +44,18 @@ const Hero = () => {
   }, [words.length]);
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-32 pb-20 overflow-hidden bg-bg">
-      {/* Subtle Grid Background */}
-      <div className="absolute inset-0 opacity-[0.15] pointer-events-none" 
-           style={{ backgroundImage: 'radial-gradient(rgba(201,150,12,0.3) 1px, transparent 1px)', backgroundSize: '50px 50px' }} />
+    <section ref={sectionRef} className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-32 pb-20 overflow-hidden bg-bg">
+      {/* Subtle Grid Background — parallax drift */}
+      <m.div className="absolute inset-0 opacity-[0.15] pointer-events-none" 
+           style={{ y: gridY, backgroundImage: 'radial-gradient(rgba(201,150,12,0.3) 1px, transparent 1px)', backgroundSize: '50px 50px' }} />
       
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[50%] h-full bg-accent/5 blur-[120px] pointer-events-none hidden md:block" />
+      {/* Background Decor — horizontal drift */}
+      <m.div style={{ x: glowX }} className="absolute top-0 right-0 w-[50%] h-full bg-accent/5 blur-[120px] pointer-events-none hidden md:block" />
       
       <div className="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
-        {/* Left Column: Content */}
-        <div className="lg:col-span-7 flex flex-col items-start text-left">
+        {/* Left Column: Content — fades and drifts on scroll */}
+        <m.div style={{ y: contentY, opacity: contentOpacity }} className="lg:col-span-7 flex flex-col items-start text-left">
           <m.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -111,10 +133,10 @@ const Hero = () => {
               Resume <FileText className="w-4 h-4 group-hover:scale-110 transition-transform" />
             </a>
           </m.div>
-        </div>
+        </m.div>
 
-        {/* Right Column: Photo (Bottom Aligned) */}
-      <div className="lg:col-span-5 relative h-[420px] md:h-[520px] lg:h-[650px] flex items-end">
+        {/* Right Column: Photo — parallax lag */}
+      <m.div style={{ y: imageY }} className="lg:col-span-5 relative h-[420px] md:h-[520px] lg:h-[650px] flex items-end">
           <m.div 
             initial={{ opacity: 0, scale: 0.95, y: 40 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -137,7 +159,7 @@ const Hero = () => {
               <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-bg via-bg/40 to-transparent z-10" />
             </div>
           </m.div>
-        </div>
+        </m.div>
       </div>
     </section>
   );
