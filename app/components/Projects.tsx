@@ -4,14 +4,28 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Github, Activity, Lock } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import ProjectBanner from "./ProjectBanner";
 
 type BannerVariant = "neural" | "crystal" | "matrix" | "wave";
 
-
+interface Project {
+  title: string;
+  subtitle: string;
+  description: string;
+  tech: string[];
+  link: string;
+  github: string;
+  isPrivate: boolean;
+  tags: string[];
+  caseStudy?: string;
+  banner: { variant: BannerVariant; version: string; status: string };
+  customVisual?: string;
+  codeSnippet?: string;
+}
 
 const Projects = () => {
-  const projects = [
+  const projects: Project[] = [
     {
       title: "AUTONOMA — DIGITAL FTE",
       subtitle: "Open-Source AI Agent Platform",
@@ -58,7 +72,12 @@ const Projects = () => {
       isPrivate: false,
       tags: ["Systems Engineering", "Cross-Language Bindings", "O(1) Performance"],
       caseStudy: "/projects/ferrumdb",
-      banner: { variant: "crystal" as BannerVariant, version: "v1.3", status: "SHIPPED" }
+      banner: { variant: "crystal" as BannerVariant, version: "v1.3", status: "SHIPPED" },
+      customVisual: "/projects/ferrumdb-arch.svg",
+      codeSnippet: `// O(1) Bitcask get()
+let entry = keydir.get(key)?;
+file.read_at(entry.offset, buf)?;
+crypto.decrypt(buf)`
     }
   ];
 
@@ -185,13 +204,43 @@ const Projects = () => {
             {/* Project Visual — Premium Code Banner */}
             <div className="lg:col-span-7 order-1 lg:order-2 relative group-hover:scale-[1.02] transition-transform duration-700">
               <div className="relative aspect-video rounded-[2rem] overflow-hidden border border-border/50 bg-bg-2 shadow-2xl">
-                <ProjectBanner
-                  title={project.title}
-                  subtitle={project.subtitle}
-                  variant={project.banner.variant}
-                  version={project.banner.version}
-                  status={project.banner.status}
-                />
+                {project.customVisual ? (
+                  <div className="relative w-full h-full bg-[#08080a]">
+                    <Image 
+                      src={project.customVisual} 
+                      alt={project.title}
+                      fill
+                      className="object-contain p-8"
+                    />
+                  </div>
+                ) : (
+                  <ProjectBanner
+                    title={project.title}
+                    subtitle={project.subtitle}
+                    variant={project.banner.variant}
+                    version={project.banner.version}
+                    status={project.banner.status}
+                  />
+                )}
+                
+                {/* Code Snippet Overlay */}
+                {project.codeSnippet && (
+                  <div className="absolute bottom-6 right-6 z-20 hidden md:block">
+                    <motion.div 
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      className="bg-bg/90 backdrop-blur-md border border-accent/30 rounded-xl p-4 font-mono text-[10px] text-accent/80 shadow-2xl"
+                    >
+                      <div className="flex items-center gap-2 mb-2 pb-2 border-b border-white/5 uppercase tracking-widest text-[8px] font-black">
+                        <Activity size={10} /> Live Snapshot
+                      </div>
+                      <pre className="leading-tight">
+                        <code>{project.codeSnippet}</code>
+                      </pre>
+                    </motion.div>
+                  </div>
+                )}
+                
                 <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.5)] pointer-events-none" />
               </div>
             </div>

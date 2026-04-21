@@ -129,31 +129,62 @@ const FerrumCaseStudy = () => {
             <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
           </div>
 
-          <div className="bg-bg-2 rounded-[2rem] border border-border/50 p-8 md:p-12 relative overflow-hidden group">
-             {/* Simple Visualization */}
-             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
-                <div className="p-6 border border-accent/20 rounded-xl bg-bg/50 backdrop-blur-sm space-y-4">
-                   <div className="flex items-center gap-2 text-accent">
-                      <Zap size={16} />
-                      <span className="text-[10px] font-black uppercase tracking-widest">Write Layer</span>
-                   </div>
-                   <p className="text-[11px] text-text-sub leading-relaxed">Incoming SET/GET processed via NAPI-RS (Node) or PyO3 (Python) bindings.</p>
-                </div>
-                <div className="p-6 border border-accent/20 rounded-xl bg-bg/50 backdrop-blur-sm space-y-4">
-                   <div className="flex items-center gap-2 text-accent">
-                      <Lock size={16} />
-                      <span className="text-[10px] font-black uppercase tracking-widest">Crypto Layer</span>
-                   </div>
-                   <p className="text-[11px] text-text-sub leading-relaxed">AES-256-GCM encryption with unique IV generation per entry.</p>
-                </div>
-                <div className="p-10 border border-accent bg-accent/5 rounded-xl flex flex-col items-center justify-center space-y-4 text-center">
-                   <Database size={32} className="text-accent" />
-                   <span className="text-xs font-black uppercase tracking-tight">Data Log (Immutable)</span>
-                </div>
-             </div>
-             
-             {/* Connection Path Overlay */}
-             <div className="absolute top-1/2 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent/20 to-transparent hidden md:block" />
+          <div className="relative aspect-[16/10] md:aspect-[21/9] rounded-[2rem] overflow-hidden border border-border/50 bg-bg-2 shadow-2xl group">
+             <Image 
+                src="/projects/ferrumdb-arch.svg" 
+                alt="FerrumDB Architecture Diagram" 
+                fill 
+                className="object-contain p-4 md:p-8"
+             />
+             <div className="absolute inset-0 bg-gradient-to-t from-bg-2/40 to-transparent pointer-events-none" />
+          </div>
+        </section>
+
+        {/* Technical Implementation Snippet */}
+        <section className="mb-32">
+           <div className="flex items-center gap-4 mb-12">
+            <h2 className="text-4xl font-bebas uppercase tracking-tight">Technical Implementation</h2>
+            <div className="flex-1 h-[1px] bg-border/50" />
+            <Code2 size={24} className="text-accent" />
+          </div>
+
+          <div className="bg-[#0D1117] rounded-3xl border border-border/50 overflow-hidden shadow-2xl">
+            <div className="flex items-center justify-between px-6 py-3 bg-white/5 border-b border-border/50">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-500/50" />
+                <div className="w-3 h-3 rounded-full bg-amber-500/50" />
+                <div className="w-3 h-3 rounded-full bg-green-500/50" />
+              </div>
+              <span className="text-[10px] font-mono text-muted uppercase tracking-widest">engine/src/storage.rs</span>
+            </div>
+            <div className="p-8 overflow-x-auto">
+              <pre className="text-sm font-mono leading-relaxed selection:bg-accent/30">
+                <code className="text-text-sub">
+{`// Bitcask-inspired O(1) Retrieval Logic
+pub struct KeyDirEntry {
+    pub offset: u64,
+    pub size: usize,
+    pub timestamp: u64,
+}
+
+impl FerrumStore {
+    /// Zero-seek retrieval via in-memory KeyDir
+    pub fn get(&self, key: &str) -> Result<Vec<u8>> {
+        let entry = self.keydir.get(key)
+            .ok_or(Error::NotFound)?;
+        
+        // High-speed positional read
+        let mut encrypted_data = vec![0; entry.size];
+        self.data_file.read_at(&mut encrypted_data, entry.offset)?;
+        
+        // AES-256-GCM Authenticated Decryption
+        self.crypto_engine.decrypt(&encrypted_data)
+            .map_err(|_| Error::CryptoFailure)
+    }
+}`}
+                </code>
+              </pre>
+            </div>
           </div>
         </section>
 
