@@ -141,6 +141,7 @@ const PromptlyCaseStudy = () => {
                 src="/projects/promptly-arch.svg" 
                 alt="Promptly MCP Architecture" 
                 fill 
+                unoptimized
                 className="object-contain p-4 md:p-8"
              />
              <div className="absolute inset-0 bg-gradient-to-t from-bg-2/40 to-transparent pointer-events-none" />
