@@ -19,6 +19,7 @@ import {
   Check
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const InstallCommand = () => {
   const [copied, setCopied] = React.useState(false);
@@ -184,6 +185,16 @@ const CodeLensCaseStudy = () => {
             <Workflow size={24} className="text-accent" />
           </div>
 
+          <div className="relative aspect-[16/10] md:aspect-[21/9] rounded-[2rem] overflow-hidden border border-border/50 bg-bg-2 shadow-2xl group mb-20">
+             <Image 
+                src="/projects/codelens-arch.svg" 
+                alt="CodeLens Neural Pipeline" 
+                fill 
+                className="object-contain p-4 md:p-8"
+             />
+             <div className="absolute inset-0 bg-gradient-to-t from-bg-2/40 to-transparent pointer-events-none" />
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {architecturalLayers.map((layer, i) => {
               const Icon = layer.icon;
@@ -213,6 +224,52 @@ const CodeLensCaseStudy = () => {
                 </motion.div>
               );
             })}
+          </div>
+        </section>
+
+        {/* Technical Implementation */}
+        <section className="mb-32">
+           <div className="flex items-center gap-4 mb-12">
+            <h2 className="text-4xl font-bebas uppercase tracking-tight">Technical Implementation</h2>
+            <div className="flex-1 h-[1px] bg-border/50" />
+            <Cpu size={24} className="text-accent" />
+          </div>
+
+          <div className="bg-[#0D1117] rounded-3xl border border-border/50 overflow-hidden shadow-2xl">
+            <div className="flex items-center justify-between px-6 py-3 bg-white/5 border-b border-border/50">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-500/50" />
+                <div className="w-3 h-3 rounded-full bg-amber-500/50" />
+                <div className="w-3 h-3 rounded-full bg-green-500/50" />
+              </div>
+              <span className="text-[10px] font-mono text-muted uppercase tracking-widest">codelens/src/neural-engine.ts</span>
+            </div>
+            <div className="p-8 overflow-x-auto">
+              <pre className="text-sm font-mono leading-relaxed selection:bg-accent/30">
+                <code className="text-text-sub">
+{`// AST-Aware Semantic Chunking Engine
+export async function ingest(repoPath: string) {
+  const files = await fastGlob(\`\${repoPath}/**/*\`);
+  
+  for (const file of files) {
+    const code = await fs.readFile(file, 'utf-8');
+    const chunks = Chunker.synthesize(code, {
+      strategy: "ast-boundary", // Preserves function/class integrity
+      maxItems: 800
+    });
+
+    // Neural Vectorization
+    const embeddings = await model.embed(chunks);
+    await qdrant.upsert(COLLECTION_NAME, {
+      points: chunks.map((c, i) => ({ 
+        id: uuid(), vector: embeddings[i], payload: c 
+      }))
+    });
+  }
+}`}
+                </code>
+              </pre>
+            </div>
           </div>
         </section>
 

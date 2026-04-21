@@ -67,7 +67,12 @@ return mcp.provide({
       isPrivate: false,
       tags: ["RAG Architecture", "200+ Active Users", "NPM Package"],
       caseStudy: "/projects/codelens",
-      banner: { variant: "matrix" as BannerVariant, version: "v2.1", status: "DISTRIBUTED" }
+      banner: { variant: "matrix" as BannerVariant, version: "v2.1", status: "DISTRIBUTED" },
+      customVisual: "/projects/codelens-arch.svg",
+      codeSnippet: `// Neural Semantic Search
+const results = await lens.discover("auth flow");
+// [Match 94%] -> src/engine/session.ts
+// Insight: Token handshake logic identified.`
     },
     {
       title: "FERRUM DB",
