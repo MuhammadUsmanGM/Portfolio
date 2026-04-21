@@ -48,7 +48,14 @@ const Projects = () => {
       isPrivate: false,
       tags: ["AI Developer Tooling", "MCP Protocol", "Zero-Friction"],
       caseStudy: "/projects/promptly",
-      banner: { variant: "matrix" as BannerVariant, version: "v1.0", status: "PRODUCTION" }
+      banner: { variant: "matrix" as BannerVariant, version: "v1.0", status: "PRODUCTION" },
+      customVisual: "/projects/promptly-arch.svg",
+      codeSnippet: `// High-Speed Context Inlay
+const context = await analyze(root);
+return mcp.provide({
+  structure: context.tree,
+  grounding: true
+});`
     },
     {
       title: "CODELENS",
