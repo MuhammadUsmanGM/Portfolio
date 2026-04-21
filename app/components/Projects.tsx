@@ -36,7 +36,14 @@ const Projects = () => {
       isPrivate: false,
       tags: ["AI Agent Platform", "85% Workload Reduction", "BM25 Memory"],
       caseStudy: "/projects/autonoma",
-      banner: { variant: "neural" as BannerVariant, version: "v1.0", status: "AUTONOMOUS" }
+      banner: { variant: "neural" as BannerVariant, version: "v1.0", status: "AUTONOMOUS" },
+      customVisual: "/projects/autonoma-arch.svg",
+      codeSnippet: `// Autonomous Planning Loop
+const plan = await agent.plan(objective);
+for (const step of plan) {
+  const result = await agent.execute(step);
+  await agent.reflect(result);
+}`
     },
     {
       title: "PROMPTLY",
@@ -222,6 +229,7 @@ crypto.decrypt(buf)`
                       src={project.customVisual} 
                       alt={project.title}
                       fill
+                      unoptimized
                       className="object-contain p-8"
                     />
                   </div>

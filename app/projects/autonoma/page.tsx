@@ -15,9 +15,14 @@ import {
   Workflow,
   MessageSquare,
   Globe,
-  Database
+  Database,
+  Search,
+  Terminal,
+  Code,
+  Share2
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const AutonomaCaseStudy = () => {
   const architecturalLayers = [
@@ -132,9 +137,19 @@ const AutonomaCaseStudy = () => {
         {/* 4-Layer Architecture Roadmap */}
         <section className="mb-32">
           <div className="flex items-center gap-4 mb-16">
-            <h2 className="text-4xl font-bebas uppercase tracking-tight">System Architecture</h2>
+            <h2 className="text-4xl font-bebas uppercase tracking-tight">The Intelligence Framework</h2>
             <div className="flex-1 h-[1px] bg-border/40" />
             <Workflow size={24} className="text-accent" />
+          </div>
+
+          <div className="relative aspect-[16/10] md:aspect-[21/9] rounded-[2rem] overflow-hidden border border-border/50 bg-bg-2 shadow-2xl group mb-20">
+             <Image 
+                src="/projects/autonoma-arch.svg" 
+                alt="Autonoma Cognitive Architecture" 
+                fill 
+                className="object-contain p-4 md:p-8"
+             />
+             <div className="absolute inset-0 bg-gradient-to-t from-bg-2/40 to-transparent pointer-events-none" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -166,6 +181,50 @@ const AutonomaCaseStudy = () => {
                 </motion.div>
               );
             })}
+          </div>
+        </section>
+
+        {/* Technical Implementation */}
+        <section className="mb-32">
+           <div className="flex items-center gap-4 mb-12">
+            <h2 className="text-4xl font-bebas uppercase tracking-tight">Technical Implementation</h2>
+            <div className="flex-1 h-[1px] bg-border/50" />
+            <Cpu size={24} className="text-accent" />
+          </div>
+
+          <div className="bg-[#08080a] rounded-3xl border border-border/50 overflow-hidden shadow-2xl border-l-4 border-l-accent">
+            <div className="flex items-center justify-between px-6 py-4 bg-white/5 border-b border-border/50">
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                <span className="text-[10px] font-mono text-muted uppercase tracking-[0.2em]">autonoma/core/agent.py</span>
+              </div>
+              <div className="flex gap-2">
+                 <div className="w-2 h-2 rounded-full bg-white/10" />
+                 <div className="w-2 h-2 rounded-full bg-white/10" />
+              </div>
+            </div>
+            <div className="p-8 overflow-x-auto bg-[#050505]">
+              <pre className="text-sm font-mono leading-relaxed selection:bg-accent/30">
+                <code className="text-text-sub">
+{`# Multi-Agent Orchestration & Planning Loop
+class CognitiveEngine:
+    async def execute_mission(self, objective: str):
+        # 1. Plan: Decompose high-level goal into atomic tasks
+        mission_steps = await self.planner.synthesize(objective)
+        
+        for task in mission_steps:
+            # 2. Act: Select and execute tool (Web, SQL, Shell)
+            observation = await self.executor.run(task)
+            
+            # 3. Reflect: Update memory and refine future steps
+            self.memory.append(task, observation)
+            await self.refiner.integrate(objective, observation)
+            
+            # 4. Telemetry: Stream status to React HUD
+            await self.telemetry.emit(task.status)`}
+                </code>
+              </pre>
+            </div>
           </div>
         </section>
 
