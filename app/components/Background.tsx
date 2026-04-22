@@ -2,17 +2,17 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Trophy, Briefcase, GraduationCap, Calendar, Award } from "lucide-react";
+import { Trophy, Briefcase, GraduationCap, Calendar, Award, BadgeCheck } from "lucide-react";
 
 const Background = () => {
   const certifications = [
-    { name: "Claude Code in Action", issuer: "Anthropic" },
-    { name: "Model Context Protocol: Adv. Topics", issuer: "Anthropic" },
-    { name: "Introduction to Agent Skills", issuer: "Anthropic" },
-    { name: "Agent Factory: Building Digital FTEs", issuer: "PIAIC" },
-    { name: "Agentic AI Level 1 Developer", issuer: "PIAIC" },
-    { name: "Agentic AI Professional Level 2 Developer", issuer: "PIAIC" },
-    { name: "Prompt & Context Engineering", issuer: "PIAIC" },
+    { name: "Claude Code in Action", issuer: "Anthropic", link: "https://verify.skilljar.com/c/yj28ranpm99q" },
+    { name: "Model Context Protocol: Adv. Topics", issuer: "Anthropic", link: "http://verify.skilljar.com/c/dokpqm5h6tvd" },
+    { name: "Introduction to Agent Skills", issuer: "Anthropic", link: "https://verify.skilljar.com/c/97ygfb8wy93b" },
+    { name: "Agent Factory: Building Digital FTEs", issuer: "PIAIC", link: "https://panaversity.org/p/muhammadusman5965etc-atvd" },
+    { name: "Agentic AI Level 1 Developer", issuer: "PIAIC", link: "https://panaversity.org/p/muhammadusman5965etc-atvd" },
+    { name: "Agentic AI Professional Level 2 Developer", issuer: "PIAIC", link: "https://panaversity.org/p/muhammadusman5965etc-atvd" },
+    { name: "Prompt & Context Engineering", issuer: "PIAIC", link: "https://panaversity.org/p/muhammadusman5965etc-atvd" },
   ];
 
   return (
@@ -161,8 +161,20 @@ const Background = () => {
                     <h4 className="text-sm font-black uppercase tracking-tight text-text leading-tight group-hover:text-accent transition-colors">
                       {cert.name}
                     </h4>
-                    <span className="text-[10px] font-bold text-muted uppercase tracking-widest block">
+                    <span className="text-[10px] font-bold text-muted uppercase tracking-widest flex items-center gap-2 pt-0.5">
                       {cert.issuer}
+                      {cert.link && (
+                        <a 
+                          href={cert.link} 
+                          target="_blank" 
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-1 px-1.5 py-[2px] rounded border border-accent/20 bg-accent/5 text-accent hover:bg-accent hover:text-bg transition-colors"
+                          onClick={(e) => cert.link === "#" && e.preventDefault()}
+                        >
+                          <BadgeCheck size={10} strokeWidth={3} />
+                          Verify
+                        </a>
+                      )}
                     </span>
                   </div>
                 </div>
