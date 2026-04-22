@@ -1,0 +1,1010 @@
+[
+  {
+    "id": "autonoma",
+    "year": "2026",
+    "name": "Autonoma",
+    "highlight": "Reduces Manual Workload by 85% | 6+ Channels",
+    "description": "Professional-grade AI Agent platform that operates as a 'Digital FTE'. Features proactive monitoring, high-fidelity live telemetry HUD, and intelligent multi-session memory across Telegram, WhatsApp, Discord, and Gmail.",
+    "tech": [
+      "Python 3.11",
+      "React 19",
+      "SQLite FTS5",
+      "asyncio",
+      "Tailwind 4",
+      "WebSockets"
+    ],
+    "categories": [
+      "AI & Agents",
+      "Systems Engineering",
+      "Automation"
+    ],
+    "type": "Digital Employee Framework",
+    "status": "v1.0.0",
+    "github": "https://github.com/MuhammadUsmanGM/autonoma",
+    "links": [
+      {
+        "label": "NPM PACKAGE",
+        "url": "https://www.npmjs.com/package/autonoma-ai"
+      }
+    ],
+    "installCommand": "npm install -g autonoma-ai",
+    "image": "https://placehold.co/1200x800/0a0a0f/f59e0b?text=AUTONOMA+HUD+OPERATIONAL",
+    "bannerVariant": "neural",
+    "bannerVersion": "v1.0.0",
+    "bannerStatus": "HUD_ACTIVE",
+    "customVisual": "/projects/autonoma-arch.svg",
+    "codeSnippet": "// Autonomous Planning Loop\nconst plan = await agent.plan(objective);\nfor (const step of plan) {\n  const result = await agent.execute(step);\n  await agent.reflect(result);\n}",
+    "benchmarks": [
+      {
+        "label": "Memory Search",
+        "value": "< 5ms",
+        "detail": "SQLite FTS5 BM25 ranked retrieval"
+      },
+      {
+        "label": "Workforce Automation",
+        "value": "85%",
+        "detail": "Reduction in manual triage & response"
+      },
+      {
+        "label": "Agent Response",
+        "value": "< 2s",
+        "detail": "End-to-end cognitive reasoning loop"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Proactive HUD & Telemetry",
+        "icon": "Activity",
+        "content": "Engineered a high-fidelity 'Control Tower' using React 19. The dashboard provides live Gantt-style visualizations of agent reasoning loops, pipeline latency tracking, and proactive system health alerts through a premium glassmorphic interface."
+      },
+      {
+        "title": "Neural Memory Registry",
+        "icon": "Database",
+        "content": "Implemented a sophisticated memory engine using SQLite with FTS5. It employs BM25 ranked retrieval, importance-based decay, and automatic deduplication to ensure the agent maintains high-signal context across multi-session interactions."
+      },
+      {
+        "title": "Unified Channel Gateway",
+        "icon": "Zap",
+        "content": "Developed a robust integration layer supporting mixed-media communication. The gateway handles complex routing between WebSockets, Telegram, Discord, and a Node.js-based WhatsApp bridge, providing a singular, abstracted API for the agent cortex."
+      }
+    ],
+    "learnings": [
+      "Proactive monitoring (push) significantly improves the perceived 'agency' of AI systems compared to purely reactive models.",
+      "BM25 ranking for local memory outperforms simple vector search for technical task retrieval where keyword precision is critical.",
+      "Developing a 'Soul Evolution' system with identity diff-tracking is essential for auditability in autonomous digital employees."
+    ]
+  },
+  {
+    "id": "ferrumdb",
+    "year": "2025",
+    "name": "FerrumDB",
+    "highlight": "1600+ PyPI | 850+ NPM | 50+ Crates.io",
+    "description": "High-performance, embedded document database engine written from scratch in Rust. Features O(1) performance, AES-256 encryption, and atomic transactions.",
+    "tech": [
+      "Rust",
+      "Tokio",
+      "AES-256",
+      "Python Bindings",
+      "NAPI-RS"
+    ],
+    "categories": [
+      "Systems / Rust"
+    ],
+    "type": "Systems Engineering",
+    "status": "v0.1.3",
+    "github": "https://github.com/MuhammadUsmanGM/FerrumDB",
+    "links": [
+      {
+        "label": "PYPI PACKAGE",
+        "url": "https://pypi.org/project/ferrumdb/"
+      },
+      {
+        "label": "NPM PACKAGE",
+        "url": "https://www.npmjs.com/package/ferrumdb"
+      },
+      {
+        "label": "CRATES.IO",
+        "url": "https://crates.io/crates/ferrumdb"
+      }
+    ],
+    "installCommands": [
+      {
+        "label": "Python",
+        "command": "pip install ferrumdb"
+      },
+      {
+        "label": "Node.js",
+        "command": "npm install ferrumdb"
+      },
+      {
+        "label": "Rust",
+        "command": "cargo add ferrumdb"
+      }
+    ],
+    "image": "https://placehold.co/1200x800/0d0d12/de4b39?text=FERRUMDB+RUST+SYSTEMS",
+    "bannerVariant": "crystal",
+    "bannerVersion": "v0.1.3",
+    "bannerStatus": "SHIPPED",
+    "customVisual": "/projects/ferrumdb-arch.svg",
+    "codeSnippet": "// Bitcask-inspired O(1) Read\nlet entry = keydir.get(key)?;\nfile.read_at(entry.offset, buf)?;\ncrypto.decrypt(buf)",
+    "benchmarks": [
+      {
+        "label": "Read Latency",
+        "value": "< 1µs",
+        "detail": "Lock-free in-memory indexing"
+      },
+      {
+        "label": "Write Latency",
+        "value": "1–3 µs",
+        "detail": "Append-only sequential log"
+      },
+      {
+        "label": "Encryption",
+        "value": "AES-256",
+        "detail": "GCM authenticated blocks"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Bitcask-Inspired AOF",
+        "icon": "Database",
+        "content": "Engineered a custom binary log format using an append-only file (AOF) architecture. This design optimizes for high-throughput sequential I/O, ensuring deterministic recovery and crash-resilience through deterministic log replay."
+      },
+      {
+        "title": "Pluggable I/O Abstraction",
+        "icon": "Cpu",
+        "content": "Implemented a sophisticated AsyncFileSystem trait that abstracts disk operations. This allowed for a decorator-based encryption layer, seamlessly wrapping standard I/O with AES-256-GCM authentication tags for each data block."
+      },
+      {
+        "title": "Ferrum Studio",
+        "icon": "Activity",
+        "content": "Developed a built-in observability dashboard using Axum and lock-free atomic metrics. It provides real-time telemetry on operations per second, lookup counts, and database health metrics at sub-microsecond precision."
+      }
+    ],
+    "learnings": [
+      "Rust's ownership model is uniquely suited for building lock-free storage engines with high concurrency.",
+      "The decorator pattern is powerful for layering cross-cutting concerns like encryption and logging without polluting core logic.",
+      "Embedded databases must prioritize memory efficiency; O(1) reads come at the cost of ram-resident indexes."
+    ]
+  },
+  {
+    "id": "codelens",
+    "year": "2025",
+    "name": "CodeLens",
+    "highlight": "220+ Downloads",
+    "description": "The Neural Bridge Between Developer & Codebase. A high-fidelity architectural autopilot synthesizing massive repositories into an interactive neural index.",
+    "tech": [
+      "Next.js 16",
+      "Gemini Pro",
+      "Qdrant",
+      "LangChain",
+      "Framer Motion"
+    ],
+    "categories": [
+      "AI & Agents",
+      "Full-Stack"
+    ],
+    "type": "Engineering Tool",
+    "status": "Operational",
+    "github": "https://github.com/MuhammadUsmanGM/CodeLens",
+    "links": [
+      {
+        "label": "NPM PACKAGE",
+        "url": "https://www.npmjs.com/package/@muhammadusmangm/codelens"
+      }
+    ],
+    "installCommand": "npx @muhammadusmangm/codelens",
+    "image": "https://placehold.co/1200x800/0a0a0f/f5a623?text=CODELENS+ENGINEERING+PREMIUM",
+    "bannerVariant": "matrix",
+    "bannerVersion": "v2.1",
+    "bannerStatus": "DISTRIBUTED",
+    "customVisual": "/projects/codelens-arch.svg",
+    "codeSnippet": "// Neural Semantic Search\nconst results = await lens.discover(\"auth flow\");\n// [Match 94%] -> src/engine/session.ts",
+    "benchmarks": [
+      {
+        "label": "Retrieval Latency",
+        "value": "< 10ms",
+        "detail": "Qdrant Top-K vector search"
+      },
+      {
+        "label": "Intelligence Core",
+        "value": "Gemini 2.0",
+        "detail": "Light-speed inference"
+      },
+      {
+        "label": "Language Support",
+        "value": "40+",
+        "detail": "AST-Aware structural chunking"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Neural RAG Pipeline",
+        "icon": "Cpu",
+        "content": "Engineered a sophisticated Retrieval-Augmented Generation pipeline grounded in source code truth. It transcends simple keyword matching by understanding developer intent through high-dimensional vector synthesis and semantic contextualization."
+      },
+      {
+        "title": "Architectural Discovery",
+        "icon": "Layers",
+        "content": "A glassmorphic, high-focus interface designed to map out structural integrity and logic flow. From onboarding new developers to auditing complex legacy systems, CodeLens provides the strategic depth required for modern engineering."
+      },
+      {
+        "title": "Incremental SHA-256 Indexing",
+        "icon": "Zap",
+        "content": "Implemented hash-based delta analysis for codebase ingestion. By tracking file changes with SHA-256, only modified fragments are re-embedded, drastically reducing latency and operational costs for private repository analysis."
+      }
+    ],
+    "learnings": [
+      "Sub-millisecond vector retrieval is the primary bottleneck for building truly conversational architectural interfaces.",
+      "AST-aware chunking outperforms standard character-based splitting by preserving the semantic integrity of classes and functions.",
+      "Deploying Next.js 16/React 19 applications requires a 'Server-First' mindset for optimal heavy-lifting AI tasks."
+    ]
+  },
+  {
+    "id": "go-load-balancer",
+    "year": "2025",
+    "name": "Go Load Balancer",
+    "highlight": "Handles 10k+ Connections | < 2ms Overhead",
+    "description": "Production-grade HTTP load balancer with advanced observability. Features multi-strategy routing, distributed tracing, and zero-downtime hot reloads.",
+    "tech": [
+      "Go",
+      "OpenTelemetry",
+      "Prometheus",
+      "Grafana",
+      "fnotify"
+    ],
+    "categories": [
+      "High-Perf Go"
+    ],
+    "type": "Network Engineering",
+    "status": "Production-Ready",
+    "github": "https://github.com/MuhammadUsmanGM/go-load-balancer",
+    "links": [],
+    "installCommand": "go build -o lb .",
+    "image": "https://placehold.co/1200x800/0a0a0f/22d3ee?text=GO+LOAD+BALANCER+PRO",
+    "bannerVariant": "crystal",
+    "bannerVersion": "v1.0",
+    "bannerStatus": "PRODUCTION",
+    "customVisual": "/projects/go-lb-arch.svg",
+    "codeSnippet": "// Go Concurrency Loop\nfor i := 0; i < workers; i++ {\n  go lb.proxy(reqChan)\n}\nlb.monitor.Heartbeat(ctx)",
+    "benchmarks": [
+      {
+        "label": "Latency Overhead",
+        "value": "< 2ms",
+        "detail": "High-performance proxying"
+      },
+      {
+        "label": "Scaling Progress",
+        "value": "Slow-Start",
+        "detail": "Gradual backend traffic ramp-up"
+      },
+      {
+        "label": "Monitoring",
+        "value": "Tracing",
+        "detail": "W3C TraceContext propagation"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Advanced Traffic Orchestration",
+        "icon": "Layers",
+        "content": "Implemented five distinct load-balancing strategies: Round-Robin, Least Connections, Weighted RR, IP Hash, and Random with Two Choices. This allows for granular control over traffic distribution based on backend capacity and persistence requirements."
+      },
+      {
+        "title": "Circuit Breaker & Resilience",
+        "icon": "Zap",
+        "content": "Engineered a state-aware circuit breaker pattern (Closed, Half-Open, Open) with configurable failure thresholds. By stopping traffic to failing nodes, the system prevents cascading failures and provides deterministic recovery windows."
+      },
+      {
+        "title": "Full-Stack Observability",
+        "icon": "Activity",
+        "content": "Integrated a comprehensive observability suite featuring Prometheus metrics for P99 latency tracking and OpenTelemetry for distributed tracing. Every request is injected with a unique X-Request-ID for end-to-end auditability."
+      }
+    ],
+    "learnings": [
+      "Hot-reload configuration using file-watchers is key for minimizing operational friction in high-availability systems.",
+      "Passive health checking based on actual proxy error rates detects degradation much faster than periodic active probes alone.",
+      "Effective load balancing isn't just about routing; it's about connection pooling and intelligent request retry management."
+    ]
+  },
+  {
+    "id": "echo-ai",
+    "year": "2026",
+    "name": "Echo AI Agent",
+    "highlight": "950+ Downloads",
+    "description": "The Ultimate JARVIS-Inspired Neural Interface. A holographic, liquid-morphic AI agent featuring real-time particle physics, multi-model reasoning, and a privacy-first STT/TTS engine.",
+    "tech": [
+      "Electron",
+      "React",
+      "Whisper STT",
+      "Neural TTS",
+      "FFmpeg"
+    ],
+    "categories": [
+      "AI & Agents",
+      "Full-Stack",
+      "Automation"
+    ],
+    "type": "Neural UI / Agentics",
+    "status": "Production",
+    "github": "https://github.com/MuhammadUsmanGM/Echo-Neural-Interface",
+    "links": [
+      {
+        "label": "NPM PACKAGE",
+        "url": "https://www.npmjs.com/package/echo-ai-agent"
+      }
+    ],
+    "installCommand": "npm install -g echo-ai-agent",
+    "image": "https://placehold.co/1200x800/0a0a0f/10b981?text=ECHO+AI+HOLOGRAPHIC",
+    "bannerVariant": "neural",
+    "bannerVersion": "v3.0",
+    "bannerStatus": "LIVE",
+    "customVisual": "/projects/echo-arch.svg",
+    "codeSnippet": "// Real-time Canvas Pulse\nconst particle = new Particle();\nparticle.react(audioFrequency);\nengine.render(2000, context);",
+    "benchmarks": [
+      {
+        "label": "UI Performance",
+        "value": "60 FPS",
+        "detail": "2,000+ Synchronized Particles"
+      },
+      {
+        "label": "Neural VAD",
+        "value": "< 50ms",
+        "detail": "Sub-second silence detection"
+      },
+      {
+        "label": "Models",
+        "value": "4+",
+        "detail": "Gemini, GPT-4o, Claude, DeepSeek"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Holographic Liquid-Morphic UI",
+        "icon": "Zap",
+        "content": "Engineered a state-of-the-art visual engine using Canvas and complex particle systems. The HUD features 2,000+ particles that react dynamically to voice frequency bands, creating a liquid-morphic 'Emerald' interface inspired by deep sci-fi aesthetics."
+      },
+      {
+        "title": "Hybrid Voice Intelligence",
+        "icon": "Activity",
+        "content": "Implemented a multi-tier Speech-to-Text (STT) layer supporting Browser APIs, Whisper Cloud, and Local Whisper binaries for 100% private execution. Combined with Neural TTS profiles, Echo provides a zero-latency conversational loop."
+      },
+      {
+        "title": "System-Level Function Calling",
+        "icon": "Layers",
+        "content": "Developed a robust orchestration layer that enables Echo to execute shell commands, manage system files, and interact with third-party APIs through secure function calling. Includes a local, encrypted memory vault for context persistence."
+      }
+    ],
+    "learnings": [
+      "Visual fidelity is a functional requirement for AI agents—a high-quality interface creates the 'personality' that drives user adoption.",
+      "VAD (Voice Activity Detection) is the hardest part of the conversational loop; balancing accuracy with sub-100ms response times is critical.",
+      "Local-first AI agents require strict resource management, especially when running concurrent particle simulations and neural inference."
+    ]
+  },
+  {
+    "id": "elyx",
+    "year": "2025",
+    "name": "ELYX",
+    "highlight": "Reduces Manual Tasks by 70%",
+    "description": "Local-First Autonomous AI Employee. A multi-platform orchestration engine that monitors email, social media, and ERPs to execute business logic via HITL workflows.",
+    "tech": [
+      "FastAPI",
+      "Next.js 16",
+      "Obsidian",
+      "Playwright",
+      "Claude/Gemini"
+    ],
+    "categories": [
+      "AI & Agents"
+    ],
+    "type": "AI Orchestration",
+    "status": "Hackathon 0",
+    "github": "https://github.com/MuhammadUsmanGM/ELYX-Personal-AI-Employee",
+    "links": [],
+    "installCommand": "python run_elyx.py",
+    "image": "https://placehold.co/1200x800/0a0a0f/bc8cff?text=ELYX+AUTONOMOUS+EMPLOYEE",
+    "bannerVariant": "neural",
+    "bannerVersion": "v4.2",
+    "bannerStatus": "AUTONOMOUS",
+    "customVisual": "/projects/elyx-arch.svg",
+    "codeSnippet": "// Obsidian-as-State Pattern\nconst state = await obsidian.read(file);\nif (state.status === 'PENDING') {\n  await agent.reason(state.intent);\n}",
+    "benchmarks": [
+      {
+        "label": "Perception Points",
+        "value": "8+",
+        "detail": "Gmail, WA, LinkedIn, X, Odoo"
+      },
+      {
+        "label": "Reasoning Core",
+        "value": "Swappable",
+        "detail": "Claude 3.5 / Gemini 2.0 / Qwen"
+      },
+      {
+        "label": "Memory Architecture",
+        "value": "Obsidian",
+        "detail": "Markdown-based long-term storage"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Perception Layer",
+        "icon": "Activity",
+        "content": "Engineered a Python-based watching system using Playwright and standard APIs to monitor disjointed communication channels. The layer synthesizes raw platform events into structured Markdown tasks for the reasoning engine."
+      },
+      {
+        "title": "Obsidian-as-Memory",
+        "icon": "Database",
+        "content": "Pioneered a 'Local-First' memory architecture using an Obsidian vault. By treating Markdown files as state-machines, ELYX provides deep transparency—every plan, log, and approval cycle is an immutable technical artifact."
+      },
+      {
+        "title": "HITL Approval Cycles",
+        "icon": "ShieldCheck",
+        "content": "Implemented a rigid Human-in-the-Loop (HITL) protocol for sensitive operations. The orchestrator generates execution plans in a 'Pending' state, requiring the user to physically move files in the vault to authorize high-risk actions."
+      }
+    ],
+    "learnings": [
+      "Autonomous agents are only as reliable as their 'perception' fidelity; handling platform-specific edge cases is the hardest part.",
+      "Markdown is a surprisingly robust state management tool for local-first AI systems due to its human-readable nature.",
+      "A truly swappable 'Brain Factory' requires strict output normalization to handle different LLM reasoning styles."
+    ]
+  },
+  {
+    "id": "promptly",
+    "year": "2026",
+    "name": "Promptly",
+    "highlight": "530+ Downloads in 24 Hours",
+    "description": "Smart Context-Aware Prompt Engineering. An MCP server that bridges the gap between AI intent and codebase reality through automated analysis and refinement.",
+    "tech": [
+      "TypeScript",
+      "MCP SDK",
+      "Node.js",
+      "Zod",
+      "tsup"
+    ],
+    "categories": [
+      "AI & Agents",
+      "Automation"
+    ],
+    "type": "AI Developer Tooling",
+    "status": "Production",
+    "github": "https://github.com/MuhammadUsmanGM/promptly",
+    "links": [
+      {
+        "label": "NPM PACKAGE",
+        "url": "https://www.npmjs.com/package/@promptly-ai/cli"
+      }
+    ],
+    "installCommand": "npm install -g @promptly-ai/cli",
+    "image": "https://placehold.co/1200x800/0a0a0f/bc8cff?text=PROMPTLY+MCP+SERVER",
+    "bannerVariant": "matrix",
+    "bannerVersion": "v1.0",
+    "bannerStatus": "PRODUCTION",
+    "customVisual": "/projects/promptly-arch.svg",
+    "codeSnippet": "// High-Speed Context Inlay\nconst context = await analyze(root);\nreturn mcp.provide({\n  structure: context.tree,\n  grounding: true\n});",
+    "benchmarks": [
+      {
+        "label": "Refinement Latency",
+        "value": "< 50ms",
+        "detail": "Sub-second context injection"
+      },
+      {
+        "label": "Protocol",
+        "value": "MCP",
+        "detail": "Full Model Context Protocol support"
+      },
+      {
+        "label": "Agent Support",
+        "value": "4+",
+        "detail": "Claude Code, Cursor, Gemini, Qwen"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Codebase Context Injection",
+        "icon": "Database",
+        "content": "Engineered a high-speed analyzer that maps project structure, naming conventions, and dependency trees. By injecting this 'ground truth' directly into the prompt via the Model Context Protocol, the tool drastically reduces AI hallucinations and logic errors."
+      },
+      {
+        "title": "Agent-Specific Refinement",
+        "icon": "Zap",
+        "content": "Implemented a sophisticated rules-engine that tunes prompts for specific AI agents (e.g., Claude Code, Cursor). It contextually applies success criteria, imperative constraints, and file relevance scoring based on the detected tech stack."
+      },
+      {
+        "title": "Zero-Friction Orchestration",
+        "icon": "Layers",
+        "content": "Designed an automated setup wizard that configures global or project-level MCP settings. The architecture features intelligent caching with automatic invalidation on manifest changes (package.json, tsconfig.json), ensuring minimal overhead."
+      }
+    ],
+    "learnings": [
+      "The 'Ground Truth' gap is the primary reason for AI coding failures; bridging it with local context is more effective than larger context windows.",
+      "Developer tools must have sub-100ms latency to feel invisible—caching and incremental analysis are mandatory for high-velocity workflows.",
+      "The Model Context Protocol (MCP) is evolving into the standard 'nerve system' for AI-to-IDE communication."
+    ]
+  },
+  {
+    "id": "physical-ai",
+    "year": "2025",
+    "name": "Physical AI Platform",
+    "description": "Next-generation Embodied Intelligence textbook. Features a RAG-powered AI tutor, personalized learning paths for ROS 2, and real-time Urdu translation for robotics education.",
+    "tech": [
+      "Docusaurus",
+      "FastAPI",
+      "Qdrant",
+      "Better Auth",
+      "NVIDIA Isaac Sim"
+    ],
+    "categories": [
+      "AI & Agents",
+      "Full-Stack"
+    ],
+    "type": "EdTech / Robotics",
+    "status": "Hackathon Project",
+    "github": "https://github.com/MuhammadUsmanGM/physical-ai-hackathon",
+    "links": [
+      {
+        "label": "LIVE EXPERIENCE",
+        "url": "https://muhammadusmangm.github.io/physical-ai-hackathon/"
+      }
+    ],
+    "image": "https://placehold.co/1200x800/0a0a0f/de4b39?text=PHYSICAL+AI+ROBOTICS",
+    "bannerVariant": "wave",
+    "bannerVersion": "v1.0",
+    "bannerStatus": "PROTOTYPE",
+    "customVisual": "/projects/physical-ai-arch.svg",
+    "codeSnippet": "// Robotics RAG TA Engine\nconst query = await tutor.listen();\nconst context = await qdrant.fetchROS2Content(query);\nreturn tutor.synthesize(query, context);",
+    "benchmarks": [
+      {
+        "label": "TA Latency",
+        "value": "< 2s",
+        "detail": "RAG-driven context retrieval"
+      },
+      {
+        "label": "Curriculum",
+        "value": "13 Weeks",
+        "detail": "ROS 2 to NVIDIA Isaac Sim"
+      },
+      {
+        "label": "Accessibility",
+        "value": "Urdu",
+        "detail": "Neural content translation layer"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Context-Aware AI Tutor",
+        "icon": "Cpu",
+        "content": "Engineered a sophisticated RAG (Retrieval-Augmented Generation) system using Qdrant and Gemini 2.0. The TA is grounded specifically in the textbook's technical content, providing sub-second answers to complex ROS 2 and kinematics queries while referencing internal citations."
+      },
+      {
+        "title": "Embodied Intelligence Curriculum",
+        "icon": "Layers",
+        "content": "Architected a comprehensive 13-week technical journey from basic ROS 2 nodes to advanced VLA (Vision-Language-Action) models. The platform integrates NVIDIA Isaac Sim for photorealistic robotics simulation and digital-twin training."
+      },
+      {
+        "title": "Dynamic Personalization Engine",
+        "icon": "Activity",
+        "content": "Implemented a multi-tier onboarding system using Better Auth and Neon Postgres. The textbook dynamically adjust its technical depth (Beginner → Advanced) based on the user's hardware and software background, ensuring an optimal learning curve."
+      }
+    ],
+    "learnings": [
+      "Physical AI requires a fundamental bridge between digital reasoning (LLMs) and temporal/physical constraints of real-world hardware.",
+      "Vector-based RAG for technical documentation must prioritize code-snippet preservation to remain useful for engineering education.",
+      "Hybrid backends (FastAPI for AI + Node.js for Auth) provide the best balance of speed and security for AI-native platforms."
+    ]
+  },
+  {
+    "id": "notion-autopilot",
+    "year": "2025",
+    "name": "Notion Autopilot",
+    "highlight": "Organizes 10,000+ Blocks Autonomously",
+    "description": "Autonomous Workspace Intelligence & Organization. An AI agent that continuously crawls, organizes, and extracts cognitive insights from messy Notion environments.",
+    "tech": [
+      "Python (uv)",
+      "Notion API",
+      "Groq/Gemini",
+      "LLM Orchestration"
+    ],
+    "categories": [
+      "AI & Agents"
+    ],
+    "type": "AI Agent / Productivity",
+    "status": "Hackathon Project",
+    "github": "https://github.com/MuhammadUsmanGM/notion-reverse-autopilot",
+    "links": [],
+    "installCommand": "uv run notion-autopilot organize",
+    "image": "https://placehold.co/1200x800/0a0a0f/10b981?text=NOTION+AUTOPILOT+AGENT",
+    "bannerVariant": "neural",
+    "bannerVersion": "v1.0",
+    "bannerStatus": "AUTONOMOUS",
+    "customVisual": "/projects/notion-arch.svg",
+    "codeSnippet": "// Autonomous Workspace Sharding\nconst pages = await notion.discover();\nfor (const page of pages) {\n  const chaos = await analyzer.score(page);\n  if (chaos > 0.8) await agent.cleanup(page);\n}",
+    "benchmarks": [
+      {
+        "label": "Analysis Polish",
+        "value": "Continuous",
+        "detail": "Autonomous background organization"
+      },
+      {
+        "label": "Contextual Search",
+        "value": "Pattern-Based",
+        "detail": "Discovers hidden cognitive connections"
+      },
+      {
+        "label": "Intelligence",
+        "value": "Multi-Provider",
+        "detail": "Groq, Gemini, Ollama, Anthropic"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Autonomous Workspace Crawler",
+        "icon": "Database",
+        "content": "Engineered a resilient Notion API client capable of full-workspace discovery. The agent crawls pages, databases, and blocks to identify 'Chaos Scores'—orphan pages, dead links, and duplicate clusters—before executing autonomous cleanup protocols."
+      },
+      {
+        "title": "Cognitive Pattern Recognition",
+        "icon": "Zap",
+        "content": "Developed a reasoning engine that synthesizes raw workspace content into a 'Brain Briefing'. By analyzing recurring themes and contradictions across disjointed notes, the agent surfaces meta-insights about the user's focus areas and blind spots."
+      },
+      {
+        "title": "Multi-Provider Orchestration",
+        "icon": "Layers",
+        "content": "Built a provider-agnostic LLM interface supporting low-latency local execution (Ollama) and high-speed cloud inference (Groq/Gemini). This architecture allows for cost-effective, bulk categorization of thousands of Notion blocks without vendor lock-in."
+      }
+    ],
+    "learnings": [
+      "The hardest part of autonomous organization isn't the AI—it's building a reliable, state-aware API crawler that respects platform limits.",
+      "Machine-generated 'meta-insights' are far more valuable to a user than simple auto-tagging of tasks.",
+      "Providing a full 'organizer' history is critical for building trust in autonomous systems that modify user-owned data."
+    ]
+  },
+  {
+    "id": "opsforge",
+    "year": "2025",
+    "name": "OpsForge",
+    "description": "Zero-dependency DevOps CLI & REST API toolkit built with Go's standard library. Features 10+ core utilities for load testing, SSL auditing, and network discovery.",
+    "tech": [
+      "Go (Stdlib)",
+      "slog",
+      "Docker",
+      "Prometheus",
+      "GoReleaser"
+    ],
+    "categories": [
+      "High-Perf Go",
+      "Automation"
+    ],
+    "type": "DevOps Engineering",
+    "status": "v1.2.0",
+    "github": "https://github.com/MuhammadUsmanGM/OpsForge",
+    "links": [],
+    "installCommand": "go install github.com/MuhammadUsmanGM/OpsForge@latest",
+    "image": "https://placehold.co/1200x800/0a0a0f/f5a623?text=OPSFORGE+CLI+TOOLKIT",
+    "bannerVariant": "crystal",
+    "bannerVersion": "v1.2",
+    "bannerStatus": "STABLE",
+    "customVisual": "/projects/opsforge-arch.svg",
+    "codeSnippet": "// Semaphore Controlled Port Scan\nsem := make(chan struct{}, maxParallel)\nfor port := range ports {\n  sem <- struct{}{}\n  go scan(target, port, sem)\n}",
+    "benchmarks": [
+      {
+        "label": "External Deps",
+        "value": "ZERO",
+        "detail": "Pure Go standard library implementation"
+      },
+      {
+        "label": "Image Size",
+        "value": "~5MB",
+        "detail": "Optimized multi-stage SCRATCH build"
+      },
+      {
+        "label": "Utilities",
+        "value": "10+",
+        "detail": "Comprehensive network & system toolkit"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Zero-Dependency Architecture",
+        "icon": "ShieldCheck",
+        "content": "Engineered a production-ready toolkit using exclusively the Go standard library. By avoiding third-party dependencies, the project achieves an ultra-low attack surface and maximum long-term maintainability for mission-critical DevOps environments."
+      },
+      {
+        "title": "Concurrent Task Orchestration",
+        "icon": "Cpu",
+        "content": "Leverages bounded concurrency models with goroutines and semaphores. The port-scanner and load-tester modules utilize a fixed worker pool to manage thousands of parallel TCP/HTTP connections without exhausting system file descriptors."
+      },
+      {
+        "title": "API-First Extensibility",
+        "icon": "Layers",
+        "content": "Features a built-in 'devtool serve' mode that exposes all CLI capabilities as a REST API. Includes native Prometheus metrics exposition and a plugin discovery system that automatically registers external binaries from the system PATH."
+      }
+    ],
+    "learnings": [
+      "Building without external frameworks like Cobra forces a deeper understanding of Go's flag parsing and command-routing primitives.",
+      "Structured logging with log/slog is essential for creating machine-readable CLI outputs suitable for modern CI/CD pipelines.",
+      "Multi-stage Docker builds using the 'scratch' image provide the most secure and efficient way to distribute compiled binaries."
+    ]
+  },
+  {
+    "id": "automation-vault",
+    "year": "2026",
+    "name": "Automation Vault",
+    "description": "Enterprise-Grade Automation Infrastructure & AI Orchestration. A collection of complex, event-driven workflows that automate the entire Software Development Life Cycle (SDLC).",
+    "tech": [
+      "n8n",
+      "AI Orchestration",
+      "GitHub API",
+      "Slack",
+      "Groq"
+    ],
+    "categories": [
+      "Automation",
+      "AI & Agents"
+    ],
+    "type": "Automation Engineering",
+    "status": "Production",
+    "github": "https://github.com/MuhammadUsmanGM/WorkFlows",
+    "links": [],
+    "installCommand": "Import .json workflows into n8n",
+    "image": "https://placehold.co/1200x800/0a0a0f/f5a623?text=AUTOMATION+INFRASTRUCTURE",
+    "bannerVariant": "wave",
+    "bannerVersion": "v2.0",
+    "bannerStatus": "PRODUCTION",
+    "customVisual": "/projects/automation-arch.svg",
+    "codeSnippet": "// n8n AI Review Node\nconst diff = await github.getDiff(prId);\nconst review = await llama3.analyze(diff);\nreturn { score: review.quality };",
+    "benchmarks": [
+      {
+        "label": "Nodes Orchestrated",
+        "value": "1200+",
+        "detail": "Combined Takt-time logic"
+      },
+      {
+        "label": "Integrations",
+        "value": "30+",
+        "detail": "SaaS ecosystem connectivity"
+      },
+      {
+        "label": "AI Review",
+        "value": "< 10s",
+        "detail": "Real-time diff analysis via Llama 3"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Full-Stack Project Monitor",
+        "icon": "Activity",
+        "content": "Engineered a massive, 30KB+ n8n workflow that serves as a self-healing project monitor. It intercepts GitHub webhooks to perform real-time AI code reviews, detect security vulnerabilities, and auto-generate executive briefings for project stakeholders."
+      },
+      {
+        "title": "Autonomous Documentation Pipeline",
+        "icon": "Layers",
+        "content": "Implemented a recursive documentation engine that scans README files for gaps and automatically generates missing technical sections. The system creates automated PRs and synchronizes updates with internal wikis and Google Docs simultaneously."
+      },
+      {
+        "title": "AI Lead Qualification",
+        "icon": "Zap",
+        "content": "Architected a multi-step nurture system that leverages Groq for ultra-high-speed lead qualification. The system synthesizes incoming data points into structured buyer personas, triggering personalized email sequences based on behavioral triggers."
+      },
+      {
+        "title": "Integrated Workflow Library",
+        "icon": "Library",
+        "content": "The repository serves as a centralized hub for production-ready automation protocols, including:\n\n• Full-Stack Project Monitor & AI Reviewer\n• Autonomous AI Support Infrastructure\n• Multi-Channel Content Distribution Hub\n• Real Estate Lead Nurture Ecosystem\n• LinkedIn AI Post & Lead Automation\n• Abandoned Cart Recovery Protocol\n• Neural Intelligence Newsletter Engine"
+      }
+    ],
+    "learnings": [
+      "Low-code doesn't equal low-complexity; enterprise automation requires rigorous error-handling, retry logic, and architectural discipline.",
+      "The value of automation isn't just time saved—it's the elimination of cognitive overhead for engineering teams.",
+      "Event-driven architectures are the only way to build truly responsive business and technical infrastructure."
+    ]
+  },
+  {
+    "id": "the-signal",
+    "year": "2025",
+    "name": "THE SIGNAL",
+    "highlight": "350+ Active Subscribers",
+    "description": "Premium AI Intelligence Protocol. A fully automated engine synthesizing global AI news into high-fidelity briefings via a strict 3-3-2-2-1 data protocol.",
+    "tech": [
+      "React",
+      "Gemini 2.0",
+      "Supabase",
+      "Inngest",
+      "Cloudflare"
+    ],
+    "categories": [
+      "AI & Agents",
+      "Full-Stack"
+    ],
+    "type": "Product / Automation",
+    "status": "v1.0.0",
+    "github": "https://github.com/MuhammadUsmanGM/NewsLetter",
+    "links": [
+      {
+        "label": "LIVE EXPERIENCE",
+        "url": "https://news-letter-umber-five.vercel.app/"
+      }
+    ],
+    "image": "https://placehold.co/1200x800/0a0a0f/3ecf8e?text=THE+SIGNAL+INTELLIGENCE",
+    "bannerVariant": "wave",
+    "bannerVersion": "v1.0",
+    "bannerStatus": "LIVE",
+    "customVisual": "/projects/signal-arch.svg",
+    "codeSnippet": "// 3-3-2-2-1 News Synthesis\nconst articles = await scraper.fetchLatest();\nconst briefings = await gemini.synthesize(articles);\nawait supabase.distribute(briefings);",
+    "benchmarks": [
+      {
+        "label": "Synthesis Accuracy",
+        "value": "3-3-2-2-1",
+        "detail": "Strict content ratio protocol"
+      },
+      {
+        "label": "Delivery Precision",
+        "value": "9:00 AM",
+        "detail": "Dynamic local timezone scheduling"
+      },
+      {
+        "label": "Security",
+        "value": "Turnstile",
+        "detail": "Bot-proof subscription layer"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Intelligence Synthesis",
+        "icon": "Cpu",
+        "content": "Engineered a weekly intelligence pipeline that crawls GitHub trending repos and global tech news via NewsAPI. Using Gemini 2.0, the system distills raw data into a premium 3-3-2-2-1 briefing, focusing on high-signal dev tools and AI hardware breakthroughs."
+      },
+      {
+        "title": "Automated Dispatch Workflow",
+        "icon": "Zap",
+        "content": "Leveraging Inngest's event-driven architecture and Vercel Cron, the engine handles asynchronous task processing with resilient retry logic. It ensures zero-downtime delivery across thousands of global timezones simultaneously."
+      },
+      {
+        "title": "Neural Gamification",
+        "icon": "Activity",
+        "content": "Implemented a 10-tier loyalty spectrum that evolves the user's interface from 'Alpha Initiate' to 'Signal Architect'. As users reach higher tiers, the entire UI theme dynamically shifts, unlocking total 'Prism Protocol' customization."
+      }
+    ],
+    "learnings": [
+      "Dynamic timezone delivery requires careful timestamp normalization at the edge to prevent race conditions during global dispatch.",
+      "Gamifying a newsletter increases long-term retention by turning consumption into a progression-based technical journey.",
+      "Serverless automation via GitHub Actions provides the most cost-effective and reliable orchestrator for consistent weekly content generation."
+    ]
+  },
+  {
+    "id": "todo-audit",
+    "year": "2026",
+    "name": "todo-audit",
+    "description": "High-Performance Static Technical Debt Auditor. A Rust-based CLI engine that scans massive codebases to track, audit, and visualize technical debt with lazy Git-blame integration.",
+    "tech": [
+      "Rust",
+      "Git Blame API",
+      "Static Analysis",
+      "CLI"
+    ],
+    "categories": [
+      "Systems / Rust",
+      "Automation"
+    ],
+    "type": "Engineering Utility",
+    "status": "Production",
+    "github": "https://github.com/MuhammadUsmanGM/todo-audit",
+    "links": [],
+    "installCommand": "cargo install todo-audit",
+    "image": "https://placehold.co/1200x800/0a0a0f/f5a623?text=TODO-AUDIT+CLI",
+    "bannerVariant": "crystal",
+    "bannerVersion": "v1.0",
+    "bannerStatus": "PRODUCTION",
+    "customVisual": "/projects/audit-arch.svg",
+    "codeSnippet": "// Debt Heatmap Generation\nconst todos = await scanner.find('TODO');\nconst commits = await git.getBlame(todos);\nreturn debtManager.triage(todos, commits);",
+    "benchmarks": [
+      {
+        "label": "Performance",
+        "value": "O(N)",
+        "detail": "Parallel file-tree walking"
+      },
+      {
+        "label": "Git Integration",
+        "value": "Lazy",
+        "detail": "Zero-overhead metadata fetch"
+      },
+      {
+        "label": "Ecosystem",
+        "value": "Binary",
+        "detail": "Single zero-dep executable"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Static Technical Debt Tracking",
+        "icon": "ShieldCheck",
+        "content": "Engineered a recursive scanning engine that accurately captures TODO, FIXME, and HACK annotations across any codebase. The tool respects .gitignore automatically by leveraging the high-performance 'ignore' crate architecture."
+      },
+      {
+        "title": "Lazy Git-Blame Orchestration",
+        "icon": "Activity",
+        "content": "Implemented a lazy evaluation strategy for Git metadata. Blame data (author, staleness, timestamp) is only fetched when specific filters are triggered, ensuring the core scanning performance remains ultra-fast for large repositories."
+      },
+      {
+        "title": "CI/CD Gate Integration",
+        "icon": "Zap",
+        "content": "Designed with a Unix-first philosophy, allowing todo-audit to be integrated into CI pipelines as a quality gate. Supports multiple output formats (Text, JSON) for automated reporting and debt orchestration."
+      }
+    ],
+    "learnings": [
+      "Effective static analysis tools must prioritize performance; if a scan takes more than a few seconds, it won't be used.",
+      "Git-blame porcelain output is powerful but expensive; batching and lazy loading are mandatory for enterprise-scale repositories.",
+      "Developer experience (DX) is the primary feature of CLI tools—clear error codes and intuitive flags are non-negotiable."
+    ]
+  },
+  {
+    "id": "vidx",
+    "year": "2025",
+    "name": "VidX",
+    "highlight": "200+ Downloads",
+    "description": "High-Fidelity Video Transformation for the Web. An interactive CLI tool that abstracts complex FFmpeg operations into a guided TUI for professional web optimization.",
+    "tech": [
+      "Node.js",
+      "FFmpeg",
+      "AV1/VP9",
+      "TUI",
+      "Vitest"
+    ],
+    "categories": [
+      "Automation"
+    ],
+    "type": "Engineering Tooling",
+    "status": "Production",
+    "github": "https://github.com/MuhammadUsmanGM/VidX",
+    "links": [
+      {
+        "label": "NPM PACKAGE",
+        "url": "https://www.npmjs.com/package/@muhammadusmangm/vidx"
+      }
+    ],
+    "installCommand": "npm install -g @muhammadusmangm/vidx",
+    "image": "https://placehold.co/1200x800/0a0a0f/f97316?text=VIDX+VIDEO+ENGINE",
+    "bannerVariant": "matrix",
+    "bannerVersion": "v1.0",
+    "bannerStatus": "PRODUCTION",
+    "customVisual": "/projects/vidx-arch.svg",
+    "codeSnippet": "// Semantic Frame Discovery\nconst frames = await ffmpeg.extract(video);\nconst caption = await whisper.transcribe(audio);\nconst concept = await gemini.synthesize(frames, caption);",
+    "benchmarks": [
+      {
+        "label": "Codec Support",
+        "value": "AV1/VP9",
+        "detail": "Next-gen compression protocols"
+      },
+      {
+        "label": "Automation",
+        "value": "vidxrc",
+        "detail": "Project-level config persistence"
+      },
+      {
+        "label": "UX",
+        "value": "Guided TUI",
+        "detail": "FFmpeg flag abstraction layer"
+      }
+    ],
+    "sections": [
+      {
+        "title": "FFmpeg Abstraction Layer",
+        "icon": "Cpu",
+        "content": "Engineered a non-leaky abstraction over FFmpeg's low-level flags. By synthesizing complex parameters into 'Web Optimized' and 'High Quality' presets, VidX allows developers to achieve perfect web-ready encodes without mastering the libx264/libvpx-vp9 syntax."
+      },
+      {
+        "title": "GIF-to-Video Transformation",
+        "icon": "Zap",
+        "content": "Implemented an automated protocol for converting aging .gif assets into high-performance, looping MP4/WebM videos. This includes automatic audio-stripping (-an) and specific flags for web-streaming (+faststart), resulting in 90%+ reductions in asset size."
+      },
+      {
+        "title": "Universal Runtime Compatibility",
+        "icon": "Activity",
+        "content": "Designed a robust detection engine that bridges system-level FFmpeg binaries with bundled fallbacks. This 'zero-manual-setup' architecture ensures consistent performance across macOS, Windows, and Linux environments without the need for manual path configuration."
+      }
+    ],
+    "learnings": [
+      "The primary hurdle for web video adoption is CLI complexity—reducing this friction directly improves the performance of the modern web.",
+      "AV1 is the future of web video, but standard library fallbacks are still mandatory for comprehensive cross-browser compatibility.",
+      "TUI (Terminal User Interfaces) provide a perfect middle ground between rigid CLI flags and heavy GUI applications for engineering workflows."
+    ]
+  }
+]
