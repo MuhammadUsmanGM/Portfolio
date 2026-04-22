@@ -281,7 +281,7 @@ crypto.decrypt(buf)`
                       alt={project.title}
                       fill
                       unoptimized
-                      className="object-contain p-8"
+                      className="object-cover"
                     />
                   </div>
                 ) : (

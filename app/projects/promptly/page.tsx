@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import CodeBlock from "../../components/CodeBlock";
 
 const PromptlyCaseStudy = () => {
   const architecturalLayers = [
@@ -136,7 +137,7 @@ const PromptlyCaseStudy = () => {
             <Workflow size={24} className="text-accent" />
           </div>
 
-          <div className="relative aspect-[16/10] md:aspect-[21/9] rounded-[2rem] overflow-hidden border border-border/50 bg-bg-2 shadow-2xl group mb-20">
+          <div className="relative aspect-video rounded-[2rem] overflow-hidden border border-border/50 bg-bg-2 shadow-2xl group mb-20">
              <Image 
                 src="/projects/promptly-arch.svg" 
                 alt="Promptly MCP Architecture" 
@@ -187,19 +188,9 @@ const PromptlyCaseStudy = () => {
             <Cpu size={24} className="text-accent" />
           </div>
 
-          <div className="bg-[#0D1117] rounded-3xl border border-border/50 overflow-hidden shadow-2xl">
-            <div className="flex items-center justify-between px-6 py-3 bg-white/5 border-b border-border/50">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                <div className="w-3 h-3 rounded-full bg-amber-500/50" />
-                <div className="w-3 h-3 rounded-full bg-green-500/50" />
-              </div>
-              <span className="text-[10px] font-mono text-muted uppercase tracking-widest">promptly/src/mcp-server.ts</span>
-            </div>
-            <div className="p-8 overflow-x-auto">
-              <pre className="text-sm font-mono leading-relaxed selection:bg-accent/30">
-                <code className="text-text-sub">
-{`// MCP Resource Provider: Recursive Codebase Inlay
+          <CodeBlock 
+            filename="promptly/src/mcp-server.ts"
+            code={`// MCP Resource Provider: Recursive Codebase Inlay
 server.resource(
   "codebase://structure",
   "The current architectural map of the project",
@@ -217,10 +208,7 @@ server.resource(
     };
   }
 );`}
-                </code>
-              </pre>
-            </div>
-          </div>
+          />
         </section>
 
         {/* Technical Decisions & Lessons */}
