@@ -3,13 +3,14 @@
 import React from "react";
 import Link from "next/link";
 import { m } from "framer-motion";
-import { Briefcase, User, Cpu, Mail } from "lucide-react";
+import { Briefcase, User, Cpu, Mail, BookOpen } from "lucide-react";
 
 const MobileNav = () => {
   const navLinks = [
     { name: "Work", href: "#work", icon: Briefcase },
     { name: "About", href: "#about", icon: User },
     { name: "Skills", href: "#skills", icon: Cpu },
+    { name: "Blog", href: "#blog", icon: BookOpen },
     { name: "Contact", href: "#contact", icon: Mail },
   ];
 

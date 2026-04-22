@@ -18,6 +18,7 @@ const Navbar = () => {
     { name: "Work", href: "#work" },
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
+    { name: "Blog", href: "#blog" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -31,8 +32,8 @@ const Navbar = () => {
       <div 
         className={`flex items-center justify-between px-6 py-3 rounded-full border transition-all duration-500 ${
           isScrolled 
-            ? "backdrop-blur-2xl bg-bg/90 border-border shadow-[0_8px_32px_rgba(0,0,0,0.12)] py-2" 
-            : "backdrop-blur-md bg-bg/40 border-border/30 shadow-none"
+            ? "backdrop-blur-2xl bg-bg/70 border-border/80 shadow-[0_8px_32px_rgba(0,0,0,0.12)] py-2" 
+            : "backdrop-blur-md bg-bg/20 border-border/30 shadow-none"
         }`}
       >
         
