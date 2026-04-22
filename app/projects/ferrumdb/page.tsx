@@ -135,7 +135,7 @@ const FerrumCaseStudy = () => {
                 alt="FerrumDB Architecture Diagram" 
                 fill 
                 unoptimized
-                className="object-contain p-4 md:p-8"
+                className="object-cover"
              />
              <div className="absolute inset-0 bg-gradient-to-t from-bg-2/40 to-transparent pointer-events-none" />
           </div>
