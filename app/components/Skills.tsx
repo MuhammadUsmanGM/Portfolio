@@ -154,16 +154,21 @@ const Skills = () => {
           </motion.h2>
         </div>
 
-        {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {categories.map((cat, index) => (
-            <SpotlightCard key={cat.title}>
+        {/* Skills Grid - Symmetrical Bento Box */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 md:gap-8">
+          {categories.map((cat, index) => {
+            let spanClass = "md:col-span-1 lg:col-span-2"; // 0, 1, 2
+            if (index === 3) spanClass = "md:col-span-1 lg:col-span-3";
+            if (index === 4) spanClass = "md:col-span-2 lg:col-span-3";
+
+            return (
+            <SpotlightCard key={cat.title} className={spanClass}>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="p-8 sm:p-10"
+                className="p-6 sm:p-10 h-full flex flex-col"
               >
                 <div className="flex items-center gap-5 mb-8">
                   <div className="w-16 h-16 rounded-2xl bg-bg flex items-center justify-center border border-border/30 group-hover:border-accent/40 group-hover:bg-accent/5 transition-all duration-700 shadow-sm relative overflow-hidden">
@@ -175,18 +180,18 @@ const Skills = () => {
                   </h3>
                 </div>
 
-                <p className="text-text-sub text-sm leading-relaxed mb-10 font-medium opacity-80 group-hover:opacity-100 transition-opacity">
+                <p className="text-text-sub text-sm leading-relaxed mb-10 font-medium opacity-80 group-hover:opacity-100 transition-opacity flex-grow">
                   {cat.description}
                 </p>
 
-                <div className="grid grid-cols-2 gap-3">
+                <div className="flex flex-wrap gap-2 sm:gap-3 mt-auto">
                   {cat.techs.map((tech) => {
                     return (
                       <div 
                         key={tech.name} 
-                        className="flex items-center gap-3 p-3 rounded-xl bg-bg-2/30 border border-border/10 group/tech hover:border-accent/20 hover:bg-accent/[0.02] transition-all duration-300 min-w-0 backdrop-blur-sm"
+                        className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 pr-4 sm:pr-5 rounded-xl bg-bg-2/30 border border-border/10 group/tech hover:border-accent/20 hover:bg-accent/[0.02] transition-all duration-300 min-w-0 backdrop-blur-sm"
                       >
-                        <div className="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-lg bg-text/5 dark:bg-white/5 grayscale group-hover/tech:grayscale-0 transition-all duration-500 relative overflow-hidden">
+                        <div className="w-8 h-8 sm:w-9 sm:h-9 flex-shrink-0 flex items-center justify-center rounded-lg bg-text/5 dark:bg-white/5 grayscale group-hover/tech:grayscale-0 transition-all duration-500 relative overflow-hidden">
                           {tech.icon ? (
                             <tech.icon size={22} />
                           ) : tech.iconPath ? (
@@ -214,7 +219,8 @@ const Skills = () => {
                 </div>
               </motion.div>
             </SpotlightCard>
-          ))}
+            );
+          })}
         </div>
 
 
