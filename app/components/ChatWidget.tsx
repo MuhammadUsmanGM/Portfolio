@@ -23,13 +23,18 @@ const ChatWidget = () => {
   }, []);
 
   useEffect(() => {
-    if (isOpen && messages.length === 0) {
-      setMessages([{
-        role: "bot",
-        content: "Ask me anything about Usman's work, stack, or availability.",
-      }]);
+    if (isOpen && messages.length === 0 && !isTyping) {
+      setIsTyping(true);
+      const timer = setTimeout(() => {
+        setMessages([{
+          role: "bot",
+          content: "Hello! I am NOVA, Usman's intelligence node. I have direct access to his codebase, project history, and availability. How can I help you?",
+        }]);
+        setIsTyping(false);
+      }, 1000);
+      return () => clearTimeout(timer);
     }
-  }, [isOpen]);
+  }, [isOpen, messages.length, isTyping]);
 
 
   const scrollToBottom = () => {
@@ -60,10 +65,10 @@ const ChatWidget = () => {
     return () => observer.disconnect();
   }, [isOpen]);
 
-  const handleSend = async () => {
-    if (!input.trim() || isTyping) return;
+  const submitMessage = async (text: string) => {
+    if (!text.trim() || isTyping) return;
 
-    const userMessage: Message = { role: "user", content: input };
+    const userMessage: Message = { role: "user", content: text };
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
     setIsTyping(true);
@@ -90,6 +95,14 @@ const ChatWidget = () => {
       setIsTyping(false);
     }
   };
+
+  const handleSend = () => submitMessage(input);
+
+  const quickPrompts = [
+    "What is Usman's core tech stack?",
+    "Tell me about his AI agent projects.",
+    "Is he available for freelance work?"
+  ];
 
   if (!mounted) return null;
 
@@ -206,6 +219,26 @@ const ChatWidget = () => {
                     <span className="w-1 h-1 rounded-full bg-accent animate-bounce [animation-delay:0.4s]" />
                   </div>
                 </div>
+              )}
+
+              {messages.length === 1 && !isTyping && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="flex flex-col gap-2 mt-4 ml-1"
+                >
+                  <span className="text-[9px] font-black uppercase tracking-widest text-muted mb-1 pl-1">Suggested Prompts</span>
+                  {quickPrompts.map((prompt) => (
+                    <button
+                      key={prompt}
+                      onClick={() => submitMessage(prompt)}
+                      className="text-left text-[11px] font-bold bg-bg border border-border/50 hover:bg-accent/5 hover:border-accent/40 text-text-sub hover:text-accent rounded-xl px-4 py-2.5 transition-all w-fit shadow-sm"
+                    >
+                      {prompt}
+                    </button>
+                  ))}
+                </motion.div>
               )}
             </div>
 
