@@ -59,7 +59,7 @@ const Hero = () => {
           <m.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: isBot ? 0 : 1.0 }}
+            transition={{ duration: 0.8, delay: isBot ? 0 : 0.2 }}
             className="flex items-center gap-3 mb-6"
           >
             <div className="w-8 h-[2px] bg-accent" />
@@ -71,7 +71,7 @@ const Hero = () => {
           <m.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: isBot ? 0 : 1.2 }}
+            transition={{ duration: 0.8, delay: isBot ? 0 : 0.3 }}
             className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] uppercase mb-8 text-text"
           >
             I Build AI <br />
@@ -104,7 +104,7 @@ const Hero = () => {
           <m.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: isBot ? 0 : 1.3 }}
+            transition={{ duration: 0.8, delay: isBot ? 0 : 0.4 }}
             className="text-lg md:text-xl text-text-sub max-w-xl mb-12 leading-relaxed"
           >
             Architecting <span className="text-text font-bold">LLM pipelines</span> & 
@@ -115,7 +115,7 @@ const Hero = () => {
           <m.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: isBot ? 0 : 1.4 }}
+            transition={{ duration: 0.8, delay: isBot ? 0 : 0.5 }}
             className="flex flex-wrap items-center gap-5 mt-4"
           >
             <a 
@@ -128,7 +128,7 @@ const Hero = () => {
               href="/Muhammad_Usman_Resume.pdf" 
               target="_blank"
               rel="noreferrer"
-              className="group flex items-center gap-3 px-10 py-4 border-2 border-text text-text hover:bg-text hover:text-bg rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95"
+              className="group flex items-center gap-3 px-10 py-4 bg-bg-2/30 backdrop-blur-md border border-border/50 text-text hover:border-accent/50 hover:bg-bg-2 rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95"
             >
               Resume <FileText className="w-4 h-4 group-hover:scale-110 transition-transform" />
             </a>
@@ -140,7 +140,7 @@ const Hero = () => {
           <m.div 
             initial={{ opacity: 0, scale: 0.95, y: 40 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: isBot ? 0 : 1.5, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.2, delay: isBot ? 0 : 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="relative w-full h-full grayscale-[0.5] hover:grayscale-0 transition-all duration-1000"
           >
             {/* Visual Backplate */}
