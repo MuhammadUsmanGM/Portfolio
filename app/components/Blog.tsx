@@ -27,7 +27,7 @@ const Blog = ({ posts }: { posts: BlogPost[] }) => {
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* Section Header */}
-        <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
+        <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="max-w-2xl">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -73,7 +73,7 @@ const Blog = ({ posts }: { posts: BlogPost[] }) => {
         </div>
 
         {/* Blog Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {displayPosts.map((post, index) => (
             <motion.article
               key={post.slug}
@@ -89,7 +89,7 @@ const Blog = ({ posts }: { posts: BlogPost[] }) => {
                 {/* Card Header Visual */}
                 <div className="h-2 w-full bg-gradient-to-r from-accent/0 via-accent/30 to-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 
-                <div className="p-10 flex flex-col h-full relative">
+                <div className="p-8 flex flex-col h-full relative">
                   {/* Numbering Indicator */}
                   <div className="absolute top-8 right-10 text-accent/10 font-bebas text-6xl group-hover:text-accent/20 transition-colors pointer-events-none">
                     0{index + 1}
