@@ -360,15 +360,17 @@ crypto.decrypt(buf)`
     </div>
 
       {/* Final Chapter: Depth & Verification */}
-      <div className="max-w-7xl mx-auto mt-12 border-t border-border/20 pt-20 px-4 shadow-2xl">
+      <div className="max-w-7xl mx-auto mt-32 px-4 relative z-10">
+        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[200px] bg-accent/5 blur-[120px] rounded-full pointer-events-none" />
+        
         <motion.div
            initial={{ opacity: 0, y: 20 }}
            whileInView={{ opacity: 1, y: 0 }}
            viewport={{ once: true }}
            transition={{ duration: 0.8 }}
-           className="text-center mb-16"
+           className="text-center mb-16 relative z-10"
         >
-          <p className="text-muted text-sm font-black uppercase tracking-[0.3em] mb-4">
+          <p className="text-muted text-xs font-black uppercase tracking-[0.3em] mb-4">
             Architecting more in the shadows?
           </p>
           <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-text">
@@ -376,7 +378,7 @@ crypto.decrypt(buf)`
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12 relative z-10">
           {/* Split Card 1: GitHub / Source */}
           <motion.a
              href="https://github.com/MuhammadUsmanGM"
@@ -386,28 +388,28 @@ crypto.decrypt(buf)`
              whileInView={{ opacity: 1, x: 0 }}
              viewport={{ once: true }}
              transition={{ duration: 0.8 }}
-             className="group relative overflow-hidden bg-bg-2 border border-border/40 rounded-2xl p-6 flex flex-col justify-between min-h-[200px] transition-all duration-500 hover:border-accent/40"
+             className="group relative overflow-hidden bg-bg-2/30 backdrop-blur-xl border border-border/30 rounded-[2rem] p-8 md:p-10 flex flex-col justify-between min-h-[240px] transition-all duration-500 hover:bg-bg-2/80 hover:border-accent/40 shadow-lg hover:shadow-accent/5"
           >
-            <div className="absolute top-0 right-0 p-4 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity">
-              <Github className="w-24 h-24 text-text" />
+            <div className="absolute top-0 right-0 p-6 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-500 group-hover:scale-110">
+              <Github className="w-32 h-32 text-text" />
             </div>
 
             <div className="relative z-10">
-              <div className="flex items-center gap-2 mb-4">
+              <div className="flex items-center gap-2 mb-6">
                  <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                 <span className="text-accent text-[8px] font-black uppercase tracking-[0.4em]">CORE REPOSITORY</span>
+                 <span className="text-accent text-[9px] font-black uppercase tracking-[0.4em]">CORE REPOSITORY</span>
               </div>
-              <h3 className="text-xl font-black uppercase tracking-tighter text-text mb-2">
+              <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-text mb-3">
                 Source Code <span className="text-accent italic">Hub</span>.
               </h3>
-              <p className="text-text-sub text-[11px] leading-relaxed max-w-[240px]">
+              <p className="text-text-sub text-xs md:text-sm leading-relaxed max-w-[280px]">
                 Underlying logic, distributed systems, and open-source contributions.
               </p>
             </div>
 
-            <div className="relative z-10 flex items-center justify-between mt-6 pt-6 border-t border-border/10">
-              <span className="text-[9px] font-mono text-muted uppercase tracking-widest">github.com/MuhammadUsmanGM</span>
-              <ArrowUpRight className="w-4 h-4 text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            <div className="relative z-10 flex items-center justify-between mt-8 pt-8 border-t border-border/10">
+              <span className="text-[10px] font-mono text-muted uppercase tracking-widest">github.com/MuhammadUsmanGM</span>
+              <ArrowUpRight className="w-6 h-6 text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
             </div>
           </motion.a>
 
@@ -420,28 +422,28 @@ crypto.decrypt(buf)`
              whileInView={{ opacity: 1, x: 0 }}
              viewport={{ once: true }}
              transition={{ duration: 0.8 }}
-             className="group relative overflow-hidden bg-bg-2 border border-border/40 rounded-2xl p-6 flex flex-col justify-between min-h-[200px] transition-all duration-500 hover:border-accent/40"
+             className="group relative overflow-hidden bg-bg-2/30 backdrop-blur-xl border border-border/30 rounded-[2rem] p-8 md:p-10 flex flex-col justify-between min-h-[240px] transition-all duration-500 hover:bg-bg-2/80 hover:border-accent/40 shadow-lg hover:shadow-accent/5"
           >
-            <div className="absolute top-0 right-0 p-4 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity">
-              <Activity className="w-24 h-24 text-accent" />
+            <div className="absolute top-0 right-0 p-6 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-500 group-hover:scale-110">
+              <Activity className="w-32 h-32 text-accent" />
             </div>
 
             <div className="relative z-10">
-              <div className="flex items-center gap-2 mb-4">
+              <div className="flex items-center gap-2 mb-6">
                  <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                 <span className="text-accent text-[8px] font-black uppercase tracking-[0.4em]">TECHNICAL LOGS</span>
+                 <span className="text-accent text-[9px] font-black uppercase tracking-[0.4em]">TECHNICAL LOGS</span>
               </div>
-              <h3 className="text-xl font-black uppercase tracking-tighter text-text mb-2">
+              <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-text mb-3">
                 Engineering <span className="text-accent italic">Archive</span>.
               </h3>
-              <p className="text-text-sub text-[11px] leading-relaxed max-w-[240px]">
+              <p className="text-text-sub text-xs md:text-sm leading-relaxed max-w-[280px]">
                 A curated vault of 20+ artifacts and historical prototypes.
               </p>
             </div>
 
-            <div className="relative z-10 flex items-center justify-between mt-6 pt-6 border-t border-border/10">
-              <span className="text-[9px] font-mono text-muted uppercase tracking-widest">usman-works.vercel.app</span>
-              <ArrowUpRight className="w-4 h-4 text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            <div className="relative z-10 flex items-center justify-between mt-8 pt-8 border-t border-border/10">
+              <span className="text-[10px] font-mono text-muted uppercase tracking-widest">usman-works.vercel.app</span>
+              <ArrowUpRight className="w-6 h-6 text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
             </div>
           </motion.a>
         </div>
