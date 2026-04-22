@@ -90,14 +90,14 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="mt-12 p-6 rounded-2xl bg-bg-2 border border-border/50 inline-flex items-center gap-4 group hover:border-accent/50 transition-all cursor-pointer shadow-sm hover:shadow-accent/5"
+              className="mt-12 p-6 rounded-[2rem] bg-bg-2/30 backdrop-blur-xl border border-border/20 inline-flex items-center gap-5 group hover:border-accent/40 hover:bg-bg-2/50 transition-all cursor-pointer shadow-sm"
             >
-              <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent group-hover:text-bg transition-all duration-500">
-                <Terminal className="w-6 h-6 text-accent group-hover:text-inherit" />
+              <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center border border-accent/20 group-hover:bg-accent group-hover:border-accent transition-all duration-500 relative overflow-hidden">
+                <Terminal className="w-6 h-6 text-accent group-hover:text-bg relative z-10 transition-colors duration-500" />
               </div>
               <div>
-                <span className="block text-[10px] font-black uppercase tracking-widest text-muted group-hover:text-accent transition-colors">Currently Exploring</span>
-                <span className="block text-sm font-bold text-text uppercase tracking-tight italic">Advanced Agentic Architectures</span>
+                <span className="block text-[10px] font-black uppercase tracking-widest text-muted group-hover:text-accent transition-colors mb-1">Currently Exploring</span>
+                <span className="block text-sm font-bold text-text uppercase tracking-tight">Advanced Agentic Architectures</span>
               </div>
             </motion.a>
           </div>
@@ -118,13 +118,13 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
               style={{ y: portraitY }}
-              className="relative mb-16 group z-10"
+              className="relative w-full max-w-[280px] aspect-[4/5] mx-auto lg:mx-0 mb-16 group z-10"
             >
               {/* Amber Offset Box */}
-              <div className="absolute top-4 left-4 w-[280px] h-[340px] border-2 border-accent rounded-2xl z-0 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2" />
+              <div className="absolute top-4 left-4 w-full h-full border-2 border-accent rounded-3xl z-0 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2" />
               
               {/* Image Container */}
-              <div className="relative w-[280px] h-[340px] rounded-2xl overflow-hidden border border-border/50 bg-bg-2 z-10">
+              <div className="absolute inset-0 rounded-3xl overflow-hidden border border-border/50 bg-bg-2 z-10">
                 <Image 
                   src="/main1.webp" 
                   alt="Muhammad Usman" 
@@ -134,7 +134,7 @@ const About = () => {
               </div>
             </motion.div>
 
-            <div className="space-y-8 w-full relative z-10">
+            <div className="space-y-4 w-full relative z-10">
               {pillars.map((pillar, index) => {
                 const Icon = pillar.icon;
                 return (
@@ -144,17 +144,17 @@ const About = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: index * 0.1 + 0.4 }}
-                    className="group"
+                    className="group/pillar"
                   >
-                    <div className="flex items-start gap-6 p-6 rounded-[2rem] hover:bg-bg-2 border border-transparent hover:border-border/50 transition-all duration-500">
-                      <div className="mt-1">
-                        <Icon className="w-8 h-8 text-accent group-hover:scale-110 transition-transform duration-500" />
+                    <div className="flex flex-col sm:flex-row items-start gap-5 sm:gap-6 p-6 sm:p-8 rounded-[2rem] bg-bg-2/30 backdrop-blur-xl border border-border/20 hover:border-accent/30 hover:bg-bg-2/50 transition-all duration-500">
+                      <div className="w-12 h-12 flex-shrink-0 rounded-2xl bg-accent/5 flex items-center justify-center border border-accent/10 group-hover/pillar:border-accent/30 group-hover/pillar:bg-accent/10 transition-colors">
+                        <Icon className="w-5 h-5 text-accent" />
                       </div>
                       <div className="space-y-2">
-                        <h4 className="text-lg font-black uppercase tracking-tighter text-text group-hover:text-accent transition-colors">
+                        <h4 className="text-[13px] font-black uppercase tracking-widest text-text">
                           {pillar.title}
                         </h4>
-                        <p className="text-sm text-muted leading-relaxed">
+                        <p className="text-sm text-text-sub leading-relaxed font-medium">
                           {pillar.text}
                         </p>
                       </div>
