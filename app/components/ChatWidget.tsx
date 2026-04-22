@@ -23,18 +23,13 @@ const ChatWidget = () => {
   }, []);
 
   useEffect(() => {
-    if (isOpen && messages.length === 0 && !isTyping) {
-      setIsTyping(true);
-      const timer = setTimeout(() => {
-        setMessages([{
-          role: "bot",
-          content: "Hello! I am NOVA, Usman's intelligence node. I have direct access to his codebase, project history, and availability. How can I help you?",
-        }]);
-        setIsTyping(false);
-      }, 1000);
-      return () => clearTimeout(timer);
+    if (isOpen && messages.length === 0) {
+      setMessages([{
+        role: "bot",
+        content: "Hello! I am NOVA, Usman's intelligence node. I have direct access to his codebase, project history, and availability. How can I help you?",
+      }]);
     }
-  }, [isOpen, messages.length, isTyping]);
+  }, [isOpen, messages.length]);
 
 
   const scrollToBottom = () => {
