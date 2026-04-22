@@ -44,13 +44,17 @@ const FloatingInput = ({
 
   return (
     <div className="group relative space-y-2">
-      <div className={`relative flex items-center transition-all duration-300 ${
-        isFocused ? "bg-accent/5" : "bg-bg-2"
+      <div className={`relative flex items-center transition-all duration-500 rounded-2xl overflow-hidden border backdrop-blur-xl ${
+        isFocused 
+          ? "bg-accent/5 border-accent/30 shadow-[0_0_20px_rgba(245,166,35,0.1)]" 
+          : error
+            ? "bg-red-500/5 border-red-500/30"
+            : "bg-bg-2/30 border-border/20 hover:border-border/40 hover:bg-bg-2/50"
       }`}>
-        <div className={`pl-4 transition-colors duration-300 ${
-          isFocused ? "text-accent" : "text-muted"
+        <div className={`pl-5 transition-colors duration-300 ${
+          isFocused ? "text-accent" : error ? "text-red-500" : "text-muted"
         }`}>
-          <Icon size={18} strokeWidth={2.5} />
+          <Icon size={20} strokeWidth={2.5} />
         </div>
         
         <div className="relative flex-1">
@@ -65,28 +69,20 @@ const FloatingInput = ({
               setValue(e.target.value);
             }}
             onChange={(e) => setValue(e.target.value)}
-            className="w-full bg-transparent border-none outline-none py-6 px-4 text-text font-bold text-[15px] placeholder-transparent peer transition-all"
+            className="w-full bg-transparent border-none outline-none pt-8 pb-4 px-4 text-text font-bold text-[15px] placeholder-transparent peer transition-all"
             placeholder={label}
           />
           <label
             htmlFor={id}
             className={`absolute left-4 transition-all duration-300 pointer-events-none font-black uppercase tracking-widest text-[10px] ${
               isFocused || value 
-                ? "-top-1 text-accent scale-90" 
+                ? "top-3 text-accent" 
                 : "top-1/2 -translate-y-1/2 text-muted/60"
             }`}
           >
             {label}
           </label>
         </div>
-
-        {/* Dynamic Border */}
-        <div className="absolute bottom-0 left-0 w-full h-[2px] bg-border/30" />
-        <motion.div 
-          initial={false}
-          animate={{ scaleX: isFocused ? 1 : 0 }}
-          className="absolute bottom-0 left-0 w-full h-[2px] bg-accent origin-center shadow-[0_0_8px_rgba(245,166,35,0.4)]"
-        />
       </div>
 
       <AnimatePresence>
@@ -110,6 +106,7 @@ const Contact = () => {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [msgLen, setMsgLen] = useState(0);
+  const [msgFocused, setMsgFocused] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -268,40 +265,48 @@ const Contact = () => {
               </div>
               
               <div className="group relative space-y-2">
-                <div className={`relative flex transition-all duration-300 ${
-                  errors.message ? "bg-red-500/5" : "bg-bg-2"
+                <div className={`relative flex transition-all duration-500 rounded-2xl overflow-hidden border backdrop-blur-xl ${
+                  msgFocused
+                    ? "bg-accent/5 border-accent/30 shadow-[0_0_20px_rgba(245,166,35,0.1)]" 
+                    : errors.message 
+                      ? "bg-red-500/5 border-red-500/30"
+                      : "bg-bg-2/30 border-border/20 hover:border-border/40 hover:bg-bg-2/50"
                 }`}>
-                  <div className="pl-4 pt-6 text-muted group-focus-within:text-accent transition-colors">
-                    <MessageSquare size={18} strokeWidth={2.5} />
+                  <div className={`pl-5 pt-8 transition-colors duration-300 ${
+                    msgFocused ? "text-accent" : errors.message ? "text-red-500" : "text-muted"
+                  }`}>
+                    <MessageSquare size={20} strokeWidth={2.5} />
                   </div>
                   
                   <div className="relative flex-1">
                     <textarea
                       id="message"
                       name="message"
-                      rows={5}
+                      rows={6}
                       maxLength={3000}
+                      onFocus={() => setMsgFocused(true)}
+                      onBlur={() => setMsgFocused(false)}
                       onChange={(e) => {
                         setMsgLen(e.target.value.length);
                         if (errors.message) setErrors(prev => ({ ...prev, message: undefined }));
                       }}
                       placeholder="What we are building"
-                      className="w-full bg-transparent border-none outline-none py-6 px-4 text-text font-bold text-[15px] placeholder-transparent peer transition-all resize-none"
+                      className="w-full bg-transparent border-none outline-none pt-8 pb-6 px-4 text-text font-bold text-[15px] placeholder-transparent peer transition-all resize-none"
                     />
                     <label
                       htmlFor="message"
                       className={`absolute left-4 transition-all duration-300 pointer-events-none font-black uppercase tracking-widest text-[10px] ${
-                        msgLen > 0 
-                          ? "-top-1 text-accent scale-90" 
-                          : "top-6 text-muted/60"
-                      } peer-focus:-top-1 peer-focus:text-accent peer-focus:scale-90`}
+                        msgFocused || msgLen > 0 
+                          ? "top-3 text-accent" 
+                          : "top-8 text-muted/60"
+                      }`}
                     >
                       What we are building
                     </label>
                   </div>
 
                   {/* Circular Character Count */}
-                  <div className="absolute right-6 bottom-6 flex items-center justify-center">
+                  <div className="absolute right-4 bottom-4 flex items-center justify-center">
                     <div className="relative w-8 h-8">
                       <svg className="w-full h-full transform -rotate-90">
                         <circle
@@ -331,10 +336,6 @@ const Contact = () => {
                       </span>
                     </div>
                   </div>
-
-                  {/* Dynamic Border */}
-                  <div className="absolute bottom-0 left-0 w-full h-[2px] bg-border/20" />
-                  <div className="absolute bottom-0 left-0 w-full h-[2px] bg-accent transition-transform duration-500 scale-x-0 group-focus-within:scale-x-100 origin-center shadow-[0_4px_12px_rgba(245,166,35,0.3)]" />
                 </div>
 
                 <AnimatePresence>
