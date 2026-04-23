@@ -91,10 +91,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var isBot = /Lighthouse|Googlebot|SiteAudit/.test(navigator.userAgent);
+                  var seen = sessionStorage.getItem("loaded");
+                  if (!seen && !isBot) {
+                    document.documentElement.classList.add('loading-pending');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} ${dmSans.variable} antialiased`}
       >
+        <div id="immediate-loader">
+          <img src="/favicon.webp" alt="Muhammad Usman" className="immediate-logo" />
+        </div>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

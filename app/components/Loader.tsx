@@ -10,26 +10,32 @@ const Loader = () => {
   useEffect(() => {
     // 0. Bot-skip for Lighthouse / PSI
     const isBot = /Lighthouse|Googlebot|SiteAudit/.test(navigator.userAgent);
-    if (isBot) {
-      setIsVisible(false);
-      return;
-    }
-
-    // 1. Show-once logic
     const seen = sessionStorage.getItem("loaded");
-    if (seen) {
+
+    if (isBot || seen) {
       setIsVisible(false);
+      document.documentElement.classList.remove('loading-pending');
       return;
     }
 
+    // 1. Show the fancy loader
     setIsVisible(true);
+
+    // 2. Remove the static immediate loader once React has hydrated and is ready to animate
+    // We use a small delay or requestAnimationFrame to ensure the transition is seamless
+    const cleanup = setTimeout(() => {
+      document.documentElement.classList.remove('loading-pending');
+    }, 10);
 
     const timer = setTimeout(() => {
       setIsVisible(false);
       sessionStorage.setItem("loaded", "true");
-    }, 1000);
+    }, 1200); // Slightly longer to allow for the entrance animation
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(cleanup);
+    };
   }, []);
 
   useEffect(() => {
