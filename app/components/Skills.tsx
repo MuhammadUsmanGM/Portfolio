@@ -5,22 +5,6 @@ import Image from "next/image";
 import { motion, useMotionTemplate, useMotionValue, animate } from "framer-motion";
 import { Brain, Database, Server, Globe, Cpu, Layers, Settings } from "lucide-react";
 
-// Importing specific icons from devicons-react
-import { 
-  PythonOriginal, 
-  FastapiOriginal, 
-  ReactOriginal, 
-  NextjsOriginal, 
-  TailwindcssOriginal, 
-  TypescriptOriginal,
-  NodejsOriginal,
-  PostgresqlOriginal,
-  DockerOriginal,
-  GitOriginal,
-  GithubOriginal,
-  FirebaseOriginal
-} from "devicons-react";
-
 const SpotlightCard = ({ children, className = "", ...props }: { children: React.ReactNode; className?: string; [key: string]: any }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -61,8 +45,8 @@ const Skills = () => {
       icon: Brain,
       description: "Architecting the backbone for enterprise AI, focusing on decision-making latency and large-scale data ingestion.",
       techs: [
-        { name: "Python", icon: PythonOriginal },
-        { name: "FastAPI", icon: FastapiOriginal },
+        { name: "Python", iconPath: "/icons/python.svg" },
+        { name: "FastAPI", iconPath: "/icons/fastapi.svg" },
         { name: "RAG Systems", iconPath: "/icons/RAG.svg" },
         { name: "Agentic Ops", iconPath: "/icons/langchain.svg" },
         { name: "Vector Search", iconPath: "/icons/vector-db.svg" }
@@ -73,8 +57,8 @@ const Skills = () => {
       icon: Server,
       description: "Developing robust backend architectures designed for zero-downtime and high-throughput mission-critical tasks.",
       techs: [
-        { name: "Node.js", icon: NodejsOriginal },
-        { name: "Python", icon: PythonOriginal },
+        { name: "Node.js", iconPath: "/icons/nodedotjs.svg" },
+        { name: "Python", iconPath: "/icons/python.svg" },
         { name: "API Security", iconPath: "/icons/authentication.svg" },
         { name: "Rust", iconPath: "/icons/rust.svg" },
         { name: "Go", iconPath: "/icons/go.svg" },
@@ -87,10 +71,10 @@ const Skills = () => {
       icon: Globe,
       description: "Engineering seamless, high-conversion interfaces that prioritize speed, accessibility, and measurable user engagement.",
       techs: [
-        { name: "React", icon: ReactOriginal },
-        { name: "Next.js", icon: NextjsOriginal },
-        { name: "TypeScript", icon: TypescriptOriginal },
-        { name: "Tailwind", icon: TailwindcssOriginal },
+        { name: "React", iconPath: "/icons/react.svg" },
+        { name: "Next.js", iconPath: "/icons/nextdotjs.svg" },
+        { name: "TypeScript", iconPath: "/icons/typescript.svg" },
+        { name: "Tailwind", iconPath: "/icons/tailwindcss.svg" },
         { name: "Framer Motion", iconPath: "/icons/brand-framer-motion.svg" }
       ]
     },
@@ -99,7 +83,7 @@ const Skills = () => {
       icon: Database,
       description: "Optimizing the storage, retrieval, and integrity of complex datasets for both structured and unstructured environments.",
       techs: [
-        { name: "PostgreSQL", icon: PostgresqlOriginal },
+        { name: "PostgreSQL", iconPath: "/icons/postgresql.svg" },
         { name: "Supabase", iconPath: "/icons/supabase.svg" },
         { name: "Redis", iconPath: "/icons/redis-original.svg" },
         { name: "Vector DBs", iconPath: "/icons/qdrant.svg" }
@@ -110,7 +94,7 @@ const Skills = () => {
       icon: Settings,
       description: "Streamlining delivery through CI/CD automation, container orchestration, and multi-tenant security protocols.",
       techs: [
-        { name: "Docker", icon: DockerOriginal },
+        { name: "Docker", iconPath: "/icons/docker.svg" },
         { name: "GitHub Actions", iconPath: "/icons/GitHub-Actions.svg" },
         { name: "Vercel", iconPath: "/icons/vercel.svg" },
         { name: "Security First", iconPath: "/icons/cicd.svg" }
@@ -194,9 +178,7 @@ const Skills = () => {
                         className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 pr-4 sm:pr-5 rounded-xl bg-bg-2/30 border border-border/10 group/tech hover:border-accent/20 hover:bg-accent/[0.02] transition-all duration-300 min-w-0 backdrop-blur-sm"
                       >
                         <div className="w-8 h-8 sm:w-9 sm:h-9 flex-shrink-0 flex items-center justify-center rounded-lg bg-text/5 dark:bg-white/5 grayscale group-hover/tech:grayscale-0 transition-all duration-500 relative overflow-hidden">
-                          {tech.icon ? (
-                            <tech.icon size={22} />
-                          ) : tech.iconPath ? (
+                          {tech.iconPath ? (
                             <div className="relative w-6 h-6 dark:invert dark:brightness-100 transition-all duration-500 group-hover/tech:scale-110">
                               <Image 
                                 src={tech.iconPath} 
