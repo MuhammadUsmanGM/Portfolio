@@ -44,10 +44,18 @@ const Hero = () => {
   }, [words.length]);
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-32 pb-20 overflow-hidden bg-bg">
-      {/* Subtle Grid Background — parallax drift */}
-      <m.div className="absolute inset-0 opacity-[0.15] pointer-events-none" 
-           style={{ y: gridY, backgroundImage: 'radial-gradient(rgba(201,150,12,0.3) 1px, transparent 1px)', backgroundSize: '50px 50px' }} />
+    <section ref={sectionRef} className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-32 pb-12 overflow-hidden bg-bg">
+      {/* Subtle Grid Background — parallax drift + fade out */}
+      <m.div 
+        className="absolute inset-0 opacity-[0.15] pointer-events-none" 
+        style={{ 
+          y: gridY, 
+          backgroundImage: 'radial-gradient(rgba(201,150,12,0.3) 1px, transparent 1px)', 
+          backgroundSize: '50px 50px',
+          maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)'
+        }} 
+      />
       
       {/* Background Decor — horizontal drift */}
       <m.div style={{ x: glowX }} className="absolute top-0 right-0 w-[50%] h-full bg-accent/5 blur-[120px] pointer-events-none hidden md:block" />

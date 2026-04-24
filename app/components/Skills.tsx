@@ -21,7 +21,7 @@ import {
   FirebaseOriginal
 } from "devicons-react";
 
-const SpotlightCard = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
+const SpotlightCard = ({ children, className = "", ...props }: { children: React.ReactNode; className?: string; [key: string]: any }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -33,6 +33,7 @@ const SpotlightCard = ({ children, className = "" }: { children: React.ReactNode
 
   return (
     <motion.div
+      {...props}
       onMouseMove={handleMouseMove}
       className={`group relative rounded-3xl border border-border/40 bg-bg-2/50 backdrop-blur-xl transition-all duration-500 hover:border-accent/30 hover:shadow-2xl hover:shadow-accent/5 ${className}`}
     >
@@ -162,14 +163,15 @@ const Skills = () => {
             if (index === 4) spanClass = "md:col-span-2 lg:col-span-3";
 
             return (
-            <SpotlightCard key={cat.title} className={spanClass}>
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="p-6 sm:p-10 h-full flex flex-col"
-              >
+            <SpotlightCard 
+              key={cat.title} 
+              className={spanClass}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+            >
+              <div className="p-6 sm:p-10 h-full flex flex-col">
                 <div className="flex items-center gap-5 mb-8">
                   <div className="w-16 h-16 rounded-2xl bg-bg flex items-center justify-center border border-border/30 group-hover:border-accent/40 group-hover:bg-accent/5 transition-all duration-700 shadow-sm relative overflow-hidden">
                     <cat.icon className="w-8 h-8 text-accent relative z-10" />
@@ -217,7 +219,7 @@ const Skills = () => {
                     );
                   })}
                 </div>
-              </motion.div>
+              </div>
             </SpotlightCard>
             );
           })}

@@ -151,7 +151,7 @@ crypto.decrypt(buf)`
   ];
 
   return (
-    <section id="work" className="pt-32 pb-16 px-6 md:px-12 bg-bg relative overflow-hidden">
+    <section id="work" className="pt-16 pb-16 px-6 md:px-12 bg-bg relative overflow-hidden">
       {/* Section Header — horizontal parallax on title */}
       <div ref={headerRef} className="max-w-7xl mx-auto mb-20">
         <motion.div
