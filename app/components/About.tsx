@@ -129,6 +129,8 @@ const About = () => {
                   src="/main1.webp" 
                   alt="Muhammad Usman" 
                   fill 
+                  priority
+                  sizes="(max-width: 1024px) 280px, 280px"
                   className="object-cover object-top filter grayscale hover:grayscale-0 transition-all duration-700"
                 />
               </div>

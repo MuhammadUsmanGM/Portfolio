@@ -206,6 +206,7 @@ const MatrixPattern = () => {
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <style>{`@keyframes matrixPulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.8; } }`}</style>
       {grid.map((column, col) => (
         <m.div
           key={`col-${col}`}
@@ -219,27 +220,18 @@ const MatrixPattern = () => {
           transition={{ duration: 0.8, delay: col * 0.08 }}
         >
           {column.map((cell) => (
-            <m.span
+            <span
               key={cell.key}
               className="font-mono text-center leading-none select-none"
               style={{
                 fontSize: "0.55rem",
                 color: cell.isAccent ? "var(--accent)" : "var(--muted)",
                 opacity: cell.isAccent ? 0.6 : cell.opacity,
+                ...(cell.isAccent ? { animation: `matrixPulse ${cell.duration}s infinite` } : {})
               }}
-              animate={
-                cell.isAccent
-                  ? { opacity: [0.3, 0.8, 0.3] }
-                  : undefined
-              }
-              transition={
-                cell.isAccent
-                  ? { duration: cell.duration, repeat: Infinity }
-                  : undefined
-              }
             >
               {cell.char}
-            </m.span>
+            </span>
           ))}
         </m.div>
       ))}
