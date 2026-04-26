@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { 
   ArrowLeft, 
   Github, 
@@ -56,19 +56,19 @@ const FerrumCaseStudy = () => {
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Back Button */}
         <Link href="/#work">
-          <motion.div 
+          <m.div 
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             className="inline-flex items-center gap-2 text-muted hover:text-accent transition-colors mb-12 group cursor-pointer"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             <span className="text-xs font-black uppercase tracking-widest">Back to Projects</span>
-          </motion.div>
+          </m.div>
         </Link>
 
         {/* Header Section */}
         <header className="mb-20">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -85,9 +85,9 @@ const FerrumCaseStudy = () => {
             <p className="text-xl md:text-2xl text-text-sub max-w-2xl leading-relaxed">
               Engineering a high-performance, log-structured embedded storage engine from the ground up to solve the latency-security trade-off.
             </p>
-          </motion.div>
+          </m.div>
 
-          <motion.div 
+          <m.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -102,13 +102,13 @@ const FerrumCaseStudy = () => {
             <a href="https://www.npmjs.com/package/ferrumdb" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 border border-border px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-white/5 transition-all">
               NPM <Package size={18} />
             </a>
-          </motion.div>
+          </m.div>
         </header>
 
         {/* Technical Benchmarks Grid */}
         <section className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24">
           {benchmarks.map((bench, i) => (
-            <motion.div 
+            <m.div 
               key={bench.label}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -118,7 +118,7 @@ const FerrumCaseStudy = () => {
               <span className="text-2xl md:text-3xl font-bebas text-accent">{bench.value}</span>
               <span className="text-[9px] font-black uppercase tracking-widest text-text mt-1">{bench.label}</span>
               <span className="text-[8px] font-medium text-muted uppercase mt-2">{bench.detail}</span>
-            </motion.div>
+            </m.div>
           ))}
         </section>
 
@@ -182,7 +182,7 @@ impl FerrumStore {
           {sections.map((section, i) => {
             const Icon = section.icon;
             return (
-              <motion.section 
+              <m.section 
                 key={section.title}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -200,7 +200,7 @@ impl FerrumStore {
                     {section.content}
                   </p>
                 </div>
-              </motion.section>
+              </m.section>
             );
           })}
         </div>
@@ -228,7 +228,7 @@ impl FerrumStore {
       {/* Final CTA */}
       <footer className="mt-40 text-center">
         <Link href="https://github.com/MuhammadUsmanGM/ferrumdb" target="_blank" rel="noopener noreferrer">
-          <motion.div 
+          <m.div 
             whileHover={{ scale: 1.02 }}
             className="inline-flex flex-col items-center gap-6 group"
           >
@@ -236,7 +236,7 @@ impl FerrumStore {
               <Code2 className="text-muted group-hover:text-accent group-hover:scale-110 transition-all" size={32} />
             </div>
             <span className="text-xl font-bebas uppercase tracking-widest">View Full Technical Implementation on GitHub</span>
-          </motion.div>
+          </m.div>
         </Link>
       </footer>
     </main>

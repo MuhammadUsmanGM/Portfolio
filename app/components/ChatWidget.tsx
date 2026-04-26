@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { X, Send, MessageSquare } from "lucide-react";
 import Image from "next/image";
 
@@ -107,7 +107,7 @@ const ChatWidget = () => {
       <div className="fixed z-50 bottom-24 right-4 md:bottom-8 md:right-8 flex flex-col items-end gap-3 pointer-events-none">
         <AnimatePresence>
           {!isOpen && (
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 10, scale: 0.8 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 10, scale: 0.8 }}
@@ -124,11 +124,11 @@ const ChatWidget = () => {
               </div>
               {/* Tooltip Arrow */}
               <div className="absolute bottom-[-7px] right-7 w-3.5 h-3.5 bg-bg/90 border-r-2 border-b-2 border-accent/30 rotate-45" />
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
 
-        <motion.button
+        <m.button
           onClick={() => setIsOpen(!isOpen)}
           className={`pointer-events-auto w-16 h-16 rounded-full bg-accent/10 backdrop-blur-xl border-2 ${
             isOpen ? "border-accent/60" : "border-accent/30"
@@ -148,13 +148,13 @@ const ChatWidget = () => {
               isOpen ? "scale-110 grayscale-0" : "group-hover:scale-110"
             }`} 
           />
-        </motion.button>
+        </m.button>
       </div>
 
       {/* Chat Window */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20, scale: 0.9, transformOrigin: "bottom right" }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
@@ -188,7 +188,7 @@ const ChatWidget = () => {
               className="flex-1 overflow-y-auto p-4 space-y-4 scroll-smooth custom-scrollbar"
             >
               {messages.map((msg, idx) => (
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, y: 10, x: msg.role === "user" ? 10 : -10 }}
                   animate={{ opacity: 1, y: 0, x: 0 }}
                   key={idx}
@@ -203,7 +203,7 @@ const ChatWidget = () => {
                   >
                     {msg.content}
                   </div>
-                </motion.div>
+                </m.div>
               ))}
               
               {isTyping && (
@@ -217,7 +217,7 @@ const ChatWidget = () => {
               )}
 
               {messages.length === 1 && !isTyping && (
-                <motion.div 
+                <m.div 
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
@@ -233,7 +233,7 @@ const ChatWidget = () => {
                       {prompt}
                     </button>
                   ))}
-                </motion.div>
+                </m.div>
               )}
             </div>
 
@@ -262,7 +262,7 @@ const ChatWidget = () => {
                 </button>
               </form>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </>

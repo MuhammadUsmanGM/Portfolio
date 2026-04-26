@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ArrowRight, Calendar, Clock, ArrowUpRight, Terminal } from "lucide-react";
 import Link from "next/link";
 
@@ -29,7 +29,7 @@ const Blog = ({ posts }: { posts: BlogPost[] }) => {
         {/* Section Header */}
         <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="max-w-2xl">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -40,9 +40,9 @@ const Blog = ({ posts }: { posts: BlogPost[] }) => {
               <span className="text-accent text-[0.75rem] font-black uppercase tracking-[0.3em] font-dm">
                 Intelligence Archive
               </span>
-            </motion.div>
+            </m.div>
             
-            <motion.h2
+            <m.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -51,10 +51,10 @@ const Blog = ({ posts }: { posts: BlogPost[] }) => {
             >
               Technical <br />
               <span className="text-accent italic">Logs & Deep Dives.</span>
-            </motion.h2>
+            </m.h2>
           </div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -69,13 +69,13 @@ const Blog = ({ posts }: { posts: BlogPost[] }) => {
               </span>
               <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity" />
             </Link>
-          </motion.div>
+          </m.div>
         </div>
 
         {/* Blog Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {displayPosts.map((post, index) => (
-            <motion.article
+            <m.article
               key={post.slug}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -141,7 +141,7 @@ const Blog = ({ posts }: { posts: BlogPost[] }) => {
                 {/* Internal Glow Effect */}
                 <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-accent/5 blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
               </Link>
-            </motion.article>
+            </m.article>
           ))}
         </div>
 

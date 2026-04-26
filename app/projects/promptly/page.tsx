@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { 
   ArrowLeft, 
   Github, 
@@ -62,19 +62,19 @@ const PromptlyCaseStudy = () => {
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Navigation */}
         <Link href="/#work">
-          <motion.div 
+          <m.div 
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             className="inline-flex items-center gap-2 text-muted hover:text-accent transition-colors mb-12 group cursor-pointer"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             <span className="text-xs font-black uppercase tracking-widest">Back to Systems</span>
-          </motion.div>
+          </m.div>
         </Link>
 
         {/* Header */}
         <header className="mb-24">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -93,13 +93,13 @@ const PromptlyCaseStudy = () => {
             <p className="text-xl md:text-2xl text-text-sub max-w-3xl leading-relaxed font-medium">
               Bridging the "Ground Truth" gap between AI intent and codebase reality through the Model Context Protocol and high-fidelity project analysis.
             </p>
-          </motion.div>
+          </m.div>
         </header>
 
         {/* Quantified Impact Grid */}
         <section className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-32">
           {highlights.map((item, i) => (
-            <motion.div 
+            <m.div 
               key={item.label}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -109,7 +109,7 @@ const PromptlyCaseStudy = () => {
               <span className="text-4xl md:text-5xl font-bebas text-accent group-hover:scale-110 transition-transform">{item.value}</span>
               <span className="text-[10px] font-black uppercase tracking-widest text-text mt-2">{item.label}</span>
               <span className="text-[9px] font-bold text-muted uppercase mt-1 tracking-tight">{item.detail}</span>
-            </motion.div>
+            </m.div>
           ))}
         </section>
 
@@ -152,7 +152,7 @@ const PromptlyCaseStudy = () => {
             {architecturalLayers.map((layer, i) => {
               const Icon = layer.icon;
               return (
-                <motion.div 
+                <m.div 
                    key={layer.title}
                    initial={{ opacity: 0, y: 30 }}
                    whileInView={{ opacity: 1, y: 0 }}
@@ -174,7 +174,7 @@ const PromptlyCaseStudy = () => {
                   <div className="absolute top-0 right-0 p-10 opacity-5 pointer-events-none">
                      <span className="text-8xl font-bebas">{i + 1}</span>
                   </div>
-                </motion.div>
+                </m.div>
               );
             })}
           </div>
@@ -249,12 +249,12 @@ server.resource(
         {/* Closing CTA */}
         <footer className="text-center pt-20 border-t border-border/50">
            <Link href="https://github.com/MuhammadUsmanGM/promptly" target="_blank" rel="noopener noreferrer">
-             <motion.div 
+             <m.div 
                whileHover={{ scale: 1.05 }}
                className="inline-flex items-center gap-4 bg-accent text-bg px-12 py-5 rounded-full font-black text-xs uppercase tracking-widest shadow-[0_15px_40px_rgba(245,166,35,0.25)]"
              >
                Explore MCP Server Source <Github size={18} />
-             </motion.div>
+             </m.div>
            </Link>
            <p className="mt-8 text-muted text-[10px] font-black uppercase tracking-[0.4em]">
               Status: PRODUCTION_STABLE // VERSION 1.0.0

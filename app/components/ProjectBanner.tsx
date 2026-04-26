@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 // ─── Visual DNA per project ───────────────────────────────────────────
 // Each project gets a unique geometric identity layer
@@ -38,7 +38,7 @@ const NeuralPattern = () => {
     <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
       {/* Connection lines */}
       {connections.map(([from, to], i) => (
-        <motion.line
+        <m.line
           key={`line-${i}`}
           x1={`${nodes[from].x}%`}
           y1={`${nodes[from].y}%`}
@@ -54,7 +54,7 @@ const NeuralPattern = () => {
       ))}
       {/* Pulse traveling along connections */}
       {connections.slice(0, 4).map(([from, to], i) => (
-        <motion.circle
+        <m.circle
           key={`pulse-${i}`}
           r="2"
           fill="var(--accent)"
@@ -76,7 +76,7 @@ const NeuralPattern = () => {
       {/* Nodes */}
       {nodes.map((node, i) => (
         <React.Fragment key={`node-${i}`}>
-          <motion.circle
+          <m.circle
             cx={`${node.x}%`}
             cy={`${node.y}%`}
             r="12"
@@ -86,7 +86,7 @@ const NeuralPattern = () => {
             animate={{ opacity: [0, 0.06, 0] }}
             transition={{ duration: 3, delay: node.delay, repeat: Infinity }}
           />
-          <motion.circle
+          <m.circle
             cx={`${node.x}%`}
             cy={`${node.y}%`}
             r="2.5"
@@ -132,7 +132,7 @@ const CrystalPattern = () => {
     <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
       {hexagons.map((hex, i) => (
         <React.Fragment key={`hex-${i}`}>
-          <motion.polygon
+          <m.polygon
             points={hexPoints(hex.cx, hex.cy, hex.r)}
             fill="none"
             stroke="var(--accent)"
@@ -142,7 +142,7 @@ const CrystalPattern = () => {
             transition={{ duration: 1, delay: hex.delay, ease: "easeOut" }}
             style={{ transformOrigin: `${hex.cx}% ${hex.cy}%` }}
           />
-          <motion.polygon
+          <m.polygon
             points={hexPoints(hex.cx, hex.cy, hex.r * 0.6)}
             fill="var(--accent)"
             initial={{ opacity: 0 }}
@@ -153,7 +153,7 @@ const CrystalPattern = () => {
       ))}
       {/* Connecting lines between hex centers */}
       {[[0, 1], [1, 6], [6, 4], [0, 5], [5, 3], [2, 6], [1, 7]].map(([a, b], i) => (
-        <motion.line
+        <m.line
           key={`hline-${i}`}
           x1={hexagons[a].cx}
           y1={hexagons[a].cy}
@@ -207,7 +207,7 @@ const MatrixPattern = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {grid.map((column, col) => (
-        <motion.div
+        <m.div
           key={`col-${col}`}
           className="absolute top-0 flex flex-col gap-[3px]"
           style={{
@@ -219,7 +219,7 @@ const MatrixPattern = () => {
           transition={{ duration: 0.8, delay: col * 0.08 }}
         >
           {column.map((cell) => (
-            <motion.span
+            <m.span
               key={cell.key}
               className="font-mono text-center leading-none select-none"
               style={{
@@ -239,9 +239,9 @@ const MatrixPattern = () => {
               }
             >
               {cell.char}
-            </motion.span>
+            </m.span>
           ))}
-        </motion.div>
+        </m.div>
       ))}
       {/* Floating highlight blocks */}
       {[
@@ -249,7 +249,7 @@ const MatrixPattern = () => {
         { top: "40%", left: "55%", w: "35%", delay: 1.2 },
         { top: "70%", left: "20%", w: "25%", delay: 1.8 },
       ].map((block, i) => (
-        <motion.div
+        <m.div
           key={`block-${i}`}
           className="absolute h-[2px] rounded-full"
           style={{
@@ -290,7 +290,7 @@ const WavePattern = () => {
 
         return (
           <React.Fragment key={`wave-${i}`}>
-            <motion.path
+            <m.path
               d={path}
               fill="none"
               stroke="var(--accent)"
@@ -301,7 +301,7 @@ const WavePattern = () => {
               transition={{ duration: 2, delay: i * 0.3, ease: "easeOut" }}
             />
             {/* Traveling dot */}
-            <motion.circle
+            <m.circle
               r="2.5"
               fill="var(--accent)"
               opacity={0.5 - i * 0.08}
@@ -311,13 +311,13 @@ const WavePattern = () => {
                 repeatCount="indefinite"
                 path={path}
               />
-            </motion.circle>
+            </m.circle>
           </React.Fragment>
         );
       })}
       {/* Vertical scan pulses */}
       {[80, 200, 310].map((x, i) => (
-        <motion.line
+        <m.line
           key={`vscan-${i}`}
           x1={x} y1="0" x2={x} y2="200"
           stroke="var(--accent)"
@@ -392,7 +392,7 @@ const ProjectBanner: React.FC<ProjectBannerProps> = ({
       </div>
 
       {/* ── Horizontal Scan Line ── */}
-      <motion.div
+      <m.div
         animate={{ top: ["-5%", "110%"] }}
         transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
         className="absolute inset-x-0 h-[1px] pointer-events-none z-10"
@@ -407,7 +407,7 @@ const ProjectBanner: React.FC<ProjectBannerProps> = ({
 
       {/* ── Top-Left System Label ── */}
       <div className="absolute top-6 left-8 flex items-center gap-3 z-10">
-        <motion.div
+        <m.div
           className="w-1.5 h-1.5 rounded-full bg-accent"
           animate={{ opacity: [0.4, 1, 0.4] }}
           transition={{ duration: 2, repeat: Infinity }}
@@ -427,7 +427,7 @@ const ProjectBanner: React.FC<ProjectBannerProps> = ({
       {/* ── Central Typography Block ── */}
       <div className="relative z-10 flex flex-col items-center text-center px-8 transition-transform duration-700 group-hover:scale-[1.04]">
         {/* Accent line above */}
-        <motion.div
+        <m.div
           className="w-8 h-[1px] bg-accent/40 mb-5"
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
@@ -453,7 +453,7 @@ const ProjectBanner: React.FC<ProjectBannerProps> = ({
         </span>
 
         {/* Accent line below */}
-        <motion.div
+        <m.div
           className="w-8 h-[1px] bg-accent/40 mt-5"
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
@@ -475,7 +475,7 @@ const ProjectBanner: React.FC<ProjectBannerProps> = ({
       <div className="absolute bottom-6 right-8 z-10 flex items-center gap-3">
         <div className="flex gap-1">
           {[...Array(3)].map((_, i) => (
-            <motion.div
+            <m.div
               key={i}
               className="w-[3px] rounded-full bg-accent/30"
               animate={{ height: ["4px", "12px", "4px"] }}

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { 
   User, 
   Mail, 
@@ -87,14 +87,14 @@ const FloatingInput = ({
 
       <AnimatePresence>
         {error && (
-          <motion.p
+          <m.p
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             className="text-[10px] text-red-500 font-bold uppercase tracking-wider ml-4"
           >
             {error}
-          </motion.p>
+          </m.p>
         )}
       </AnimatePresence>
     </div>
@@ -204,7 +204,7 @@ const Contact = () => {
         
         {/* Section Header */}
         <div className="mb-20">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -215,9 +215,9 @@ const Contact = () => {
             <span className="text-accent text-[0.75rem] font-black uppercase tracking-[0.18em] font-dm">
               Contact
             </span>
-          </motion.div>
+          </m.div>
           
-          <motion.h2
+          <m.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -226,13 +226,13 @@ const Contact = () => {
           >
             SCALE YOUR <br />
             <span className="text-accent">OPERATIONS.</span>
-          </motion.h2>
+          </m.h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           
           {/* Left: Contact Form */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -318,7 +318,7 @@ const Contact = () => {
                           fill="transparent"
                           className="text-border/20"
                         />
-                        <motion.circle
+                        <m.circle
                           cx="16"
                           cy="16"
                           r="14"
@@ -340,14 +340,14 @@ const Contact = () => {
 
                 <AnimatePresence>
                   {errors.message && (
-                    <motion.p
+                    <m.p
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       className="text-[10px] text-red-500 font-bold uppercase tracking-wider ml-4"
                     >
                       {errors.message}
-                    </motion.p>
+                    </m.p>
                   )}
                 </AnimatePresence>
               </div>
@@ -364,12 +364,12 @@ const Contact = () => {
                 >
                   {isSubmitting ? (
                     <span className="flex items-center gap-2">
-                      Sending <motion.span animate={{ opacity: [0, 1, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>...</motion.span>
+                      Sending <m.span animate={{ opacity: [0, 1, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>...</m.span>
                     </span>
                   ) : status === "success" ? (
-                    <motion.span initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="flex items-center gap-2">
+                    <m.span initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="flex items-center gap-2">
                       Message Sent <CheckCircle2 size={14} className="animate-in zoom-in duration-300" />
-                    </motion.span>
+                    </m.span>
                   ) : (
                     <>
                       Send Message
@@ -379,16 +379,16 @@ const Contact = () => {
                 </button>
 
                 {status === "error" && (
-                  <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} className="flex items-center gap-2 text-red-600 dark:text-red-400 font-bold text-xs font-dm">
+                  <m.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} className="flex items-center gap-2 text-red-600 dark:text-red-400 font-bold text-xs font-dm">
                     <AlertCircle size={16} /> {errorMessage}
-                  </motion.div>
+                  </m.div>
                 )}
               </div>
             </form>
-          </motion.div>
+          </m.div>
 
           {/* Right: Info */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -425,7 +425,7 @@ const Contact = () => {
                 LinkedIn
               </a>
             </div>
-          </motion.div>
+          </m.div>
 
         </div>
       </div>

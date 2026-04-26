@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { RefreshCcw, Home, AlertTriangle } from "lucide-react";
 
 export default function Error({
@@ -23,7 +23,7 @@ export default function Error({
         CRITICAL FAILURE WATERMARK 
       */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden">
-        <motion.h1
+        <m.h1
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: [0.03, 0.08, 0.03], x: [-2, 2, -2] }}
           transition={{ 
@@ -33,7 +33,7 @@ export default function Error({
           className="text-[25vw] md:text-[30vw] font-bebas text-red-600 leading-none tracking-tighter filter blur-[5px] md:blur-[8px]"
         >
           FAILED
-        </motion.h1>
+        </m.h1>
         
         {/* Overlay to dim background */}
         <div className="absolute inset-0 bg-bg/40 backdrop-blur-[1px]" />
@@ -42,7 +42,7 @@ export default function Error({
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] bg-red-600/10 rounded-full blur-[150px] animate-pulse" />
       </div>
 
-      <motion.div 
+      <m.div 
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -50,7 +50,7 @@ export default function Error({
       >
         <div className="relative group mb-8">
           {/* Main Icon Wrapper with Glitchy Border */}
-          <motion.div 
+          <m.div 
             animate={{ 
               y: [0, -10, 0],
               filter: ["brightness(1)", "brightness(1.2)", "brightness(1)"]
@@ -76,11 +76,11 @@ export default function Error({
             <div className="absolute -top-1 -right-1 w-6 h-6 bg-red-600 rounded-full flex items-center justify-center shadow-[0_0_20px_#dc2626]">
               <AlertTriangle className="w-3 h-3 text-white" />
             </div>
-          </motion.div>
+          </m.div>
         </div>
         
         <div className="space-y-4">
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
@@ -89,9 +89,9 @@ export default function Error({
               Neural <span className="text-red-600 italic">Interruption</span>
             </h2>
             <div className="h-1 w-24 bg-red-600 mx-auto mt-4 rounded-full opacity-60" />
-          </motion.div>
+          </m.div>
 
-          <motion.p 
+          <m.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
@@ -99,9 +99,9 @@ export default function Error({
           >
             The autonomous logic layer encountered a critical exception. 
             A system-wide reset is required to restore sector stability.
-          </motion.p>
+          </m.p>
           
-          <motion.div 
+          <m.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
@@ -125,12 +125,12 @@ export default function Error({
               <Home className="w-5 h-5 group-hover:-translate-y-1 transition-transform" />
               Base Map
             </Link>
-          </motion.div>
+          </m.div>
         </div>
-      </motion.div>
+      </m.div>
 
       {/* Footer Meta Data */}
-      <motion.div 
+      <m.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.4 }}
         transition={{ delay: 1.2, duration: 1 }}
@@ -142,7 +142,7 @@ export default function Error({
         </div>
         <div>EMERGENCY_RECOVERY_MODE</div>
         <div>UPLINK_STATUS: INTERRUPTED</div>
-      </motion.div>
+      </m.div>
 
       <style jsx global>{`
         @keyframes flare {

@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { m, useScroll, useTransform, useSpring } from "framer-motion";
 import { Brain, Code, Terminal, Zap } from "lucide-react";
 
 const About = () => {
@@ -40,7 +40,7 @@ const About = () => {
           
           {/* Left: Narrative Copy */}
           <div className="lg:col-span-7">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -51,9 +51,9 @@ const About = () => {
               <span className="text-accent text-xs font-black uppercase tracking-[0.3em]">
                 About Me
               </span>
-            </motion.div>
+            </m.div>
 
-            <motion.h2
+            <m.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -63,9 +63,9 @@ const About = () => {
               I architect <br />
               systems that <br />
               <span className="text-accent italic">deliver</span>.
-            </motion.h2>
+            </m.h2>
 
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -80,9 +80,9 @@ const About = () => {
                 With a background in <span className="text-text font-bold underline decoration-accent/30 underline-offset-4">RAG pipelines</span> and 
                 <span className="text-text font-bold underline decoration-accent/30 underline-offset-4"> agentic orchestration</span>, I deliver production systems that turn unstructured data into automated business outcomes.
               </p>
-            </motion.div>
+            </m.div>
 
-            <motion.a
+            <m.a
               href="https://github.com/MuhammadUsmanGM"
               target="_blank"
               rel="noopener noreferrer"
@@ -99,20 +99,20 @@ const About = () => {
                 <span className="block text-[10px] font-black uppercase tracking-widest text-muted group-hover:text-accent transition-colors mb-1">Currently Exploring</span>
                 <span className="block text-sm font-bold text-text uppercase tracking-tight">Advanced Agentic Architectures</span>
               </div>
-            </motion.a>
+            </m.a>
           </div>
 
           {/* Right: Technical Pillars & Portrait */}
           <div className="lg:col-span-5 flex flex-col items-center lg:items-start relative">
             
             {/* Background Cinematic Watermark */}
-            <motion.div style={{ y: watermarkY }} className="absolute top-1/3 -right-24 transform opacity-[0.03] pointer-events-none select-none hidden lg:block z-0">
+            <m.div style={{ y: watermarkY }} className="absolute top-1/3 -right-24 transform opacity-[0.03] pointer-events-none select-none hidden lg:block z-0">
               <span className="text-[12rem] font-black uppercase tracking-tighter leading-none block text-text">Architect</span>
               <span className="text-[12rem] font-black uppercase tracking-tighter leading-none block text-accent italic -mt-8">Engineer</span>
-            </motion.div>
+            </m.div>
 
             {/* Portrait with Offset Box */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -132,13 +132,13 @@ const About = () => {
                   className="object-cover object-top filter grayscale hover:grayscale-0 transition-all duration-700"
                 />
               </div>
-            </motion.div>
+            </m.div>
 
             <div className="space-y-4 w-full relative z-10">
               {pillars.map((pillar, index) => {
                 const Icon = pillar.icon;
                 return (
-                  <motion.div
+                  <m.div
                     key={pillar.title}
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -159,7 +159,7 @@ const About = () => {
                         </p>
                       </div>
                     </div>
-                  </motion.div>
+                  </m.div>
                 );
               })}
             </div>

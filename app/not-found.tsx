@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ArrowLeft, WifiOff } from "lucide-react";
 
 export default function NotFound() {
@@ -13,7 +13,7 @@ export default function NotFound() {
         Positioned behind everything, glassy and glowing.
       */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden">
-        <motion.h1
+        <m.h1
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: [0.05, 0.1, 0.05], scale: [1, 1.05, 1] }}
           transition={{ 
@@ -23,7 +23,7 @@ export default function NotFound() {
           className="text-[35vw] md:text-[40vw] font-bebas text-accent leading-none tracking-tighter filter blur-[2px] md:blur-[4px]"
         >
           404
-        </motion.h1>
+        </m.h1>
         
         {/* Glassmorphic overlay for the 404 */}
         <div className="absolute inset-0 bg-bg/20 backdrop-blur-[2px]" />
@@ -33,7 +33,7 @@ export default function NotFound() {
         <div className="absolute bottom-1/4 right-1/4 w-[25rem] h-[25rem] bg-accent-glow/10 rounded-full blur-[100px] animate-pulse hidden md:block" style={{ animationDelay: '2s' }} />
       </div>
 
-      <motion.div 
+      <m.div 
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -41,7 +41,7 @@ export default function NotFound() {
       >
         <div className="relative group mb-8">
           {/* Main Icon Wrapper with Glassmorphism */}
-          <motion.div 
+          <m.div 
             animate={{ y: [0, -15, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             className="relative"
@@ -64,11 +64,11 @@ export default function NotFound() {
               <span className="w-2.5 h-2.5 bg-red-500 rounded-full animate-pulse shadow-[0_0_12px_#ef4444]"></span>
               <span className="text-[10px] font-mono text-red-500/80 uppercase tracking-tighter">Connection Lost</span>
             </div>
-          </motion.div>
+          </m.div>
         </div>
         
         <div className="space-y-4">
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
@@ -77,9 +77,9 @@ export default function NotFound() {
               Lost in <span className="text-accent italic">Cyberspace</span>
             </h2>
             <div className="h-1 w-24 bg-accent mx-auto mt-4 rounded-full opacity-60" />
-          </motion.div>
+          </m.div>
 
-          <motion.p 
+          <m.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
@@ -87,9 +87,9 @@ export default function NotFound() {
           >
             The coordinates you provided lead to a digital void. 
             This sector has either been decommissioned or remains classified.
-          </motion.p>
+          </m.p>
           
-          <motion.div 
+          <m.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
@@ -113,12 +113,12 @@ export default function NotFound() {
               <WifiOff className="w-5 h-5 group-hover:rotate-12 transition-transform" />
               Recalibrate
             </button>
-          </motion.div>
+          </m.div>
         </div>
-      </motion.div>
+      </m.div>
 
       {/* Footer Meta Data */}
-      <motion.div 
+      <m.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.4 }}
         transition={{ delay: 1.2, duration: 1 }}
@@ -130,7 +130,7 @@ export default function NotFound() {
         </div>
         <div>SCANNING FOR HOST... TIMEOUT</div>
         <div>SEC_PROTOCOL_V1.4</div>
-      </motion.div>
+      </m.div>
 
       <style jsx global>{`
         @keyframes scan {

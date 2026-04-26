@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Trophy, Briefcase, GraduationCap, Calendar, Award, BadgeCheck } from "lucide-react";
 
 const Background = () => {
@@ -21,7 +21,7 @@ const Background = () => {
         
         {/* Section Header */}
         <div className="mb-20">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -32,9 +32,9 @@ const Background = () => {
             <span className="text-accent text-[0.75rem] font-black uppercase tracking-[0.18em]">
               Background
             </span>
-          </motion.div>
+          </m.div>
           
-          <motion.h2
+          <m.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -43,7 +43,7 @@ const Background = () => {
           >
             Experience & <br />
             <span className="text-accent italic">Credentials.</span>
-          </motion.h2>
+          </m.h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
@@ -51,7 +51,7 @@ const Background = () => {
           {/* Left Column: Experience & Education */}
           <div className="space-y-8">
             {/* Experience Card */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -83,10 +83,10 @@ const Background = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
 
             {/* Education Card */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -135,11 +135,11 @@ const Background = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           </div>
 
           {/* Right Column: Certifications */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -182,7 +182,7 @@ const Background = () => {
             </div>
 
 
-          </motion.div>
+          </m.div>
 
         </div>
       </div>

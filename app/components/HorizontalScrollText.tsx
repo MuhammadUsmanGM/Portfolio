@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { m, useScroll, useTransform, useSpring } from "framer-motion";
 
 interface HorizontalScrollTextProps {
   text: string;
@@ -30,7 +30,7 @@ const HorizontalScrollText = ({ text, direction = "left" }: HorizontalScrollText
       className="overflow-hidden -my-6 relative z-0 pointer-events-none select-none"
       aria-hidden="true"
     >
-      <motion.div style={{ x }} className="flex whitespace-nowrap gap-12">
+      <m.div style={{ x }} className="flex whitespace-nowrap gap-12">
         {Array.from({ length: 4 }).map((_, i) => (
           <span
             key={i}
@@ -39,7 +39,7 @@ const HorizontalScrollText = ({ text, direction = "left" }: HorizontalScrollText
             {text}
           </span>
         ))}
-      </motion.div>
+      </m.div>
     </div>
   );
 };

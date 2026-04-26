@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import { motion, useMotionTemplate, useMotionValue, animate } from "framer-motion";
+import { m, useMotionTemplate, useMotionValue, animate } from "framer-motion";
 import { Brain, Database, Server, Globe, Cpu, Layers, Settings } from "lucide-react";
 
 const SpotlightCard = ({ children, className = "", ...props }: { children: React.ReactNode; className?: string; [key: string]: any }) => {
@@ -16,12 +16,12 @@ const SpotlightCard = ({ children, className = "", ...props }: { children: React
   }
 
   return (
-    <motion.div
+    <m.div
       {...props}
       onMouseMove={handleMouseMove}
       className={`group relative rounded-3xl border border-border/40 bg-bg-2/50 backdrop-blur-xl transition-all duration-500 hover:border-accent/30 hover:shadow-2xl hover:shadow-accent/5 ${className}`}
     >
-      <motion.div
+      <m.div
         className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition duration-300 group-hover:opacity-100"
         style={{
           background: useMotionTemplate`
@@ -34,7 +34,7 @@ const SpotlightCard = ({ children, className = "", ...props }: { children: React
         }}
       />
       <div className="relative z-10">{children}</div>
-    </motion.div>
+    </m.div>
   );
 };
 
@@ -114,7 +114,7 @@ const Skills = () => {
         
         {/* Section Header */}
         <div className="mb-20">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -125,9 +125,9 @@ const Skills = () => {
             <span className="text-accent text-[10px] md:text-xs font-black uppercase tracking-[0.4em] font-dm">
               Expertise
             </span>
-          </motion.div>
+          </m.div>
           
-          <motion.h2
+          <m.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -136,7 +136,7 @@ const Skills = () => {
           >
             THE TECH <br />
             <span className="text-accent italic">ARCHITECTURE</span>.
-          </motion.h2>
+          </m.h2>
         </div>
 
         {/* Skills Grid - Symmetrical Bento Box */}

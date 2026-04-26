@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { m, useScroll, useTransform, useSpring } from "framer-motion";
 import { ArrowUpRight, Github, Activity, Lock } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -36,13 +36,13 @@ const ParallaxNumber = ({ children }: { children: React.ReactNode }) => {
   const y = useSpring(useTransform(scrollYProgress, [0, 1], [80, -80]), smooth);
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       style={{ y }}
       className="absolute -top-20 -left-10 text-[15rem] font-black text-border/20 pointer-events-none select-none z-0 tracking-tighter hidden lg:block"
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 };
 
@@ -56,13 +56,13 @@ const ParallaxVisual = ({ children }: { children: React.ReactNode }) => {
   const y = useSpring(useTransform(scrollYProgress, [0, 1], [40, -40]), smooth);
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       style={{ y }}
       className="lg:col-span-7 order-1 lg:order-2 relative group-hover:scale-[1.02] transition-transform duration-700"
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 };
 
@@ -154,7 +154,7 @@ crypto.decrypt(buf)`
     <section id="work" className="pt-16 pb-16 px-6 md:px-12 bg-bg relative overflow-hidden">
       {/* Section Header — horizontal parallax on title */}
       <div ref={headerRef} className="max-w-7xl mx-auto mb-20">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -165,9 +165,9 @@ crypto.decrypt(buf)`
           <span className="text-accent text-xs font-black uppercase tracking-[0.3em]">
             FEATURED PROJECTS
           </span>
-        </motion.div>
+        </m.div>
         
-        <motion.h2
+        <m.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -177,13 +177,13 @@ crypto.decrypt(buf)`
         >
           Selected <br />
           <span className="text-accent italic">Work</span>.
-        </motion.h2>
+        </m.h2>
       </div>
 
       <div className="max-w-7xl mx-auto">
         {projects.map((project, index) => (
           <React.Fragment key={project.title}>
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
@@ -297,7 +297,7 @@ crypto.decrypt(buf)`
                 {/* Code Snippet Overlay */}
                 {project.codeSnippet && (
                   <div className="absolute bottom-6 right-6 z-20 hidden md:block">
-                    <motion.div 
+                    <m.div 
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       className="bg-bg/90 backdrop-blur-md border border-accent/30 rounded-xl p-4 font-mono text-[10px] text-accent/80 shadow-2xl"
@@ -308,18 +308,18 @@ crypto.decrypt(buf)`
                       <pre className="leading-tight">
                         <code>{project.codeSnippet}</code>
                       </pre>
-                    </motion.div>
+                    </m.div>
                   </div>
                 )}
                 
                 <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.5)] pointer-events-none" />
               </div>
             </ParallaxVisual>
-          </motion.div>
+          </m.div>
 
           {/* ── THE SIGNAL Live Subscribe CTA ── */}
           {index === 3 && (
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -353,7 +353,7 @@ crypto.decrypt(buf)`
                   📡 Join The Signal <ArrowUpRight className="w-4 h-4" />
                 </a>
               </div>
-            </motion.div>
+            </m.div>
           )}
         </React.Fragment>
       ))}
@@ -363,7 +363,7 @@ crypto.decrypt(buf)`
       <div className="max-w-7xl mx-auto mt-32 px-4 relative z-10">
         <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[200px] bg-accent/5 blur-[120px] rounded-full pointer-events-none" />
         
-        <motion.div
+        <m.div
            initial={{ opacity: 0, y: 20 }}
            whileInView={{ opacity: 1, y: 0 }}
            viewport={{ once: true }}
@@ -376,11 +376,11 @@ crypto.decrypt(buf)`
           <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-text">
             The <span className="text-accent italic">Hidden</span> Infrastructure.
           </h2>
-        </motion.div>
+        </m.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12 relative z-10">
           {/* Split Card 1: GitHub / Source */}
-          <motion.a
+          <m.a
              href="https://github.com/MuhammadUsmanGM"
              target="_blank"
              rel="noopener noreferrer"
@@ -411,10 +411,10 @@ crypto.decrypt(buf)`
               <span className="text-[10px] font-mono text-muted uppercase tracking-widest">github.com/MuhammadUsmanGM</span>
               <ArrowUpRight className="w-6 h-6 text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
             </div>
-          </motion.a>
+          </m.a>
 
           {/* Split Card 2: Archive / Vault */}
-          <motion.a
+          <m.a
              href="https://usman-works.vercel.app/"
              target="_blank"
              rel="noopener noreferrer"
@@ -445,7 +445,7 @@ crypto.decrypt(buf)`
               <span className="text-[10px] font-mono text-muted uppercase tracking-widest">usman-works.vercel.app</span>
               <ArrowUpRight className="w-6 h-6 text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
             </div>
-          </motion.a>
+          </m.a>
         </div>
       </div>
     </section>
