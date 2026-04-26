@@ -33,7 +33,10 @@ const ParallaxNumber = ({ children }: { children: React.ReactNode }) => {
     target: ref,
     offset: ["start end", "end start"],
   });
-  const y = useSpring(useTransform(scrollYProgress, [0, 1], [80, -80]), smooth);
+  const y = useSpring(
+    useTransform(scrollYProgress, [0, 1], [50, -50]), // Reduced from 80/-80 for better responsiveness
+    smooth
+  );
 
   return (
     <m.div
@@ -184,8 +187,9 @@ crypto.decrypt(buf)`
         {projects.map((project, index) => (
           <React.Fragment key={project.title}>
             <m.div
-              initial={{ opacity: 0, y: 60 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -5, transition: { duration: 0.5 } }}
               viewport={{ once: true, margin: "100px" }}
               transition={{ duration: 1, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
               className="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-32 last:mb-0"

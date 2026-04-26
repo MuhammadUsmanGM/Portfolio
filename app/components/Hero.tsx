@@ -79,7 +79,7 @@ const Hero = () => {
           <m.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: isBot ? 0 : 0.3 }}
+            transition={{ duration: 0.8, delay: isBot ? 0 : 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] uppercase mb-8 text-text"
           >
             I Build AI <br />
@@ -112,7 +112,7 @@ const Hero = () => {
           <m.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: isBot ? 0 : 0.4 }}
+            transition={{ duration: 0.8, delay: isBot ? 0 : 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="text-lg md:text-xl text-text-sub max-w-xl mb-12 leading-relaxed"
           >
             Architecting <span className="text-text font-bold">LLM pipelines</span> & 

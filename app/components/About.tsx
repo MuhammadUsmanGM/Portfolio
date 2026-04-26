@@ -43,8 +43,8 @@ const About = () => {
             <m.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              viewport={{ once: true, margin: "100px" }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               className="flex items-center gap-3 mb-8"
             >
               <div className="w-8 h-[2px] bg-accent" />
@@ -56,8 +56,8 @@ const About = () => {
             <m.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.1 }}
+              viewport={{ once: true, margin: "100px" }}
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-text leading-none mb-12"
             >
               I architect <br />
@@ -68,8 +68,8 @@ const About = () => {
             <m.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true, margin: "100px" }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
               className="space-y-6 text-xl text-text-sub leading-relaxed max-w-2xl"
             >
               <p>

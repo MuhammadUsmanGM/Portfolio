@@ -149,9 +149,10 @@ const Skills = () => {
             return (
             <SpotlightCard 
               key={cat.title} 
-              className={spanClass}
+              className={`${spanClass} cursor-default`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -8, scale: 1.01, transition: { duration: 0.4 } }}
               viewport={{ once: true, margin: "50px" }}
               transition={{ duration: 0.6, delay: (index % 3) * 0.1 }}
             >
