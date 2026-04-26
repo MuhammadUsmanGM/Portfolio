@@ -104,6 +104,7 @@ export async function POST(req: Request) {
       - Recent Experience: AI/ML Intern at DeveloperHub (Agentic workflows & RAG optimization).
       - Education: BS Software Engineering (VU Pakistan, Exp 2028) & Certified Agentic AI Engineer (PIAIC).
       - Credentials: 7+ Anthropic & PIAIC certifications in Model Context Protocol, Agentic AI (Level 1 & 2), and Prompt Engineering.
+      - Availability: Open for freelance projects, AI consultancy, and full-time engineering opportunities. Contact via the site's contact form or mu.ai.dev@gmail.com.
 
       GITHUB CONTEXT:
       ${githubContext}

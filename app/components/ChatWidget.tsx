@@ -41,30 +41,26 @@ const ChatWidget = () => {
     }
   };
 
+  // Consolodated scroll logic — handles message updates and opening transitions
   useEffect(() => {
-    scrollToBottom();
-  }, [messages, isTyping]);
-
-  useEffect(() => {
-    const observer = new MutationObserver(() => {
-      scrollToBottom();
-    });
-
-    if (scrollRef.current) {
-      observer.observe(scrollRef.current, {
-        childList: true,
-        subtree: true,
-      });
+    if (isOpen) {
+      // Use a small timeout to ensure the DOM has rendered after the animation
+      const timer = setTimeout(scrollToBottom, 100);
+      return () => clearTimeout(timer);
     }
-
-    return () => observer.disconnect();
-  }, [isOpen]);
+  }, [messages, isTyping, isOpen]);
 
   const submitMessage = async (text: string) => {
     if (!text.trim() || isTyping) return;
 
     const userMessage: Message = { role: "user", content: text };
-    setMessages((prev) => [...prev, userMessage]);
+    
+    // Rolling window: Keep only the last 19 messages to make room for the new one (total 20)
+    setMessages((prev) => {
+      const newMessages = [...prev, userMessage];
+      return newMessages.slice(-20);
+    });
+    
     setInput("");
     setIsTyping(true);
 
@@ -72,20 +68,20 @@ const ChatWidget = () => {
       const response = await fetch("/api/nova", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: [...messages, userMessage] }),
+        body: JSON.stringify({ messages: [...messages.slice(-19), userMessage] }),
       });
 
       const data = await response.json();
       if (data.content) {
-        setMessages((prev) => [...prev, { role: "bot", content: data.content }]);
+        setMessages((prev) => [...prev, { role: "bot" as const, content: data.content }].slice(-20));
       } else {
         throw new Error("No response");
       }
     } catch (err) {
       setMessages((prev) => [
         ...prev,
-        { role: "bot", content: "I encountered a minor system glitch. Please try again or contact Usman directly!" },
-      ]);
+        { role: "bot" as const, content: "I encountered a minor system glitch. Please try again or contact Usman directly!" },
+      ].slice(-20));
     } finally {
       setIsTyping(false);
     }
