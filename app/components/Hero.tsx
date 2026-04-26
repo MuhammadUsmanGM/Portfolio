@@ -136,9 +136,9 @@ const Hero = () => {
               href="/Muhammad_Usman_Resume.pdf" 
               target="_blank"
               rel="noreferrer"
-              className="group flex items-center gap-3 px-10 py-4 bg-bg-2/30 backdrop-blur-md border border-border/50 text-text hover:border-accent/50 hover:bg-bg-2 rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95"
+              className="group flex items-center gap-3 px-10 py-4 bg-bg-2/30 backdrop-blur-md border border-border/50 text-text hover:bg-text hover:text-bg hover:border-text rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all duration-300 hover:scale-105 active:scale-95 shadow-sm"
             >
-              Resume <FileText className="w-4 h-4 group-hover:scale-110 transition-transform" />
+              Resume <FileText className="w-4 h-4 transition-transform group-hover:scale-110" />
             </a>
           </m.div>
         </m.div>
