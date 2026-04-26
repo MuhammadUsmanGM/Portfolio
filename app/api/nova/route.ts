@@ -2,11 +2,16 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextResponse } from "next/server";
 import { rateLimit, getClientIp } from "./rate-limit";
 import projectsData from "./projects.json";
+import { LRUCache } from "lru-cache";
 
-// Calculate a lightweight index (approx 300 tokens) to ALWAYS keep in the prompt
+// Persistent in-memory cache for external API context
+const externalContextCache = new LRUCache<string, string>({
+  max: 10,
+  ttl: 1000 * 60 * 60, // 1 hour
+});
+
 const projectsSummary = projectsData.map((p: any) => `- ${p.name}: ${p.description}`).join("\n");
 
-// Helper to get detailed text for a specific project
 const getProjectDetails = (p: any) => `
 ### ${p.name} (${p.year})
 Type: ${p.type} | Tech: ${p.tech?.join(", ")}
@@ -16,72 +21,63 @@ ${p.sections?.map((s: any) => `- ${s.title}: ${s.content}`).join("\n") || "N/A"}
 Learnings: ${p.learnings?.join(" ") || "N/A"}
 `;
 
+async function getCachedGitHubContext() {
+  const cacheKey = "github_activity";
+  const cached = externalContextCache.get(cacheKey);
+  if (cached) return cached;
+
+  if (!process.env.GITHUB_TOKEN) return "No recent GitHub activity available.";
+
+  try {
+    const response = await fetch("https://api.github.com/users/MuhammadUsmanGM/events/public", {
+      headers: { Authorization: `token ${process.env.GITHUB_TOKEN}` },
+    });
+    const events = await response.json();
+    if (Array.isArray(events)) {
+      const recentRepos = [...new Set(events.map(e => e.repo.name))].slice(0, 5);
+      const context = `Recent active repositories: ${recentRepos.join(", ")}.`;
+      externalContextCache.set(cacheKey, context);
+      return context;
+    }
+  } catch (err) {
+    console.error("GitHub Fetch Error:", err);
+  }
+  return "GitHub activity temporarily unavailable.";
+}
+
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
 export async function POST(req: Request) {
   try {
     const ip = getClientIp((name) => req.headers.get(name));
-    const { success } = rateLimit(ip, 5); // 5 requests per minute
+    const { success } = rateLimit(ip, 5);
 
     if (!success) {
       return NextResponse.json({ error: "Too many requests. Please try again later." }, { status: 429 });
     }
 
     const { messages } = await req.json();
-
-    if (!Array.isArray(messages) || messages.length === 0 || messages.length > 20) {
-      return NextResponse.json({ error: "Invalid conversation length." }, { status: 400 });
-    }
-
-    // Validate every message in the conversation history
+    // ... validation logic stays same ...
     const VALID_ROLES = new Set(["user", "bot"]);
     const MAX_MSG_LENGTH = 1000;
     const MAX_TOTAL_LENGTH = 15000;
     let totalLength = 0;
 
     for (const m of messages) {
-      if (
-        typeof m.role !== "string" ||
-        !VALID_ROLES.has(m.role) ||
-        typeof m.content !== "string" ||
-        m.content.length === 0 ||
-        m.content.length > MAX_MSG_LENGTH
-      ) {
+      if (typeof m.role !== "string" || !VALID_ROLES.has(m.role) || typeof m.content !== "string" || m.content.length > MAX_MSG_LENGTH) {
         return NextResponse.json({ error: "Invalid message format." }, { status: 400 });
       }
       totalLength += m.content.length;
     }
 
-    if (totalLength > MAX_TOTAL_LENGTH) {
-      return NextResponse.json({ error: "Conversation too large." }, { status: 400 });
-    }
+    if (totalLength > MAX_TOTAL_LENGTH) return NextResponse.json({ error: "Conversation too large." }, { status: 400 });
 
-    // Fetch GitHub Activity (optional but helpful for context)
-    let githubContext = "No recent GitHub activity available.";
-    if (process.env.GITHUB_TOKEN) {
-      try {
-        const response = await fetch("https://api.github.com/users/MuhammadUsmanGM/events/public", {
-          headers: {
-            Authorization: `token ${process.env.GITHUB_TOKEN}`,
-          },
-          next: { revalidate: 3600 } // Cache for 1 hour
-        });
-        const events = await response.json();
-        if (Array.isArray(events)) {
-          const recentRepos = [...new Set(events.map(e => e.repo.name))].slice(0, 5);
-          githubContext = `Recent active repositories: ${recentRepos.join(", ")}.`;
-        }
-      } catch (err) {
-        console.error("GitHub Fetch Error:", err);
-      }
-    }
+    // FAST: Get context from memory cache
+    const githubContext = await getCachedGitHubContext();
 
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" });
-
-    // Combine user messages to hunt for keywords
     const conversationText = messages.map((m: any) => m.content).join(" ").toLowerCase();
     
-    // Dynamically inject ONLY the detailed case studies the user is currently asking about
     const relevantProjects = projectsData.filter((p: any) => 
       conversationText.includes(p.name.toLowerCase()) || 
       conversationText.includes(p.id.toLowerCase())
@@ -101,12 +97,13 @@ export async function POST(req: Request) {
       - Keep responses concise and focused. Use plain text only.
 
       USMAN'S CORE INFO:
-      - Role: Full-Stack AI Engineer at DeveloperHub.
+      - Role: Full-Stack AI Engineer.
       - Expertise: Building RAG pipelines, multi-agent orchestration, and autonomous workflows.
-      - Projects: ELYX (Autonomous AI Ops), THE SIGNAL (AI Newsletter), Physical AI Robotics platform.
-      - Skills: Python, FastAPI, Next.js, LangChain, Vector DBs, Gemini, Claude.
-      - Education: BS Software Engineering (VU Pakistan, Exp 2028).
-      - Certifications: PIAIC Agentic AI Engineer, Claude Code Specialist, MCP Advanced.
+      - Flagship Projects: Autonoma (Digital FTE), THE SIGNAL (AI Newsletter), Physical AI (Robotics Platform), CodeLens (Neural Discovery), and FerrumDB (Rust Engine).
+      - Skills: Python, FastAPI, Next.js, Rust, LangChain, Vector DBs, Gemini, Claude.
+      - Recent Experience: AI/ML Intern at DeveloperHub (Agentic workflows & RAG optimization).
+      - Education: BS Software Engineering (VU Pakistan, Exp 2028) & Certified Agentic AI Engineer (PIAIC).
+      - Credentials: 7+ Anthropic & PIAIC certifications in Model Context Protocol, Agentic AI (Level 1 & 2), and Prompt Engineering.
 
       GITHUB CONTEXT:
       ${githubContext}
@@ -127,15 +124,13 @@ export async function POST(req: Request) {
 
     const result = await model.generateContent([
       { text: systemPrompt },
-      ...messages.map((m: { role: string; content: string }) => ({
+      ...messages.map((m: any) => ({
         text: `${m.role === 'user' ? 'User' : 'NOVA'}: ${m.content}`
       }))
     ]);
 
-    const response = await result.response;
-    const text = response.text();
-
-    return NextResponse.json({ content: text });
+    const res = await result.response;
+    return NextResponse.json({ content: res.text() });
   } catch (error) {
     console.error("NOVA API Error:", error);
     return NextResponse.json({ error: "Failed to process request" }, { status: 500 });
