@@ -152,8 +152,8 @@ const Skills = () => {
               className={spanClass}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true, margin: "50px" }}
+              transition={{ duration: 0.6, delay: (index % 3) * 0.1 }}
             >
               <div className="p-6 sm:p-10 h-full flex flex-col">
                 <div className="flex items-center gap-5 mb-8">
@@ -183,7 +183,9 @@ const Skills = () => {
                               <Image 
                                 src={tech.iconPath} 
                                 alt={tech.name} 
-                                fill 
+                                fill
+                                priority
+                                unoptimized
                                 className="object-contain"
                               />
                             </div>

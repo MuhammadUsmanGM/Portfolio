@@ -144,7 +144,8 @@ const ChatWidget = () => {
             src="/bot.webp" 
             alt="NOVA" 
             width={36} 
-            height={36} 
+            height={36}
+            priority 
             className={`object-contain drop-shadow-[0_0_10px_rgba(201,150,12,0.5)] transition-all duration-500 ${
               isOpen ? "scale-110 grayscale-0" : "group-hover:scale-110"
             }`} 
@@ -167,7 +168,7 @@ const ChatWidget = () => {
             <div className="p-4 border-b border-accent/10 bg-accent/5 flex items-center justify-between">
               <div className="flex items-center gap-2.5">
                 <div className="relative w-9 h-9 rounded-xl bg-accent/20 flex items-center justify-center border border-accent/30 overflow-hidden">
-                  <Image src="/bot.webp" alt="NOVA" fill className="object-contain p-1.5" />
+                  <Image src="/bot.webp" alt="NOVA" fill sizes="36px" priority className="object-contain p-1.5" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bebas tracking-[0.2em] text-accent leading-none">NOVA</h3>

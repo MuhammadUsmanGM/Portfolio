@@ -186,7 +186,7 @@ crypto.decrypt(buf)`
             <m.div
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: "100px" }}
               transition={{ duration: 1, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
               className="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-32 last:mb-0"
             >
