@@ -30,7 +30,7 @@ const Loader = () => {
     const timer = setTimeout(() => {
       setIsVisible(false);
       sessionStorage.setItem("loaded", "true");
-    }, 1200); // Slightly longer to allow for the entrance animation
+    }, 1600); // Increased to 1.6s for a more intentional, high-end feel
 
     return () => {
       clearTimeout(timer);

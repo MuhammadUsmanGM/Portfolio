@@ -140,6 +140,13 @@ body {
   animation: pulse-subtle 2s infinite ease-in-out;
 }
 
+@media (min-width: 768px) {
+  .immediate-logo {
+    width: 96px;
+    height: 96px;
+  }
+}
+
 
 /* --- Premium Glassy Sonner Toast Styles --- */
 [data-sonner-toast] {
