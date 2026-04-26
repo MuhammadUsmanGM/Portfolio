@@ -6,6 +6,20 @@ import { getPostBySlug } from "@/lib/blog";
 import BlogContent from "./BlogContent";
 
 // Next.js Server Component
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
+  
+  if (!post) {
+    return { title: "Post Not Found" };
+  }
+  
+  return { 
+    title: `${post.title} | Muhammad Usman`, 
+    description: post.excerpt 
+  };
+}
+
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
