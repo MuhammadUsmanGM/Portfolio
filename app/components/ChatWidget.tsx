@@ -130,6 +130,7 @@ const ChatWidget = () => {
 
         <m.button
           onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Close Chat" : "Open Chat"}
           className={`pointer-events-auto w-16 h-16 rounded-full bg-accent/10 backdrop-blur-xl border-2 ${
             isOpen ? "border-accent/60" : "border-accent/30"
           } text-accent shadow-[0_15px_50px_rgba(201,150,12,0.25)] flex items-center justify-center hover:scale-110 active:scale-95 transition-all relative group overflow-hidden`}
@@ -155,6 +156,8 @@ const ChatWidget = () => {
       <AnimatePresence>
         {isOpen && (
           <m.div
+            role="dialog"
+            aria-label="NOVA AI Assistant"
             initial={{ opacity: 0, y: 20, scale: 0.9, transformOrigin: "bottom right" }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
@@ -176,6 +179,7 @@ const ChatWidget = () => {
               </div>
               <button 
                 onClick={() => setIsOpen(false)}
+                aria-label="Close Chat"
                 className="text-accent/60 hover:text-accent transition-colors p-1"
               >
                 <X size={18} />
@@ -256,6 +260,7 @@ const ChatWidget = () => {
                 />
                 <button
                   disabled={!input.trim() || isTyping}
+                  aria-label="Send Message"
                   className="w-10 h-10 rounded-xl bg-accent text-bg flex items-center justify-center shadow-lg shadow-accent/20 hover:scale-105 active:scale-95 disabled:opacity-30 disabled:hover:scale-100 transition-all font-black"
                 >
                   <Send size={16} />

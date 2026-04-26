@@ -28,6 +28,7 @@ const MobileNav = () => {
             <a 
               key={link.name} 
               href={link.href}
+              aria-label={link.name}
               className="flex flex-col items-center gap-0.5 group flex-1"
             >
               <div className="p-1.5 rounded-full group-active:bg-accent/10 transition-colors">
