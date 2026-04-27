@@ -153,8 +153,8 @@ const Skills = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               whileHover={{ y: -8, scale: 1.01, transition: { duration: 0.4 } }}
-              viewport={{ once: true, margin: "100px" }}
-              transition={{ duration: 0.6, delay: (index % 3) * 0.1 }}
+              viewport={{ once: true, margin: "0px 0px 200px 0px", amount: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
             >
               <div className="p-6 sm:p-10 h-full flex flex-col">
                 <div className="flex items-center gap-5 mb-8">
