@@ -159,6 +159,28 @@ const Hero = () => {
             <div className="absolute inset-0 bg-bg-3 rounded-[2rem] -rotate-2 scale-[1.01] pointer-events-none border border-border group-hover:-rotate-6 group-hover:scale-103 transition-all duration-700 ease-out z-10" />
             
             <div className="relative w-full h-full rounded-[2rem] overflow-hidden border border-border/50 bg-bg-2 shadow-2xl group-hover:border-accent/40 group-hover:scale-[1.02] transition-all duration-700 z-20 origin-bottom">
+              {/* Double Stack Watermark — Outlined Blueprint Style */}
+              <div className="absolute inset-0 flex flex-row lg:flex-col items-center justify-center pointer-events-none select-none gap-6 lg:gap-2">
+                <span 
+                  className="inline-block text-[50px] lg:text-[80px] font-black uppercase tracking-tighter leading-none whitespace-nowrap rotate-90 lg:rotate-0 opacity-[0.05]"
+                  style={{ 
+                    WebkitTextStroke: '1px var(--text)',
+                    color: 'transparent'
+                  }}
+                >
+                  SYSTEMS
+                </span>
+                <span 
+                  className="inline-block text-[50px] lg:text-[80px] font-black uppercase tracking-tighter leading-none whitespace-nowrap rotate-90 lg:rotate-0 opacity-[0.05]"
+                  style={{ 
+                    WebkitTextStroke: '1px var(--text)',
+                    color: 'transparent'
+                  }}
+                >
+                  ENGINEER
+                </span>
+              </div>
+
               <Image 
                 src="/main.webp" 
                 alt="Muhammad Usman" 
