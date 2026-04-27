@@ -321,44 +321,6 @@ crypto.decrypt(buf)`
             </ParallaxVisual>
           </m.div>
 
-          {/* ── THE SIGNAL Live Subscribe CTA ── */}
-          {index === 3 && (
-            <m.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="-mt-16 mb-12"
-            >
-              <div className="relative border border-accent/20 bg-bg-2 rounded-2xl px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-6 overflow-hidden">
-                {/* Subtle background glow */}
-                <div className="absolute inset-0 bg-accent/[0.03] pointer-events-none" />
-                <div className="absolute -top-10 -left-10 w-40 h-40 bg-accent/10 blur-3xl rounded-full pointer-events-none" />
-
-                <div className="relative z-10">
-                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-accent mb-1.5 flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse inline-block" />
-                    This pipeline is live
-                  </p>
-                  <p className="text-text font-bold text-base">
-                    Get the output — weekly AI briefings at 9AM your time.
-                  </p>
-                  <p className="text-text-sub text-sm mt-1">
-                    300+ subscribers. Zero noise. Pure signal.
-                  </p>
-                </div>
-
-                <a
-                  href="https://news-letter-umber-five.vercel.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative z-10 flex items-center gap-2 bg-accent text-bg px-7 py-3 rounded-full font-black text-[10px] uppercase tracking-[0.2em] hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_8px_32px_rgba(245,166,35,0.25)] whitespace-nowrap"
-                >
-                  📡 Join The Signal <ArrowUpRight className="w-4 h-4" />
-                </a>
-              </div>
-            </m.div>
-          )}
         </React.Fragment>
       ))}
     </div>
