@@ -158,13 +158,13 @@ const Hero = () => {
             {/* Layer 2: Card Surface — Mid layer separation */}
             <div className="absolute inset-0 bg-bg-3 rounded-[2rem] -rotate-2 scale-[1.01] pointer-events-none border border-border group-hover:-rotate-6 group-hover:scale-103 transition-all duration-700 ease-out z-10" />
             
-            <div className="relative w-full h-full rounded-[2rem] overflow-hidden border border-border/50 bg-bg-2 shadow-2xl group-hover:border-accent/40 transition-colors duration-700 z-20">
+            <div className="relative w-full h-full rounded-[2rem] overflow-hidden border border-border/50 bg-bg-2 shadow-2xl group-hover:border-accent/40 group-hover:scale-[1.02] transition-all duration-700 z-20 origin-bottom">
               <Image 
                 src="/main.webp" 
                 alt="Muhammad Usman" 
                 fill
                 sizes="(max-width: 1024px) 100vw, 42vw"
-                className="object-contain object-bottom transition-all duration-1000 group-hover:scale-105 group-hover:contrast-[1.05]"
+                className="object-contain object-bottom transition-all duration-1000 group-hover:contrast-[1.05]"
                 priority
               />
               
