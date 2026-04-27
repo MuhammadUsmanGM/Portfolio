@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { m, useScroll, useTransform, useSpring } from "framer-motion";
+import { m, useScroll, useTransform, useSpring, useReducedMotion } from "framer-motion";
 
 interface HorizontalScrollTextProps {
   text: string;
@@ -11,7 +11,9 @@ interface HorizontalScrollTextProps {
 const smooth = { stiffness: 80, damping: 30, restDelta: 0.001 };
 
 const HorizontalScrollText = ({ text, direction = "left" }: HorizontalScrollTextProps) => {
+  const shouldReduceMotion = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
+  
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
@@ -22,6 +24,7 @@ const HorizontalScrollText = ({ text, direction = "left" }: HorizontalScrollText
     [0, 1],
     direction === "left" ? ["5%", "-25%"] : ["-25%", "5%"]
   );
+  
   const x = useSpring(rawX, smooth);
 
   return (
@@ -30,7 +33,10 @@ const HorizontalScrollText = ({ text, direction = "left" }: HorizontalScrollText
       className="overflow-hidden -my-6 relative z-0 pointer-events-none select-none"
       aria-hidden="true"
     >
-      <m.div style={{ x }} className="flex whitespace-nowrap gap-12">
+      <m.div 
+        style={{ x: shouldReduceMotion ? "0%" : x }} 
+        className="flex whitespace-nowrap gap-12 will-change-transform"
+      >
         {Array.from({ length: 4 }).map((_, i) => (
           <span
             key={i}

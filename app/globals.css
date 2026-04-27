@@ -108,6 +108,12 @@ body {
   font-family: var(--font-geist-sans), ui-sans-serif, system-ui;
 }
 
+/* Optimized layer promotion for parallax and heavy transform elements */
+.will-change-transform {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
 /* --- Immediate Splash Loader (Anti-Blank Screen) --- */
 #immediate-loader {
   position: fixed;

@@ -47,7 +47,7 @@ const Hero = () => {
     <section ref={sectionRef} className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-32 pb-12 overflow-hidden bg-bg">
       {/* Subtle Grid Background — parallax drift + fade out */}
       <m.div 
-        className="absolute inset-0 opacity-[0.15] pointer-events-none" 
+        className="absolute inset-0 opacity-[0.15] pointer-events-none will-change-transform" 
         style={{ 
           y: gridY, 
           backgroundImage: 'radial-gradient(rgba(201,150,12,0.3) 1px, transparent 1px)', 
@@ -58,12 +58,12 @@ const Hero = () => {
       />
       
       {/* Background Decor — horizontal drift */}
-      <m.div style={{ x: glowX }} className="absolute top-0 right-0 w-[50%] h-full bg-accent/5 blur-[120px] pointer-events-none hidden md:block" />
+      <m.div style={{ x: glowX }} className="absolute top-0 right-0 w-[50%] h-full bg-accent/5 blur-[120px] pointer-events-none hidden md:block will-change-transform" />
       
       <div className="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
         {/* Left Column: Content — fades and drifts on scroll */}
-        <m.div style={{ y: contentY, opacity: contentOpacity }} className="lg:col-span-7 flex flex-col items-start text-left">
+        <m.div style={{ y: contentY, opacity: contentOpacity }} className="lg:col-span-7 flex flex-col items-start text-left will-change-transform">
           <m.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -144,7 +144,7 @@ const Hero = () => {
         </m.div>
 
         {/* Right Column: Photo — parallax lag */}
-      <m.div style={{ y: imageY }} className="lg:col-span-5 relative h-[420px] md:h-[520px] lg:h-[650px] flex items-end">
+      <m.div style={{ y: imageY }} className="lg:col-span-5 relative h-[420px] md:h-[520px] lg:h-[650px] flex items-end will-change-transform">
           <m.div 
             initial={{ opacity: 0, scale: 0.95, y: 40 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}

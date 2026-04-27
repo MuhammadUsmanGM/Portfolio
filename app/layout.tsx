@@ -93,6 +93,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="preload" href="/favicon.webp" as="image" />
         <script
           dangerouslySetInnerHTML={{
             __html: `

@@ -30,7 +30,7 @@ const Loader = () => {
     const timer = setTimeout(() => {
       setIsVisible(false);
       sessionStorage.setItem("loaded", "true");
-    }, 1600); // Increased to 1.6s for a more intentional, high-end feel
+    }, 1000); // Reduced to 1000ms for faster time-to-interactive while maintaining premium feel
 
     return () => {
       clearTimeout(timer);
