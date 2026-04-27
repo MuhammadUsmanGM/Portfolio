@@ -144,25 +144,33 @@ const Hero = () => {
         </m.div>
 
         {/* Right Column: Photo — parallax lag */}
-      <m.div style={{ y: imageY }} className="lg:col-span-5 relative h-[420px] md:h-[520px] lg:h-[650px] flex items-end will-change-transform">
+      <m.div style={{ y: imageY }} className="lg:col-span-5 relative h-[380px] md:h-[480px] lg:h-[600px] flex items-end will-change-transform">
           <m.div 
             initial={{ opacity: 0, scale: 0.95, y: 40 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
+            whileHover={{ y: -8 }}
             transition={{ duration: 1.2, delay: isBot ? 0 : 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="relative w-full h-full transition-all duration-1000"
+            className="relative w-full h-full group cursor-pointer"
           >
-            {/* Visual Backplate */}
-            <div className="absolute inset-0 bg-accent/5 rounded-[2rem] -rotate-2 scale-[1.01] pointer-events-none border border-accent/10" />
+            {/* Layer 1: Bottom Gold Foundation — High Contrast */}
+            <div className="absolute inset-0 bg-accent/30 rounded-[2rem] rotate-4 scale-[1.02] pointer-events-none border border-accent/40 group-hover:rotate-8 group-hover:scale-105 transition-all duration-700 ease-out z-0 shadow-lg" />
             
-            <div className="relative w-full h-full rounded-[2rem] overflow-hidden border border-border/50 bg-bg-2 shadow-2xl">
+            {/* Layer 2: Card Surface — Mid layer separation */}
+            <div className="absolute inset-0 bg-bg-3 rounded-[2rem] -rotate-2 scale-[1.01] pointer-events-none border border-border group-hover:-rotate-6 group-hover:scale-103 transition-all duration-700 ease-out z-10" />
+            
+            <div className="relative w-full h-full rounded-[2rem] overflow-hidden border border-border/50 bg-bg-2 shadow-2xl group-hover:border-accent/40 transition-colors duration-700 z-20">
               <Image 
                 src="/main.webp" 
                 alt="Muhammad Usman" 
                 fill
                 sizes="(max-width: 1024px) 100vw, 42vw"
-                className="object-contain object-bottom"
+                className="object-contain object-bottom transition-all duration-1000 group-hover:scale-105 group-hover:contrast-[1.05]"
                 priority
               />
+              
+              {/* Premium Light Sweep Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none" />
+              
               {/* Bottom Fade Integration */}
               <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-bg via-bg/40 to-transparent z-10" />
             </div>
