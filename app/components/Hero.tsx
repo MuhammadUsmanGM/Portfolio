@@ -149,7 +149,7 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.95, y: 40 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1.2, delay: isBot ? 0 : 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="relative w-full h-full grayscale-[0.5] hover:grayscale-0 transition-all duration-1000"
+            className="relative w-full h-full transition-all duration-1000"
           >
             {/* Visual Backplate */}
             <div className="absolute inset-0 bg-accent/5 rounded-[2rem] -rotate-2 scale-[1.01] pointer-events-none border border-accent/10" />
