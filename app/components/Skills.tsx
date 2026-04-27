@@ -19,7 +19,7 @@ const SpotlightCard = ({ children, className = "", ...props }: { children: React
     <m.div
       {...props}
       onMouseMove={handleMouseMove}
-      className={`group relative rounded-3xl border border-border/40 bg-bg-2/50 backdrop-blur-xl transition-all duration-500 hover:border-accent/30 hover:shadow-2xl hover:shadow-accent/5 ${className}`}
+      className={`group relative rounded-3xl border border-border/40 bg-bg-2/50 backdrop-blur-xl hover:border-accent/30 hover:shadow-2xl hover:shadow-accent/5 ${className}`}
     >
       <m.div
         className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition duration-300 group-hover:opacity-100"
@@ -153,7 +153,7 @@ const Skills = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               whileHover={{ y: -8, scale: 1.01, transition: { duration: 0.4 } }}
-              viewport={{ once: true, margin: "50px" }}
+              viewport={{ once: true, margin: "100px" }}
               transition={{ duration: 0.6, delay: (index % 3) * 0.1 }}
             >
               <div className="p-6 sm:p-10 h-full flex flex-col">
