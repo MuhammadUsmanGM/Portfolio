@@ -50,38 +50,72 @@ const ChatWidget = () => {
     }
   }, [messages, isTyping, isOpen]);
 
-  const submitMessage = async (text: string) => {
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
+
+  const FALLBACK_MESSAGES = [
+    "Primary cortex overloaded. Engaging secondary neural pathways...",
+    "Gemini quota reached. Switching to Llama-3 high-speed core...",
+    "Brain swap initiated. Transferring context to backup nodes...",
+    "Heads up: Primary brain is napping. Waking up the backup...",
+    "Neural link severed. Reconnecting via Groq LPU...",
+    "Synapse failure detected. Re-routing via decentralized intelligence...",
+    "Primary model offline. Deploying redundant inference engine...",
+    "Quantum fluctuations detected. Recalibrating via Groq...",
+    "Data bottleneck. Upshifting to Llama-3-8B-Instant...",
+    "Cognitive failover active. Switching to secondary architecture..."
+  ];
+
+  const submitMessage = async (text: string, forceProvider?: string) => {
     if (!text.trim() || isTyping) return;
 
-    const userMessage: Message = { role: "user", content: text };
+    if (!forceProvider) {
+      const userMessage: Message = { role: "user", content: text };
+      setMessages((prev) => [...prev, userMessage].slice(-20));
+      setInput("");
+    }
     
-    // Rolling window: Keep only the last 19 messages to make room for the new one (total 20)
-    setMessages((prev) => {
-      const newMessages = [...prev, userMessage];
-      return newMessages.slice(-20);
-    });
-    
-    setInput("");
     setIsTyping(true);
 
     try {
+      // Step 1: Try Gemini (or the forced provider)
       const response = await fetch("/api/nova", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: [...messages.slice(-19), userMessage] }),
+        body: JSON.stringify({ 
+          messages: [...messages.slice(-19), { role: "user", content: text }],
+          provider: forceProvider || "gemini" 
+        }),
       });
 
       const data = await response.json();
+      
       if (data.content) {
         setMessages((prev) => [...prev, { role: "bot" as const, content: data.content }].slice(-20));
+        setStatusMessage(null);
+      } else if (!forceProvider) {
+        // Step 2: If Gemini fails and we haven't tried Groq yet, trigger failover
+        throw new Error("Trigger Failover");
       } else {
-        throw new Error("No response");
+        throw new Error("Critical Failure");
       }
     } catch (err) {
+      if (!forceProvider) {
+        // Show random swap message and retry with Groq
+        const randomMsg = FALLBACK_MESSAGES[Math.floor(Math.random() * FALLBACK_MESSAGES.length)];
+        setStatusMessage(randomMsg);
+        
+        // Wait a bit so the user can read the cool message
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        
+        // Retry with Groq
+        return submitMessage(text, "groq");
+      }
+
       setMessages((prev) => [
         ...prev,
         { role: "bot" as const, content: "I encountered a minor system glitch. Please try again or contact Usman directly!" },
       ].slice(-20));
+      setStatusMessage(null);
     } finally {
       setIsTyping(false);
     }
@@ -208,12 +242,23 @@ const ChatWidget = () => {
               ))}
               
               {isTyping && (
-                <div className="flex justify-start">
-                  <div className="bg-bg border border-border/30 px-4 py-3 rounded-2xl rounded-tl-none flex gap-1 items-center">
-                    <span className="w-1 h-1 rounded-full bg-accent animate-bounce" />
-                    <span className="w-1 h-1 rounded-full bg-accent animate-bounce [animation-delay:0.2s]" />
-                    <span className="w-1 h-1 rounded-full bg-accent animate-bounce [animation-delay:0.4s]" />
+                <div className="flex flex-col gap-2">
+                  <div className="flex justify-start">
+                    <div className="bg-bg border border-border/30 px-4 py-3 rounded-2xl rounded-tl-none flex gap-1 items-center shadow-sm">
+                      <span className="w-1 h-1 rounded-full bg-accent animate-bounce" />
+                      <span className="w-1 h-1 rounded-full bg-accent animate-bounce [animation-delay:0.2s]" />
+                      <span className="w-1 h-1 rounded-full bg-accent animate-bounce [animation-delay:0.4s]" />
+                    </div>
                   </div>
+                  {statusMessage && (
+                    <m.span 
+                      initial={{ opacity: 0, y: 5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="text-[9px] font-black uppercase tracking-widest text-accent/80 pl-2 animate-pulse"
+                    >
+                      {statusMessage}
+                    </m.span>
+                  )}
                 </div>
               )}
 
