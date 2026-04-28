@@ -124,7 +124,8 @@ export async function POST(req: Request) {
     const ALL_STEPS = [
       { provider: "gemini", model: "gemini-2.5-flash-lite" },
       { provider: "gemini", model: "gemini-2.5-flash" },
-      { provider: "groq", model: "llama-3.1-8b-instant" }
+      { provider: "groq", model: "llama-3.1-8b-instant" },
+      { provider: "openrouter", model: "openrouter/free" }
     ];
 
     const STRATEGY = provider 
@@ -146,14 +147,19 @@ export async function POST(req: Request) {
           ]);
           const res = await result.response;
           finalResponse = res.text();
-        } else if (step.provider === "groq") {
-          if (!process.env.GROQ_API_KEY) throw new Error("GROQ_API_KEY missing");
+        } else if (step.provider === "groq" || step.provider === "openrouter") {
+          const apiKey = step.provider === "groq" ? process.env.GROQ_API_KEY : process.env.OPENROUTER_API_KEY;
+          const baseUrl = step.provider === "groq" ? "https://api.groq.com/openai/v1" : "https://openrouter.ai/api/v1";
           
-          const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+          if (!apiKey) throw new Error(`${step.provider.toUpperCase()}_API_KEY missing`);
+          
+          const response = await fetch(`${baseUrl}/chat/completions`, {
             method: "POST",
             headers: {
-              "Authorization": `Bearer ${process.env.GROQ_API_KEY}`,
+              "Authorization": `Bearer ${apiKey}`,
               "Content-Type": "application/json",
+              "HTTP-Referer": "https://buildwithusman.me", // Required by OpenRouter
+              "X-Title": "Usman Portfolio",
             },
             body: JSON.stringify({
               model: step.model,
@@ -168,7 +174,7 @@ export async function POST(req: Request) {
             }),
           });
           
-          if (!response.ok) throw new Error(`Groq API returned ${response.status}`);
+          if (!response.ok) throw new Error(`${step.provider} API returned ${response.status}`);
           const data = await response.json();
           finalResponse = data.choices[0].message.content;
         }

@@ -41,6 +41,8 @@ const ChatWidget = () => {
     }
   };
 
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
+
   // Consolodated scroll logic — handles message updates and opening transitions
   useEffect(() => {
     if (isOpen) {
@@ -48,42 +50,48 @@ const ChatWidget = () => {
       const timer = setTimeout(scrollToBottom, 100);
       return () => clearTimeout(timer);
     }
-  }, [messages, isTyping, isOpen]);
-
-  const [statusMessage, setStatusMessage] = useState<string | null>(null);
+  }, [messages, isTyping, isOpen, statusMessage]);
 
   const FALLBACK_MESSAGES = [
-    "Primary cortex overloaded. Engaging secondary neural pathways...",
-    "Gemini quota reached. Switching to Llama-3 high-speed core...",
-    "Brain swap initiated. Transferring context to backup nodes...",
-    "Heads up: Primary brain is napping. Waking up the backup...",
-    "Neural link severed. Reconnecting via Groq LPU...",
-    "Synapse failure detected. Re-routing via decentralized intelligence...",
-    "Primary model offline. Deploying redundant inference engine...",
-    "Quantum fluctuations detected. Recalibrating via Groq...",
-    "Data bottleneck. Upshifting to Llama-3-8B-Instant...",
-    "Cognitive failover active. Switching to secondary architecture..."
+    "Latency detected. Optimizing neural routing...",
+    "Primary inference engine congested. Initiating secondary failover...",
+    "Re-routing context to high-performance inference cluster...",
+    "Synthesizing response via redundant architectural nodes...",
+    "Architectural failover active. Switching to secondary processing unit...",
+    "System workload optimization in progress. Re-routing query...",
+    "Synchronizing with backup intelligence stack...",
+    "Network congestion detected. Transitioning to secondary LLM core...",
+    "Load balancing initiated. Deploying alternative compute resources...",
+    "Cognitive redundancy active. Bridging to secondary inference layer..."
   ];
 
-  const submitMessage = async (text: string, forceProvider?: string) => {
-    if (!text.trim() || isTyping) return;
+  const SECONDARY_FALLBACK = [
+    "Secondary node saturated. Diverting to global mesh...",
+    "Inference latency exceeded. Re-routing to tertiary infrastructure...",
+    "Network failover protocol engaged. Deploying redundant nodes...",
+    "Global load balancing active. Transitioning to tertiary core...",
+    "Stability protocol initiated. Bridging to emergency inference cluster..."
+  ];
 
-    if (!forceProvider) {
+  const submitMessage = async (text: string, provider: "gemini" | "groq" | "openrouter" = "gemini") => {
+    if (!text.trim() || (isTyping && provider === "gemini")) return;
+
+    if (provider === "gemini") {
       const userMessage: Message = { role: "user", content: text };
       setMessages((prev) => [...prev, userMessage].slice(-20));
       setInput("");
+      setStatusMessage(null);
     }
     
     setIsTyping(true);
 
     try {
-      // Step 1: Try Gemini (or the forced provider)
       const response = await fetch("/api/nova", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
           messages: [...messages.slice(-19), { role: "user", content: text }],
-          provider: forceProvider || "gemini" 
+          provider: provider 
         }),
       });
 
@@ -92,32 +100,29 @@ const ChatWidget = () => {
       if (data.content) {
         setMessages((prev) => [...prev, { role: "bot" as const, content: data.content }].slice(-20));
         setStatusMessage(null);
-      } else if (!forceProvider) {
-        // Step 2: If Gemini fails and we haven't tried Groq yet, trigger failover
-        throw new Error("Trigger Failover");
+        setIsTyping(false); // End typing on success
       } else {
-        throw new Error("Critical Failure");
+        throw new Error("Trigger Failover");
       }
     } catch (err) {
-      if (!forceProvider) {
-        // Show random swap message and retry with Groq
+      if (provider === "gemini") {
         const randomMsg = FALLBACK_MESSAGES[Math.floor(Math.random() * FALLBACK_MESSAGES.length)];
         setStatusMessage(randomMsg);
-        
-        // Wait a bit so the user can read the cool message
         await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        // Retry with Groq
-        return submitMessage(text, "groq");
+        return submitMessage(text, "groq"); // Recursion handles isTyping
+      } else if (provider === "groq") {
+        const randomMsg = SECONDARY_FALLBACK[Math.floor(Math.random() * SECONDARY_FALLBACK.length)];
+        setStatusMessage(randomMsg);
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        return submitMessage(text, "openrouter");
       }
 
       setMessages((prev) => [
         ...prev,
-        { role: "bot" as const, content: "I encountered a minor system glitch. Please try again or contact Usman directly!" },
+        { role: "bot" as const, content: "All systems are currently undergoing maintenance. Please try again or contact Usman directly!" },
       ].slice(-20));
       setStatusMessage(null);
-    } finally {
-      setIsTyping(false);
+      setIsTyping(false); // End typing on total failure
     }
   };
 
@@ -251,13 +256,20 @@ const ChatWidget = () => {
                     </div>
                   </div>
                   {statusMessage && (
-                    <m.span 
-                      initial={{ opacity: 0, y: 5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="text-[9px] font-black uppercase tracking-widest text-accent/80 pl-2 animate-pulse"
+                    <m.div 
+                      initial={{ opacity: 0, scale: 0.95, y: 5 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      className="mt-1 ml-2 flex items-center gap-2.5 px-3 py-1.5 bg-accent/5 backdrop-blur-md border border-accent/20 rounded-full w-fit shadow-[0_0_20px_rgba(201,150,12,0.05)]"
                     >
-                      {statusMessage}
-                    </m.span>
+                      <div className="relative flex items-center justify-center w-2 h-2">
+                        <div className="absolute inset-0 bg-accent rounded-full animate-ping opacity-40" />
+                        <div className="relative w-1.5 h-1.5 bg-accent rounded-full shadow-[0_0_8px_rgba(201,150,12,0.8)]" />
+                      </div>
+                      <span className="text-[8px] font-mono uppercase tracking-[0.15em] text-accent/90 font-bold">
+                        {statusMessage}
+                      </span>
+                    </m.div>
                   )}
                 </div>
               )}
