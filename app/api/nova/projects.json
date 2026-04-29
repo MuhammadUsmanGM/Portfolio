@@ -1,5 +1,155 @@
 [
   {
+    "id": "portable-ai",
+    "year": "2026",
+    "name": "Portable AI",
+    "highlight": "Offline Cross-OS AI | Resumable Setup",
+    "description": "The ultimate solution for fully offline AI mobility. A CLI engine that transforms any USB drive into a high-performance, cross-platform AI workstation featuring Ollama and AnythingLLM.",
+    "tech": [
+      "TypeScript",
+      "Node.js",
+      "Ollama",
+      "Commander",
+      "EJS",
+      "AnythingLLM"
+    ],
+    "categories": [
+      "AI & Agents",
+      "Systems Engineering",
+      "Developer Tools"
+    ],
+    "type": "Portable Infrastructure",
+    "status": "v1.0.0",
+    "github": "https://github.com/MuhammadUsmanGM/portableai",
+    "links": [
+      {
+        "label": "NPM PACKAGE",
+        "url": "https://www.npmjs.com/package/portable-ai"
+      }
+    ],
+    "installCommand": "npx portable-ai install",
+    "image": "https://placehold.co/1200x800/0a0a0f/3178C6?text=PORTABLE+AI+OFFLINE+ENGINE",
+    "bannerVariant": "matrix",
+    "bannerVersion": "v1.0.0",
+    "bannerStatus": "READY",
+    "customVisual": "/projects/portable-ai-arch.svg",
+    "codeSnippet": "// Cross-Platform USB Logic\nconst target = await detectUSB();\nawait engine.deploy('ollama', target);\nawait ui.bundle('anything-llm', target);\nawait scripts.generateLaunchers(target);",
+    "benchmarks": [
+      {
+        "label": "OS Support",
+        "value": "Dual",
+        "detail": "Windows & macOS (Universal)"
+      },
+      {
+        "label": "Setup Efficiency",
+        "value": "Resumable",
+        "detail": "Idempotent download logic"
+      },
+      {
+        "label": "Privacy Core",
+        "value": "100%",
+        "detail": "Zero-data footprint on host"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Dual-OS Runtime Orchestration",
+        "icon": "Layers",
+        "content": "Engineered a sophisticated filesystem layout that shares model weights and chat data across Windows and macOS while maintaining separate, optimized binaries for the Ollama engine and UI interface on a single exFAT partition."
+      },
+      {
+        "title": "Standalone Binary Launchers",
+        "icon": "Zap",
+        "content": "Developed a zero-dependency startup protocol using EJS-templated `.bat` and `.command` scripts. These launchers handle runtime path injection and environment isolation, allowing the AI to run on target machines without requiring Node.js or pre-installed drivers."
+      },
+      {
+        "title": "Resilient Asset Delivery",
+        "icon": "ShieldCheck",
+        "content": "Implemented a robust download manager with SHA-256 integrity verification and byte-range resumption. This ensures that massive AI models (5GB+) can be safely transferred to removable media even in unstable network environments."
+      }
+    ],
+    "learnings": [
+      "Cross-platform filesystem permissions (especially on macOS) are the primary challenge for portable executables; standardizing on exFAT is a mandatory compromise.",
+      "The Model Context Protocol (MCP) and Ollama's local API are making it increasingly viable to decouple the 'brain' from the 'host' machine.",
+      "Providing a 'Zero Footprint' guarantee is a major trust-builder for privacy-conscious users in the AI space."
+    ]
+  },
+  {
+    "id": "mcp-probe",
+    "year": "2026",
+    "name": "MCPProbe",
+    "highlight": "Health Scoring | 13+ Client Support",
+    "description": "The definitive diagnostic layer for the Model Context Protocol (MCP) ecosystem. Instantly probe any MCP server to extract tools, verify client compatibility, and generate production configs.",
+    "tech": [
+      "TypeScript",
+      "Node.js",
+      "@modelcontextprotocol/sdk",
+      "Commander",
+      "Zod",
+      "Vite"
+    ],
+    "categories": [
+      "AI & Agents",
+      "Systems Engineering",
+      "Developer Tools"
+    ],
+    "type": "Diagnostic Engineering",
+    "status": "v1.0.0",
+    "github": "https://github.com/MuhammadUsmanGM/McpProbe",
+    "links": [
+      {
+        "label": "NPM PACKAGE",
+        "url": "https://www.npmjs.com/package/mcpprobe"
+      }
+    ],
+    "installCommand": "npx mcpprobe <github-url-or-local-path>",
+    "image": "https://placehold.co/1200x800/0a0a0f/8B5CF6?text=MCP+PROBE+DIAGNOSTICS",
+    "bannerVariant": "crystal",
+    "bannerVersion": "v1.0.0",
+    "bannerStatus": "OPERATIONAL",
+    "customVisual": "/projects/mcpprobe-arch.svg",
+    "codeSnippet": "// Universal MCP Diagnostics\nconst report = await probe.analyze(serverUrl);\nconsole.log(`Health: ${report.score}/100`);\n// Identified Tools: [google_search, get_weather]\n// Compatibility: Cursor [OK], Claude [OK]",
+    "benchmarks": [
+      {
+        "label": "Probe Latency",
+        "value": "< 2s",
+        "detail": "Sub-second server discovery"
+      },
+      {
+        "label": "Client Matrix",
+        "value": "13+",
+        "detail": "Major AI clients supported"
+      },
+      {
+        "label": "Health Grading",
+        "value": "Strict",
+        "detail": "0-100 logic-driven scoring"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Introspective Server Analysis",
+        "icon": "Search",
+        "content": "Engineered a robust scanning engine that establishes Stdio or SSE connections to perform full introspective analysis. It extracts tool schemas, resource templates, and prompt definitions, providing a clear map of server capabilities."
+      },
+      {
+        "title": "Client Compatibility Matrix",
+        "icon": "CheckCircle",
+        "content": "Developed a rigid verification layer that tests server implementations against specific requirements of Cursor, Claude Desktop, and VS Code. This ensures developers can ship MCP tools that work reliably across the entire AI interface landscape."
+      },
+      {
+        "title": "Smart Config Orchestration",
+        "icon": "Settings",
+        "content": "Implemented an automated generator that outputs production-ready JSON configurations tailored to individual AI clients. It handles path resolution, environment variables, and client-specific boilerplate with zero manual intervention."
+      }
+    ],
+    "learnings": [
+      "The MCP ecosystem lacks standardized validation; a central diagnostic tool is essential for developer trust and rapid prototyping.",
+      "Asynchronous transport discovery (Stdio vs SSE) is the most fragile part of the protocol—robust retry logic and timeouts are mandatory.",
+      "Quantitative 'Health Scores' significantly improve developer focus by gamifying the iterative improvement of tool documentation."
+    ]
+  },
+  {
     "id": "autonoma",
     "year": "2026",
     "name": "Autonoma",
