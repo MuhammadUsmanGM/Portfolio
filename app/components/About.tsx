@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import { m, useScroll, useTransform, useSpring } from "framer-motion";
-import { Brain, Code, Terminal, Zap } from "lucide-react";
+import { Brain, Code, Terminal, Zap, FileText } from "lucide-react";
 
 const About = () => {
   // Scroll-driven parallax for portrait and watermark
@@ -82,24 +82,39 @@ const About = () => {
               </p>
             </m.div>
 
-            <m.a
-              href="https://github.com/MuhammadUsmanGM"
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="mt-12 p-6 rounded-[2rem] bg-bg-2/30 backdrop-blur-xl border border-border/20 inline-flex items-center gap-5 group hover:border-accent/40 hover:bg-bg-2/50 transition-all cursor-pointer shadow-sm"
-            >
-              <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center border border-accent/20 group-hover:bg-accent group-hover:border-accent transition-all duration-500 relative overflow-hidden">
-                <Terminal className="w-6 h-6 text-accent group-hover:text-bg relative z-10 transition-colors duration-500" />
-              </div>
-              <div>
-                <span className="block text-[10px] font-black uppercase tracking-widest text-muted group-hover:text-accent transition-colors mb-1">Currently Exploring</span>
-                <span className="block text-sm font-bold text-text uppercase tracking-tight">Advanced Agentic Architectures</span>
-              </div>
-            </m.a>
+            <div className="flex flex-col items-start gap-6 mt-12">
+              <m.a
+                href="https://github.com/MuhammadUsmanGM"
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="p-6 rounded-[2rem] bg-bg-2/30 backdrop-blur-xl border border-border/20 inline-flex items-center gap-5 group hover:border-accent/40 hover:bg-bg-2/50 transition-all cursor-pointer shadow-sm"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center border border-accent/20 group-hover:bg-accent group-hover:border-accent transition-all duration-500 relative overflow-hidden">
+                  <Terminal className="w-6 h-6 text-accent group-hover:text-bg relative z-10 transition-colors duration-500" />
+                </div>
+                <div>
+                  <span className="block text-[10px] font-black uppercase tracking-widest text-muted group-hover:text-accent transition-colors mb-1">Currently Exploring</span>
+                  <span className="block text-sm font-bold text-text uppercase tracking-tight">Advanced Agentic Architectures</span>
+                </div>
+              </m.a>
+
+              <m.a
+                href="/Muhammad_Usman_Resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="group flex items-center gap-3 px-10 py-4 bg-transparent border border-border/50 text-text hover:border-accent hover:text-accent rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all duration-300 shadow-sm"
+              >
+                <FileText className="w-4 h-4 transition-transform group-hover:scale-110" /> View Resume
+              </m.a>
+            </div>
           </div>
 
           {/* Right: Technical Pillars & Portrait */}
