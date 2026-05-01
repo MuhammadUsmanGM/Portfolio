@@ -6,6 +6,8 @@ import MobileNav from "./components/MobileNav";
 import Loader from "./components/Loader";
 import ChatWidget from "./components/ChatWidget";
 import { LazyMotion, domAnimation } from "framer-motion";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -154,6 +156,8 @@ export default function RootLayout({
           <MobileNav />
           <ChatWidget />
         </LazyMotion>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
