@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { m, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, FileText } from "lucide-react";
+import { Activity, Calendar } from "lucide-react";
 
 const Hero = () => {
   const words = ["Automate", "Scale", "Ship"];
@@ -99,18 +99,18 @@ const Hero = () => {
             className="flex flex-wrap items-center gap-5 mt-4"
           >
             <a 
-              href="#work" 
-              className="group flex items-center gap-3 px-10 py-4 bg-accent text-bg rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-[0_8px_32px_rgba(245,166,35,0.25)]"
-            >
-              View Work <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </a>
-            <a 
-              href="/Muhammad_Usman_Resume.pdf" 
+              href="https://cal.com/muhammad-usman-gaw8p2/ai-infrastructure-automation-audit" 
               target="_blank"
               rel="noreferrer"
+              className="group flex items-center gap-3 px-10 py-4 bg-accent text-bg rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-[0_8px_32px_rgba(245,166,35,0.25)]"
+            >
+              Book Strategy Call <Calendar className="w-4 h-4 group-hover:scale-110 transition-transform" />
+            </a>
+            <a 
+              href="#work" 
               className="group flex items-center gap-3 px-10 py-4 bg-bg-2/30 backdrop-blur-md border border-border/50 text-text hover:bg-text hover:text-bg hover:border-text rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all duration-300 hover:scale-105 active:scale-95 shadow-sm"
             >
-              Resume <FileText className="w-4 h-4 transition-transform group-hover:scale-110" />
+              View Case Studies <Activity className="w-4 h-4 transition-transform group-hover:scale-110" />
             </a>
           </m.div>
         </div>
