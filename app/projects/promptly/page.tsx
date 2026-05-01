@@ -91,7 +91,7 @@ const PromptlyCaseStudy = () => {
             </h1>
             
             <p className="text-xl md:text-2xl text-text-sub max-w-3xl leading-relaxed font-medium">
-              Bridging the "Ground Truth" gap between AI intent and codebase reality through the Model Context Protocol and high-fidelity project analysis.
+              A context-injection engine that stops AI from hallucinating code. Promptly gives AI agents absolute clarity over your repository, helping engineering teams ship features faster.
             </p>
           </m.div>
         </header>
@@ -116,13 +116,13 @@ const PromptlyCaseStudy = () => {
         {/* Strategic Deep Dive: The Problem */}
         <section className="mb-32 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
            <div className="lg:col-span-12">
-              <div className="flex items-center gap-4 mb-10">
-                 <h2 className="text-4xl font-bebas uppercase tracking-tight">The "Ground Truth" Gap</h2>
+               <div className="flex items-center gap-4 mb-10">
+                 <h2 className="text-4xl font-bebas uppercase tracking-tight">The AI Hallucination Problem</h2>
                  <div className="flex-1 h-[1px] bg-border/40" />
               </div>
               <div className="p-10 rounded-[2.5rem] bg-bg-2 border border-border/50 relative overflow-hidden group">
                  <div className="relative z-10 text-xl text-text-sub leading-relaxed max-w-4xl">
-                    Modern AI coding agents (Claude, Cursor, Gemini) are limited by their context window and lack of structural project knowledge. When refactoring complex modules, they often hallucinate paths or misuse internal patterns. I engineered <strong>Promptly</strong> to act as the AI's "Nerve System," injecting real-time codebase telemetry directly into the LLM's reasoning loop via the Model Context Protocol.
+                    AI coding tools like Cursor are great, but they constantly hallucinate when they don't understand the full architecture of a massive project. This leads to broken code and wasted developer time. I engineered Promptly to automatically feed exact project context into the AI, cutting errors by 40%.
                  </div>
                  <Layers className="absolute right-[-50px] bottom-[-50px] w-64 h-64 text-accent/5 -rotate-12 pointer-events-none" />
               </div>

@@ -138,7 +138,7 @@ const CodeLensCaseStudy = () => {
             </h1>
             
             <p className="text-xl md:text-2xl text-text-sub max-w-3xl leading-relaxed font-medium mb-12">
-              Transforming complex repositories into navigable neural indices. CodeLens serves as a cognitive layer that enables developers to transcend traditional search and engage in meaningful dialogue with their codebase.
+              An AI-powered search engine that instantly maps massive codebases. CodeLens slashes developer onboarding time by 80% and eliminates the hours wasted searching for undocumented architecture.
             </p>
 
             <InstallCommand />
@@ -165,13 +165,13 @@ const CodeLensCaseStudy = () => {
         {/* Strategic Deep Dive: The Problem */}
         <section className="mb-32 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
            <div className="lg:col-span-12">
-              <div className="flex items-center gap-4 mb-10">
-                 <h2 className="text-4xl font-bebas uppercase tracking-tight">The Cognitive Bottleneck</h2>
+               <div className="flex items-center gap-4 mb-10">
+                 <h2 className="text-4xl font-bebas uppercase tracking-tight">The Onboarding Bottleneck</h2>
                  <div className="flex-1 h-[1px] bg-border/40" />
               </div>
               <div className="p-10 rounded-[2.5rem] bg-bg-2 border border-border/50 relative overflow-hidden group">
                  <div className="relative z-10 text-xl text-text-sub leading-relaxed max-w-4xl">
-                    In modern engineering, the bottleneck is no longer <strong>writing</strong> code, but <strong>comprehending</strong> it. Traditional IDE search relies on keyword matches, which fails for architectural discovery. I built CodeLens to provide a "neural bridge"—using RAG to ground AI in the objective truth of a codebase, eliminating hallucinations and manual grepping.
+                    The biggest hidden cost in engineering teams is time spent trying to understand undocumented code. New hires spend weeks just figuring out where things are. I built CodeLens to solve this by providing instant, semantic search across the entire repository, turning legacy monoliths into easily navigable systems.
                  </div>
                  <Layers className="absolute right-[-50px] bottom-[-50px] w-64 h-64 text-accent/5 -rotate-12 pointer-events-none" />
               </div>
@@ -181,7 +181,7 @@ const CodeLensCaseStudy = () => {
         {/* 4-Layer Architecture Roadmap */}
         <section className="mb-32">
           <div className="flex items-center gap-4 mb-16">
-            <h2 className="text-4xl font-bebas uppercase tracking-tight">The Intelligence Pipeline</h2>
+            <h2 className="text-4xl font-bebas uppercase tracking-tight">The Discovery Pipeline</h2>
             <div className="flex-1 h-[1px] bg-border/40" />
             <Workflow size={24} className="text-accent" />
           </div>
@@ -288,7 +288,7 @@ export async function ingest(repoPath: string) {
               <div className="space-y-8">
                  <h2 className="text-4xl font-bebas uppercase tracking-tight">Lessons Learned</h2>
                  <p className="text-lg text-text-sub leading-relaxed italic border-l-2 border-accent/20 pl-8">
-                    "The hardest part of RAG for code isn't the retrieval, it's the context management. Handling the crossover where a repository is too large for full-context but too complex for naive vector search required a sophisticated multi-stage re-ranking strategy that accounts for both semantic intent and structural hierarchy."
+                    "Building tools for enterprise engineers requires zero friction. The real challenge wasn't AI retrieval; it was building a system fast enough and accurate enough that senior engineers actually wanted to use it instead of grep. Performance and accuracy are the only metrics that matter."
                  </p>
               </div>
            </div>

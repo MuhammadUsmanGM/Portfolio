@@ -115,9 +115,9 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: isBot ? 0 : 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="text-lg md:text-xl text-text-sub max-w-xl mb-12 leading-relaxed"
           >
-            Architecting <span className="text-text font-bold">LLM pipelines</span> & 
-            <span className="text-text font-bold"> autonomous agents</span> that automate 
-            high-value operations and <span className="text-text font-bold">reduce overhead</span> for scaling businesses.
+            Replacing manual workflows with <span className="text-text font-bold">autonomous AI systems</span> to 
+            <span className="text-text font-bold"> cut operational costs</span>, eliminate bottlenecks, and drive 
+            measurable ROI for scaling businesses.
           </m.p>
 
           <m.div 

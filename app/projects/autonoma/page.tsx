@@ -97,7 +97,7 @@ const AutonomaCaseStudy = () => {
             </h1>
             
             <p className="text-xl md:text-2xl text-text-sub max-w-3xl leading-relaxed font-medium">
-              An open-source AI agent platform designed to build, deploy, and run digital employees. Bridging the gap between reactive chatbots and proactive, memory-augmented digital operators.
+              An autonomous AI workforce platform that automates complex customer support and internal operations. Built to cut headcount costs and eliminate repetitive human workflows across any channel.
             </p>
           </m.div>
         </header>
@@ -122,13 +122,13 @@ const AutonomaCaseStudy = () => {
         {/* Strategic Deep Dive: The Problem */}
         <section className="mb-32 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
            <div className="lg:col-span-12">
-              <div className="flex items-center gap-4 mb-10">
-                 <h2 className="text-4xl font-bebas uppercase tracking-tight">The Observability Gap</h2>
+               <div className="flex items-center gap-4 mb-10">
+                 <h2 className="text-4xl font-bebas uppercase tracking-tight">The Black Box Problem</h2>
                  <div className="flex-1 h-[1px] bg-border/40" />
               </div>
               <div className="p-10 rounded-[2.5rem] bg-bg-2 border border-border/50 relative overflow-hidden group">
                  <div className="relative z-10 text-xl text-text-sub leading-relaxed max-w-4xl">
-                    Most AI agent frameworks are black boxes. You throw a prompt in and hope the right tools execute. I built Autonoma to solve the <strong>observability capability gap</strong>. It introduces a high-fidelity React dashboard acting as a HUD—allowing operators to monitor execution latency via Gantt charts, edit the agent's memory registry dynamically, and enforce strict execution boundaries using an isolated sandbox.
+                    Most AI systems fail in production because founders can't track what the AI is actually doing. I built Autonoma to provide total operational transparency—giving businesses a live dashboard to monitor AI workflows, step-in when needed, and guarantee 100% reliable execution.
                  </div>
                  <Layers className="absolute right-[-50px] bottom-[-50px] w-64 h-64 text-accent/5 -rotate-12 pointer-events-none" />
               </div>
@@ -138,7 +138,7 @@ const AutonomaCaseStudy = () => {
         {/* 4-Layer Architecture Roadmap */}
         <section className="mb-32">
           <div className="flex items-center gap-4 mb-16">
-            <h2 className="text-4xl font-bebas uppercase tracking-tight">The Intelligence Framework</h2>
+            <h2 className="text-4xl font-bebas uppercase tracking-tight">The Automation Engine</h2>
             <div className="flex-1 h-[1px] bg-border/40" />
             <Workflow size={24} className="text-accent" />
           </div>
@@ -239,9 +239,9 @@ class CognitiveEngine:
               </div>
 
               <div className="space-y-8">
-                 <h2 className="text-4xl font-bebas uppercase tracking-tight">The Reality Check</h2>
+                 <h2 className="text-4xl font-bebas uppercase tracking-tight">The Business Reality</h2>
                  <p className="text-lg text-text-sub leading-relaxed italic border-l-2 border-accent/20 pl-8">
-                    "Agents degrade over time without strong state management. Most open-source toys fail because their context window fills with garbage. Building Autonoma proved that a robust memory architecture with algorithmic decay and Jaccard deduplication is 10x more important than the choice of foundation model."
+                    "AI is useless if it forgets context or hallucinates data. Businesses don't care about which foundation model you use; they care if the AI can reliably execute a 10-step workflow without failing. Building Autonoma proved that deterministic memory and strict execution boundaries are the only way to scale AI operations."
                  </p>
               </div>
            </div>

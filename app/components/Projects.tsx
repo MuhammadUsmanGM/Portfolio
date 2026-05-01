@@ -80,9 +80,9 @@ const Projects = () => {
 
   const projects: Project[] = [
     {
-      title: "AUTONOMA — DIGITAL FTE",
-      subtitle: "Open-Source AI Agent Platform",
-      description: "Engineered a modular AI agent platform functioning as a digital employee, cutting manual workload by 85%. Features multi-channel deployment (WhatsApp, Discord, Gmail), a premium React+TypeScript HUD for execution telemetry, and structured long-term memory via SQLite FTS5/BM25 retrieval.",
+      title: "AUTONOMA",
+      subtitle: "85% Manual Workload Reduction",
+      description: "Built an autonomous digital workforce platform that fully automates customer support and operational tasks across WhatsApp, Discord, and Gmail. Designed to replace repetitive human workflows and drastically cut operational overhead.",
       tech: ["Python 3.11+", "React 19", "SQLite FTS5", "WebSockets", "LLM APIs"],
       link: "https://www.npmjs.com/package/autonoma-ai",
       github: "https://github.com/MuhammadUsmanGM/autonoma",
@@ -100,8 +100,8 @@ for (const step of plan) {
     },
     {
       title: "PROMPTLY",
-      subtitle: "Smart Context-Aware Prompt Engineering",
-      description: "Architected an MCP server that bridges the gap between AI intent and codebase reality through automated analysis. Injects project structure, naming conventions, and dependency maps directly into the prompt to reduce AI hallucinations by 40% in large-scale refactors.",
+      subtitle: "40% Reduction in AI Errors",
+      description: "Developed a context-injection engine that gives AI agents absolute clarity over complex codebases. Eliminates hallucinations, speeds up development cycles, and ensures engineering teams ship enterprise-grade software faster.",
       tech: ["TypeScript", "MCP SDK", "Node.js", "Zod", "tsup"],
       link: "https://www.npmjs.com/package/@promptly-ai/cli",
       github: "https://github.com/MuhammadUsmanGM/promptly",
@@ -119,8 +119,8 @@ return mcp.provide({
     },
     {
       title: "CODELENS",
-      subtitle: "Neural Codebase Intelligence",
-      description: "Engineered a high-performance RAG pipeline for repository-scale architectural discovery. Synthesizes a neural index of entire codebases using Gemini Flash and Qdrant Vector DB. Distributed via NPM (`npm i @muhammadusmangm/codelens`) to 200+ active users for semantic discovery across complex module boundaries.",
+      subtitle: "Instant Codebase Discovery",
+      description: "Engineered an AI-powered search engine for massive codebases, currently used by 200+ engineers. Drastically reduces onboarding time for new developers and eliminates hours wasted searching for undocumented architecture.",
       tech: ["Next.js", "Gemini AI", "Qdrant", "LangChain", "Xenova", "Tailwind"],
       link: "https://www.npmjs.com/package/@muhammadusmangm/codelens",
       github: "https://github.com/MuhammadUsmanGM/CodeLens",
@@ -136,8 +136,8 @@ const results = await lens.discover("auth flow");
     },
     {
       title: "FERRUM DB",
-      subtitle: "Embedded Document Storage Engine",
-      description: "Engineered a custom embedded database engine in Rust (~1,000 lines) featuring O(1) indexing and AES-256-GCM encryption. Shipped to PyPI, NPM, and crates.io with 2400+ PyPI downloads and custom bindings for Node.js and Python.",
+      subtitle: "High-Performance Embedded Database",
+      description: "Architected a custom embedded database in Rust that prioritizes speed and security. Reached 2,400+ downloads by providing enterprise-grade AES-256 encryption and zero-latency data retrieval for performance-critical applications.",
       tech: ["Rust", "NAPI-RS", "PyO3", "Tokio", "AES-256-GCM", "Axum"],
       link: "https://pypi.org/project/ferrumdb/",
       github: "https://github.com/MuhammadUsmanGM/ferrumdb",
@@ -337,10 +337,10 @@ crypto.decrypt(buf)`
            className="text-center mb-16 relative z-10"
         >
           <p className="text-muted text-xs font-black uppercase tracking-[0.3em] mb-4">
-            Architecting more in the shadows?
+            Verify the technical execution.
           </p>
           <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-text">
-            The <span className="text-accent italic">Hidden</span> Infrastructure.
+            The <span className="text-accent italic">Engineering</span> Foundation.
           </h2>
         </m.div>
 

@@ -83,7 +83,7 @@ const FerrumCaseStudy = () => {
               FERRUM <span className="text-accent italic">DB.</span>
             </h1>
             <p className="text-xl md:text-2xl text-text-sub max-w-2xl leading-relaxed">
-              Engineering a high-performance, log-structured embedded storage engine from the ground up to solve the latency-security trade-off.
+              A high-speed embedded database built in Rust to provide zero-latency data retrieval and enterprise-grade encryption for performance-critical applications.
             </p>
           </m.div>
 
@@ -207,7 +207,7 @@ impl FerrumStore {
 
         {/* Lessons Learned */}
         <section className="mt-40 pt-20 border-t border-border/50">
-          <h2 className="text-5xl font-bebas uppercase tracking-tight mb-12">The Hard Truths (Learnings)</h2>
+          <h2 className="text-5xl font-bebas uppercase tracking-tight mb-12">Engineering Realities</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-lg text-text-sub leading-relaxed">
             <div className="space-y-6">
               <p>
