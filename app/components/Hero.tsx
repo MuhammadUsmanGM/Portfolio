@@ -1,40 +1,13 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { m, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, FileText } from "lucide-react";
 
 const Hero = () => {
   const words = ["Automate", "Scale", "Ship"];
   const [index, setIndex] = useState(0);
-  const [isBot, setIsBot] = useState(false);
-
-  // Scroll-driven parallax
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
-
-  const smooth = { stiffness: 80, damping: 30, restDelta: 0.001 };
-
-  // Hero text fades and drifts upward as user scrolls past
-  const contentY = useSpring(useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]), smooth);
-  const contentOpacity = useSpring(useTransform(scrollYProgress, [0, 0.7], [1, 0]), smooth);
-
-  // Image moves slower than scroll (classic parallax lag)
-  const imageY = useSpring(useTransform(scrollYProgress, [0, 1], ["0%", "-8%"]), smooth);
-
-  // Background grid drifts in opposite direction for depth
-  const gridY = useSpring(useTransform(scrollYProgress, [0, 1], ["0%", "25%"]), smooth);
-
-  // Background glow drifts independently
-  const glowX = useSpring(useTransform(scrollYProgress, [0, 1], ["0%", "15%"]), smooth);
-
-  useEffect(() => {
-    setIsBot(/Lighthouse|Googlebot|SiteAudit/.test(navigator.userAgent));
-  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -44,12 +17,11 @@ const Hero = () => {
   }, [words.length]);
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-32 pb-12 overflow-hidden bg-bg">
-      {/* Subtle Grid Background — parallax drift + fade out */}
-      <m.div 
-        className="absolute inset-0 opacity-[0.15] pointer-events-none will-change-transform" 
+    <section className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-32 pb-12 overflow-hidden bg-bg">
+      {/* Subtle Grid Background — static */}
+      <div 
+        className="absolute inset-0 opacity-[0.15] pointer-events-none" 
         style={{ 
-          y: gridY, 
           backgroundImage: 'radial-gradient(rgba(201,150,12,0.3) 1px, transparent 1px)', 
           backgroundSize: '50px 50px',
           maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)',
@@ -57,17 +29,17 @@ const Hero = () => {
         }} 
       />
       
-      {/* Background Decor — horizontal drift */}
-      <m.div style={{ x: glowX }} className="absolute top-0 right-0 w-[50%] h-full bg-accent/5 blur-[120px] pointer-events-none hidden md:block will-change-transform" />
+      {/* Background Decor — static */}
+      <div className="absolute top-0 right-0 w-[50%] h-full bg-accent/5 blur-[80px] pointer-events-none hidden md:block" />
       
       <div className="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
-        {/* Left Column: Content — fades and drifts on scroll */}
-        <m.div style={{ y: contentY, opacity: contentOpacity }} className="lg:col-span-7 flex flex-col items-start text-left will-change-transform">
+        {/* Left Column: Content — fades on load */}
+        <div className="lg:col-span-7 flex flex-col items-start text-left">
           <m.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: isBot ? 0 : 0.2 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             className="flex items-center gap-3 mb-6"
           >
             <div className="w-8 h-[2px] bg-accent" />
@@ -79,7 +51,7 @@ const Hero = () => {
           <m.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: isBot ? 0 : 0.3, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] uppercase mb-8 text-text"
           >
             I Build AI <br />
@@ -112,7 +84,7 @@ const Hero = () => {
           <m.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: isBot ? 0 : 0.4, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="text-lg md:text-xl text-text-sub max-w-xl mb-12 leading-relaxed"
           >
             Replacing manual workflows with <span className="text-text font-bold">autonomous AI systems</span> to 
@@ -123,7 +95,7 @@ const Hero = () => {
           <m.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: isBot ? 0 : 0.5 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
             className="flex flex-wrap items-center gap-5 mt-4"
           >
             <a 
@@ -141,15 +113,15 @@ const Hero = () => {
               Resume <FileText className="w-4 h-4 transition-transform group-hover:scale-110" />
             </a>
           </m.div>
-        </m.div>
+        </div>
 
-        {/* Right Column: Photo — parallax lag */}
-      <m.div style={{ y: imageY }} className="lg:col-span-5 relative h-[380px] md:h-[480px] lg:h-[600px] flex items-end will-change-transform">
+        {/* Right Column: Photo — static on load */}
+        <div className="lg:col-span-5 relative h-[380px] md:h-[480px] lg:h-[600px] flex items-end">
           <m.div 
             initial={{ opacity: 0, scale: 0.95, y: 40 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             whileHover={{ y: -8 }}
-            transition={{ duration: 1.2, delay: isBot ? 0 : 0.6, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.2, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="relative w-full h-full group cursor-pointer"
           >
             {/* Layer 1: Bottom Gold Foundation — High Contrast */}
@@ -197,7 +169,7 @@ const Hero = () => {
               <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-bg via-bg/40 to-transparent z-10" />
             </div>
           </m.div>
-        </m.div>
+        </div>
       </div>
     </section>
   );
