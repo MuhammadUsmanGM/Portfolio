@@ -181,13 +181,10 @@ const Skills = () => {
                         <div className="w-8 h-8 sm:w-9 sm:h-9 flex-shrink-0 flex items-center justify-center rounded-lg bg-text/5 dark:bg-white/5 grayscale group-hover/tech:grayscale-0 transition-all duration-500 relative overflow-hidden">
                           {tech.iconPath ? (
                             <div className="relative w-6 h-6 dark:invert dark:brightness-100 transition-all duration-500 group-hover/tech:scale-110">
-                              <Image 
+                              <img 
                                 src={tech.iconPath} 
                                 alt={tech.name} 
-                                fill
-                                priority
-                                unoptimized
-                                className="object-contain"
+                                className="w-full h-full object-contain"
                               />
                             </div>
                           ) : (
