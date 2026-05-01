@@ -84,6 +84,7 @@ export const metadata: Metadata = {
 };
 
 import { Toaster } from "sonner";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function RootLayout({
   children,
@@ -154,6 +155,7 @@ export default function RootLayout({
           <MobileNav />
           <ChatWidget />
         </LazyMotion>
+        <SpeedInsights />
       </body>
     </html>
   );
