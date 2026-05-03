@@ -2,7 +2,6 @@
 
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { m, useScroll, useMotionValueEvent } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 

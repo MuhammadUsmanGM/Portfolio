@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React  from "react";
 import { m } from "framer-motion";
 import { ArrowUpRight, Github, Activity, Lock } from "lucide-react";
 import Link from "next/link";

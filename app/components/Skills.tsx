@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
-import Image from "next/image";
-import { m, useMotionTemplate, useMotionValue, animate } from "framer-motion";
-import { Brain, Database, Server, Globe, Cpu, Layers, Settings } from "lucide-react";
+import React from "react";
+import { m, useMotionTemplate, useMotionValue } from "framer-motion";
+import { Brain, Database, Server, Globe, Settings } from "lucide-react";
 
 const SpotlightCard = ({ children, className = "", ...props }: { children: React.ReactNode; className?: string; [key: string]: any }) => {
   const mouseX = useMotionValue(0);
