@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import matter from "gray-matter";
 
 const postsDirectory = path.join(process.cwd(), "content/blog");
 
@@ -18,50 +19,18 @@ export function getPostBySlug(slug: string): BlogPost | null {
     const fullPath = path.join(postsDirectory, `${slug}.md`);
     const fileContents = fs.readFileSync(fullPath, "utf8");
 
-    // Custom parser for the user's markdown format
-    // Format:
-    // # Title
-    // **Category:** Tag
-    // **Date:** Date
-    // **Read Time:** ReadTime
-    // ---
-    // Content
-
-    const lines = fileContents.split("\n");
-    let title = "";
-    let tag = "";
-    let date = "";
-    let readTime = "";
-    let contentStartLine = 0;
-
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i].trim();
-      if (line.startsWith("# ")) {
-        title = line.replace("# ", "");
-      } else if (line.startsWith("**Category:**")) {
-        tag = line.replace("**Category:**", "").trim();
-      } else if (line.startsWith("**Date:**")) {
-        date = line.replace("**Date:**", "").trim();
-      } else if (line.startsWith("**Read Time:**")) {
-        readTime = line.replace("**Read Time:**", "").trim();
-      } else if (line === "---") {
-        contentStartLine = i + 1;
-        break;
-      }
-    }
-
-    const content = lines.slice(contentStartLine).join("\n").trim();
+    const { data, content } = matter(fileContents);
     
-    // Generate an excerpt from the first paragraph of content
+    // Generate an excerpt from the first paragraph of content if not provided
     const excerptMatch = content.match(/^[^#\n].+/m);
-    const excerpt = excerptMatch ? excerptMatch[0].slice(0, 160) + "..." : "";
+    const excerpt = data.excerpt || (excerptMatch ? excerptMatch[0].slice(0, 160) + "..." : "");
 
     return {
       slug,
-      title: title || slug,
-      tag: tag || "Article",
-      date: date || "Unknown",
-      readTime: readTime || "5 min read",
+      title: data.title || slug,
+      tag: data.tag || data.category || "Article",
+      date: data.date || "Unknown",
+      readTime: data.readTime || "5 min read",
       excerpt,
       content,
     };
