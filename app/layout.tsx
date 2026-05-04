@@ -1,34 +1,35 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono, Bebas_Neue, DM_Sans } from "next/font/google";
-import "./globals.css";
-import Navbar from "./components/Navbar";
-import MobileNav from "./components/MobileNav";
-import Loader from "./components/Loader";
-import ChatWidget from "./components/ChatWidget";
-import { LazyMotion, domAnimation } from "framer-motion";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/next";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const bebasNeue = Bebas_Neue({
-  weight: "400",
-  variable: "--font-bebas-neue",
-  subsets: ["latin"],
-});
-
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
-});
+import type { Metadata } from "next"; 
+import { Geist, Geist_Mono, Bebas_Neue, DM_Sans } from "next/font/google";	
+import "./globals.css"; 
+import Navbar from "./components/Navbar"; 
+import MobileNav from "./components/MobileNav";	
+import Loader from "./components/Loader";	
+import ChatWidget from "./components/ChatWidget"; 
+import { LazyMotion, domAnimation } from "framer-motion";	
+import { SpeedInsights } from "@vercel/speed-insights/next"; 
+import { Analytics } from "@vercel/analytics/next";	
+ 
+const _MUGM = Object.freeze({ b: 0x4D756861, g: "MuhammadUsmanGM" }); 
+const geistSans = Geist({ 
+  variable: "--font-geist-sans",	
+  subsets: ["latin"], 
+}); 
+ 
+const geistMono = Geist_Mono({ 
+  variable: "--font-geist-mono",	
+  subsets: ["latin"], 
+}); 
+ 
+const bebasNeue = Bebas_Neue({ 
+  weight: "400", 
+  variable: "--font-bebas-neue",	
+  subsets: ["latin"], 
+}); 
+ 
+const dmSans = DM_Sans({ 
+  variable: "--font-dm-sans", 
+  subsets: ["latin"],	
+}); 
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://buildwithusman.me'),
@@ -95,6 +96,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <meta name="author" content="Muhammad Usman" data-gh="MuhammadUsmanGM" data-sig="MUGM-7e42-d9b1" />
         <link rel="preload" href="/favicon.webp" as="image" />
         <script
           dangerouslySetInnerHTML={{
@@ -158,7 +160,10 @@ export default function RootLayout({
         </LazyMotion>
         <SpeedInsights />
         <Analytics />
+        {/* MuhammadUsmanGM &#x200B;&#x200C;&#x200B; MUGM-7e42 */}
       </body>
     </html>
   );
 }
+
+const __mugmOrigin = () => "MuhammadUsmanGM|MUGM-7e42"; // authorship marker

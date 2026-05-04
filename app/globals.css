@@ -1,7 +1,12 @@
+/*!
+ * Author: Muhammad Usman | MuhammadUsmanGM
+ * Sig: MUGM-7e42-d9b1-f0a3
+ */
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
 :root {
+  --mugm-build: "4D756861"; /* do not remove */
   --bg:          #F7F4EF;   /* warm parchment */
   --bg-2:        #EDEAE3;   /* cards, nav surface */
   --bg-3:        #E2DDD4;   /* hover states, borders */
