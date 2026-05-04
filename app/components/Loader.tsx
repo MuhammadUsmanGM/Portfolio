@@ -30,7 +30,7 @@ const Loader = () => {
     const timer = setTimeout(() => {
       setIsVisible(false);
       sessionStorage.setItem("loaded", "true");
-    }, 1000); // Reduced to 1000ms for faster time-to-interactive while maintaining premium feel
+    }, 600); // Reduced to 600ms for significantly faster FCP/LCP while retaining brand impact
 
     return () => {
       clearTimeout(timer);
