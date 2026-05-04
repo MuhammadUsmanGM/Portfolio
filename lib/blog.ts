@@ -21,16 +21,37 @@ export function getPostBySlug(slug: string): BlogPost | null {
 
     const { data, content } = matter(fileContents);
     
+    // Fallback parsing for the user's previous custom format if YAML frontmatter is missing
+    let finalTitle = data.title;
+    let finalTag = data.tag || data.category;
+    let finalDate = data.date;
+    let finalReadTime = data.readTime;
+
+    if (Object.keys(data).length === 0) {
+      const lines = fileContents.split("\n");
+      for (const line of lines) {
+        if (line.startsWith("# ")) finalTitle = line.replace("# ", "").trim();
+        if (line.includes("**Category:**")) finalTag = line.split("**Category:**")[1].trim();
+        if (line.includes("**Date:**")) finalDate = line.split("**Date:**")[1].trim();
+        if (line.includes("**Read Time:**")) finalReadTime = line.split("**Read Time:**")[1].trim();
+        if (line === "---") break;
+      }
+    }
+
     // Generate an excerpt from the first paragraph of content if not provided
     const excerptMatch = content.match(/^[^#\n].+/m);
     const excerpt = data.excerpt || (excerptMatch ? excerptMatch[0].slice(0, 160) + "..." : "");
 
+    // Ensure date is valid for the build process (sitemap, etc.)
+    const parsedDate = finalDate ? new Date(finalDate) : new Date();
+    const validatedDate = isNaN(parsedDate.getTime()) ? new Date().toISOString() : parsedDate.toISOString();
+
     return {
       slug,
-      title: data.title || slug,
-      tag: data.tag || data.category || "Article",
-      date: data.date || "Unknown",
-      readTime: data.readTime || "5 min read",
+      title: finalTitle || slug,
+      tag: finalTag || "Article",
+      date: validatedDate,
+      readTime: finalReadTime || "5 min read",
       excerpt,
       content,
     };

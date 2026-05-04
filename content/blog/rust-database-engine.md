@@ -1,9 +1,8 @@
-# Why I Wrote a Database Engine in Rust as a Student
-
-**Category:** Systems
-**Date:** January 12, 2026
-**Read Time:** 8 min read
-
+---
+title: "Why I Wrote a Database Engine in Rust as a Student"
+date: "2026-01-12"
+category: "Systems"
+readTime: "8 min read"
 ---
 
 Most students learning systems programming do so by reading about it. They study how B-Trees work in textbooks, understand ownership semantics from documentation, and write toy programs that demonstrate the concept. I did all of that too. But at some point in late 2025, I decided the only way to truly understand a storage engine was to build one from scratch — in Rust.

@@ -1,9 +1,8 @@
-# How I Built an MCP Server That Reduced AI Hallucinations by 40%
-
-**Category:** AI Architecture
-**Date:** February 5, 2026
-**Read Time:** 6 min read
-
+---
+title: "How I Built an MCP Server That Reduced AI Hallucinations by 40%"
+date: "2026-02-05"
+category: "AI Architecture"
+readTime: "6 min read"
 ---
 
 In early 2026, AI coding agents are everywhere. Claude Code, Cursor, Gemini CLI — every serious developer has at least one installed. They write boilerplate, refactor modules, explain unfamiliar code. And yet, anyone who has used them seriously for more than a few weeks has experienced the same frustrating pattern: the agent confidently generates code that imports a module that doesn't exist in your project, uses an internal function with the wrong signature, or restructures a file in a way that breaks six other things that depend on it.

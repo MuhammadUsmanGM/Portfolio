@@ -1,9 +1,8 @@
-# The Ground Truth Gap: Why AI Coding Agents Fail
-
-**Category:** Research
-**Date:** March 20, 2026
-**Read Time:** 10 min read
-
+---
+title: "The Ground Truth Gap: Why AI Coding Agents Fail"
+date: "2026-03-20"
+category: "Research"
+readTime: "10 min read"
 ---
 
 There is a persistent myth about AI coding agents that needs to be addressed directly: the idea that they fail because they are not smart enough. The narrative goes that as models get bigger, train on more code, and develop better reasoning capabilities, the failures will gradually disappear. We just need to wait for the next version.
