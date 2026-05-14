@@ -60,7 +60,6 @@ const Projects = () => {
       tags: ["AI Agent Platform", "85% Workload Reduction", "BM25 Memory"],
       caseStudy: "/projects/autonoma",
       banner: { variant: "neural" as BannerVariant, version: "v1.0", status: "AUTONOMOUS" },
-      customVisual: "/projects/autonoma-arch.svg",
       codeSnippet: `// Autonomous Planning Loop
 const plan = await agent.plan(objective);
 for (const step of plan) {
@@ -96,7 +95,6 @@ npx code-stick install
       tags: ["RAG Architecture", "200+ Active Users", "NPM Package"],
       caseStudy: "/projects/codelens",
       banner: { variant: "matrix" as BannerVariant, version: "v2.1", status: "DISTRIBUTED" },
-      customVisual: "/projects/codelens-arch.svg",
       codeSnippet: `// Neural Semantic Search
 const results = await lens.discover("auth flow");
 // [Match 94%] -> src/engine/session.ts
@@ -113,7 +111,6 @@ const results = await lens.discover("auth flow");
       tags: ["Systems Engineering", "Cross-Language Bindings", "O(1) Performance"],
       caseStudy: "/projects/ferrumdb",
       banner: { variant: "crystal" as BannerVariant, version: "v1.3", status: "SHIPPED" },
-      customVisual: "/projects/ferrumdb-arch.svg",
       codeSnippet: `// O(1) Bitcask get()
 let entry = keydir.get(key)?;
 file.read_at(entry.offset, buf)?;
