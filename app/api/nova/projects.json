@@ -1,5 +1,82 @@
 [
   {
+    "_author": "MuhammadUsmanGM",
+    "_sig": "MUGM-c1d2-e3f4-a5b6",
+    "id": "code-stick",
+    "year": "2026",
+    "name": "CodeStick",
+    "highlight": "Offline Cross-OS AI | Plug & Play",
+    "description": "The ultimate portable AI coding environment. Transform any USB drive into a high-performance, offline AI workstation that runs on Windows, macOS, and Linux with zero installation on the host machine.",
+    "tech": [
+      "TypeScript",
+      "Node.js",
+      "Ollama",
+      "OpenCode",
+      "Commander",
+      "EJS"
+    ],
+    "categories": [
+      "AI & Agents",
+      "Systems Engineering",
+      "Developer Tools"
+    ],
+    "type": "Portable Infrastructure",
+    "status": "v0.1.0",
+    "github": "https://github.com/MuhammadUsmanGM/code-stick",
+    "links": [
+      {
+        "label": "NPM PACKAGE",
+        "url": "https://www.npmjs.com/package/code-stick"
+      }
+    ],
+    "installCommand": "npx code-stick install",
+    "image": "https://placehold.co/1200x800/0a0a0f/3178C6?text=CODESTICK+PORTABLE+AI",
+    "bannerVariant": "matrix",
+    "bannerVersion": "v0.1.0",
+    "bannerStatus": "READY",
+    "customVisual": "/projects/code-stick-arch.svg",
+    "codeSnippet": "// Cross-OS Binary Orchestration\nawait engine.deploy('ollama', usbPath);\nawait engine.deploy('opencode', usbPath);\nawait scripts.generateLaunchers(usbPath);\n// Zero Residue Execution",
+    "benchmarks": [
+      {
+        "label": "OS Support",
+        "value": "5 Targets",
+        "detail": "Win, macOS (M1/Intel), Linux (x64/ARM)"
+      },
+      {
+        "label": "Deployment",
+        "value": "Zero-Install",
+        "detail": "Runs entirely from USB"
+      },
+      {
+        "label": "Privacy",
+        "value": "Airgapped",
+        "detail": "100% Offline AI reasoning"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Cross-Platform Binary Orchestration",
+        "icon": "Layers",
+        "content": "Engineered a sophisticated deployment engine that auto-detects USB hardware and bundles pre-built Ollama and OpenCode binaries for 5 distinct target architectures. This ensures the AI agent is ready to boot on any laptop the moment the drive is plugged in."
+      },
+      {
+        "title": "Zero-Residue Runtime Logic",
+        "icon": "ShieldCheck",
+        "content": "Developed a custom startup protocol that redirects all configuration, model weights, and cache directories to the USB filesystem. By isolating the environment variables and process IDs, CodeStick ensures that no data or background processes remain on the host machine after the session ends."
+      },
+      {
+        "title": "Resilient Model Delivery",
+        "icon": "Zap",
+        "content": "Implemented a dual-mode installer (Fast vs Direct) with SHA-256 integrity checks. The 'Fast' mode utilizes the host's temporary storage for parallelized model pulls before atomic transfer to the USB, drastically reducing setup time on slower flash media."
+      }
+    ],
+    "learnings": [
+      "Cross-OS binary compatibility (especially on Apple Silicon vs Intel) requires strict architectural mapping during the build phase.",
+      "Bypassing macOS Gatekeeper for portable executables requires specific Right-click-Open rituals or xattr stripping to maintain a smooth user experience.",
+      "Portable AI solves the 'Trust Gap' for organizations with strict data sovereignty or airgapped security requirements."
+    ]
+  },
+  {
     "id": "portable-ai",
     "year": "2026",
     "name": "Portable AI",

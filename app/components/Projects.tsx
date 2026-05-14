@@ -69,23 +69,21 @@ for (const step of plan) {
 }`
     },
     {
-      title: "PROMPTLY",
-      subtitle: "40% Reduction in AI Errors",
-      description: "Developed a context-injection engine that gives AI agents absolute clarity over complex codebases. Eliminates hallucinations, speeds up development cycles, and ensures engineering teams ship enterprise-grade software faster.",
-      tech: ["TypeScript", "MCP SDK", "Node.js", "Zod", "tsup"],
-      link: "https://www.npmjs.com/package/@promptly-ai/cli",
-      github: "https://github.com/MuhammadUsmanGM/promptly",
+      title: "CODE-STICK",
+      subtitle: "Offline AI Agent. Any Machine. Zero Install.",
+      description: "Engineered a portable AI coding agent that runs entirely off a USB drive — no install, no residue on the host. Packages Ollama + opencode for all 5 platforms (Windows, macOS Apple Silicon/Intel, Linux x64/ARM64) from a single stick. Built for airgapped environments: banks, hospitals, defense contractors, and privacy-sensitive codebases where cloud AI is blocked.",
+      tech: ["TypeScript", "Node.js", "Ollama", "OpenCode", "tsup", "Vitest"],
+      link: "https://www.npmjs.com/package/code-stick",
+      github: "https://github.com/MuhammadUsmanGM/code-stick",
       isPrivate: false,
-      tags: ["AI Developer Tooling", "MCP Protocol", "Zero-Friction"],
-      caseStudy: "/projects/promptly",
-      banner: { variant: "matrix" as BannerVariant, version: "v1.0", status: "PRODUCTION" },
-      customVisual: "/projects/promptly-arch.svg",
-      codeSnippet: `// High-Speed Context Inlay
-const context = await analyze(root);
-return mcp.provide({
-  structure: context.tree,
-  grounding: true
-});`
+      tags: ["Portable AI Tooling", "Airgap-Ready", "5-Platform Support"],
+      caseStudy: "/projects/code-stick",
+      banner: { variant: "wave" as BannerVariant, version: "v0.1", status: "LAUNCHED" },
+      codeSnippet: `// Plug in USB. Run anywhere.
+npx code-stick install
+// → Ollama + opencode → USB
+// → Model pulled to stick
+// → Zero residue on host`
     },
     {
       title: "CODELENS",
