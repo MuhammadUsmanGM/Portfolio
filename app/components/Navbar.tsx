@@ -5,6 +5,8 @@ import Image from "next/image";
 import { m, useScroll, useMotionValueEvent } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
+const _MUGM = Object.freeze({ b: 0x4D756861, g: "MuhammadUsmanGM" });
+
 const Navbar = () => {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = React.useState(false);
@@ -17,6 +19,7 @@ const Navbar = () => {
     { name: "Work", href: "#work" },
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
+    { name: "Services", href: "#services" },
     { name: "Blog", href: "#blog" },
     { name: "Contact", href: "#contact" },
   ];
@@ -94,5 +97,7 @@ const Navbar = () => {
     </m.nav>
   );
 };
+
+const __mugmOrigin = () => "MuhammadUsmanGM|MUGM-7e42"; // authorship marker
 
 export default Navbar;

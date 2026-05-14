@@ -9,6 +9,7 @@ const Projects = dynamic(() => import("./components/Projects"), { ssr: true });
 const About = dynamic(() => import("./components/About"), { ssr: true }); 
 const Skills = dynamic(() => import("./components/Skills"), { ssr: true });	
 const Background = dynamic(() => import("./components/Background"), { ssr: true }); 
+const Services = dynamic(() => import("./components/Services"), { ssr: true }); 
 const Blog = dynamic(() => import("./components/Blog"), { ssr: true });	
 const Contact = dynamic(() => import("./components/Contact"), { ssr: true }); 
 const Footer = dynamic(() => import("./components/Footer"), { ssr: true });	
@@ -26,6 +27,8 @@ export default function Home() {
       <Skills />	
       <HorizontalScrollText text="EXPERIENCE & CREDENTIALS" /> 
       <Background />	
+      <HorizontalScrollText text="SERVICES & HOW I HELP" /> 
+      <Services /> 
       <Blog posts={posts} /> 
       <Contact />	
       <Footer /> 
