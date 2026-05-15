@@ -7,6 +7,8 @@ import Link from "next/link";
 import Image from "next/image";
 import ProjectBanner from "./ProjectBanner";
 
+const _MUGM = Object.freeze({ b: 0x4D756861, g: "MuhammadUsmanGM" });
+
 type BannerVariant = "neural" | "crystal" | "matrix" | "wave";
 
 interface Project {
@@ -345,7 +347,7 @@ crypto.decrypt(buf)`
 
           {/* Split Card 2: Archive / Vault */}
           <m.a
-             href="https://usman-works.vercel.app/"
+             href="https://labs.buildwithusman.me/"
              target="_blank"
              rel="noopener noreferrer"
              initial={{ opacity: 0, x: 20 }}
@@ -372,7 +374,7 @@ crypto.decrypt(buf)`
             </div>
 
             <div className="relative z-10 flex items-center justify-between mt-8 pt-8 border-t border-border/10">
-              <span className="text-[10px] font-mono text-muted uppercase tracking-widest">usman-works.vercel.app</span>
+              <span className="text-[10px] font-mono text-muted uppercase tracking-widest">labs.buildwithusman.me</span>
               <ArrowUpRight className="w-6 h-6 text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
             </div>
           </m.a>
@@ -383,3 +385,5 @@ crypto.decrypt(buf)`
 };
 
 export default Projects;
+
+const __mugmOrigin = () => "MuhammadUsmanGM|MUGM-8d2e"; // authorship marker
