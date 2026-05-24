@@ -8,6 +8,7 @@ import ChatWidget from "./components/ChatWidget";
 import { LazyMotion, domAnimation } from "framer-motion";	
 import { SpeedInsights } from "@vercel/speed-insights/next"; 
 import { Analytics } from "@vercel/analytics/next";	
+import SmoothScroll from "./components/SmoothScroll";
  
 const _MUGM = Object.freeze({ b: 0x4D756861, g: "MuhammadUsmanGM" }); 
 const geistSans = Geist({ 
@@ -117,49 +118,51 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} ${dmSans.variable} antialiased`}
       >
-        <div id="immediate-loader">
-          <img src="/favicon.webp" alt="Muhammad Usman" className="immediate-logo" />
-        </div>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              "name": "Muhammad Usman",
-              "url": "https://buildwithusman.me",
-              "jobTitle": "Full-Stack AI Engineer",
-              "knowsAbout": ["AI Engineering", "LLM Systems", "RAG Pipelines", "Automation", "Full-stack Development"],
-              "sameAs": [
-                "https://github.com/MuhammadUsmanGM",
-                "https://www.linkedin.com/in/muhammad-usman-ai-dev"
-              ]
-            })
-          }}
-        />
-        <Toaster 
-          position="top-right" 
-          richColors 
-          theme="system" 
-          toastOptions={{
-            style: { 
-              background: 'var(--bg-2)', 
-              color: 'var(--text)',
-              border: '1px solid var(--border)',
-              backdropFilter: 'blur(12px)',
-              WebkitBackdropFilter: 'blur(12px)',
-            },
-          }}
-        />
-        <LazyMotion features={domAnimation}>
-          <Loader />
-          <Navbar />
-          {children}
-          <MobileNav />
-          <ChatWidget />
-        </LazyMotion>
-        <SpeedInsights />
-        <Analytics />
+        <SmoothScroll>
+          <div id="immediate-loader">
+            <img src="/favicon.webp" alt="Muhammad Usman" className="immediate-logo" />
+          </div>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Person",
+                "name": "Muhammad Usman",
+                "url": "https://buildwithusman.me",
+                "jobTitle": "Full-Stack AI Engineer",
+                "knowsAbout": ["AI Engineering", "LLM Systems", "RAG Pipelines", "Automation", "Full-stack Development"],
+                "sameAs": [
+                  "https://github.com/MuhammadUsmanGM",
+                  "https://www.linkedin.com/in/muhammad-usman-ai-dev"
+                ]
+              })
+            }}
+          />
+          <Toaster 
+            position="top-right" 
+            richColors 
+            theme="system" 
+            toastOptions={{
+              style: { 
+                background: 'var(--bg-2)', 
+                color: 'var(--text)',
+                border: '1px solid var(--border)',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)',
+              },
+            }}
+          />
+          <LazyMotion features={domAnimation}>
+            <Loader />
+            <Navbar />
+            {children}
+            <MobileNav />
+            <ChatWidget />
+          </LazyMotion>
+          <SpeedInsights />
+          <Analytics />
+        </SmoothScroll>
         {/* MuhammadUsmanGM &#x200B;&#x200C;&#x200B; MUGM-7e42 */}
       </body>
     </html>

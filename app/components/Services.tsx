@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { m, AnimatePresence } from "framer-motion";
 import { Bot, Zap, Layers, ArrowUpRight, Calendar, Check } from "lucide-react";
+import ScrollReveal from "./ScrollReveal";
 
 const _MUGM = Object.freeze({ b: 0x4D756861, g: "MuhammadUsmanGM" });
 
@@ -119,35 +120,32 @@ const Services = () => {
         </div>
 
         {/* Tab Selector */}
-        <m.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="flex flex-col sm:flex-row gap-3 mb-12"
-        >
-          {services.map((s) => {
-            const Icon = s.icon;
-            const isActive = active === s.id;
-            return (
-              <button
-                key={s.id}
-                onClick={() => setActive(s.id)}
-                className={`relative flex items-center gap-3 px-6 py-4 rounded-2xl border font-black text-[11px] uppercase tracking-[0.2em] transition-all duration-300 text-left ${
-                  isActive
-                    ? "bg-accent text-bg border-accent shadow-[0_8px_32px_rgba(245,166,35,0.25)]"
-                    : "bg-bg-2/30 backdrop-blur-md border-border/30 text-muted hover:border-accent/40 hover:text-text"
-                }`}
-              >
-                <Icon className="w-4 h-4 shrink-0" />
-                <span>{s.title}</span>
-              </button>
-            );
-          })}
-        </m.div>
+        <ScrollReveal direction="left" distance={40}>
+          <div className="flex flex-col sm:flex-row gap-3 mb-12">
+            {services.map((s) => {
+              const Icon = s.icon;
+              const isActive = active === s.id;
+              return (
+                <button
+                  key={s.id}
+                  onClick={() => setActive(s.id)}
+                  className={`relative flex items-center gap-3 px-6 py-4 rounded-2xl border font-black text-[11px] uppercase tracking-[0.2em] transition-all duration-300 text-left ${
+                    isActive
+                      ? "bg-accent text-bg border-accent shadow-[0_8px_32px_rgba(245,166,35,0.25)]"
+                      : "bg-bg-2/30 backdrop-blur-md border-border/30 text-muted hover:border-accent/40 hover:text-text"
+                  }`}
+                >
+                  <Icon className="w-4 h-4 shrink-0" />
+                  <span>{s.title}</span>
+                </button>
+              );
+            })}
+          </div>
+        </ScrollReveal>
 
         {/* Active Card */}
-        <AnimatePresence mode="wait">
+        <ScrollReveal direction="right" distance={40} scaleEffect={true}>
+          <AnimatePresence mode="wait">
           <m.div
             key={active}
             initial={{ opacity: 0, y: 24 }}
@@ -261,6 +259,7 @@ const Services = () => {
             </div>
           </m.div>
         </AnimatePresence>
+      </ScrollReveal>
 
       </div>
     </section>

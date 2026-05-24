@@ -3,6 +3,9 @@
 import React from "react";
 import { m, useMotionTemplate, useMotionValue } from "framer-motion";
 import { Brain, Database, Server, Globe, Settings } from "lucide-react";
+import ScrollReveal from "./ScrollReveal";
+
+const _MUGM = Object.freeze({ b: 0x4D756861, g: "MuhammadUsmanGM" });
 
 const SpotlightCard = ({ children, className = "", ...props }: { children: React.ReactNode; className?: string; [key: string]: any }) => {
   const mouseX = useMotionValue(0);
@@ -145,16 +148,15 @@ const Skills = () => {
             if (index === 3) spanClass = "md:col-span-1 lg:col-span-3";
             if (index === 4) spanClass = "md:col-span-2 lg:col-span-3";
 
+            // Determine alternate direction for entrance reveal
+            const revealDirection = index % 3 === 0 ? "left" : index % 3 === 1 ? "up" : "right";
+
             return (
-            <SpotlightCard 
-              key={cat.title} 
-              className={`${spanClass} cursor-default`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -8, scale: 1.01, transition: { duration: 0.4 } }}
-              viewport={{ once: true, margin: "0px 0px 200px 0px", amount: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-            >
+              <ScrollReveal key={cat.title} direction={revealDirection} distance={50} scaleEffect={true} className={spanClass}>
+                <SpotlightCard 
+                  className="cursor-default w-full h-full"
+                  whileHover={{ y: -8, scale: 1.01, transition: { duration: 0.4 } }}
+                >
               <div className="p-6 sm:p-10 h-full flex flex-col">
                 <div className="flex items-center gap-5 mb-8">
                   <div className="w-16 h-16 rounded-2xl bg-bg flex items-center justify-center border border-border/30 group-hover:border-accent/40 group-hover:bg-accent/5 transition-all duration-700 shadow-sm relative overflow-hidden">
@@ -201,7 +203,8 @@ const Skills = () => {
                   })}
                 </div>
               </div>
-            </SpotlightCard>
+                </SpotlightCard>
+              </ScrollReveal>
             );
           })}
         </div>
@@ -213,3 +216,5 @@ const Skills = () => {
 };
 
 export default Skills;
+
+const __mugmOrigin = () => "MuhammadUsmanGM|MUGM-7e42"; // authorship marker

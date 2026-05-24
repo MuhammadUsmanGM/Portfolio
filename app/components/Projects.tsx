@@ -1,11 +1,12 @@
 "use client";
 
 import React  from "react";
-import { m } from "framer-motion";
+import { m, useScroll, useTransform, useSpring } from "framer-motion";
 import { ArrowUpRight, Github, Activity, Lock } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import ProjectBanner from "./ProjectBanner";
+import ScrollReveal from "./ScrollReveal";
 
 const _MUGM = Object.freeze({ b: 0x4D756861, g: "MuhammadUsmanGM" });
 
@@ -26,25 +27,51 @@ interface Project {
   codeSnippet?: string;
 }
 
-// Static wrapper for the giant project numbers
-const StaticNumber = ({ children }: { children: React.ReactNode }) => {
+// Parallax wrapper for the giant project numbers
+const ParallaxNumber = ({ children }: { children: React.ReactNode }) => {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y = useSpring(useTransform(scrollYProgress, [0, 1], [-50, 50]), {
+    stiffness: 80,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
   return (
-    <div
+    <m.div
+      ref={ref}
+      style={{ y }}
       className="absolute -top-20 -left-10 text-[15rem] font-black text-border/20 pointer-events-none select-none z-0 tracking-tighter hidden lg:block"
     >
       {children}
-    </div>
+    </m.div>
   );
 };
 
-// Static wrapper for project visuals
-const StaticVisual = ({ children }: { children: React.ReactNode }) => {
+// Parallax wrapper for project visuals
+const ParallaxVisual = ({ children }: { children: React.ReactNode }) => {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y = useSpring(useTransform(scrollYProgress, [0, 1], [-20, 20]), {
+    stiffness: 80,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
   return (
-    <div
-      className="lg:col-span-7 order-1 lg:order-2 relative group-hover:scale-[1.02] transition-transform duration-700"
+    <m.div
+      ref={ref}
+      style={{ y }}
+      className="lg:col-span-7 order-1 lg:order-2 relative group-hover:scale-[1.02] transition-all duration-700"
     >
       {children}
-    </div>
+    </m.div>
   );
 };
 
@@ -152,18 +179,15 @@ crypto.decrypt(buf)`
       <div className="max-w-7xl mx-auto">
         {projects.map((project, index) => (
           <React.Fragment key={project.title}>
-            <m.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -5, transition: { duration: 0.5 } }}
-              viewport={{ once: true, margin: "100px" }}
-              transition={{ duration: 1, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
-              className="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-32 last:mb-0"
-            >
+            <ScrollReveal direction={index % 2 === 0 ? "left" : "right"} distance={60} scaleEffect={true} className="mb-32 last:mb-0">
+              <m.div
+                whileHover={{ y: -5, transition: { duration: 0.5 } }}
+                className="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+              >
             {/* Project Numbering */}
-            <StaticNumber>
+            <ParallaxNumber>
               0{index + 1}
-            </StaticNumber>
+            </ParallaxNumber>
 
             {/* Project Info */}
             <div className="lg:col-span-5 order-2 lg:order-1 relative z-10">
@@ -242,7 +266,7 @@ crypto.decrypt(buf)`
             </div>
 
             {/* Project Visual */}
-            <StaticVisual>
+            <ParallaxVisual>
               <div className="relative aspect-video rounded-[2rem] overflow-hidden border border-border/50 bg-bg-2 shadow-2xl">
                 {project.customVisual ? (
                   <div className="relative w-full h-full bg-[#08080a]">
@@ -284,8 +308,9 @@ crypto.decrypt(buf)`
                 
                 <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.5)] pointer-events-none" />
               </div>
-            </StaticVisual>
-          </m.div>
+            </ParallaxVisual>
+              </m.div>
+            </ScrollReveal>
 
         </React.Fragment>
       ))}

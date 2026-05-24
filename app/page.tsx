@@ -3,6 +3,7 @@ import Hero from "./components/Hero";
 import ScrollProgress from "./components/ScrollProgress"; 
 import HorizontalScrollText from "./components/HorizontalScrollText"; 
 import { getAllPosts } from "@/lib/blog";	
+import ScrollReveal from "./components/ScrollReveal";
  
 const _MUGM = Object.freeze({ b: 0x4D756861, g: "MuhammadUsmanGM" });	
 const Projects = dynamic(() => import("./components/Projects"), { ssr: true });	
@@ -21,16 +22,30 @@ export default function Home() {
     <main className="relative min-h-screen bg-bg transition-colors duration-300">	
       <ScrollProgress /> 
       <Hero /> 
+      
       <HorizontalScrollText text="SELECTED WORK" />	
       <Projects /> 
+
       <About />	
+
       <Skills />	
-      <HorizontalScrollText text="EXPERIENCE & CREDENTIALS" /> 
-      <Background />	
+
+      <ScrollReveal direction="up" distance={40}>
+        <HorizontalScrollText text="EXPERIENCE & CREDENTIALS" /> 
+        <Background />	
+      </ScrollReveal>
+
       <HorizontalScrollText text="SERVICES & HOW I HELP" /> 
       <Services /> 
-      <Blog posts={posts} /> 
-      <Contact />	
+
+      <ScrollReveal direction="up" distance={40}>
+        <Blog posts={posts} /> 
+      </ScrollReveal>
+
+      <ScrollReveal direction="up" distance={40}>
+        <Contact />	
+      </ScrollReveal>
+
       <Footer /> 
     </main> 
   ); 

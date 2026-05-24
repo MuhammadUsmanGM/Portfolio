@@ -4,6 +4,9 @@ import React, { useRef } from "react";
 import Image from "next/image";
 import { m, useScroll, useTransform, useSpring } from "framer-motion";
 import { Brain, Code, Terminal, Zap, FileText } from "lucide-react";
+import ScrollReveal from "./ScrollReveal";
+
+const _MUGM = Object.freeze({ b: 0x4D756861, g: "MuhammadUsmanGM" });
 
 const About = () => {
   // Scroll-driven parallax for portrait and watermark
@@ -40,6 +43,7 @@ const About = () => {
           
           {/* Left: Narrative Copy */}
           <div className="lg:col-span-7">
+            <ScrollReveal direction="left" distance={60}>
             <m.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -115,10 +119,12 @@ const About = () => {
                 <FileText className="w-4 h-4 transition-transform group-hover:scale-110" /> View Resume
               </m.a>
             </div>
-          </div>
+          </ScrollReveal>
+        </div>
 
           {/* Right: Technical Pillars & Portrait */}
           <div className="lg:col-span-5 flex flex-col items-center lg:items-start relative">
+            <ScrollReveal direction="right" distance={60}>
             
             {/* Background Cinematic Watermark */}
             <m.div style={{ y: watermarkY }} className="absolute top-1/3 -right-24 transform opacity-[0.03] pointer-events-none select-none hidden lg:block z-0">
@@ -180,6 +186,7 @@ const About = () => {
                 );
               })}
             </div>
+            </ScrollReveal>
           </div>
 
         </div>
@@ -189,3 +196,5 @@ const About = () => {
 };
 
 export default About;
+
+const __mugmOrigin = () => "MuhammadUsmanGM|MUGM-7e42"; // authorship marker
