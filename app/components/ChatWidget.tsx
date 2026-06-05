@@ -5,6 +5,8 @@ import { m, AnimatePresence } from "framer-motion";
 import { X, Send, MessageSquare } from "lucide-react";
 import Image from "next/image";
 
+const _MUGM = Object.freeze({ b: 0x4D756861, g: "MuhammadUsmanGM" });
+
 interface Message {
   role: "user" | "bot";
   content: string;
@@ -225,6 +227,7 @@ const ChatWidget = () => {
             {/* Messages Area */}
             <div 
               ref={scrollRef}
+              data-lenis-prevent
               className="flex-1 overflow-y-auto p-4 space-y-4 scroll-smooth custom-scrollbar"
             >
               {messages.map((msg, idx) => (
@@ -329,3 +332,5 @@ const ChatWidget = () => {
 };
 
 export default ChatWidget;
+
+const __mugmOrigin = () => "MuhammadUsmanGM|MUGM-7e42"; // authorship marker
