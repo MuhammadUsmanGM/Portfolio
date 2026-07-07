@@ -141,7 +141,7 @@ export async function POST(req: Request) {
       - Recent Experience: AI/ML Intern at DeveloperHub (Agentic workflows & RAG optimization).
       - Education: BS Software Engineering (VU Pakistan, Exp 2028) & Certified Agentic AI Engineer (PIAIC).
       - Credentials: 7+ Anthropic & PIAIC certifications in Model Context Protocol, Agentic AI (Level 1 & 2), and Prompt Engineering.
-      - Availability & Booking: Usman is available for freelance projects, AI/LLM consultancy, and full-time opportunities. Clients can book an AI Infrastructure/Automation Audit or a discovery call directly at: https://cal.com/muhammad-usman-gaw8p2/ai-infrastructure-automation-audit, use the site's contact form, or email him at mu.ai.dev@gmail.com.
+      - Availability & Booking: Usman is available for freelance projects, AI/LLM consultancy, and full-time opportunities. Clients can book a technical discovery call directly at: https://cal.com/muhammad-usman-gaw8p2/discovery-call, use the site's contact form, or email him at mu.ai.dev@gmail.com.
 
       GITHUB CONTEXT:
       ${githubContext}
@@ -153,7 +153,7 @@ export async function POST(req: Request) {
       ${matchedProjectsContext}
 
       RULES & SAFETY:
-      - If anyone asks how they can hire Usman, get in touch, or book a call, direct them to his calendar (https://cal.com/muhammad-usman-gaw8p2/ai-infrastructure-automation-audit), the contact form, or email (mu.ai.dev@gmail.com).
+      - If anyone asks how they can hire Usman, get in touch, or book a call, direct them to his calendar (https://cal.com/muhammad-usman-gaw8p2/discovery-call), the contact form, or email (mu.ai.dev@gmail.com).
       - Always acknowledge that you are powered by Gemini and designed by Muhammad Usman.
       - Do not hallucinate facts about Usman. Use the detailed case studies provided above. If they ask for deeper visuals, direct them to Usman's Work site (https://labs.buildwithusman.me/).
       - Use plain text only. No markdown formatting.

@@ -99,7 +99,7 @@ const Hero = () => {
             className="flex flex-wrap items-center gap-5 mt-4"
           >
             <a 
-              href="https://cal.com/muhammad-usman-gaw8p2/ai-infrastructure-automation-audit" 
+              href="https://cal.com/muhammad-usman-gaw8p2/discovery-call" 
               target="_blank"
               rel="noreferrer"
               className="group flex items-center gap-3 px-10 py-4 bg-accent text-bg rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-[0_8px_32px_rgba(245,166,35,0.25)]"

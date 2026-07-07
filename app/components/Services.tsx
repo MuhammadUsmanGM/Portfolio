@@ -37,7 +37,7 @@ const services: Service[] = [
     outcome: "You leave knowing exactly what to automate first and why.",
     cta: "Book an Audit",
     ctaHref:
-      "https://cal.com/muhammad-usman-gaw8p2/ai-infrastructure-automation-audit",
+      "https://cal.com/muhammad-usman-gaw8p2/discovery-call",
     tag: "Engagement: 1 Week",
   },
   {
@@ -56,7 +56,7 @@ const services: Service[] = [
     outcome: "A working autonomous system replacing a job function, not a demo.",
     cta: "Start a Build",
     ctaHref:
-      "https://cal.com/muhammad-usman-gaw8p2/ai-infrastructure-automation-audit",
+      "https://cal.com/muhammad-usman-gaw8p2/discovery-call",
     tag: "Engagement: 4–8 Weeks",
   },
   {
@@ -75,7 +75,7 @@ const services: Service[] = [
     outcome: "Ship an AI feature in weeks, not quarters.",
     cta: "Book a Sprint",
     ctaHref:
-      "https://cal.com/muhammad-usman-gaw8p2/ai-infrastructure-automation-audit",
+      "https://cal.com/muhammad-usman-gaw8p2/discovery-call",
     tag: "Engagement: 2–3 Weeks",
   },
 ];
@@ -145,6 +145,7 @@ const Services = () => {
 
         {/* Active Card */}
         <ScrollReveal direction="right" distance={40} scaleEffect={true}>
+          <div className="min-h-[750px] lg:min-h-[460px]">
           <AnimatePresence mode="wait">
           <m.div
             key={active}
@@ -152,12 +153,12 @@ const Services = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-0 rounded-[2rem] border border-border/50 overflow-hidden bg-bg-2/30 backdrop-blur-xl shadow-2xl"
+            className="grid grid-cols-1 lg:grid-cols-12 gap-0 rounded-[2rem] border border-border/50 overflow-hidden bg-bg-2/30 backdrop-blur-xl shadow-2xl h-full lg:min-h-[460px]"
           >
             {/* Left: Main Content */}
-            <div className="lg:col-span-7 p-10 md:p-14 flex flex-col justify-between">
+            <div className="lg:col-span-7 p-8 md:p-10 flex flex-col justify-between">
               <div>
-                <div className="flex items-center gap-3 mb-8">
+                <div className="flex items-center gap-3 mb-6">
                   <span className="text-[9px] font-black uppercase tracking-[0.4em] text-accent border border-accent/20 bg-accent/5 px-3 py-1.5 rounded-full">
                     {activeService.label}
                   </span>
@@ -166,16 +167,16 @@ const Services = () => {
                   </span>
                 </div>
 
-                <h3 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-text mb-6 leading-none">
+                <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tighter text-text mb-4 leading-none">
                   {activeService.title}
                 </h3>
 
-                <p className="text-text-sub text-lg leading-relaxed mb-10 max-w-xl">
+                <p className="text-text-sub text-base leading-relaxed mb-8 max-w-xl">
                   {activeService.pitch}
                 </p>
 
                 {/* Deliverables */}
-                <div className="space-y-3 mb-10">
+                <div className="space-y-3 mb-8">
                   {activeService.deliverables.map((d) => (
                     <div key={d} className="flex items-start gap-3">
                       <div className="w-5 h-5 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center shrink-0 mt-0.5">
@@ -203,7 +204,7 @@ const Services = () => {
             </div>
 
             {/* Right: Outcome Panel */}
-            <div className="lg:col-span-5 bg-bg-3/40 border-t lg:border-t-0 lg:border-l border-border/30 p-10 md:p-14 flex flex-col justify-between relative overflow-hidden">
+            <div className="lg:col-span-5 bg-bg-3/40 border-t lg:border-t-0 lg:border-l border-border/30 p-8 md:p-10 flex flex-col justify-between relative overflow-hidden">
 
               {/* Decorative watermark */}
               <div
@@ -258,8 +259,9 @@ const Services = () => {
               </p>
             </div>
           </m.div>
-        </AnimatePresence>
-      </ScrollReveal>
+          </AnimatePresence>
+          </div>
+        </ScrollReveal>
 
       </div>
     </section>
