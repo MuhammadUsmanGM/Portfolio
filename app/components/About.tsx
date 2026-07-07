@@ -77,7 +77,7 @@ const About = () => {
               className="space-y-6 text-xl text-text-sub leading-relaxed max-w-2xl"
             >
               <p>
-                I am a <span className="text-text font-bold uppercase italic tracking-tighter">Software Engineer</span> building systems that don&apos;t just respond — they <span className="text-accent">execute</span>, <span className="text-accent">optimize</span>, and <span className="text-accent">scale</span>. 
+                I am an <span className="text-text font-bold uppercase italic tracking-tighter">Full-Stack AI Engineer</span> building systems that don&apos;t just respond — they <span className="text-accent">execute</span>, <span className="text-accent">optimize</span>, and <span className="text-accent">scale</span>. 
                 Based in Lahore, I build autonomous AI operations that eliminate manual bottlenecks and scale without increasing headcount.
               </p>
               <p>

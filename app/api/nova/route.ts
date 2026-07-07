@@ -129,7 +129,7 @@ export async function POST(req: Request) {
       - Keep responses concise and focused. Use plain text only.
 
       USMAN'S CORE INFO:
-      - Role: Software Engineer.
+      - Role: Full-Stack AI Engineer.
       - Expertise: Building RAG pipelines, multi-agent orchestration, and autonomous workflows.
       - Flagship Projects: Autonoma (Multi-Channel Support Agent), THE SIGNAL (AI Newsletter), Physical AI (Robotics Platform), CodeLens (Architectural Search), and FerrumDB (Rust Engine).
       - Core Tech Stack:
