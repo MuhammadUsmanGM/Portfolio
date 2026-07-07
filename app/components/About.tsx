@@ -22,7 +22,7 @@ const About = () => {
     {
       icon: Brain,
       title: "Actionable Intelligence",
-      text: "Architecting AI agents that automate complex routing and decision-making, slashing operational overhead."
+      text: "Building multi-agent systems to automate complex workflows and reduce operational overhead."
     },
     {
       icon: Code,
@@ -77,7 +77,7 @@ const About = () => {
               className="space-y-6 text-xl text-text-sub leading-relaxed max-w-2xl"
             >
               <p>
-                I am a <span className="text-text font-bold uppercase italic tracking-tighter">Full-Stack AI Engineer</span> building systems that don&apos;t just respond — they <span className="text-accent">execute</span>, <span className="text-accent">optimize</span>, and <span className="text-accent">scale</span>. 
+                I am a <span className="text-text font-bold uppercase italic tracking-tighter">Software Engineer</span> building systems that don&apos;t just respond — they <span className="text-accent">execute</span>, <span className="text-accent">optimize</span>, and <span className="text-accent">scale</span>. 
                 Based in Lahore, I build autonomous AI operations that eliminate manual bottlenecks and scale without increasing headcount.
               </p>
               <p>
@@ -102,7 +102,7 @@ const About = () => {
                 </div>
                 <div>
                   <span className="block text-[10px] font-black uppercase tracking-widest text-muted group-hover:text-accent transition-colors mb-1">Currently Exploring</span>
-                  <span className="block text-sm font-bold text-text uppercase tracking-tight">Advanced Agentic Architectures</span>
+                  <span className="block text-sm font-bold text-text uppercase tracking-tight">Multi-Agent Systems</span>
                 </div>
               </m.a>
 

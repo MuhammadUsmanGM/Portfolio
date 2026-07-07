@@ -46,7 +46,7 @@ const services: Service[] = [
     label: "Core Offering",
     title: "Autonomous Agent Build",
     pitch:
-      "End-to-end design and deployment of an agentic system that handles a specific high-volume operational task — fully autonomous, production-ready, integrated into your existing stack.",
+      "End-to-end design and deployment of a multi-agent system that handles a specific operational task — production-ready and integrated into your existing stack.",
     deliverables: [
       "Custom AI agent scoped to your workflow",
       "Integration with your tools (CRM, Slack, email, etc.)",

@@ -49,8 +49,8 @@ const Footer = () => {
                 MUHAMMAD <br /> <span className="text-accent italic">USMAN.</span>
               </h2>
               <p className="text-muted text-sm font-medium leading-relaxed max-w-sm">
-                Architecting the next generation of autonomous systems and intelligent interfaces. 
-                Focusing on the intersection of human reasoning and machine action.
+                Building modern, scalable software and intelligent interfaces. 
+                Focusing on the intersection of user experience and system reliability.
               </p>
             </div>
           </div>

@@ -123,7 +123,7 @@ const Loader = () => {
             className="absolute bottom-10 flex gap-4 select-none pointer-events-none"
           >
             <span className="text-[10px] font-black uppercase tracking-[0.5em] text-text">
-              Intelligent Infrastructure
+              Software Engineering
             </span>
           </m.div>
         </m.div>

@@ -43,14 +43,14 @@ const SpotlightCard = ({ children, className = "", ...props }: { children: React
 const Skills = () => {
   const categories = [
     {
-      title: "Intelligence Infrastructure",
+      title: "Backend Infrastructure",
       icon: Brain,
-      description: "Architecting the backbone for enterprise AI, focusing on decision-making latency and large-scale data ingestion.",
+      description: "Architecting backend systems, focusing on low latency and large-scale data processing.",
       techs: [
         { name: "Python", iconPath: "/icons/python.svg" },
         { name: "FastAPI", iconPath: "/icons/fastapi.svg" },
         { name: "RAG Systems", iconPath: "/icons/RAG.svg" },
-        { name: "Agentic Ops", iconPath: "/icons/langchain.svg" },
+        { name: "Workflows", iconPath: "/icons/langchain.svg" },
         { name: "Vector Search", iconPath: "/icons/vector-db.svg" }
       ]
     },
@@ -71,7 +71,7 @@ const Skills = () => {
     {
       title: "High-Performance UX",
       icon: Globe,
-      description: "Engineering seamless, high-conversion interfaces that prioritize speed, accessibility, and measurable user engagement.",
+      description: "Engineering fast, accessible, and interactive user interfaces.",
       techs: [
         { name: "React", iconPath: "/icons/react.svg" },
         { name: "Next.js", iconPath: "/icons/nextdotjs.svg" },

@@ -28,7 +28,7 @@ const ChatWidget = () => {
     if (isOpen && messages.length === 0) {
       setMessages([{
         role: "bot",
-        content: "Hello! I am NOVA, Usman's intelligence node. I have direct access to his codebase, project history, and availability. How can I help you?",
+        content: "Hello! I am NOVA, Usman's AI assistant. I have direct access to his codebase, project history, and availability. How can I help you?",
       }]);
     }
   }, [isOpen, messages.length]);
@@ -55,24 +55,24 @@ const ChatWidget = () => {
   }, [messages, isTyping, isOpen, statusMessage]);
 
   const FALLBACK_MESSAGES = [
-    "Latency detected. Optimizing neural routing...",
-    "Primary inference engine congested. Initiating secondary failover...",
-    "Re-routing context to high-performance inference cluster...",
-    "Synthesizing response via redundant architectural nodes...",
-    "Architectural failover active. Switching to secondary processing unit...",
-    "System workload optimization in progress. Re-routing query...",
-    "Synchronizing with backup intelligence stack...",
-    "Network congestion detected. Transitioning to secondary LLM core...",
-    "Load balancing initiated. Deploying alternative compute resources...",
-    "Cognitive redundancy active. Bridging to secondary inference layer..."
+    "Connecting to backup server...",
+    "Network busy. Retrying...",
+    "Switching processing nodes...",
+    "Waiting for response...",
+    "Trying alternative route...",
+    "System busy. Rerouting...",
+    "Connecting to backup service...",
+    "Network busy. Switching models...",
+    "Rebalancing load...",
+    "Retrying with secondary system..."
   ];
 
   const SECONDARY_FALLBACK = [
-    "Secondary node saturated. Diverting to global mesh...",
-    "Inference latency exceeded. Re-routing to tertiary infrastructure...",
-    "Network failover protocol engaged. Deploying redundant nodes...",
-    "Global load balancing active. Transitioning to tertiary core...",
-    "Stability protocol initiated. Bridging to emergency inference cluster..."
+    "Secondary node busy. Rerouting...",
+    "Connection delayed. Trying tertiary server...",
+    "Network failover engaged...",
+    "Transitioning to tertiary server...",
+    "Bridging to backup cluster..."
   ];
 
   const submitMessage = async (text: string, provider: "gemini" | "groq" | "openrouter" = "gemini") => {
@@ -211,7 +211,7 @@ const ChatWidget = () => {
                   <h3 className="text-lg font-bebas tracking-[0.2em] text-accent leading-none">NOVA</h3>
                   <div className="flex items-center gap-1.5">
                     <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse shadow-[0_0_8px_rgba(201,150,12,0.8)]" />
-                    <span className="text-[8px] font-black uppercase tracking-widest text-accent/70">Intelligence Stack Active</span>
+                    <span className="text-[8px] font-black uppercase tracking-widest text-accent/70">System Active</span>
                   </div>
                 </div>
               </div>

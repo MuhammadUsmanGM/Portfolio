@@ -129,9 +129,9 @@ export async function POST(req: Request) {
       - Keep responses concise and focused. Use plain text only.
 
       USMAN'S CORE INFO:
-      - Role: Full-Stack AI Engineer.
+      - Role: Software Engineer.
       - Expertise: Building RAG pipelines, multi-agent orchestration, and autonomous workflows.
-      - Flagship Projects: Autonoma (Digital FTE), THE SIGNAL (AI Newsletter), Physical AI (Robotics Platform), CodeLens (Neural Discovery), and FerrumDB (Rust Engine).
+      - Flagship Projects: Autonoma (Multi-Channel Support Agent), THE SIGNAL (AI Newsletter), Physical AI (Robotics Platform), CodeLens (Architectural Search), and FerrumDB (Rust Engine).
       - Core Tech Stack:
         1. Reasoning & Agentic Orchestration: Gemini, Claude, LangChain, LangGraph, Model Context Protocol (MCP), CrewAI.
         2. Backend & Systems: Python (FastAPI, asyncio), Rust (Tokio, NAPI-RS), Go (High-perf Concurrency), Node.js/TypeScript.

@@ -38,7 +38,7 @@ const Blog = ({ posts }: { posts: BlogPost[] }) => {
             >
               <div className="w-10 h-[2px] bg-accent shadow-[0_0_10px_var(--accent)]" />
               <span className="text-accent text-[0.75rem] font-black uppercase tracking-[0.3em] font-dm">
-                Intelligence Archive
+                Technical Archive
               </span>
             </m.div>
             

@@ -156,7 +156,7 @@
     "year": "2026",
     "name": "MCPProbe",
     "highlight": "Health Scoring | 13+ Client Support",
-    "description": "The definitive diagnostic layer for the Model Context Protocol (MCP) ecosystem. Instantly probe any MCP server to extract tools, verify client compatibility, and generate production configs.",
+    "description": "A diagnostic layer for the Model Context Protocol (MCP) ecosystem. Instantly probe any MCP server to extract tools, verify client compatibility, and generate production configs.",
     "tech": [
       "TypeScript",
       "Node.js",
@@ -231,7 +231,7 @@
     "year": "2026",
     "name": "Autonoma",
     "highlight": "Reduces Manual Workload by 85% | 6+ Channels",
-    "description": "Professional-grade AI Agent platform that operates as a 'Digital FTE'. Features proactive monitoring, high-fidelity live telemetry HUD, and intelligent multi-session memory across Telegram, WhatsApp, Discord, and Gmail.",
+    "description": "A multi-agent platform designed to automate customer support. Features proactive monitoring, a real-time telemetry HUD, and intelligent multi-session memory across Telegram, WhatsApp, Discord, and Gmail.",
     "tech": [
       "Python 3.11",
       "React 19",
@@ -282,7 +282,7 @@
       {
         "title": "Proactive HUD & Telemetry",
         "icon": "Activity",
-        "content": "Engineered a high-fidelity 'Control Tower' using React 19. The dashboard provides live Gantt-style visualizations of agent reasoning loops, pipeline latency tracking, and proactive system health alerts through a premium glassmorphic interface."
+        "content": "Engineered a 'Control Tower' using React 19. The dashboard provides live Gantt-style visualizations of agent reasoning loops, pipeline latency tracking, and proactive system health alerts."
       },
       {
         "title": "Neural Memory Registry",
@@ -399,7 +399,7 @@
     "year": "2025",
     "name": "CodeLens",
     "highlight": "220+ Downloads",
-    "description": "The Neural Bridge Between Developer & Codebase. A high-fidelity architectural autopilot synthesizing massive repositories into an interactive neural index.",
+    "description": "An architectural search engine for developers. A tool that synthesizes massive repositories into an interactive index.",
     "tech": [
       "Next.js 16",
       "Gemini Pro",
@@ -539,7 +539,7 @@
     "year": "2026",
     "name": "Echo AI Agent",
     "highlight": "950+ Downloads",
-    "description": "The Ultimate JARVIS-Inspired Neural Interface. A holographic, liquid-morphic AI agent featuring real-time particle physics, multi-model reasoning, and a privacy-first STT/TTS engine.",
+    "description": "A conversational AI interface featuring real-time visual feedback. Built with multi-model reasoning and a privacy-first STT/TTS engine.",
     "tech": [
       "Electron",
       "React",

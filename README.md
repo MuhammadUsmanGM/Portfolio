@@ -1,9 +1,9 @@
-# MUHAMMAD USMAN — [AI Systems Architect]
+# MUHAMMAD USMAN — Software Engineer | AI & Systems
 
 <div align="left">
-  <img src="https://img.shields.io/badge/Role-AI_Systems_Architect-C9960C?style=for-the-badge&logoColor=white" alt="Role" />
+  <img src="https://img.shields.io/badge/Role-Software_Engineer-C9960C?style=for-the-badge&logoColor=white" alt="Role" />
   <img src="https://img.shields.io/badge/Location-Lahore,_PK-C9960C?style=for-the-badge&logoColor=white" alt="Location" />
-  <img src="https://img.shields.io/badge/Specialization-Agentic_AI-C9960C?style=for-the-badge&logoColor=white" alt="Specialization" />
+  <img src="https://img.shields.io/badge/Focus-AI_Integration-C9960C?style=for-the-badge&logoColor=white" alt="Focus" />
 </div>
 
 <br />
@@ -18,53 +18,50 @@
   <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white" alt="LangChain" />
 </div>
 
-### Full-Stack AI Engineer specializing in Autonomous Agents, RAG Pipelines, and Intelligent Infrastructure.
+### Full-Stack Engineer specializing in AI integrations, multi-agent systems, and robust backend infrastructure.
 
 ---
 
-## ⚡ The Core Thesis
-I build software that doesn't just process data, but **reasons** through it. My work lives at the intersection of high-performance Systems Engineering and state-of-the-art Generative AI. I am focused on bridging the gap between human intent and machine execution through autonomous multi-agent systems and sophisticated LLM orchestration.
+## ⚡ About My Work
+I build full-stack AI applications. My work focuses on bridging reliable systems engineering with practical LLM integrations—specifically multi-agent orchestration, local AI environments, and robust RAG pipelines. I prioritize shipping clean, working software over hype.
 
 ---
 
-## 🏗️ Featured Architectures
+## 🏗️ Selected Projects
 
-### 🤖 AUTONOMA — Professional-Grade Digital FTE
-Architected an AI Agent platform that operates as a 'Digital Employee'. Features proactive monitoring, high-fidelity live telemetry, and intelligent multi-session memory. Reduces manual workload by **85%** across 6+ communication channels.
+### 🤖 AUTONOMA — Multi-Channel Support Agent
+A multi-agent platform designed to automate customer support across 6+ channels (Slack, Discord, Email, etc.). Features real-time WebSocket monitoring and persistent conversational memory. Successfully reduced manual response workload by **85%**.
 
-### 🔍 MCPPROBE — Diagnostic Engineering for AI Context
-The definitive diagnostic layer for the Model Context Protocol (MCP) ecosystem. Engineered a robust scanning engine that establishes Stdio/SSE connections to perform full introspective analysis, health scoring, and production config generation.
+### 🔍 MCPPROBE — Model Context Protocol Scanner
+A diagnostic tool for the Anthropic Model Context Protocol (MCP) ecosystem. The engine establishes Stdio/SSE connections to analyze server health, validate configurations, and automatically generate production-ready setups.
 
-### 📂 PORTABLE AI — Offline Cross-OS AI Infrastructure
-A CLI engine that transforms any USB drive into a high-performance, cross-platform AI workstation. Features a dual-OS runtime orchestration for Ollama and AnythingLLM with zero-data footprint on host machines.
-
----
-
-## 🛠️ The Intelligence Stack
-
-- **Reasoning Layer:** Gemini 2.0/2.5, Claude 3.5 Sonnet, GPT-4o, Custom Fine-tuned Models.
-- **Orchestration:** LangChain, LangGraph, CrewAI, AutoGen, Multi-Agent Swarms.
-- **Knowledge Base:** RAG Foundations, Vector DBs (Qdrant, ChromaDB, FAISS), Graph Databases.
-- **Infrastructure:** Python, Rust, FastAPI, TypeScript, Next.js, Node.js, Docker, GitHub Actions.
+### 📂 PORTABLE AI — Local LLM Environment CLI
+A cross-platform CLI tool that transforms any standard USB drive into a portable, offline AI environment. Automates the deployment of Ollama and AnythingLLM runtimes without leaving a data footprint on the host machine.
 
 ---
 
-## 📜 Credentials & Impact
+## 🛠️ Tech Stack
 
-- **Certified Agentic AI Engineer:** Deep specialization in building digital FTEs and autonomous workflows.
-- **Certified Claude & MCP Architect:** Advanced implementation of Anthropic’s Model Context Protocol and coding workflows.
-- **AI/ML Intern @ DeveloperHub:** Developed 11+ production-level prototype applications.
+- **Models:** Gemini 2.0/2.5, Claude 3.5 Sonnet, GPT-4o, Local LLMs (Ollama)
+- **Frameworks:** LangChain, LangGraph, CrewAI, AutoGen
+- **Data & RAG:** Vector DBs (Qdrant, ChromaDB, FAISS), Graph Databases
+- **Infrastructure:** Python, Rust, FastAPI, TypeScript, Next.js, Node.js, Docker, GitHub Actions
+
+---
+
+## 📜 Experience & Education
+
+- **Agentic AI Integration:** Deep practical experience building autonomous workflows and AI-driven applications.
+- **MCP & LLM Workflows:** Advanced implementation of Anthropic’s Model Context Protocol for automated coding workflows.
+- **AI/ML Intern @ DeveloperHub:** Developed and shipped 11+ production-level prototype applications.
 - **BS Software Engineering (Est. 2028):** Academic foundation in systems architecture and engineering principles.
 
 ---
 
-## 🛰️ Orbital Status
+## 📫 Contact & Links
 - **Location:** Lahore, Pakistan
-- **Availability:** Open for High-Impact AI/ML Collaborations
-- **Contact:** [mu.ai.dev@gmail.com](mailto:mu.ai.dev@gmail.com)
+- **Email:** [mu.ai.dev@gmail.com](mailto:mu.ai.dev@gmail.com)
 - **Portfolio:** [buildwithusman.me](https://buildwithusman.me)
 - **LinkedIn:** [muhammad-usman-ai-dev](https://linkedin.com/in/muhammad-usman-ai-dev)
 
----
-
-> "The goal isn't just to build smarter software, but to build software that understands."
+<!-- _sig: MUGM-7e42-d9b1-f0a3 -->

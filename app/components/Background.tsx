@@ -71,7 +71,7 @@ const Background = () => {
                   </div>
                   <p className="text-accent font-bold text-sm uppercase tracking-wider mb-4">DeveloperHub</p>
                   <p className="text-muted text-sm leading-relaxed mb-6">
-                    Pioneered the integration of agentic workflows and RAG systems. 
+                    Integrated multi-agent workflows and RAG systems. 
                     Focused on optimizing LLM response latency and architecting multi-step autonomous chains.
                   </p>
                   <div className="flex flex-wrap gap-2">

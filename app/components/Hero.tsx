@@ -44,7 +44,7 @@ const Hero = () => {
           >
             <div className="w-8 h-[2px] bg-accent" />
             <span className="text-accent text-xs font-black uppercase tracking-[0.3em]">
-              Full-Stack AI Engineer
+              Software Engineer
             </span>
           </m.div>
 
