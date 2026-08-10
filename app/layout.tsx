@@ -1,5 +1,6 @@
 import type { Metadata } from "next"; 
 import { Geist, Geist_Mono, Bebas_Neue, DM_Sans } from "next/font/google";	
+// @ts-ignore: allow global CSS import in layout file
 import "./globals.css"; 
 import Navbar from "./components/Navbar"; 
 import MobileNav from "./components/MobileNav";	
@@ -134,7 +135,7 @@ export default function RootLayout({
                 "knowsAbout": ["AI Engineering", "LLM Systems", "RAG Pipelines", "Automation", "Full-stack Development"],
                 "sameAs": [
                   "https://github.com/MuhammadUsmanGM",
-                  "https://www.linkedin.com/in/muhammadusmangm
+                  "https://www.linkedin.com/in/muhammadusmangm",
                 ]
               })
             }}
