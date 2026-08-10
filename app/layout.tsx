@@ -134,7 +134,7 @@ export default function RootLayout({
                 "knowsAbout": ["AI Engineering", "LLM Systems", "RAG Pipelines", "Automation", "Full-stack Development"],
                 "sameAs": [
                   "https://github.com/MuhammadUsmanGM",
-                  "https://www.linkedin.com/in/muhammad-usman-ai-dev"
+                  "https://www.linkedin.com/in/muhammadusmangm
                 ]
               })
             }}

@@ -62,6 +62,6 @@ A cross-platform CLI tool that transforms any standard USB drive into a portable
 - **Location:** Lahore, Pakistan
 - **Email:** [mu.ai.dev@gmail.com](mailto:mu.ai.dev@gmail.com)
 - **Portfolio:** [buildwithusman.me](https://buildwithusman.me)
-- **LinkedIn:** [muhammad-usman-ai-dev](https://linkedin.com/in/muhammad-usman-ai-dev)
+- **LinkedIn:** [muhammad-usman-ai-dev](https://linkedin.com/in/muhammadusmangm)
 
 <!-- _sig: MUGM-7e42-d9b1-f0a3 -->
