@@ -100,29 +100,11 @@ export default function RootLayout({
       <head>
         <meta name="author" content="Muhammad Usman" data-gh="MuhammadUsmanGM" data-sig="MUGM-7e42-d9b1" />
         <link rel="preload" href="/favicon.webp" as="image" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var isBot = /Lighthouse|Googlebot|SiteAudit/.test(navigator.userAgent);
-                  var seen = sessionStorage.getItem("loaded");
-                  if (!seen && !isBot) {
-                    document.documentElement.classList.add('loading-pending');
-                  }
-                } catch (e) {}
-              })();
-            `,
-          }}
-        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} ${dmSans.variable} antialiased`}
       >
         <SmoothScroll>
-          <div id="immediate-loader">
-            <img src="/favicon.webp" alt="Muhammad Usman" className="immediate-logo" />
-          </div>
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{

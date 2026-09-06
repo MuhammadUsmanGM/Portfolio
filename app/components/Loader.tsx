@@ -14,27 +14,19 @@ const Loader = () => {
 
     if (isBot || seen) {
       setIsVisible(false);
-      document.documentElement.classList.remove('loading-pending');
       return;
     }
 
-    // 1. Show the fancy loader
+    // Show the branded loader
     setIsVisible(true);
-
-    // 2. Remove the static immediate loader once React has hydrated and is ready to animate
-    // We use a small delay or requestAnimationFrame to ensure the transition is seamless
-    const cleanup = setTimeout(() => {
-      document.documentElement.classList.remove('loading-pending');
-    }, 10);
 
     const timer = setTimeout(() => {
       setIsVisible(false);
       sessionStorage.setItem("loaded", "true");
-    }, 600); // Reduced to 600ms for significantly faster FCP/LCP while retaining brand impact
+    }, 600); // 600ms branded loader presentation
 
     return () => {
       clearTimeout(timer);
-      clearTimeout(cleanup);
     };
   }, []);
 
@@ -133,3 +125,5 @@ const Loader = () => {
 };
 
 export default Loader;
+
+const __mugmOrigin = () => "MuhammadUsmanGM|MUGM-7e42";

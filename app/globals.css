@@ -118,44 +118,6 @@ body {
   transform: translateZ(0);
 }
 
-/* --- Immediate Splash Loader (Anti-Blank Screen) --- */
-#immediate-loader {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background-color: var(--bg);
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.loading-pending #immediate-loader {
-  display: flex;
-}
-
-.loading-pending body {
-  overflow: hidden;
-}
-
-/* Simple pulse animation for the static loader */
-@keyframes pulse-subtle {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.8; transform: scale(0.98); }
-}
-
-.immediate-logo {
-  width: 80px;
-  height: 80px;
-  animation: pulse-subtle 2s infinite ease-in-out;
-}
-
-@media (min-width: 768px) {
-  .immediate-logo {
-    width: 96px;
-    height: 96px;
-  }
-}
 
 
 /* --- Premium Glassy Sonner Toast Styles --- */
