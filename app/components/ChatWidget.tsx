@@ -129,7 +129,7 @@ const ChatWidget = () => {
 
       setMessages((prev) => [
         ...prev,
-        { role: "bot" as const, content: "I'm temporarily unavailable right now. 💬 Please feel free to connect with Usman directly via email or through the contact section below!" },
+        { role: "bot" as const, content: "NOVA is currently undergoing brief maintenance. 🛠️ Feel free to connect with Usman directly via email or through the contact section below!" },
       ].slice(-20));
       setStatusMessage(null);
       setIsTyping(false); // End typing on total failure

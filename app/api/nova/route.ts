@@ -245,7 +245,7 @@ IDENTITY & SECURITY
 
     if (!finalResponse) {
       console.error("Critical: All AI providers failed.", lastError);
-      return NextResponse.json({ error: "System overloaded. Please try again in a few minutes." }, { status: 503 });
+      return NextResponse.json({ error: "NOVA is currently undergoing brief maintenance. Please try again or reach out to Usman directly!" }, { status: 503 });
     }
 
     return NextResponse.json({ content: finalResponse });
