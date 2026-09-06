@@ -21,18 +21,18 @@ const About = () => {
   const pillars = [
     {
       icon: Brain,
-      title: "Actionable Intelligence",
-      text: "Building multi-agent systems to automate complex workflows and reduce operational overhead."
+      title: "Automated AI Workflows",
+      text: "Building AI agents that handle complex tasks without human intervention."
     },
     {
       icon: Code,
-      title: "Full-Stack Efficiency",
-      text: "Building end-to-end AI products that integrate LLMs directly into business logic to drive immediate, measurable results."
+      title: "Full-Stack AI Products",
+      text: "Connecting AI models directly into web apps and APIs to deliver fast, usable products."
     },
     {
       icon: Zap,
-      title: "Engineered for Scale",
-      text: "Deploying resilient, production-ready systems that handle high-volume workflows while maintaining data integrity and performance."
+      title: "Built for Reliability",
+      text: "Deploying fast, stable systems that run 24/7 without downtime or data issues."
     }
   ];
 
@@ -77,12 +77,12 @@ const About = () => {
               className="space-y-6 text-xl text-text-sub leading-relaxed max-w-2xl"
             >
               <p>
-                I am an <span className="text-text font-bold uppercase italic tracking-tighter">Full-Stack AI Engineer</span> building systems that don&apos;t just respond — they <span className="text-accent">execute</span>, <span className="text-accent">optimize</span>, and <span className="text-accent">scale</span>. 
-                Based in Lahore, I build autonomous AI operations that eliminate manual bottlenecks and scale without increasing headcount.
+                I am a <span className="text-text font-bold uppercase italic tracking-tighter">Full-Stack AI Engineer</span> building software that automates business tasks and runs reliably. 
+                Based in Lahore, I create AI-driven tools that eliminate repetitive manual work.
               </p>
               <p>
-                With a background in <span className="text-text font-bold underline decoration-accent/30 underline-offset-4">RAG pipelines</span> and 
-                <span className="text-text font-bold underline decoration-accent/30 underline-offset-4"> agentic orchestration</span>, I deliver production systems that turn unstructured data into automated business outcomes.
+                From custom <span className="text-text font-bold underline decoration-accent/30 underline-offset-4">AI search engines</span> to 
+                <span className="text-text font-bold underline decoration-accent/30 underline-offset-4"> autonomous workflows</span>, I build production tools focused on real-world results.
               </p>
             </m.div>
 

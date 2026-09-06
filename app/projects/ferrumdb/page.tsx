@@ -83,7 +83,7 @@ const FerrumCaseStudy = () => {
               FERRUM <span className="text-accent italic">DB.</span>
             </h1>
             <p className="text-xl md:text-2xl text-text-sub max-w-2xl leading-relaxed">
-              A high-speed embedded database built in Rust to provide zero-latency data retrieval and enterprise-grade encryption for performance-critical applications.
+              A lightweight database engine built in Rust from scratch. Designed to store data securely with built-in encryption and instant lookup speed.
             </p>
           </m.div>
 

@@ -80,13 +80,13 @@ const Projects = () => {
   const projects: Project[] = [
     {
       title: "AUTONOMA",
-      subtitle: "85% Manual Workload Reduction",
-      description: "Built an autonomous digital workforce platform that fully automates customer support and operational tasks across WhatsApp, Discord, and Gmail. Designed to replace repetitive human workflows and drastically cut operational overhead.",
+      subtitle: "AI Assistant That Handles Customer Support Automatically",
+      description: "An AI support assistant that automatically answers customer messages on WhatsApp, Discord, and Email. It remembers past conversations and resolves 85% of routine support requests without human help.",
       tech: ["Python 3.11+", "React 19", "SQLite FTS5", "WebSockets", "LLM APIs"],
       link: "https://www.npmjs.com/package/autonoma-ai",
       github: "https://github.com/MuhammadUsmanGM/autonoma",
       isPrivate: false,
-      tags: ["AI Agent Platform", "85% Workload Reduction", "BM25 Memory"],
+      tags: ["AI Support Bot", "85% Workload Saved", "Smart Memory"],
       caseStudy: "/projects/autonoma",
       banner: { variant: "neural" as BannerVariant, version: "v1.0", status: "AUTONOMOUS" },
       codeSnippet: `// Autonomous Planning Loop
@@ -97,14 +97,26 @@ for (const step of plan) {
 }`
     },
     {
+      title: "PAYMYBREAD",
+      subtitle: "Commercial Creator Monetization & Discord Platform",
+      description: "A full-stack commercial platform that automates subscriptions and Discord community roles. Built with Next.js, Express, Drizzle ORM, Postgres, Stripe payments, and AWS S3.",
+      tech: ["Next.js", "Express.js", "PostgreSQL", "Drizzle ORM", "Stripe API", "Discord Bot", "AWS S3"],
+      link: "https://paymybread.com",
+      github: "#",
+      isPrivate: true,
+      tags: ["Client Project", "Full-Stack SaaS", "Live at paymybread.com"],
+      customVisual: "/projects/paymybread.webp",
+      banner: { variant: "crystal" as BannerVariant, version: "v1.0", status: "COMMERCIAL" }
+    },
+    {
       title: "CODE-STICK",
-      subtitle: "Offline AI Agent. Any Machine. Zero Install.",
-      description: "Engineered a portable AI coding agent that runs entirely off a USB drive — no install, no residue on the host. Packages Ollama + opencode for all 5 platforms (Windows, macOS Apple Silicon/Intel, Linux x64/ARM64) from a single stick. Built for airgapped environments: banks, hospitals, defense contractors, and privacy-sensitive codebases where cloud AI is blocked.",
+      subtitle: "Portable AI Assistant on a USB Drive",
+      description: "A tool that puts an offline AI coding assistant onto a standard USB drive. Plug it into any laptop, run AI locally without an internet connection, and unplug it leaving zero files or history behind.",
       tech: ["TypeScript", "Node.js", "Ollama", "OpenCode", "tsup", "Vitest"],
       link: "https://www.npmjs.com/package/code-stick",
       github: "https://github.com/MuhammadUsmanGM/code-stick",
       isPrivate: false,
-      tags: ["Portable AI Tooling", "Airgap-Ready", "5-Platform Support"],
+      tags: ["Portable AI Tool", "100% Offline", "Runs Anywhere"],
       caseStudy: "/projects/code-stick",
       banner: { variant: "wave" as BannerVariant, version: "v0.1", status: "LAUNCHED" },
       codeSnippet: `// Plug in USB. Run anywhere.
@@ -114,36 +126,20 @@ npx code-stick install
 // → Zero residue on host`
     },
     {
-      title: "CODELENS",
-      subtitle: "Instant Codebase Discovery",
-      description: "Engineered an AI-powered search engine for massive codebases, currently used by 200+ engineers. Drastically reduces onboarding time for new developers and eliminates hours wasted searching for undocumented architecture.",
-      tech: ["Next.js", "Gemini AI", "Qdrant", "LangChain", "Xenova", "Tailwind"],
-      link: "https://www.npmjs.com/package/@muhammadusmangm/codelens",
-      github: "https://github.com/MuhammadUsmanGM/CodeLens",
-      isPrivate: false,
-      tags: ["RAG Architecture", "200+ Active Users", "NPM Package"],
-      caseStudy: "/projects/codelens",
-      banner: { variant: "matrix" as BannerVariant, version: "v2.1", status: "DISTRIBUTED" },
-      codeSnippet: `// Neural Semantic Search
-const results = await lens.discover("auth flow");
-// [Match 94%] -> src/engine/session.ts
-// Insight: Token handshake logic identified.`
-    },
-    {
-      title: "FERRUM DB",
-      subtitle: "High-Performance Embedded Database",
-      description: "Architected a custom embedded database in Rust that prioritizes speed and security. Reached 2,400+ downloads by providing enterprise-grade AES-256 encryption and zero-latency data retrieval for performance-critical applications.",
-      tech: ["Rust", "NAPI-RS", "PyO3", "Tokio", "AES-256-GCM", "Axum"],
-      link: "https://pypi.org/project/ferrumdb/",
-      github: "https://github.com/MuhammadUsmanGM/ferrumdb",
-      isPrivate: false,
-      tags: ["Systems Engineering", "Cross-Language Bindings", "O(1) Performance"],
-      caseStudy: "/projects/ferrumdb",
-      banner: { variant: "crystal" as BannerVariant, version: "v1.3", status: "SHIPPED" },
-      codeSnippet: `// O(1) Bitcask get()
-let entry = keydir.get(key)?;
-file.read_at(entry.offset, buf)?;
-crypto.decrypt(buf)`
+      title: "TEXTCORN CLEANER",
+      subtitle: "Automated Image Dewatermarking Telegram Bot",
+      description: "An automated Telegram bot built for content creators that strips watermarks from images using multi-pass image processing algorithms and fast buffer caching.",
+      tech: ["TypeScript", "Node.js", "Grammy API", "Telegram Bot", "Image Processing"],
+      link: "https://t.me/CornCleaner_bot",
+      github: "#",
+      isPrivate: true,
+      tags: ["Client Project", "Image Processing", "Telegram Bot"],
+      customVisual: "/projects/corn-cleaner.svg",
+      banner: { variant: "matrix" as BannerVariant, version: "v1.0", status: "OPERATIONAL" },
+      codeSnippet: `// Dewatermark Bot Pipeline
+const photo = await downloadTelegramPhoto(ctx);
+const cleaned = await removeWatermarkStandard(photo);
+await ctx.replyWithDocument(cleaned);`
     }
   ];
 

@@ -99,6 +99,14 @@ const ChatWidget = () => {
 
       const data = await response.json();
       
+      if (response.status === 429 || data?.isRateLimited) {
+        const rateLimitMsg = data?.message || "I've reached my chat limit for right now (20 requests per 3 hours). 💬 Please feel free to connect with Usman directly via email or through the contact section below!";
+        setMessages((prev) => [...prev, { role: "bot" as const, content: rateLimitMsg }].slice(-20));
+        setStatusMessage(null);
+        setIsTyping(false);
+        return;
+      }
+
       if (data.content) {
         setMessages((prev) => [...prev, { role: "bot" as const, content: data.content }].slice(-20));
         setStatusMessage(null);
@@ -121,7 +129,7 @@ const ChatWidget = () => {
 
       setMessages((prev) => [
         ...prev,
-        { role: "bot" as const, content: "All systems are currently undergoing maintenance. Please try again or contact Usman directly!" },
+        { role: "bot" as const, content: "NOVA is currently undergoing brief maintenance. 🛠️ Feel free to connect with Usman directly via email or through the contact section below!" },
       ].slice(-20));
       setStatusMessage(null);
       setIsTyping(false); // End typing on total failure

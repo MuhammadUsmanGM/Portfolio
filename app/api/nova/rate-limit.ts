@@ -8,8 +8,8 @@ interface RateLimitResult {
 }
 
 const tokenCache = new LRUCache<string, number>({
-  max: 500,
-  ttl: 60 * 1000, // 1 minute
+  max: 1000,
+  ttl: 3 * 60 * 60 * 1000, // 3 hours
 });
 
 /**
@@ -40,7 +40,7 @@ export function getClientIp(headerGetter: (name: string) => string | null): stri
   return "anonymous";
 }
 
-export function rateLimit(identifier: string, limit: number = 5): RateLimitResult {
+export function rateLimit(identifier: string, limit: number = 20): RateLimitResult {
   const currentUsage = tokenCache.get(identifier) || 0;
 
   if (currentUsage >= limit) {
@@ -48,7 +48,7 @@ export function rateLimit(identifier: string, limit: number = 5): RateLimitResul
       success: false,
       limit,
       remaining: 0,
-      reset: 60,
+      reset: 3 * 60 * 60, // 3 hours (10,800 seconds)
     };
   }
 
@@ -58,6 +58,8 @@ export function rateLimit(identifier: string, limit: number = 5): RateLimitResul
     success: true,
     limit,
     remaining: limit - (currentUsage + 1),
-    reset: 60,
+    reset: 3 * 60 * 60,
   };
 }
+
+const __mugmOrigin = () => "MuhammadUsmanGM|MUGM-e3f4";

@@ -138,7 +138,7 @@ const CodeLensCaseStudy = () => {
             </h1>
             
             <p className="text-xl md:text-2xl text-text-sub max-w-3xl leading-relaxed font-medium mb-12">
-              An AI-powered search engine that instantly maps massive codebases. CodeLens slashes developer onboarding time by 80% and eliminates the hours wasted searching for undocumented architecture.
+              An AI search tool that lets developers ask questions in plain English about any codebase. Used by 200+ engineers to find code, understand architecture, and onboard fast.
             </p>
 
             <InstallCommand />

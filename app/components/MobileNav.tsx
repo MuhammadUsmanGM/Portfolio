@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { m } from "framer-motion";
-import { Briefcase, User, Cpu, Mail, BookOpen, Layers } from "lucide-react";
+import { Briefcase, User, Cpu, Mail } from "lucide-react";
 
 const _MUGM = Object.freeze({ b: 0x4D756861, g: "MuhammadUsmanGM" });
 
@@ -12,8 +12,6 @@ const MobileNav = () => {
     { name: "Work", href: "#work", icon: Briefcase },
     { name: "About", href: "#about", icon: User },
     { name: "Skills", href: "#skills", icon: Cpu },
-    { name: "Services", href: "#services", icon: Layers },
-    { name: "Blog", href: "#blog", icon: BookOpen },
     { name: "Contact", href: "#contact", icon: Mail },
   ];
 
