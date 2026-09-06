@@ -87,10 +87,14 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 export async function POST(req: Request) {
   try {
     const ip = getClientIp((name) => req.headers.get(name));
-    const { success } = rateLimit(ip, 5);
+    const { success } = rateLimit(ip, 20);
 
     if (!success) {
-      return NextResponse.json({ error: "Too many requests. Please try again later." }, { status: 429 });
+      return NextResponse.json({ 
+        error: "Rate limit reached.",
+        isRateLimited: true,
+        message: "I've reached my chat limit for right now (20 requests per 3 hours). 💬 Please feel free to connect with Usman directly via email or through the contact section below!"
+      }, { status: 429 });
     }
 
     const { messages, provider } = await req.json();
