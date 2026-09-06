@@ -2,6 +2,147 @@
   {
     "_author": "MuhammadUsmanGM",
     "_sig": "MUGM-c1d2-e3f4-a5b6",
+    "id": "paymybread",
+    "year": "2026",
+    "name": "PayMyBread",
+    "highlight": "Client Project | Freelance Invoicing & Financial Hub",
+    "description": "A financial platform built for freelancers and small businesses to issue clean invoices, manage client billing, and track recurring revenue automatically.",
+    "tech": [
+      "Next.js 15",
+      "TypeScript",
+      "Tailwind CSS",
+      "Prisma",
+      "Stripe API"
+    ],
+    "categories": [
+      "Client Work",
+      "Full-Stack",
+      "FinTech"
+    ],
+    "type": "Client Web Platform",
+    "status": "Private Client / NDA",
+    "links": [],
+    "image": "/projects/paymybread.webp",
+    "bannerVariant": "crystal",
+    "bannerVersion": "v1.0.0",
+    "bannerStatus": "PRODUCTION",
+    "customVisual": "/projects/paymybread.webp",
+    "codeSnippet": "// Automated Invoicing Engine\nconst invoice = await billing.generate({\n  clientId,\n  items,\n  dueDate: addDays(now(), 14)\n});",
+    "benchmarks": [
+      {
+        "label": "Client Status",
+        "value": "NDA / Private",
+        "detail": "Built under commercial agreement"
+      },
+      {
+        "label": "Billing Flow",
+        "value": "Automated",
+        "detail": "Instant payment links & tracking"
+      },
+      {
+        "label": "Tech Stack",
+        "value": "Next.js & Stripe",
+        "detail": "Production billing pipeline"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Automated Invoicing",
+        "icon": "Layers",
+        "content": "Allows business owners to issue professional digital invoices with live payment links."
+      },
+      {
+        "title": "Payment Gateway Integration",
+        "icon": "Zap",
+        "content": "Integrates securely with Stripe to handle credit card processing and instant payouts."
+      },
+      {
+        "title": "Clean Dashboard",
+        "icon": "ShieldCheck",
+        "content": "Provides clear revenue charts, pending payment tracking, and automated client reminders."
+      }
+    ],
+    "learnings": [
+      "Building commercial billing tools requires strict security and robust edge-case handling.",
+      "Clear financial dashboards reduce client payment delays significantly."
+    ]
+  },
+  {
+    "_author": "MuhammadUsmanGM",
+    "_sig": "MUGM-c1d2-e3f4-a5b6",
+    "id": "textcorn-cleaner",
+    "year": "2026",
+    "name": "TextCorn Cleaner Bot",
+    "highlight": "Client Project | Live Telegram Watermark Removal Bot",
+    "description": "An automated Telegram bot that cleans and strips watermarks or unwanted elements from user-submitted images in seconds.",
+    "tech": [
+      "Python",
+      "python-telegram-bot",
+      "OpenCV",
+      "Pillow",
+      "Asyncio"
+    ],
+    "categories": [
+      "Client Work",
+      "Automation",
+      "AI & Agents"
+    ],
+    "type": "Telegram Bot",
+    "status": "Live Production",
+    "links": [
+      {
+        "label": "LIVE TELEGRAM BOT",
+        "url": "https://t.me/CornCleaner_bot"
+      }
+    ],
+    "image": "https://placehold.co/1200x800/0a0a0f/22c55e?text=TEXTCORN+CLEANER+BOT",
+    "bannerVariant": "neural",
+    "bannerVersion": "v1.0.0",
+    "bannerStatus": "LIVE",
+    "customVisual": "/projects/corn-cleaner-arch.svg",
+    "codeSnippet": "// Telegram Media Processing\n@bot.on(events.NewMessage(pattern='/clean'))\nasync def clean_handler(event):\n    image = await event.download_media()\n    cleaned = await image_processor.clean(image)\n    await event.reply(file=cleaned)",
+    "benchmarks": [
+      {
+        "label": "Processing Speed",
+        "value": "< 3s",
+        "detail": "Fast image watermark cleaning"
+      },
+      {
+        "label": "Platform",
+        "value": "Telegram API",
+        "detail": "Live interactive bot service"
+      },
+      {
+        "label": "Live Bot",
+        "value": "@CornCleaner_bot",
+        "detail": "Active production deployment"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Instant Image Cleaning",
+        "icon": "Zap",
+        "content": "Processes uploaded images directly in Telegram chat and returns watermark-free versions."
+      },
+      {
+        "title": "Automated Queue",
+        "icon": "Activity",
+        "content": "Handles multiple concurrent user requests with asynchronous message queues."
+      },
+      {
+        "title": "Simple Telegram UX",
+        "icon": "Layers",
+        "content": "Requires no app downloads—users simply send images to the bot and receive instant clean results."
+      }
+    ],
+    "learnings": [
+      "Building media tools inside chat apps creates zero-friction user experiences.",
+      "Asynchronous image processing ensures high throughput under heavy bot load."
+    ]
+  },
+  {
+    "_author": "MuhammadUsmanGM",
+    "_sig": "MUGM-c1d2-e3f4-a5b6",
     "id": "code-stick",
     "year": "2026",
     "name": "CodeStick",

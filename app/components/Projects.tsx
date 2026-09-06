@@ -97,6 +97,18 @@ for (const step of plan) {
 }`
     },
     {
+      title: "PAYMYBREAD",
+      subtitle: "Commercial Creator Monetization & Discord Platform",
+      description: "A full-stack commercial platform that automates subscriptions and Discord community roles. Built with Next.js, Express, Drizzle ORM, Postgres, Stripe payments, and AWS S3.",
+      tech: ["Next.js", "Express.js", "PostgreSQL", "Drizzle ORM", "Stripe API", "Discord Bot", "AWS S3"],
+      link: "#",
+      github: "#",
+      isPrivate: true,
+      tags: ["Client Project", "Full-Stack SaaS", "Stripe & Discord Bot"],
+      customVisual: "/projects/paymybread.webp",
+      banner: { variant: "crystal" as BannerVariant, version: "v1.0", status: "COMMERCIAL" }
+    },
+    {
       title: "CODE-STICK",
       subtitle: "Portable AI Assistant on a USB Drive",
       description: "A tool that puts an offline AI coding assistant onto a standard USB drive. Plug it into any laptop, run AI locally without an internet connection, and unplug it leaving zero files or history behind.",
@@ -114,36 +126,19 @@ npx code-stick install
 // → Zero residue on host`
     },
     {
-      title: "CODELENS",
-      subtitle: "AI Search Engine for Large Codebases",
-      description: "An AI search tool that lets developers ask questions in plain English about any codebase. Used by 200+ engineers to find code, understand architecture, and onboard fast.",
-      tech: ["Next.js", "Gemini AI", "Qdrant", "LangChain", "Xenova", "Tailwind"],
-      link: "https://www.npmjs.com/package/@muhammadusmangm/codelens",
-      github: "https://github.com/MuhammadUsmanGM/CodeLens",
-      isPrivate: false,
-      tags: ["AI Code Search", "200+ Developers", "Instant Answers"],
-      caseStudy: "/projects/codelens",
-      banner: { variant: "matrix" as BannerVariant, version: "v2.1", status: "DISTRIBUTED" },
-      codeSnippet: `// Neural Semantic Search
-const results = await lens.discover("auth flow");
-// [Match 94%] -> src/engine/session.ts
-// Insight: Token handshake logic identified.`
-    },
-    {
-      title: "FERRUM DB",
-      subtitle: "Built My Own Fast & Encrypted Database",
-      description: "Created a lightweight database engine in Rust from scratch. It stores data with built-in encryption and instant lookup times, reaching 2,400+ downloads across Python and Node.js.",
-      tech: ["Rust", "NAPI-RS", "PyO3", "Tokio", "AES-256-GCM", "Axum"],
-      link: "https://pypi.org/project/ferrumdb/",
-      github: "https://github.com/MuhammadUsmanGM/ferrumdb",
-      isPrivate: false,
-      tags: ["Built in Rust", "Built-In Encryption", "2,400+ Downloads"],
-      caseStudy: "/projects/ferrumdb",
-      banner: { variant: "crystal" as BannerVariant, version: "v1.3", status: "SHIPPED" },
-      codeSnippet: `// O(1) Bitcask get()
-let entry = keydir.get(key)?;
-file.read_at(entry.offset, buf)?;
-crypto.decrypt(buf)`
+      title: "TEXTCORN CLEANER",
+      subtitle: "Automated Image Dewatermarking Telegram Bot",
+      description: "An automated Telegram bot built for content creators that strips watermarks from images using multi-pass image processing algorithms and fast buffer caching.",
+      tech: ["TypeScript", "Node.js", "Grammy API", "Telegram Bot", "Image Processing"],
+      link: "https://t.me/CornCleaner_bot",
+      github: "#",
+      isPrivate: true,
+      tags: ["Client Project", "Image Processing", "Telegram Bot"],
+      banner: { variant: "matrix" as BannerVariant, version: "v1.0", status: "OPERATIONAL" },
+      codeSnippet: `// Dewatermark Bot Pipeline
+const photo = await downloadTelegramPhoto(ctx);
+const cleaned = await removeWatermarkStandard(photo);
+await ctx.replyWithDocument(cleaned);`
     }
   ];
 
