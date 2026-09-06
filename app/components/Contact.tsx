@@ -224,8 +224,8 @@ const Contact = () => {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-[clamp(3.5rem,7vw,6rem)] font-bebas uppercase tracking-tighter leading-[0.92] text-text"
           >
-            SCALE YOUR <br />
-            <span className="text-accent">OPERATIONS.</span>
+            LET&apos;S WORK <br />
+            <span className="text-accent">TOGETHER.</span>
           </m.h2>
         </div>
 
