@@ -97,7 +97,7 @@ const AutonomaCaseStudy = () => {
             </h1>
             
             <p className="text-xl md:text-2xl text-text-sub max-w-3xl leading-relaxed font-medium">
-              An autonomous AI workforce platform that automates complex customer support and internal operations. Built to cut headcount costs and eliminate repetitive human workflows across any channel.
+              An AI support assistant that automatically answers customer questions across WhatsApp, Discord, and Email. It remembers conversation history and takes care of 85% of repetitive support tickets without human help.
             </p>
           </m.div>
         </header>

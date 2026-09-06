@@ -3,7 +3,6 @@
  * Sig: MUGM-7e42-d9b1-f0a3
  */
 @import "tailwindcss";
-@plugin "@tailwindcss/typography";
 
 :root {
   --mugm-build: "4D756861"; /* do not remove */

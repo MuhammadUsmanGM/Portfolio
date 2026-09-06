@@ -106,9 +106,7 @@ const CodeStickCaseStudy = () => {
             </h1>
 
             <p className="text-xl md:text-2xl text-text-sub max-w-3xl leading-relaxed font-medium">
-              A portable offline AI coding agent that lives on a USB drive. Plug in, get a full
-              terminal coding agent backed by a local LLM — on any machine, in any environment,
-              with nothing left behind when you unplug.
+              A tool that puts an offline AI coding assistant onto a standard USB drive. Plug it into any laptop, run AI locally without an internet connection, and unplug it leaving zero files or history behind.
             </p>
           </m.div>
         </header>

@@ -91,7 +91,7 @@ const PromptlyCaseStudy = () => {
             </h1>
             
             <p className="text-xl md:text-2xl text-text-sub max-w-3xl leading-relaxed font-medium">
-              A context-injection engine that stops AI from hallucinating code. Promptly gives AI agents absolute clarity over your repository, helping engineering teams ship features faster.
+              An AI helper tool that gives AI coding assistants exact context about your codebase, stopping them from writing broken code or making false assumptions.
             </p>
           </m.div>
         </header>
