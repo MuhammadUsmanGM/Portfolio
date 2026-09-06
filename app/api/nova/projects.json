@@ -5,8 +5,8 @@
     "id": "paymybread",
     "year": "2026",
     "name": "PayMyBread",
-    "highlight": "Client Project | Freelance Invoicing & Financial Hub",
-    "description": "A financial platform built for freelancers and small businesses to issue clean invoices, manage client billing, and track recurring revenue automatically.",
+    "highlight": "Client Project | Live Financial & Invoicing SaaS",
+    "description": "A commercial financial platform built for freelancers and small businesses to issue clean invoices, manage client billing, and track recurring revenue automatically.",
     "tech": [
       "Next.js 15",
       "TypeScript",
@@ -20,19 +20,24 @@
       "FinTech"
     ],
     "type": "Client Web Platform",
-    "status": "Private Client / NDA",
-    "links": [],
+    "status": "Live Production",
+    "links": [
+      {
+        "label": "LIVE WEBSITE",
+        "url": "https://paymybread.com"
+      }
+    ],
     "image": "/projects/paymybread.webp",
     "bannerVariant": "crystal",
     "bannerVersion": "v1.0.0",
-    "bannerStatus": "PRODUCTION",
+    "bannerStatus": "LIVE",
     "customVisual": "/projects/paymybread.webp",
     "codeSnippet": "// Automated Invoicing Engine\nconst invoice = await billing.generate({\n  clientId,\n  items,\n  dueDate: addDays(now(), 14)\n});",
     "benchmarks": [
       {
-        "label": "Client Status",
-        "value": "NDA / Private",
-        "detail": "Built under commercial agreement"
+        "label": "Live Site",
+        "value": "paymybread.com",
+        "detail": "Production commercial deployment"
       },
       {
         "label": "Billing Flow",
@@ -65,6 +70,164 @@
     "learnings": [
       "Building commercial billing tools requires strict security and robust edge-case handling.",
       "Clear financial dashboards reduce client payment delays significantly."
+    ]
+  },
+  {
+    "_author": "MuhammadUsmanGM",
+    "_sig": "MUGM-c1d2-e3f4-a5b6",
+    "id": "whipgate",
+    "year": "2026",
+    "name": "WhipGate",
+    "highlight": "Client Project | Vehicle Management Platform",
+    "description": "A high-performance vehicle management web platform built with secure authentication, Supabase database, rate-limited Express backend, and AWS S3 cloud storage.",
+    "tech": [
+      "Next.js 16",
+      "TypeScript",
+      "Express.js",
+      "Supabase",
+      "PostgreSQL",
+      "AWS S3",
+      "Tailwind 4"
+    ],
+    "categories": [
+      "Client Work",
+      "Full-Stack",
+      "Developer Tools"
+    ],
+    "type": "Client Web Platform",
+    "status": "Commercial Work",
+    "links": [],
+    "bannerVariant": "crystal",
+    "bannerVersion": "v1.0.0",
+    "bannerStatus": "PRODUCTION",
+    "codeSnippet": "// Express + Supabase API Gate\napp.post('/api/v1/vehicles', rateLimiter, async (req, res) => {\n  const data = await supabase.from('vehicles').insert(req.body);\n  return res.json(data);\n});",
+    "benchmarks": [
+      {
+        "label": "Database",
+        "value": "Supabase",
+        "detail": "PostgreSQL relational engine"
+      },
+      {
+        "label": "Storage",
+        "value": "AWS S3",
+        "detail": "Secure asset uploads"
+      },
+      {
+        "label": "API Speed",
+        "value": "< 40ms",
+        "detail": "Express middleware pipeline"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Vehicle Tracking",
+        "icon": "Layers",
+        "content": "Monitors vehicle records, status logs, and cloud uploaded documents."
+      },
+      {
+        "title": "Rate-Limited Backend",
+        "icon": "Zap",
+        "content": "Uses Express helmet and rate-limiting middleware to guard endpoints against unauthorized traffic."
+      }
+    ],
+    "learnings": [
+      "Decoupling Supabase authentication from Express API routes creates flexible commercial architectures."
+    ]
+  },
+  {
+    "_author": "MuhammadUsmanGM",
+    "_sig": "MUGM-c1d2-e3f4-a5b6",
+    "id": "instantiptvuk",
+    "year": "2026",
+    "name": "Instant IPTV UK",
+    "highlight": "Client Project | Digital Subscription Portal",
+    "description": "A high-converting web portal built for digital streaming subscriptions, featuring automated email dispatches via Resend/Nodemailer and interactive subscription plan pickers.",
+    "tech": [
+      "Next.js 16",
+      "React 19",
+      "Tailwind 4",
+      "Resend API",
+      "Framer Motion",
+      "Nodemailer"
+    ],
+    "categories": [
+      "Client Work",
+      "Full-Stack",
+      "Automation"
+    ],
+    "type": "Client Web Application",
+    "status": "Commercial Work",
+    "links": [],
+    "bannerVariant": "wave",
+    "bannerVersion": "v1.0.0",
+    "bannerStatus": "PRODUCTION",
+    "codeSnippet": "// Automated Customer Dispatch\nconst dispatch = await resend.emails.send({\n  from: 'subscriptions@instantiptvuk.co.uk',\n  to: customerEmail,\n  subject: 'Your Access Credentials'\n});",
+    "benchmarks": [
+      {
+        "label": "Dispatch Time",
+        "value": "< 2s",
+        "detail": "Instant API email delivery"
+      },
+      {
+        "label": "Framework",
+        "value": "Next.js 16",
+        "detail": "React 19 server components"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Automated Email Delivery",
+        "icon": "Zap",
+        "content": "Triggers immediate setup instructions to customers upon subscription purchase."
+      }
+    ],
+    "learnings": [
+      "Automating transaction dispatches increases customer satisfaction and cuts support tickets."
+    ]
+  },
+  {
+    "_author": "MuhammadUsmanGM",
+    "_sig": "MUGM-c1d2-e3f4-a5b6",
+    "id": "speedmediauk",
+    "year": "2026",
+    "name": "SpeedMedia UK",
+    "highlight": "Client Project | Media Distribution & Content Portal",
+    "description": "A fast web portal built for digital media services and UK content delivery, featuring animated pricing tables, lead acquisition pipelines, and instant customer dispatches.",
+    "tech": [
+      "Next.js 16",
+      "React 19",
+      "Tailwind 4",
+      "Resend API",
+      "Framer Motion",
+      "TypeScript"
+    ],
+    "categories": [
+      "Client Work",
+      "Full-Stack"
+    ],
+    "type": "Client Web Portal",
+    "status": "Commercial Work",
+    "links": [],
+    "bannerVariant": "matrix",
+    "bannerVersion": "v1.0.0",
+    "bannerStatus": "PRODUCTION",
+    "codeSnippet": "// Lead Capture Pipeline\nconst lead = await db.leads.create(req.body);\nawait resend.notifyAdmin(lead);",
+    "benchmarks": [
+      {
+        "label": "Response Time",
+        "value": "< 100ms",
+        "detail": "Fast static page rendering"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Lead Capture Pipeline",
+        "icon": "Layers",
+        "content": "Captures customer leads instantly and notifies administration via WebSockets and email."
+      }
+    ],
+    "learnings": [
+      "Designing responsive media landing pages maximizes conversion rates for commercial clients."
     ]
   },
   {

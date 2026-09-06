@@ -101,10 +101,10 @@ for (const step of plan) {
       subtitle: "Commercial Creator Monetization & Discord Platform",
       description: "A full-stack commercial platform that automates subscriptions and Discord community roles. Built with Next.js, Express, Drizzle ORM, Postgres, Stripe payments, and AWS S3.",
       tech: ["Next.js", "Express.js", "PostgreSQL", "Drizzle ORM", "Stripe API", "Discord Bot", "AWS S3"],
-      link: "#",
+      link: "https://paymybread.com",
       github: "#",
       isPrivate: true,
-      tags: ["Client Project", "Full-Stack SaaS", "Stripe & Discord Bot"],
+      tags: ["Client Project", "Full-Stack SaaS", "Live at paymybread.com"],
       customVisual: "/projects/paymybread.webp",
       banner: { variant: "crystal" as BannerVariant, version: "v1.0", status: "COMMERCIAL" }
     },
