@@ -2,6 +2,128 @@
   {
     "_author": "MuhammadUsmanGM",
     "_sig": "MUGM-c1d2-e3f4-a5b6",
+    "id": "ghme",
+    "year": "2026",
+    "name": "ghme",
+    "highlight": "CLI Tool | GitHub Profile README Generator",
+    "description": "A zero-config CLI tool that generates a polished GitHub profile README.md with typing SVG headers, tech stack badges, and stats cards in under a minute.",
+    "tech": [
+      "TypeScript",
+      "Node.js",
+      "@clack/prompts",
+      "EJS",
+      "tsup",
+      "Chalk"
+    ],
+    "categories": [
+      "Developer Tools",
+      "CLI"
+    ],
+    "type": "CLI Tool",
+    "status": "v0.1.0",
+    "github": "https://github.com/MuhammadUsmanGM/ghme",
+    "links": [
+      {
+        "label": "NPM PACKAGE",
+        "url": "https://www.npmjs.com/package/@muhammadusmangm/ghme"
+      }
+    ],
+    "installCommand": "npx @muhammadusmangm/ghme",
+    "bannerVariant": "matrix",
+    "bannerVersion": "v0.1.0",
+    "bannerStatus": "READY",
+    "codeSnippet": "// Quick Start\nnpx @muhammadusmangm/ghme\n// → Interactive prompts\n// → Typing SVG + Shields badges\n// → Smart git push",
+    "benchmarks": [
+      {
+        "label": "Setup Time",
+        "value": "< 60s",
+        "detail": "Fast profile README generation"
+      },
+      {
+        "label": "Themes",
+        "value": "3 Presets",
+        "detail": "Amber Dark, Minimal, Developer"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Zero Config CLI",
+        "icon": "Zap",
+        "content": "Answer interactive CLI prompts to generate stats cards, typing SVGs, and tech badges."
+      },
+      {
+        "title": "Smart Git Integration",
+        "icon": "ShieldCheck",
+        "content": "Automatically commits and pushes generated README.md to your GitHub profile repository."
+      }
+    ],
+    "learnings": [
+      "Interactive CLI prompts make profile customisation effortless for developers."
+    ]
+  },
+  {
+    "_author": "MuhammadUsmanGM",
+    "_sig": "MUGM-c1d2-e3f4-a5b6",
+    "id": "loop-guard",
+    "year": "2026",
+    "name": "LoopGuard",
+    "highlight": "AI Governance | Linter & Guardrails for AI Agent Loops",
+    "description": "A linter and safety governance layer for AI agent loops. Detects runaway, unverified, or unsupervised agentic loops to prevent API cost burnouts and infinite recursion.",
+    "tech": [
+      "TypeScript",
+      "Node.js",
+      "@clack/prompts",
+      "AST Parsing"
+    ],
+    "categories": [
+      "AI & Agents",
+      "Developer Tools"
+    ],
+    "type": "AI Safety Tool",
+    "status": "v0.1.0",
+    "github": "https://github.com/MuhammadUsmanGM/loopguard",
+    "links": [
+      {
+        "label": "NPM PACKAGE",
+        "url": "https://www.npmjs.com/package/@muhammadusmangm/loopguard"
+      }
+    ],
+    "installCommand": "npx @muhammadusmangm/loopguard",
+    "bannerVariant": "neural",
+    "bannerVersion": "v0.1.0",
+    "bannerStatus": "OPERATIONAL",
+    "codeSnippet": "// AI Loop Guardrail Scanner\nconst audit = fillLoopGuard(agentState);\nif (audit.isRunaway) {\n  agent.halt('Unverified recursion limit reached');\n}",
+    "benchmarks": [
+      {
+        "label": "Scan Speed",
+        "value": "< 10ms",
+        "detail": "Real-time loop linting"
+      },
+      {
+        "label": "Safety Gate",
+        "value": "100%",
+        "detail": "Blocks runaway agent costs"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Runaway Loop Detection",
+        "icon": "ShieldCheck",
+        "content": "Intercepts agent recursion state to block unverified or endless loop execution."
+      },
+      {
+        "title": "Agentic Linter",
+        "icon": "Zap",
+        "content": "Audits agentic codebases for unsafe loop constructs and missing termination criteria."
+      }
+    ],
+    "learnings": [
+      "Governing AI agent loops at runtime prevents expensive API usage spikes."
+    ]
+  },
+  {
+    "_author": "MuhammadUsmanGM",
+    "_sig": "MUGM-c1d2-e3f4-a5b6",
     "id": "paymybread",
     "year": "2026",
     "name": "PayMyBread",
@@ -156,11 +278,16 @@
       "Automation"
     ],
     "type": "Client Web Application",
-    "status": "Commercial Work",
-    "links": [],
+    "status": "Live Production",
+    "links": [
+      {
+        "label": "LIVE WEBSITE",
+        "url": "https://www.instantiptvuk.site"
+      }
+    ],
     "bannerVariant": "wave",
     "bannerVersion": "v1.0.0",
-    "bannerStatus": "PRODUCTION",
+    "bannerStatus": "LIVE",
     "codeSnippet": "// Automated Customer Dispatch\nconst dispatch = await resend.emails.send({\n  from: 'subscriptions@instantiptvuk.co.uk',\n  to: customerEmail,\n  subject: 'Your Access Credentials'\n});",
     "benchmarks": [
       {
@@ -206,11 +333,16 @@
       "Full-Stack"
     ],
     "type": "Client Web Portal",
-    "status": "Commercial Work",
-    "links": [],
+    "status": "Live Production",
+    "links": [
+      {
+        "label": "LIVE WEBSITE",
+        "url": "https://speedmediauk.site"
+      }
+    ],
     "bannerVariant": "matrix",
     "bannerVersion": "v1.0.0",
-    "bannerStatus": "PRODUCTION",
+    "bannerStatus": "LIVE",
     "codeSnippet": "// Lead Capture Pipeline\nconst lead = await db.leads.create(req.body);\nawait resend.notifyAdmin(lead);",
     "benchmarks": [
       {
