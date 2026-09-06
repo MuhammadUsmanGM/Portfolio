@@ -43,9 +43,9 @@ const SpotlightCard = ({ children, className = "", ...props }: { children: React
 const Skills = () => {
   const categories = [
     {
-      title: "Backend Infrastructure",
+      title: "Backend & AI",
       icon: Brain,
-      description: "Architecting backend systems, focusing on low latency and large-scale data processing.",
+      description: "Building fast backend services, AI integrations, LLMs, and smart search engines.",
       techs: [
         { name: "Python", iconPath: "/icons/python.svg" },
         { name: "FastAPI", iconPath: "/icons/fastapi.svg" },
@@ -55,9 +55,9 @@ const Skills = () => {
       ]
     },
     {
-      title: "Resilient Systems",
+      title: "High-Speed Systems",
       icon: Server,
-      description: "Developing robust backend architectures designed for zero-downtime and high-throughput mission-critical tasks.",
+      description: "Reliable server architectures built in Node, Python, Rust, and Go designed for zero downtime.",
       techs: [
         { name: "Node.js", iconPath: "/icons/nodedotjs.svg" },
         { name: "Python", iconPath: "/icons/python.svg" },
@@ -69,9 +69,9 @@ const Skills = () => {
       ]
     },
     {
-      title: "High-Performance UX",
+      title: "Frontend & UI",
       icon: Globe,
-      description: "Engineering fast, accessible, and interactive user interfaces.",
+      description: "Building clean, fast, and interactive user interfaces using modern web tools.",
       techs: [
         { name: "React", iconPath: "/icons/react.svg" },
         { name: "Next.js", iconPath: "/icons/nextdotjs.svg" },
@@ -81,9 +81,9 @@ const Skills = () => {
       ]
     },
     {
-      title: "Data Strategy",
+      title: "Databases & Storage",
       icon: Database,
-      description: "Optimizing the storage, retrieval, and integrity of complex datasets for both structured and unstructured environments.",
+      description: "Managing structured relational databases, high-speed caches, and vector stores.",
       techs: [
         { name: "PostgreSQL", iconPath: "/icons/postgresql.svg" },
         { name: "Supabase", iconPath: "/icons/supabase.svg" },
@@ -92,9 +92,9 @@ const Skills = () => {
       ]
     },
     {
-      title: "Production Ops",
+      title: "DevOps & Deployment",
       icon: Settings,
-      description: "Streamlining delivery through CI/CD automation, container orchestration, and multi-tenant security protocols.",
+      description: "Automating deployment pipelines, containerization, and cloud hosting.",
       techs: [
         { name: "Docker", iconPath: "/icons/docker.svg" },
         { name: "GitHub Actions", iconPath: "/icons/GitHub-Actions.svg" },
