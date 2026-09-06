@@ -134,6 +134,7 @@ npx code-stick install
       github: "#",
       isPrivate: true,
       tags: ["Client Project", "Image Processing", "Telegram Bot"],
+      customVisual: "/projects/corn-cleaner.svg",
       banner: { variant: "matrix" as BannerVariant, version: "v1.0", status: "OPERATIONAL" },
       codeSnippet: `// Dewatermark Bot Pipeline
 const photo = await downloadTelegramPhoto(ctx);

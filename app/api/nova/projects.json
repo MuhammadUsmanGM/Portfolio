@@ -99,7 +99,7 @@
     "bannerVariant": "neural",
     "bannerVersion": "v1.0.0",
     "bannerStatus": "LIVE",
-    "customVisual": "/projects/corn-cleaner-arch.svg",
+    "customVisual": "/projects/corn-cleaner.svg",
     "codeSnippet": "// Telegram Media Processing\n@bot.on(events.NewMessage(pattern='/clean'))\nasync def clean_handler(event):\n    image = await event.download_media()\n    cleaned = await image_processor.clean(image)\n    await event.reply(file=cleaned)",
     "benchmarks": [
       {
