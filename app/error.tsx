@@ -20,33 +20,30 @@ export default function Error({
     <div className="fixed inset-0 z-[99999] bg-bg flex flex-col items-center justify-center p-6 text-center overflow-hidden">
       {/* Background Amber Radial Glow */}
       <div 
-        className="absolute w-[500px] h-[500px] rounded-full bg-accent/10 blur-[140px] pointer-events-none" 
+        className="absolute w-[600px] h-[600px] rounded-full bg-accent/15 blur-[160px] pointer-events-none" 
       />
 
       <m.div 
         initial={{ opacity: 0, scale: 0.9, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-10 flex flex-col items-center max-w-md w-full"
+        className="relative z-10 flex flex-col items-center max-w-xl w-full"
       >
-        {/* Top Label */}
-        <span className="text-accent text-xs font-black uppercase tracking-[0.4em] mb-4">
-          SOMETHING WENT WRONG
-        </span>
+        {/* Huge Glassy Amber ERROR Text */}
+        <h1 className="text-[110px] sm:text-[160px] md:text-[200px] font-bebas text-accent leading-none tracking-tighter drop-shadow-[0_0_40px_rgba(245,166,35,0.4)] select-none">
+          ERROR
+        </h1>
 
-        {/* Big Glassy Amber ERROR Container */}
-        <div className="relative w-full py-8 md:py-12 px-8 rounded-3xl bg-bg-2/40 border border-accent/20 backdrop-blur-xl shadow-[0_0_60px_rgba(245,166,35,0.12)] flex items-center justify-center my-4 group">
-          <span className="text-7xl md:text-9xl font-bebas text-accent tracking-tighter drop-shadow-[0_0_25px_rgba(245,166,35,0.4)] select-none">
-            ERROR
-          </span>
-          <div className="absolute inset-0 rounded-3xl bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-        </div>
+        {/* SOMETHING WENT WRONG Header Text */}
+        <h2 className="text-lg md:text-xl font-black text-text uppercase tracking-[0.4em] -mt-2 md:-mt-6 mb-8">
+          SOMETHING WENT WRONG
+        </h2>
 
         {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row items-center gap-3 mt-4 w-full justify-center">
+        <div className="flex flex-col sm:flex-row items-center gap-4 w-full justify-center">
           <button
             onClick={() => reset()}
-            className="group relative flex items-center justify-center gap-3 px-8 py-4 bg-accent text-bg font-black text-xs uppercase tracking-[0.2em] rounded-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0_8px_32px_rgba(245,166,35,0.25)] w-full sm:w-auto"
+            className="group relative flex items-center justify-center gap-3 px-8 py-4 bg-accent text-bg font-black text-xs uppercase tracking-[0.2em] rounded-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0_8px_32px_rgba(245,166,35,0.3)] w-full sm:w-auto"
           >
             <RotateCcw className="w-4 h-4 group-hover:rotate-180 transition-transform duration-500" />
             Try Again
