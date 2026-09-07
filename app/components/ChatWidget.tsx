@@ -34,6 +34,58 @@ const ChatWidget = () => {
   }, [isOpen, messages.length]);
 
 
+  const renderMessageContent = (content: string, role: "user" | "bot") => {
+    const urlAndEmailRegex = /(https?:\/\/[^\s<]+(?:\.[^\s<]+)*|\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b)/g;
+    const parts = content.split(urlAndEmailRegex);
+
+    return parts.map((part, index) => {
+      if (/^https?:\/\//i.test(part)) {
+        let cleanUrl = part;
+        let trailingPunctuation = "";
+        if (/[.,!?]$/.test(cleanUrl)) {
+          trailingPunctuation = cleanUrl.slice(-1);
+          cleanUrl = cleanUrl.slice(0, -1);
+        }
+
+        return (
+          <React.Fragment key={index}>
+            <a
+              href={cleanUrl}
+              target="_blank"
+              rel="noreferrer"
+              className={`font-bold underline underline-offset-2 break-all transition-colors ${
+                role === "user" 
+                  ? "text-bg hover:opacity-80" 
+                  : "text-accent hover:text-accent-glow"
+              }`}
+            >
+              {cleanUrl}
+            </a>
+            {trailingPunctuation}
+          </React.Fragment>
+        );
+      }
+
+      if (/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/i.test(part)) {
+        return (
+          <a
+            key={index}
+            href={`mailto:${part}`}
+            className={`font-bold underline underline-offset-2 break-all transition-colors ${
+              role === "user" 
+                ? "text-bg hover:opacity-80" 
+                : "text-accent hover:text-accent-glow"
+            }`}
+          >
+            {part}
+          </a>
+        );
+      }
+
+      return part;
+    });
+  };
+
   const scrollToBottom = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollTo({
@@ -252,7 +304,7 @@ const ChatWidget = () => {
                         : "bg-white/5 backdrop-blur-md border border-accent/20 text-text rounded-tl-none"
                     }`}
                   >
-                    {msg.content}
+                    {renderMessageContent(msg.content, msg.role)}
                   </div>
                 </m.div>
               ))}

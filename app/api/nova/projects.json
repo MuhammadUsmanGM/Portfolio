@@ -200,8 +200,8 @@
     "id": "whipgate",
     "year": "2026",
     "name": "WhipGate",
-    "highlight": "Client Project | Vehicle Management Platform",
-    "description": "A high-performance vehicle management web platform built with secure authentication, Supabase database, rate-limited Express backend, and AWS S3 cloud storage.",
+    "highlight": "Client Project | Evidence-Based Trust & Verification Platform",
+    "description": "An evidence-based trust and reputation verification platform featuring proof-of-payment validation, evidence redaction, dispute appeal workflows, human moderation, and automated risk scoring.",
     "tech": [
       "Next.js 16",
       "TypeScript",
@@ -214,16 +214,21 @@
     "categories": [
       "Client Work",
       "Full-Stack",
-      "Developer Tools"
+      "Security & Verification"
     ],
-    "type": "Client Web Platform",
+    "type": "Client Trust Platform",
     "status": "Commercial Work",
     "links": [],
     "bannerVariant": "crystal",
     "bannerVersion": "v1.0.0",
     "bannerStatus": "PRODUCTION",
-    "codeSnippet": "// Express + Supabase API Gate\napp.post('/api/v1/vehicles', rateLimiter, async (req, res) => {\n  const data = await supabase.from('vehicles').insert(req.body);\n  return res.json(data);\n});",
+    "codeSnippet": "// Express + Supabase Proof Verification Gate\napp.post('/api/v1/reports', rateLimiter, async (req, res) => {\n  const report = await verifyAndRedactEvidence(req.body);\n  const data = await supabase.from('reports').insert(report);\n  return res.json(data);\n});",
     "benchmarks": [
+      {
+        "label": "Moderation",
+        "value": "Human Verified",
+        "detail": "Verifiable chat log & receipt proof"
+      },
       {
         "label": "Database",
         "value": "Supabase",
@@ -232,28 +237,23 @@
       {
         "label": "Storage",
         "value": "AWS S3",
-        "detail": "Secure asset uploads"
-      },
-      {
-        "label": "API Speed",
-        "value": "< 40ms",
-        "detail": "Express middleware pipeline"
+        "detail": "Secure evidence uploads"
       }
     ],
     "sections": [
       {
-        "title": "Vehicle Tracking",
-        "icon": "Layers",
-        "content": "Monitors vehicle records, status logs, and cloud uploaded documents."
+        "title": "Proof & Redaction Workflow",
+        "icon": "Shield",
+        "content": "Mandatory proof validation system that redacts sensitive personal data before public report publication."
       },
       {
-        "title": "Rate-Limited Backend",
+        "title": "Appeals & Moderation",
         "icon": "Zap",
-        "content": "Uses Express helmet and rate-limiting middleware to guard endpoints against unauthorized traffic."
+        "content": "Built-in dispute appeal system allowing verified entities to submit counter-proof and resolve payment disputes."
       }
     ],
     "learnings": [
-      "Decoupling Supabase authentication from Express API routes creates flexible commercial architectures."
+      "Building evidence-based reputation systems requires strict privacy redaction and multi-layer verification protocols."
     ]
   },
   {
