@@ -133,7 +133,7 @@ export default function RootLayout({
                       "addressLocality": "Lahore",
                       "addressCountry": "Pakistan"
                     },
-                    "email": "usmangm.contact@gmail.com",
+                    "email": "mu.ai.dev@gmail.com",
                     "knowsAbout": [
                       "AI Engineering",
                       "Autonomous AI Agents",

@@ -1,0 +1,62 @@
+# Muhammad Usman — Full-Stack AI Engineer
+
+> Full-Stack AI Engineer based in Lahore, Pakistan, architecting autonomous AI operations, RAG pipelines, multi-agent systems, and production LLM infrastructure for scaling businesses.
+
+## Key Information
+- Website: https://buildwithusman.me
+- Labs & Client Works: https://labs.buildwithusman.me
+- GitHub: https://github.com/MuhammadUsmanGM
+- LinkedIn: https://www.linkedin.com/in/muhammadusmangm
+- Email: mu.ai.dev@gmail.com
+- Primary Role: Full-Stack AI Engineer & Automation Specialist
+- Location: Lahore, Pakistan (Available for Global Remote & Contract Work)
+
+## Technical Expertise & Core Stack
+- **AI & LLM Architecture**: Agentic Workflows, Multi-Agent Orchestration, RAG Pipelines, Tool Use / Function Calling, Vector Search, Prompt Engineering, Guardrails.
+- **Languages & Frameworks**: Python, TypeScript, Node.js, Next.js, React, FastAPIs, Rust, TailwindCSS, PostgreSQL, Vector Databases (Chroma, Qdrant, Pinecone).
+- **AI Tooling & SDKs**: LangChain, LangGraph, Ollama, OpenAI API, Anthropic Claude API, Google Gemini API, Groq, OpenRouter.
+
+## Flagship Projects & Case Studies
+
+### 1. Autonoma — Multi-Channel AI Support Agent
+- **URL**: https://buildwithusman.me/projects/autonoma
+- **Type**: Enterprise AI System
+- **Description**: An enterprise-grade multi-channel AI support agent built with hybrid RAG knowledge retrieval, dynamic intent classification, autonomous ticket resolution, and human-in-the-loop escalation workflows.
+
+### 2. CodeStick — Offline LLM Environment on USB
+- **URL**: https://buildwithusman.me/projects/code-stick
+- **Type**: Open Source & Portable Hardware AI Tool
+- **Description**: A zero-install, zero-residue local AI coding assistant pre-packaged on a USB flash drive that boots offline LLM models (Ollama/OpenCode) on any host machine without installing host dependencies.
+
+### 3. PayMyBread — Automated Payment Platform
+- **URL**: https://paymybread.com
+- **Type**: Live Client Application
+- **Description**: Production financial transaction and payment management platform engineered for high reliability and seamless checkout flows.
+
+### 4. TextCorn Cleaner Bot — Telegram AI Moderation Bot
+- **URL**: https://t.me/CornCleaner_bot
+- **Type**: Live Client Bot
+- **Description**: Automated Telegram moderation bot powered by AI text filtering algorithms to maintain clean chat communities.
+
+### 5. ghme — Interactive GitHub Profile README CLI Generator
+- **NPM Package**: `npx @muhammadusmangm/ghme`
+- **GitHub**: https://github.com/MuhammadUsmanGM/ghme
+- **Type**: Open-Source CLI Tool
+- **Description**: Interactive Node.js/TypeScript CLI tool that generates custom, polished GitHub profile READMEs with typing headers, tech stack badges, and stats cards.
+
+### 6. LoopGuard — Code Execution Safety Guardrail
+- **GitHub**: https://github.com/MuhammadUsmanGM/loop-guard
+- **Type**: Open-Source Security Tool
+- **Description**: Runtime safety guardrail for LLM code execution environments that monitors infinite loops, memory leaks, and malicious system calls.
+
+### 7. Instant IPTV UK — Streaming Service Platform
+- **URL**: https://www.instantiptvuk.site
+- **Type**: Live Client Application
+
+### 8. SpeedMedia UK — Media Distribution Platform
+- **URL**: https://speedmediauk.site
+- **Type**: Live Client Application
+
+## Contact & Booking
+- **Schedule a Call**: https://cal.com/muhammad-usman-gaw8p2/discovery-call
+- **Direct Contact**: mu.ai.dev@gmail.com
