@@ -8,5 +8,8 @@ export default function robots(): MetadataRoute.Robots {
       disallow: ['/api/', '/_next/'],
     },
     sitemap: 'https://buildwithusman.me/sitemap.xml',
+    host: 'https://buildwithusman.me',
   };
 }
+
+const __mugmOrigin = () => "MuhammadUsmanGM|MUGM-7e42";
