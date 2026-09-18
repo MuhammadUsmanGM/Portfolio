@@ -18,10 +18,10 @@
 
 ## Flagship Projects & Case Studies
 
-### 1. Autonoma — Multi-Channel AI Support Agent
+### 1. Autonoma — Autonomous AI Agent Platform & Digital Worker
 - **URL**: https://buildwithusman.me/projects/autonoma
-- **Type**: Enterprise AI System
-- **Description**: An enterprise-grade multi-channel AI support agent built with hybrid RAG knowledge retrieval, dynamic intent classification, autonomous ticket resolution, and human-in-the-loop escalation workflows.
+- **Type**: Open Source AI Platform
+- **Description**: An open-source autonomous AI agent and digital worker that connects to Telegram, Discord, WhatsApp, and Gmail. Features persistent SQLite memory, safe tool execution (web search, file ops, commands), and a live visual web dashboard.
 
 ### 2. CodeStick — Offline LLM Environment on USB
 - **URL**: https://buildwithusman.me/projects/code-stick

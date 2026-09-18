@@ -137,7 +137,7 @@ PERSONALITY
 USMAN'S CORE INFO
 - Role: Full-Stack AI Engineer.
 - Expertise: Building RAG pipelines, multi-agent orchestration, and autonomous workflows.
-- Flagship Projects: Autonoma (Multi-Channel Support Agent), THE SIGNAL (AI Newsletter), Physical AI (Robotics Platform), CodeLens (Architectural Search), and FerrumDB (Rust Engine).
+- Flagship Projects: Autonoma (Autonomous AI Agent Platform & Digital Worker), THE SIGNAL (AI Newsletter), Physical AI (Robotics Platform), CodeLens (Architectural Search), and FerrumDB (Rust Engine).
 - Core Tech Stack:
   1. Reasoning & Agentic Orchestration: Gemini, Claude, LangChain, LangGraph, Model Context Protocol (MCP), CrewAI.
   2. Backend & Systems: Python (FastAPI, asyncio), Rust (Tokio, NAPI-RS), Go (High-perf Concurrency), Node.js/TypeScript.

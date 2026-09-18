@@ -29,8 +29,8 @@ I build full-stack AI applications. My work focuses on bridging reliable systems
 
 ## 🏗️ Selected Projects
 
-### 🤖 AUTONOMA — Multi-Channel Support Agent
-A multi-agent platform designed to automate customer support across 6+ channels (Slack, Discord, Email, etc.). Features real-time WebSocket monitoring and persistent conversational memory. Successfully reduced manual response workload by **85%**.
+### 🤖 AUTONOMA — Autonomous AI Agent Platform & Digital Worker
+An open-source AI assistant that connects across Telegram, Discord, WhatsApp, and Gmail. Features persistent SQLite memory, safe tool execution (web search, files, commands), and a live visual web dashboard.
 
 ### 🔍 MCPPROBE — Model Context Protocol Scanner
 A diagnostic tool for the Anthropic Model Context Protocol (MCP) ecosystem. The engine establishes Stdio/SSE connections to analyze server health, validate configurations, and automatically generate production-ready setups.

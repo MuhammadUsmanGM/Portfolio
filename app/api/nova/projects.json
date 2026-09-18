@@ -659,13 +659,13 @@
     "id": "autonoma",
     "year": "2026",
     "name": "Autonoma",
-    "highlight": "85% Workload Reduction | WhatsApp, Discord, Email",
-    "description": "An AI support assistant that automatically answers customer messages on WhatsApp, Discord, and Email. It remembers past conversations and resolves 85% of routine support requests.",
+    "highlight": "Open-Source AI Agent Platform | Telegram, Discord, WhatsApp & Web UI",
+    "description": "An open-source AI agent that works like a personal digital assistant. It connects across Telegram, Discord, WhatsApp, and Gmail, remembers past conversations with fast local memory, runs tools safely, and includes a live web dashboard.",
     "tech": [
       "Python 3.11",
       "React 19",
       "SQLite FTS5",
-      "asyncio",
+      "TypeScript",
       "Tailwind 4",
       "WebSockets"
     ],
@@ -673,7 +673,7 @@
       "AI & Agents",
       "Automation"
     ],
-    "type": "AI Customer Support",
+    "type": "Personal AI Assistant & Digital Worker",
     "status": "v1.0.0",
     "github": "https://github.com/MuhammadUsmanGM/autonoma",
     "links": [
@@ -683,49 +683,49 @@
       }
     ],
     "installCommand": "npm install -g autonoma-ai",
-    "image": "https://placehold.co/1200x800/0a0a0f/f59e0b?text=AUTONOMA+HUD+OPERATIONAL",
+    "image": "https://placehold.co/1200x800/0a0a0f/f59e0b?text=AUTONOMA+AI+ASSISTANT",
     "bannerVariant": "neural",
     "bannerVersion": "v1.0.0",
-    "bannerStatus": "HUD_ACTIVE",
+    "bannerStatus": "ONLINE",
     "customVisual": "/projects/autonoma-arch.svg",
-    "codeSnippet": "// Autonomous Planning Loop\nconst plan = await agent.plan(objective);\nfor (const step of plan) {\n  const result = await agent.execute(step);\n  await agent.reflect(result);\n}",
+    "codeSnippet": "// 1-Command Install & Run\nnpm install -g autonoma-ai\nautonoma\n// Connects to Telegram, Discord & WhatsApp\n// Opens live web dashboard at http://localhost:8766",
     "benchmarks": [
       {
         "label": "Memory Lookup",
         "value": "< 5ms",
-        "detail": "Instant conversation recall"
+        "detail": "Fast SQLite search recall"
       },
       {
-        "label": "Workload Saved",
-        "value": "85%",
-        "detail": "Handles routine customer tickets"
+        "label": "Channels",
+        "value": "4+",
+        "detail": "Telegram, Discord, WhatsApp, Gmail"
       },
       {
-        "label": "Response Time",
-        "value": "< 2s",
-        "detail": "Fast automated replies"
+        "label": "Setup",
+        "value": "1-Click",
+        "detail": "npm install -g autonoma-ai"
       }
     ],
     "sections": [
       {
-        "title": "Live Support Dashboard",
-        "icon": "Activity",
-        "content": "A clean web dashboard that lets team members monitor AI conversations in real-time and jump in whenever needed."
+        "title": "Chat Across All Apps",
+        "icon": "MessageSquare",
+        "content": "Connects Telegram, Discord, WhatsApp, and Gmail so you can message your assistant from anywhere while keeping the same conversation memory."
       },
       {
         "title": "Smart Memory Search",
         "icon": "Database",
-        "content": "Remembers past customer details and past interactions so customers don't have to repeat themselves."
+        "content": "Uses fast SQLite FTS5 search to remember past context, preferences, and details accurately."
       },
       {
-        "title": "Multi-Channel Messaging",
-        "icon": "Zap",
-        "content": "Connects WhatsApp, Discord, Email, and WebSockets into one central inbox for the AI bot."
+        "title": "Live Web Dashboard",
+        "icon": "Activity",
+        "content": "A clean local web dashboard to inspect memories, adjust agent personality, and see what tasks it is running in real time."
       }
     ],
     "learnings": [
-      "Combining local search memory with AI models delivers faster and more accurate support replies.",
-      "Providing a live dashboard builds team confidence in AI customer service."
+      "Using fast local SQLite memory is much simpler and faster than complex external vector databases.",
+      "Giving users a visual web dashboard makes AI agents much easier to understand and trust."
     ]
   },
   {

@@ -80,21 +80,20 @@ const Projects = () => {
   const projects: Project[] = [
     {
       title: "AUTONOMA",
-      subtitle: "AI Assistant That Handles Customer Support Automatically",
-      description: "An AI support assistant that automatically answers customer messages on WhatsApp, Discord, and Email. It remembers past conversations and resolves 85% of routine support requests without human help.",
-      tech: ["Python 3.11+", "React 19", "SQLite FTS5", "WebSockets", "LLM APIs"],
+      subtitle: "Personal AI Assistant & Digital Worker Platform",
+      description: "An open-source AI agent that works like a digital assistant. It connects across Telegram, Discord, WhatsApp, and Gmail, remembers past conversations with built-in memory, runs tools safely, and comes with a live web dashboard.",
+      tech: ["Python 3.11+", "React 19", "SQLite FTS5", "WebSockets", "FastAPI"],
       link: "https://www.npmjs.com/package/autonoma-ai",
       github: "https://github.com/MuhammadUsmanGM/autonoma",
       isPrivate: false,
-      tags: ["AI Support Bot", "85% Workload Saved", "Smart Memory"],
+      tags: ["Digital Employee", "Chat Everywhere", "Smart Memory", "Web Dashboard"],
       caseStudy: "/projects/autonoma",
-      banner: { variant: "neural" as BannerVariant, version: "v1.0", status: "AUTONOMOUS" },
-      codeSnippet: `// Autonomous Planning Loop
-const plan = await agent.plan(objective);
-for (const step of plan) {
-  const result = await agent.execute(step);
-  await agent.reflect(result);
-}`
+      banner: { variant: "neural" as BannerVariant, version: "v1.0", status: "ONLINE" },
+      codeSnippet: `// 1-Command Install & Run
+npm install -g autonoma-ai
+autonoma
+// → Connects Telegram, Discord, WhatsApp
+// → Opens web dashboard on localhost:8766`
     },
     {
       title: "PAYMYBREAD",

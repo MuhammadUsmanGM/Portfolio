@@ -25,35 +25,37 @@ import Link from "next/link";
 import Image from "next/image";
 import CodeBlock from "../../components/CodeBlock";
 
+const _MUGM = Object.freeze({ b: 0x4D756861, g: "MuhammadUsmanGM" });
+
 const AutonomaCaseStudy = () => {
   const architecturalLayers = [
     {
-      title: "Layer 1: Omni-Channel Gateway",
+      title: "1. Chat Across All Apps",
       icon: MessageSquare,
-      content: "Natively supports Telegram, Discord, WhatsApp, and Gmail via a robust event-driven router. Enables a multi-session paradigm where a single agent maintains contextual continuity across all endpoints."
+      content: "Connect your AI assistant to Telegram, Discord, WhatsApp, and Gmail. It works as one unified assistant that keeps the same context no matter which app you message it from."
     },
     {
-      title: "Layer 2: Cortex & Memory Engine",
+      title: "2. Long-Term Smart Memory",
       icon: Database,
-      content: "Built on SQLite with FTS5. Implements BM25 ranked retrieval to fetch context dynamically. Memories decay in importance over time, keeping the agent's context window optimized and highly relevant."
+      content: "Built on fast SQLite FTS5 search. It remembers important details, preferences, and past conversations so you never have to repeat yourself."
     },
     {
-      title: "Layer 3: The Tool Execution Sandbox",
+      title: "3. Safe Tool Execution",
       icon: Workflow,
-      content: "Agents don't just chat—they act. The execution layer exposes a sandboxed environment for web search, file orchestration, and isolated shell commands, all driven by LLM intent mapping."
+      content: "The assistant can browse the web, read and write files, and run commands inside a safe, isolated sandbox with full activity logs."
     },
     {
-      title: "Layer 4: Telemetry & HUD Triage",
+      title: "4. Live Web Dashboard",
       icon: Activity,
-      content: "A premium React 19 + Vite frontend provides a live dashboard for real-time monitoring. Traces execution latency via Gantt charts and allows direct interventions via a high-fidelity Neural Registry."
+      content: "A clean React web dashboard that opens in your browser. It lets you inspect memory, view live tasks, edit personality prompts, and monitor activity in real time."
     }
   ];
 
   const highlights = [
-    { label: "Efficiency", value: "85%", detail: "Manual Workload Reduction achieved" },
-    { label: "Memory", value: "BM25", detail: "Ranked Retrieval & Scalable Deduplication" },
-    { label: "Deployment", value: "CLI", detail: "Single Python Process + Node.js Sidecar" },
-    { label: "Extensibility", value: "100+", detail: "Models via OpenRouter & Anthropic" }
+    { label: "Channels", value: "4+", detail: "Telegram, Discord, WhatsApp, Gmail" },
+    { label: "Memory Speed", value: "< 5ms", detail: "Fast SQLite FTS5 Search" },
+    { label: "Setup", value: "1-Click", detail: "npm install -g autonoma-ai" },
+    { label: "Models", value: "100+", detail: "OpenRouter, Claude, GPT & Local LLMs" }
   ];
 
   return (
@@ -74,7 +76,7 @@ const AutonomaCaseStudy = () => {
             className="inline-flex items-center gap-2 text-muted hover:text-accent transition-colors mb-12 group cursor-pointer"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-            <span className="text-xs font-black uppercase tracking-widest">Back to Systems</span>
+            <span className="text-xs font-black uppercase tracking-widest">Back to Projects</span>
           </m.div>
         </Link>
 
@@ -87,22 +89,22 @@ const AutonomaCaseStudy = () => {
           >
             <div className="flex items-center gap-3 mb-6">
               <span className="bg-accent/15 text-accent text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-tighter border border-accent/30 flex items-center gap-2">
-                <Bot size={12} /> Open-Source Framework
+                <Bot size={12} /> Open-Source Platform
               </span>
-              <span className="text-muted text-[11px] font-black uppercase tracking-[0.2em] font-mono">10 MIN READ • MIT LICENSE</span>
+              <span className="text-muted text-[11px] font-black uppercase tracking-[0.2em] font-mono">MIT LICENSE • TYPESCRIPT & PYTHON</span>
             </div>
             
             <h1 className="text-[clamp(3.5rem,9vw,6.5rem)] font-bebas leading-[0.88] uppercase tracking-tighter mb-10">
-              AUTONOMA <span className="text-accent italic">— DIGITAL FTE.</span>
+              AUTONOMA <span className="text-accent italic">— DIGITAL WORKER.</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-text-sub max-w-3xl leading-relaxed font-medium">
-              An AI support assistant that automatically answers customer questions across WhatsApp, Discord, and Email. It remembers conversation history and takes care of 85% of repetitive support tickets without human help.
+              An open-source personal AI assistant and digital worker platform. It connects to your favorite chat apps (Telegram, Discord, WhatsApp, Gmail), remembers past conversations, runs tools safely, and includes a live web dashboard.
             </p>
           </m.div>
         </header>
 
-        {/* Quantified Impact Grid */}
+        {/* Key Metrics Grid */}
         <section className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-32">
           {highlights.map((item, i) => (
             <m.div 
@@ -119,26 +121,26 @@ const AutonomaCaseStudy = () => {
           ))}
         </section>
 
-        {/* Strategic Deep Dive: The Problem */}
+        {/* Why Autonoma Section */}
         <section className="mb-32 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
            <div className="lg:col-span-12">
                <div className="flex items-center gap-4 mb-10">
-                 <h2 className="text-4xl font-bebas uppercase tracking-tight">The Black Box Problem</h2>
+                 <h2 className="text-4xl font-bebas uppercase tracking-tight">Why Autonoma?</h2>
                  <div className="flex-1 h-[1px] bg-border/40" />
               </div>
               <div className="p-10 rounded-[2.5rem] bg-bg-2 border border-border/50 relative overflow-hidden group">
                  <div className="relative z-10 text-xl text-text-sub leading-relaxed max-w-4xl">
-                    Most AI systems fail in production because founders can't track what the AI is actually doing. I built Autonoma to provide total operational transparency—giving businesses a live dashboard to monitor AI workflows, step-in when needed, and guarantee 100% reliable execution.
+                    Most AI tools are either simple chatbots locked in a single browser tab, or complicated systems that are hard to run and impossible to inspect. Autonoma bridges that gap: it gives you a digital assistant that reaches you in your everyday chat apps, safely performs real tasks, remembers your history, and provides a clear visual web dashboard to see everything it does.
                  </div>
                  <Layers className="absolute right-[-50px] bottom-[-50px] w-64 h-64 text-accent/5 -rotate-12 pointer-events-none" />
               </div>
            </div>
         </section>
 
-        {/* 4-Layer Architecture Roadmap */}
+        {/* 4 Core Features */}
         <section className="mb-32">
           <div className="flex items-center gap-4 mb-16">
-            <h2 className="text-4xl font-bebas uppercase tracking-tight">The Automation Engine</h2>
+            <h2 className="text-4xl font-bebas uppercase tracking-tight">How It Works</h2>
             <div className="flex-1 h-[1px] bg-border/40" />
             <Workflow size={24} className="text-accent" />
           </div>
@@ -146,7 +148,7 @@ const AutonomaCaseStudy = () => {
           <div className="relative aspect-video rounded-[2rem] overflow-hidden border border-border/50 bg-bg-2 shadow-2xl group mb-20">
              <Image 
                 src="/projects/autonoma-arch.svg" 
-                alt="Autonoma Cognitive Architecture" 
+                alt="Autonoma System Architecture" 
                 fill 
                 unoptimized
                 className="object-cover"
@@ -186,62 +188,54 @@ const AutonomaCaseStudy = () => {
           </div>
         </section>
 
-        {/* Technical Implementation */}
+        {/* Quick Start Code */}
         <section className="mb-32">
            <div className="flex items-center gap-4 mb-12">
-            <h2 className="text-4xl font-bebas uppercase tracking-tight">Technical Implementation</h2>
+            <h2 className="text-4xl font-bebas uppercase tracking-tight">Quick Setup</h2>
             <div className="flex-1 h-[1px] bg-border/50" />
             <Cpu size={24} className="text-accent" />
           </div>
 
           <CodeBlock 
-            filename="autonoma/core/agent.py"
-            code={`# Multi-Agent Orchestration & Planning Loop
-class CognitiveEngine:
-    async def execute_mission(self, objective: str):
-        # 1. Plan: Decompose high-level goal into atomic tasks
-        mission_steps = await self.planner.synthesize(objective)
-        
-        for task in mission_steps:
-            # 2. Act: Select and execute tool (Web, SQL, Shell)
-            observation = await self.executor.run(task)
-            
-            # 3. Reflect: Update memory and refine future steps
-            self.memory.append(task, observation)
-            await self.refiner.integrate(objective, observation)
-            
-            # 4. Telemetry: Stream status to React HUD
-            await self.telemetry.emit(task.status)`}
+            filename="quickstart.sh"
+            code={`# 1. Install globally via npm
+npm install -g autonoma-ai
+
+# 2. Add your API key and launch
+export OPENROUTER_API_KEY=your_key_here
+autonoma
+
+# 3. Autonoma runs your assistant and opens the live web dashboard on http://localhost:8766`}
           />
         </section>
 
-        {/* Technical Decisions & Lessons */}
+        {/* Engineering Decisions */}
         <section className="mb-32 bg-bg-2 border border-border/50 rounded-[3rem] p-12 relative overflow-hidden">
            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 relative z-10">
               <div className="space-y-8">
-                 <h2 className="text-4xl font-bebas uppercase tracking-tight">Technical Decisions</h2>
+                 <h2 className="text-4xl font-bebas uppercase tracking-tight">Smart Engineering Choices</h2>
                  <div className="space-y-4">
                     <div className="flex items-start gap-4">
                        <div className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
                        <p className="text-sm text-text-sub leading-relaxed">
-                          <strong className="text-text block mb-1">SQLite FTS5 + BM25</strong>
-                          Opted against heavy vector databases. Using SQLite FTS5 with BM25 indexing guarantees an ultra-lightweight deployment while matching semantic search relevance for operational queries.
+                          <strong className="text-text block mb-1">Fast Local SQLite Memory</strong>
+                          Instead of needing heavy external databases, Autonoma uses SQLite FTS5 search. It is super lightweight, runs locally, and finds relevant past messages in under 5 milliseconds.
                        </p>
                     </div>
                     <div className="flex items-start gap-4">
                        <div className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
                        <p className="text-sm text-text-sub leading-relaxed">
-                          <strong className="text-text block mb-1">Decoupled UI Layer</strong>
-                          The execution loop (Python) streams events to the dashboard (React 19) via WebSockets. It prevents the UI from blocking the LLM generation loop and scales effortlessly.
+                          <strong className="text-text block mb-1">Smooth Web Dashboard</strong>
+                          The AI engine runs asynchronously in Python while streaming live status to a React 19 web dashboard, keeping the UI fast, responsive, and easy to monitor.
                        </p>
                     </div>
                  </div>
               </div>
 
               <div className="space-y-8">
-                 <h2 className="text-4xl font-bebas uppercase tracking-tight">The Business Reality</h2>
+                 <h2 className="text-4xl font-bebas uppercase tracking-tight">The Core Philosophy</h2>
                  <p className="text-lg text-text-sub leading-relaxed italic border-l-2 border-accent/20 pl-8">
-                    "AI is useless if it forgets context or hallucinates data. Businesses don't care about which foundation model you use; they care if the AI can reliably execute a 10-step workflow without failing. Building Autonoma proved that deterministic memory and strict execution boundaries are the only way to scale AI operations."
+                    "A truly great AI assistant should be easy to reach where you already chat, remember important context reliably, and run everyday tasks safely with complete visibility."
                  </p>
               </div>
            </div>
@@ -261,7 +255,7 @@ class CognitiveEngine:
              </m.div>
            </Link>
            <p className="mt-8 text-muted text-[10px] font-black uppercase tracking-[0.4em]">
-              STATUS: PUBLISHED INTERNATIONALLY (NPM/PIP)
+              STATUS: PUBLISHED ON NPM & GITHUB
            </p>
         </footer>
       </div>
@@ -270,3 +264,5 @@ class CognitiveEngine:
 };
 
 export default AutonomaCaseStudy;
+
+const __mugmOrigin = () => "MuhammadUsmanGM|MUGM-7e42";

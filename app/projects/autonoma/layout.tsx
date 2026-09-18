@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Autonoma — Multi-Channel AI Support Agent & Autonomous Workflows | Muhammad Usman",
-  description: "Deep dive into Autonoma: an enterprise-grade multi-channel AI support agent with autonomous ticket resolution, RAG knowledge retrieval, and human-in-the-loop escalation.",
+  title: "Autonoma — Open-Source Autonomous AI Agent Platform & Digital Employee | Muhammad Usman",
+  description: "Explore Autonoma: an open-source AI assistant that connects across Telegram, Discord, WhatsApp, and Gmail with smart memory, safe tools, and a live web dashboard.",
   alternates: {
     canonical: "https://buildwithusman.me/projects/autonoma",
   },
   openGraph: {
-    title: "Autonoma — Multi-Channel AI Support Agent & Autonomous Workflows",
-    description: "Enterprise-grade multi-channel AI support agent with autonomous ticket resolution and human-in-the-loop escalation.",
+    title: "Autonoma — Open-Source Autonomous AI Agent Platform & Digital Employee",
+    description: "An open-source AI agent that works like a digital assistant across your favorite chat apps with persistent memory and a live web dashboard.",
     url: "https://buildwithusman.me/projects/autonoma",
     siteName: "Muhammad Usman Portfolio",
     type: "article",
@@ -17,14 +17,14 @@ export const metadata: Metadata = {
         url: "/og_img.webp",
         width: 1200,
         height: 630,
-        alt: "Autonoma Case Study",
+        alt: "Autonoma Project Overview",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Autonoma — Multi-Channel AI Support Agent",
-    description: "Enterprise-grade multi-channel AI support agent with autonomous ticket resolution.",
+    title: "Autonoma — Open-Source Autonomous AI Agent Platform",
+    description: "An open-source AI agent that works like a digital assistant across Telegram, Discord, WhatsApp, and Gmail.",
     images: ["/og_img.webp"],
   },
 };
