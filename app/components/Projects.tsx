@@ -126,20 +126,20 @@ npx code-stick install
     },
     {
       title: "MCPPROBE",
-      subtitle: "Diagnostic Tool for Anthropic Model Context Protocol (MCP)",
-      description: "A diagnostic scanner and health-check engine for Model Context Protocol (MCP) servers. Analyzes Stdio & SSE transports, validates tool schemas, tests client compatibility across Cursor and Claude Desktop, and auto-generates production configs.",
+      subtitle: "Automated Health Scanner for AI Tools & Assistants",
+      description: "An automated diagnostic scanner for AI tools. When connecting custom tools to AI apps like Claude or Cursor, they often break silently. MCPProbe tests your AI connections in under 2 seconds, catches hidden errors before they cause crashes, gives a 0–100 health score, and generates ready-to-use configs.",
       tech: ["TypeScript", "Node.js", "@modelcontextprotocol/sdk", "Commander", "Zod"],
       link: "https://www.npmjs.com/package/mcpprobe",
       github: "https://github.com/MuhammadUsmanGM/McpProbe",
       isPrivate: false,
-      tags: ["Developer Tool", "MCP Ecosystem", "npm Package"],
+      tags: ["AI Health Checker", "Catches Tool Errors", "Cursor & Claude Ready", "npm Package"],
       caseStudy: "/projects/mcpprobe",
       banner: { variant: "crystal" as BannerVariant, version: "v1.0.0", status: "OPERATIONAL" },
-      codeSnippet: `// Universal MCP Diagnostics
+      codeSnippet: `// Universal AI Tool Diagnostics
 npx mcpprobe <server-url>
-// → Stdio & SSE Transport Checks
-// → Cursor & Claude Compatibility
-// → Health Score (0-100)`
+// → Tests tool connections in <2s
+// → Catches bugs before Cursor/Claude crash
+// → Instant Health Score (0-100)`
     }
   ];
 

@@ -26,36 +26,36 @@ const _MUGM = Object.freeze({ b: 0x4D756861, g: "MuhammadUsmanGM" });
 const McpProbeCaseStudy = () => {
   const architecturalLayers = [
     {
-      title: "1. Stdio & SSE Transport Engine",
+      title: "1. Instant Connection Testing",
       icon: Radio,
       content:
-        "Establishes clean handshakes over both Stdio child-process pipes and remote Server-Sent Events (SSE) streams, measuring round-trip latency and handling graceful termination.",
+        "Tests both local background processes and cloud web streams in under two seconds. Measures round-trip speed and verifies that communication stays smooth without timeouts.",
     },
     {
-      title: "2. Protocol Capability Discovery",
+      title: "2. Automatic Tool Discovery",
       icon: Search,
       content:
-        "Pings the MCP handshake protocol to dynamically discover and catalog all exposed tools, prompt templates, and resource endpoints without requiring manual documentation.",
+        "Pings the tool server to instantly catalog every command, capability, and database resource it offers, saving developers from writing manual documentation.",
     },
     {
-      title: "3. Schema & Parameter Validation",
+      title: "3. Pre-Flight Error Detection",
       icon: ShieldCheck,
       content:
-        "Validates tool parameter schemas against JSON Schema drafts and Zod definitions to catch malformed argument structures, missing types, and silent failure points before the LLM invokes them.",
+        "Scans all input parameters and data types against strict validation rules. Flags missing fields and formatting bugs before the AI attempts to use the tool.",
     },
     {
-      title: "4. Multi-Client Config Generator",
+      title: "4. One-Click Setup Generator",
       icon: Settings,
       content:
-        "Automatically generates tested, production-ready configuration blocks for Cursor, Claude Desktop, VS Code, and Zed, eliminating copy-paste typos from manual JSON setup.",
+        "Automatically outputs verified, copy-paste configuration files for Cursor, Claude Desktop, and VS Code, completely eliminating manual setup mistakes.",
     },
   ];
 
   const highlights = [
-    { label: "Probe Speed", value: "< 2s", detail: "Sub-Second Diagnostic Cycle" },
-    { label: "AI Clients", value: "13+", detail: "Cursor, Claude, VS Code, Zed" },
-    { label: "Health Score", value: "0–100", detail: "Deterministic Feedback Metric" },
-    { label: "Released", value: "NPM", detail: "mcpprobe · MIT License" },
+    { label: "Scan Speed", value: "< 2s", detail: "Fast Pre-Flight Check" },
+    { label: "AI Editors", value: "13+", detail: "Cursor, Claude, VS Code, Zed" },
+    { label: "Health Score", value: "0–100", detail: "Clear Pass/Fail Rating" },
+    { label: "Published", value: "NPM", detail: "npx mcpprobe · Open Source" },
   ];
 
   return (
@@ -94,7 +94,7 @@ const McpProbeCaseStudy = () => {
           >
             <div className="flex items-center gap-3 mb-6">
               <span className="bg-accent/15 text-accent text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-tighter border border-accent/30 flex items-center gap-2">
-                <Search size={12} /> MCP Tooling & Infrastructure
+                <Search size={12} /> AI Health & Safety Scanner
               </span>
               <span className="text-muted text-[11px] font-black uppercase tracking-[0.2em] font-mono">
                 MIT LICENSE • TYPESCRIPT & NODE.JS
@@ -102,11 +102,11 @@ const McpProbeCaseStudy = () => {
             </div>
 
             <h1 className="text-[clamp(3.5rem,9vw,6.5rem)] font-bebas leading-[0.88] uppercase tracking-tighter mb-10">
-              MCPPROBE <span className="text-accent italic">— ECOSYSTEM SCANNER.</span>
+              MCPPROBE <span className="text-accent italic">— HEALTH SCANNER.</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-text-sub max-w-3xl leading-relaxed font-medium">
-              A high-speed diagnostic tool for Anthropic&apos;s Model Context Protocol (MCP). It establishes Stdio/SSE connections to analyze server health, validate tool schemas, verify client compatibility, and auto-generate production-ready configs.
+              An automated diagnostic scanner for AI tools. When connecting custom tools to AI apps like Cursor and Claude, they often break silently without warning. MCPProbe tests tool connections in under 2 seconds, catches bugs before they cause crashes, gives a 0–100 health score, and generates ready-to-use configs.
             </p>
           </m.div>
         </header>
@@ -143,7 +143,7 @@ const McpProbeCaseStudy = () => {
             </div>
             <div className="p-10 rounded-[2.5rem] bg-bg-2 border border-border/50 relative overflow-hidden group">
               <div className="relative z-10 text-xl text-text-sub leading-relaxed max-w-4xl">
-                As AI editors like Cursor and Claude Desktop adopted Anthropic&apos;s Model Context Protocol, the ecosystem flooded with custom community servers. But developers faced a frustrating loop: subtle schema mismatches, silent stdio crashes, and opaque connection failures that left LLMs hanging. MCPProbe was engineered to provide instant clarity: ping the server, score its health from 0 to 100, flag parameter bugs before the LLM hits them, and emit flawless client configs.
+                Think of Anthropic&apos;s Model Context Protocol (MCP) like a bridge connecting AI apps (Cursor, Claude) to external tools (databases, browsers, search engines). Today, thousands of developers are creating custom AI tools, but when a connection has a small bug or typo, the AI simply freezes or fails silently. Developers waste hours guessing what went wrong. MCPProbe works like an automated checkup for AI tools: it tests the connection, spots bugs before they cause crashes, scores health from 0 to 100, and gives you ready-to-paste configurations.
               </div>
               <Layers className="absolute right-[-50px] bottom-[-50px] w-64 h-64 text-accent/5 -rotate-12 pointer-events-none" />
             </div>
@@ -153,7 +153,7 @@ const McpProbeCaseStudy = () => {
         {/* System Architecture */}
         <section className="mb-32">
           <div className="flex items-center gap-4 mb-16">
-            <h2 className="text-4xl font-bebas uppercase tracking-tight">Architecture & Pipeline</h2>
+            <h2 className="text-4xl font-bebas uppercase tracking-tight">How It Works</h2>
             <div className="flex-1 h-[1px] bg-border/40" />
             <Activity size={24} className="text-accent" />
           </div>
@@ -206,21 +206,21 @@ const McpProbeCaseStudy = () => {
         {/* Quick Start Code */}
         <section className="mb-32">
           <div className="flex items-center gap-4 mb-12">
-            <h2 className="text-4xl font-bebas uppercase tracking-tight">Quick Diagnostics</h2>
+            <h2 className="text-4xl font-bebas uppercase tracking-tight">Quick Setup</h2>
             <div className="flex-1 h-[1px] bg-border/50" />
             <Cpu size={24} className="text-accent" />
           </div>
 
           <CodeBlock
             filename="diagnose.sh"
-            code={`# 1. Zero-install run against any local MCP server
-npx mcpprobe run ./servers/sqlite-mcp
+            code={`# 1. Zero-install check on any local AI tool
+npx mcpprobe run ./my-ai-tool
 
-# 2. Inspect a remote Server-Sent Events (SSE) MCP service
+# 2. Inspect a live cloud-based AI service
 npx mcpprobe inspect https://api.example.com/mcp/sse
 
-# 3. Auto-generate verified config for Claude Desktop & Cursor
-npx mcpprobe config ./servers/sqlite-mcp --target cursor --write`}
+# 3. Auto-generate tested setup for Cursor & Claude Desktop
+npx mcpprobe config ./my-ai-tool --target cursor --write`}
           />
         </section>
 
@@ -229,21 +229,21 @@ npx mcpprobe config ./servers/sqlite-mcp --target cursor --write`}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 relative z-10">
             <div className="space-y-8">
               <h2 className="text-4xl font-bebas uppercase tracking-tight">
-                Engineering Highlights
+                Smart Engineering Choices
               </h2>
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
                   <div className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
                   <p className="text-sm text-text-sub leading-relaxed">
-                    <strong className="text-text block mb-1">Dual Transport Multiplexing</strong>
-                    MCPProbe abstracts both Stdio stdouterr streams and SSE event streams under a single reactive interface, isolating crashes and measuring latency down to milliseconds.
+                    <strong className="text-text block mb-1">Testing Both Local & Cloud Connections</strong>
+                    AI tools connect in two ways: through local background tasks or remote web servers. MCPProbe handles both seamlessly under one simple command, checking response speed down to the millisecond.
                   </p>
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
                   <p className="text-sm text-text-sub leading-relaxed">
-                    <strong className="text-text block mb-1">Pre-Execution Schema Scoring</strong>
-                    Instead of waiting for an LLM to fail during reasoning, MCPProbe runs automated synthetic validation tests against all registered tool parameters, scoring reliability on a 0–100 scale.
+                    <strong className="text-text block mb-1">Catching Bugs Before The AI Runs</strong>
+                    Instead of waiting for an AI to fail during an important task, MCPProbe runs automated test checks on every command parameter, scoring overall reliability on a 0–100 scale.
                   </p>
                 </div>
               </div>
@@ -252,7 +252,7 @@ npx mcpprobe config ./servers/sqlite-mcp --target cursor --write`}
             <div className="space-y-8">
               <h2 className="text-4xl font-bebas uppercase tracking-tight">The Core Philosophy</h2>
               <p className="text-lg text-text-sub leading-relaxed italic border-l-2 border-accent/20 pl-8">
-                &ldquo;If agentic tools cannot be reliably introspected, debugged, and validated offline, autonomous systems will break the moment they meet production reality.&rdquo;
+                &ldquo;If you can&apos;t inspect and test your AI tools in seconds, autonomous systems will break when users need them most.&rdquo;
               </p>
             </div>
           </div>
