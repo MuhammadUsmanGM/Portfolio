@@ -133,7 +133,7 @@ npx code-stick install
       github: "https://github.com/MuhammadUsmanGM/McpProbe",
       isPrivate: false,
       tags: ["Developer Tool", "MCP Ecosystem", "npm Package"],
-      customVisual: "/projects/mcpprobe-arch.svg",
+      caseStudy: "/projects/mcpprobe",
       banner: { variant: "crystal" as BannerVariant, version: "v1.0.0", status: "OPERATIONAL" },
       codeSnippet: `// Universal MCP Diagnostics
 npx mcpprobe <server-url>
