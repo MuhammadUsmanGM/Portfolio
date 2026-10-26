@@ -125,20 +125,21 @@ npx code-stick install
 // → Zero residue on host`
     },
     {
-      title: "TEXTCORN CLEANER",
-      subtitle: "Automated Image Dewatermarking Telegram Bot",
-      description: "An automated Telegram bot built for content creators that strips watermarks from images using multi-pass image processing algorithms and fast buffer caching.",
-      tech: ["TypeScript", "Node.js", "Grammy API", "Telegram Bot", "Image Processing"],
-      link: "https://t.me/CornCleaner_bot",
-      github: "#",
-      isPrivate: true,
-      tags: ["Client Project", "Image Processing", "Telegram Bot"],
-      customVisual: "/projects/corn-cleaner.svg",
-      banner: { variant: "matrix" as BannerVariant, version: "v1.0", status: "OPERATIONAL" },
-      codeSnippet: `// Dewatermark Bot Pipeline
-const photo = await downloadTelegramPhoto(ctx);
-const cleaned = await removeWatermarkStandard(photo);
-await ctx.replyWithDocument(cleaned);`
+      title: "MCPPROBE",
+      subtitle: "Diagnostic Tool for Anthropic Model Context Protocol (MCP)",
+      description: "A diagnostic scanner and health-check engine for Model Context Protocol (MCP) servers. Analyzes Stdio & SSE transports, validates tool schemas, tests client compatibility across Cursor and Claude Desktop, and auto-generates production configs.",
+      tech: ["TypeScript", "Node.js", "@modelcontextprotocol/sdk", "Commander", "Zod"],
+      link: "https://www.npmjs.com/package/mcpprobe",
+      github: "https://github.com/MuhammadUsmanGM/McpProbe",
+      isPrivate: false,
+      tags: ["Developer Tool", "MCP Ecosystem", "npm Package"],
+      customVisual: "/projects/mcpprobe-arch.svg",
+      banner: { variant: "crystal" as BannerVariant, version: "v1.0.0", status: "OPERATIONAL" },
+      codeSnippet: `// Universal MCP Diagnostics
+npx mcpprobe <server-url>
+// → Stdio & SSE Transport Checks
+// → Cursor & Claude Compatibility
+// → Health Score (0-100)`
     }
   ];
 
