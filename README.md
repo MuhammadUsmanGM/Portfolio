@@ -1,67 +1,62 @@
-# MUHAMMAD USMAN — Software Engineer | AI & Systems
+# 🌐 Portfolio — Muhammad Usman
 
 <div align="left">
-  <img src="https://img.shields.io/badge/Role-Software_Engineer-C9960C?style=for-the-badge&logoColor=white" alt="Role" />
-  <img src="https://img.shields.io/badge/Location-Lahore,_PK-C9960C?style=for-the-badge&logoColor=white" alt="Location" />
-  <img src="https://img.shields.io/badge/Focus-AI_Integration-C9960C?style=for-the-badge&logoColor=white" alt="Focus" />
+
+[![Live Site](https://img.shields.io/badge/Live_Site-buildwithusman.me-00B4D8?style=flat-square&logo=vercel&logoColor=white)](https://buildwithusman.me)
+[![Next.js](https://img.shields.io/badge/Next.js_16-000000?style=flat-square&logo=nextdotjs&logoColor=white)](https://nextjs.org)
+[![React](https://img.shields.io/badge/React_19-20232A?style=flat-square&logo=react&logoColor=61DAFB)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+
 </div>
 
-<br />
-
-<div align="left">
-  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" />
-  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white" alt="Rust" />
-  <img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white" alt="Next.js" />
-  <img src="https://img.shields.io/badge/Google_Gemini-8E75C2?style=flat-square&logo=googlegemini&logoColor=white" alt="Gemini" />
-  <img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI" />
-  <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white" alt="LangChain" />
-</div>
-
-### Full-Stack Engineer specializing in AI integrations, multi-agent systems, and robust backend infrastructure.
+The personal portfolio and engineering showcase of **Muhammad Usman** — Full-Stack AI & Systems Engineer. Built to showcase autonomous agent architectures, Rust embedded systems, and production web applications.
 
 ---
 
-## ⚡ About My Work
-I build full-stack AI applications. My work focuses on bridging reliable systems engineering with practical LLM integrations—specifically multi-agent orchestration, local AI environments, and robust RAG pipelines. I prioritize shipping clean, working software over hype.
+### ✨ Highlights
+
+- ⚡ **High Performance** — Built with Next.js 16 (App Router), React 19, and Tailwind CSS v4 for sub-second load times.
+- 🎨 **Fluid Motion & Feel** — Smooth scrolling powered by Lenis and micro-interactions animated with Framer Motion.
+- 🤖 **Interactive AI** — Powered by the Google Gemini API for dynamic, context-aware interactive components.
+- 📬 **Reliable Contact Pipeline** — Integrated with Resend for seamless direct messaging and feedback.
 
 ---
 
-## 🏗️ Selected Projects
+### 🛠️ Built With
 
-### 🤖 AUTONOMA — Autonomous AI Agent Platform & Digital Worker
-An open-source AI assistant that connects across Telegram, Discord, WhatsApp, and Gmail. Features persistent SQLite memory, safe tool execution (web search, files, commands), and a live visual web dashboard.
-
-### 🔍 MCPPROBE — Model Context Protocol Scanner
-A diagnostic tool for the Anthropic Model Context Protocol (MCP) ecosystem. The engine establishes Stdio/SSE connections to analyze server health, validate configurations, and automatically generate production-ready setups.
-
-### 📂 PORTABLE AI — Local LLM Environment CLI
-A cross-platform CLI tool that transforms any standard USB drive into a portable, offline AI environment. Automates the deployment of Ollama and AnythingLLM runtimes without leaving a data footprint on the host machine.
+- **Framework:** [Next.js 16](https://nextjs.org) (App Router, Server Components)
+- **UI & Styling:** [Tailwind CSS v4](https://tailwindcss.com), [Framer Motion](https://www.framer.com/motion), [Lucide Icons](https://lucide.dev)
+- **AI Integration:** [Google Generative AI](https://ai.google.dev) (`@google/generative-ai`)
+- **Smoothness & UX:** [Lenis](https://lenis.darkroom.engineering) smooth scroll, [Sonner](https://sonner.emilkowal.ski) toasts
+- **Mailing:** [Resend](https://resend.com) API
 
 ---
 
-## 🛠️ Tech Stack
+### 🚀 Getting Started
 
-- **Models:** Gemini 2.0/2.5, Claude 3.5 Sonnet, GPT-4o, Local LLMs (Ollama)
-- **Frameworks:** LangChain, LangGraph, CrewAI, AutoGen
-- **Data & RAG:** Vector DBs (Qdrant, ChromaDB, FAISS), Graph Databases
-- **Infrastructure:** Python, Rust, FastAPI, TypeScript, Next.js, Node.js, Docker, GitHub Actions
+To run this project locally:
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/MuhammadUsmanGM/Portfolio.git
+cd Portfolio
+
+# 2. Install dependencies
+npm install
+
+# 3. Start local development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 📜 Experience & Education
+### 📬 Connect
 
-- **Agentic AI Integration:** Deep practical experience building autonomous workflows and AI-driven applications.
-- **MCP & LLM Workflows:** Advanced implementation of Anthropic’s Model Context Protocol for automated coding workflows.
-- **AI/ML Intern @ DeveloperHub:** Developed and shipped 11+ production-level prototype applications.
-- **BS Software Engineering (Est. 2028):** Academic foundation in systems architecture and engineering principles.
-
----
-
-## 📫 Contact & Links
-- **Location:** Lahore, Pakistan
+- **Website:** [buildwithusman.me](https://buildwithusman.me)
+- **LinkedIn:** [muhammad-usman-ai-dev](https://www.linkedin.com/in/muhammad-usman-ai-dev)
 - **Email:** [mu.ai.dev@gmail.com](mailto:mu.ai.dev@gmail.com)
-- **Portfolio:** [buildwithusman.me](https://buildwithusman.me)
-- **LinkedIn:** [muhammadusmangm](https://www.linkedin.com/in/muhammadusmangm)
 
-<!-- _sig: MUGM-7e42-d9b1-f0a3 -->
+<!-- Muhammad Usman | MuhammadUsmanGM | MUGM-7e42-d9b1-f0a3 -->

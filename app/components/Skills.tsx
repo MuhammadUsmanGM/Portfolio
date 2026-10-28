@@ -57,13 +57,11 @@ const Skills = () => {
     {
       title: "High-Speed Systems",
       icon: Server,
-      description: "Reliable server architectures built in Node, Python, Rust, and Go designed for zero downtime.",
+      description: "Reliable server architectures built in Node and Python designed for zero downtime.",
       techs: [
         { name: "Node.js", iconPath: "/icons/nodedotjs.svg" },
         { name: "Python", iconPath: "/icons/python.svg" },
         { name: "API Security", iconPath: "/icons/authentication.svg" },
-        { name: "Rust", iconPath: "/icons/rust.svg" },
-        { name: "Go", iconPath: "/icons/go.svg" },
         { name: "Sys Design", iconPath: "/icons/rest-api.svg" },
         { name: "Microservices", iconPath: "/icons/express.svg" }
       ]
